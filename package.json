@@ -27,7 +27,7 @@
     "email": "nikola@nikolahristov.tech",
     "url": "https://nikolahristov.tech"
   },
-  "publisher": "vsmobile",
+  "publisher": "playform",
   "type": "module",
   "main": "./src/extension/extension",
   "scripts": {
