@@ -330,7 +330,7 @@
         "run-sequence": "2.2.1",
         "rx-lite": "4.0.8",
         "sandbox": "0.8.6",
-        "semver": "5.5.0",
+        "semver": "5.7.2",
         "should": "13.2.1",
         "simple-git": "1.92.0",
         "sinon": "4.5.0",
