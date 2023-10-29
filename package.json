@@ -1,343 +1,356 @@
 {
-    "name": "vscode-appcenter",
-    "displayName": "App Center",
-    "description": "Visual Studio App Center tools and services.",
-    "version": "0.1.11",
-    "publisher": "vsmobile",
-    "icon": "images/icon.png",
-    "engines": {
-        "vscode": "1.21.0"
-    },
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/Microsoft/vscode-appcenter.git"
-    },
-    "bugs": {
-        "url": "https://github.com/Microsoft/vscode-appcenter/issues"
-    },
-    "homepage": "https://github.com/Microsoft/vscode-appcenter/blob/master/README.md",
-    "categories": [
-        "Other"
+  "name": "vscode-appcenter",
+  "displayName": "App Center",
+  "description": "Visual Studio App Center tools and services.",
+  "version": "0.0.1",
+  "publisher": "vsmobile",
+  "icon": "images/icon.png",
+  "engines": {
+    "vscode": "1.21.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
+  },
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "app-center",
+    "react-native",
+    "code",
+    "push"
+  ],
+  "activationEvents": [
+    "*"
+  ],
+  "main": "./src/extension/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "appcenter.showPortalMenu",
+        "title": "Portal",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.whoAmI",
+        "title": "Who Am I",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.login",
+        "title": "Login",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.menu",
+        "title": "Show Menu",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.start",
+        "title": "Start a New Project",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.setCurrentApp",
+        "title": "Set Current App",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.getCurrentApp",
+        "title": "Get Current App",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.createNewApp",
+        "title": "Create New App",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.simulateCrashes",
+        "title": "Simulate App Center Crash",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.installSDK",
+        "title": "Install SDK",
+        "category": "App Center"
+      },
+      {
+        "command": "appcenter.settings.loginToAnotherAccount",
+        "title": "Login to Another App Center Account",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.settings.switchAccount",
+        "title": "Switch App Center Account",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.settings.logout",
+        "title": "Logout from App Center",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.settings.vsts.login",
+        "title": "Login to Another VSTS Account",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.settings.vsts.switchAccount",
+        "title": "Switch VSTS Account",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.settings.vsts.logout",
+        "title": "Logout from VSTS",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.settings.showStatusBar",
+        "title": "Show Status Bar",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.settings.hideStatusBar",
+        "title": "Hide Status Bar",
+        "category": "App Center Settings"
+      },
+      {
+        "command": "appcenter.codePush.setCurrentDeployment",
+        "title": "Set Current Deployment",
+        "category": "App Center Code Push"
+      },
+      {
+        "command": "appcenter.codePush.releaseReact",
+        "title": "Release React Native",
+        "category": "App Center Code Push"
+      },
+      {
+        "command": "appcenter.codePush.switchMandatoryPropForRelease",
+        "title": "Switch Code Push Release Mandatory Property",
+        "category": "App Center Code Push"
+      },
+      {
+        "command": "appcenter.codePush.setTargetBinaryVersion",
+        "title": "Set Code Push Release Target Binary Verison",
+        "category": "App Center Code Push"
+      },
+      {
+        "command": "appcenter.codePush.linkCodePush",
+        "title": "Link Code Push",
+        "category": "App Center Code Push"
+      },
+      {
+        "command": "appcenter.test.showMenu",
+        "title": "Show UI Tests Menu",
+        "category": "App Center Test"
+      },
+      {
+        "command": "appcenter.test.runUITests",
+        "title": "Run UI Tests",
+        "category": "App Center Test"
+      },
+      {
+        "command": "appcenter.test.runUITestsAsync",
+        "title": "Run UI Tests Asynchronously",
+        "category": "App Center Test"
+      },
+      {
+        "command": "appcenter.test.viewResults",
+        "title": "View UI Tests Results",
+        "category": "App Center Test"
+      }
     ],
-    "keywords": [
-        "app-center",
-        "react-native",
-        "code",
-        "push"
-    ],
-    "activationEvents": [
-        "*"
-    ],
-    "main": "./src/extension/extension",
-    "contributes": {
-        "commands": [
-            {
-                "command": "appcenter.showPortalMenu",
-                "title": "Portal",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.whoAmI",
-                "title": "Who Am I",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.login",
-                "title": "Login",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.menu",
-                "title": "Show Menu",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.start",
-                "title": "Start a New Project",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.setCurrentApp",
-                "title": "Set Current App",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.getCurrentApp",
-                "title": "Get Current App",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.createNewApp",
-                "title": "Create New App",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.simulateCrashes",
-                "title": "Simulate App Center Crash",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.installSDK",
-                "title": "Install SDK",
-                "category": "App Center"
-            },
-            {
-                "command": "appcenter.settings.loginToAnotherAccount",
-                "title": "Login to Another App Center Account",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.settings.switchAccount",
-                "title": "Switch App Center Account",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.settings.logout",
-                "title": "Logout from App Center",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.settings.vsts.login",
-                "title": "Login to Another VSTS Account",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.settings.vsts.switchAccount",
-                "title": "Switch VSTS Account",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.settings.vsts.logout",
-                "title": "Logout from VSTS",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.settings.showStatusBar",
-                "title": "Show Status Bar",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.settings.hideStatusBar",
-                "title": "Hide Status Bar",
-                "category": "App Center Settings"
-            },
-            {
-                "command": "appcenter.codePush.setCurrentDeployment",
-                "title": "Set Current Deployment",
-                "category": "App Center Code Push"
-            },
-            {
-                "command": "appcenter.codePush.releaseReact",
-                "title": "Release React Native",
-                "category": "App Center Code Push"
-            },
-            {
-                "command": "appcenter.codePush.switchMandatoryPropForRelease",
-                "title": "Switch Code Push Release Mandatory Property",
-                "category": "App Center Code Push"
-            },
-            {
-                "command": "appcenter.codePush.setTargetBinaryVersion",
-                "title": "Set Code Push Release Target Binary Verison",
-                "category": "App Center Code Push"
-            },
-            {
-                "command": "appcenter.codePush.linkCodePush",
-                "title": "Link Code Push",
-                "category": "App Center Code Push"
-            },
-            {
-                "command": "appcenter.test.showMenu",
-                "title": "Show UI Tests Menu",
-                "category": "App Center Test"
-            },
-            {
-                "command": "appcenter.test.runUITests",
-                "title": "Run UI Tests",
-                "category": "App Center Test"
-            },
-            {
-                "command": "appcenter.test.runUITestsAsync",
-                "title": "Run UI Tests Asynchronously",
-                "category": "App Center Test"
-            },
-            {
-                "command": "appcenter.test.viewResults",
-                "title": "View UI Tests Results",
-                "category": "App Center Test"
-            }
-        ],
-        "configuration": {
-            "type": "object",
-            "title": "App Center Configuration",
-            "properties": {
-                "appcenter.demoAppGitRepo": {
-                    "description": "RN Demo App GH Repository",
-                    "type": "string",
-                    "default": "https://github.com/Microsoft/appcenter-sampleapp-react-native.git"
-                },
-                "appcenter.portalEndpoint": {
-                    "description": "App Center Portal",
-                    "type": "string",
-                    "default": "https://appcenter.ms"
-                },
-                "appcenter.loginendpoint": {
-                    "description": "Endpoint to login to App Center",
-                    "type": "string",
-                    "default": "https://appcenter.ms/cli-login"
-                },
-                "appcenter.api.endpoint": {
-                    "description": "API Endpoint to App Center",
-                    "type": "string",
-                    "default": "https://api.appcenter.ms"
-                },
-                "appcenter.api.distribitiongrouptestersname": {
-                    "description": "App Center Distribution Group Testers Name",
-                    "type": "string",
-                    "default": "Beta Testers"
-                },
-                "appcenter.api.createtestersdistibutiongroup": {
-                    "description": "Configure if we should create new testers distribution group",
-                    "type": "boolean",
-                    "default": "true"
-                },
-                "appcenter.api.connectrepotobuildservice": {
-                    "description": "Configure if we should connect repo to build service",
-                    "type": "boolean",
-                    "default": "true"
-                },
-                "appcenter.api.configurebranchandstartnewbuild": {
-                    "description": "Configure branch and start new build",
-                    "type": "boolean",
-                    "default": "false"
-                },
-                "appcenter.api.defaultbranchname": {
-                    "description": "App Center Default Branch Name",
-                    "type": "string",
-                    "default": "master"
-                },
-                "appcenter.api.createiosapp": {
-                    "description": "Create iOS App In App Center",
-                    "type": "boolean",
-                    "default": "true"
-                },
-                "appcenter.api.createandroidapp": {
-                    "description": "Create Android App In App Center",
-                    "type": "boolean",
-                    "default": "true"
-                },
-                "appcenter.logLevel": {
-                    "description": "Logging level in extension",
-                    "type": "enum",
-                    "enum": [
-                        "Trace",
-                        "Debug",
-                        "Info",
-                        "Warning",
-                        "Error",
-                        "None"
-                    ],
-                    "default": "Info"
-                },
-                "appcenter.crashes": {
-                    "description": "Enable menu items to work with App Center Crashes",
-                    "type": "boolean",
-                    "default": false
-                },
-                "appcenter.linkTwoApps": {
-                    "description": "Make user choose both iOS and Android apps when linking SDKs",
-                    "type": "boolean",
-                    "default": false
-                },
-                "appcenter.environment": {
-                    "description": "Environment to configure App Center endpoints",
-                    "type": "enum",
-                    "enum": [
-                        "prod",
-                        "staging",
-                        "int"
-                    ],
-                    "default": "prod"
-                },
-                "appcenter.showStatusBar": {
-                    "description": "Enable this if you want the status bar with app name/user name always be shown in the bottom left corner of the window",
-                    "type": "boolean",
-                    "default": true
-                },
-                "appcenter.telemetryEnabled": {
-                    "description": "Allow extension to collect usage data and send it to Microsoft",
-                    "type": "boolean",
-                    "default": true
-                },
-                "appcenter.codePushMixinPath": {
-                    "description": "Relative path to a folder that will be included in CodePush releases for this project",
-                    "type": "string",
-                    "default": ""
-                },
-                "appcenter.codePushRNBundleDevFlag": {
-                    "description": "If false, warnings are disabled and the bundle is minified",
-                    "type": "boolean",
-                    "default": true
-                }
-            }
+    "configuration": {
+      "type": "object",
+      "title": "App Center Configuration",
+      "properties": {
+        "appcenter.demoAppGitRepo": {
+          "description": "RN Demo App GH Repository",
+          "type": "string",
+          "default": "https://github.com/Microsoft/appcenter-sampleapp-react-native.git"
+        },
+        "appcenter.portalEndpoint": {
+          "description": "App Center Portal",
+          "type": "string",
+          "default": "https://appcenter.ms"
+        },
+        "appcenter.loginendpoint": {
+          "description": "Endpoint to login to App Center",
+          "type": "string",
+          "default": "https://appcenter.ms/cli-login"
+        },
+        "appcenter.api.endpoint": {
+          "description": "API Endpoint to App Center",
+          "type": "string",
+          "default": "https://api.appcenter.ms"
+        },
+        "appcenter.api.distribitiongrouptestersname": {
+          "description": "App Center Distribution Group Testers Name",
+          "type": "string",
+          "default": "Beta Testers"
+        },
+        "appcenter.api.createtestersdistibutiongroup": {
+          "description": "Configure if we should create new testers distribution group",
+          "type": "boolean",
+          "default": "true"
+        },
+        "appcenter.api.connectrepotobuildservice": {
+          "description": "Configure if we should connect repo to build service",
+          "type": "boolean",
+          "default": "true"
+        },
+        "appcenter.api.configurebranchandstartnewbuild": {
+          "description": "Configure branch and start new build",
+          "type": "boolean",
+          "default": "false"
+        },
+        "appcenter.api.defaultbranchname": {
+          "description": "App Center Default Branch Name",
+          "type": "string",
+          "default": "master"
+        },
+        "appcenter.api.createiosapp": {
+          "description": "Create iOS App In App Center",
+          "type": "boolean",
+          "default": "true"
+        },
+        "appcenter.api.createandroidapp": {
+          "description": "Create Android App In App Center",
+          "type": "boolean",
+          "default": "true"
+        },
+        "appcenter.logLevel": {
+          "description": "Logging level in extension",
+          "type": "enum",
+          "enum": [
+            "Trace",
+            "Debug",
+            "Info",
+            "Warning",
+            "Error",
+            "None"
+          ],
+          "default": "Info"
+        },
+        "appcenter.crashes": {
+          "description": "Enable menu items to work with App Center Crashes",
+          "type": "boolean",
+          "default": false
+        },
+        "appcenter.linkTwoApps": {
+          "description": "Make user choose both iOS and Android apps when linking SDKs",
+          "type": "boolean",
+          "default": false
+        },
+        "appcenter.environment": {
+          "description": "Environment to configure App Center endpoints",
+          "type": "enum",
+          "enum": [
+            "prod",
+            "staging",
+            "int"
+          ],
+          "default": "prod"
+        },
+        "appcenter.showStatusBar": {
+          "description": "Enable this if you want the status bar with app name/user name always be shown in the bottom left corner of the window",
+          "type": "boolean",
+          "default": true
+        },
+        "appcenter.telemetryEnabled": {
+          "description": "Allow extension to collect usage data and send it to Microsoft",
+          "type": "boolean",
+          "default": true
+        },
+        "appcenter.codePushMixinPath": {
+          "description": "Relative path to a folder that will be included in CodePush releases for this project",
+          "type": "string",
+          "default": ""
+        },
+        "appcenter.codePushRNBundleDevFlag": {
+          "description": "If false, warnings are disabled and the bundle is minified",
+          "type": "boolean",
+          "default": true
         }
-    },
-    "scripts": {
-        "vscode:prepublish": "gulp",
-        "compile": "tsc -p ./",
-        "watch": "tsc -watch -p ./",
-        "lint": "tslint --project tsconfig.json -e src/*.d.ts -t verbose",
-        "postinstall": "node ./node_modules/vscode/bin/install",
-        "test": "./node_modules/.bin/mocha --reporter spec",
-        "integrationTest": "node ./node_modules/vscode/bin/test"
-    },
-    "devDependencies": {
-        "@types/mocha": "10.0.3",
-        "@types/node": "20.8.9",
-        "@types/rimraf": "3.0.2",
-        "gulp": "4.0.2",
-        "gulp-sourcemaps": "3.0.0",
-        "gulp-tslint": "8.1.4",
-        "gulp-typescript": "5.0.1",
-        "mock-fs": "5.2.0",
-        "tslint": "5.20.1",
-        "tslint-microsoft-contrib": "5.0.3",
-        "typescript": "5.2.2",
-        "vscode": "1.1.21"
-    },
-    "dependencies": {
-        "btoa": "1.2.1",
-        "chalk": "5.3.0",
-        "date-fns": "2.30.0",
-        "del": "7.1.0",
-        "event-stream": "4.0.1",
-        "git-url-parse": "13.1.1",
-        "gradle-to-js": "2.0.1",
-        "gulp-mocha": "9.0.0",
-        "jsonwebtoken": "9.0.2",
-        "lodash": "4.17.21",
-        "mkdirp": "3.0.1",
-        "moment": "2.29.4",
-        "ms-rest": "2.5.6",
-        "node-fetch": "3.3.2",
-        "node-jsxml": "0.9.0",
-        "node-noop": "1.0.0",
-        "open": "9.1.0",
-        "opener": "1.5.2",
-        "plist": "3.1.0",
-        "properties": "1.2.1",
-        "rimraf": "5.0.5",
-        "run-sequence": "2.2.1",
-        "rx-lite": "4.0.8",
-        "sandbox": "0.8.6",
-        "semver": "7.5.4",
-        "should": "13.2.3",
-        "simple-git": "3.20.0",
-        "sinon": "17.0.0",
-        "temp": "0.9.4",
-        "test": "3.3.0",
-        "ts-md5": "1.3.1",
-        "xml2js": "0.6.2",
-        "yazl": "2.5.1"
+      }
     }
+  },
+  "scripts": {
+    "vscode:prepublish": "gulp",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "tslint --project tsconfig.json -e src/*.d.ts -t verbose",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "integrationTest": "node ./node_modules/vscode/bin/test",
+    "prepublishOnly": "TypeScriptESBuild Source/**/*.ts"
+  },
+  "devDependencies": {
+    "@types/mocha": "10.0.3",
+    "@types/node": "20.8.9",
+    "@types/rimraf": "3.0.2",
+    "gulp": "4.0.2",
+    "gulp-sourcemaps": "3.0.0",
+    "gulp-tslint": "8.1.4",
+    "gulp-typescript": "5.0.1",
+    "mock-fs": "5.2.0",
+    "tslint": "5.20.1",
+    "tslint-microsoft-contrib": "5.0.3",
+    "typescript": "5.2.2",
+    "vscode": "1.1.21",
+    "typescript-esbuild": "0.3.1"
+  },
+  "dependencies": {
+    "btoa": "1.2.1",
+    "chalk": "5.3.0",
+    "date-fns": "2.30.0",
+    "del": "7.1.0",
+    "event-stream": "4.0.1",
+    "git-url-parse": "13.1.1",
+    "gradle-to-js": "2.0.1",
+    "gulp-mocha": "9.0.0",
+    "jsonwebtoken": "9.0.2",
+    "lodash": "4.17.21",
+    "mkdirp": "3.0.1",
+    "moment": "2.29.4",
+    "ms-rest": "2.5.6",
+    "node-fetch": "3.3.2",
+    "node-jsxml": "0.9.0",
+    "node-noop": "1.0.0",
+    "open": "9.1.0",
+    "opener": "1.5.2",
+    "plist": "3.1.0",
+    "properties": "1.2.1",
+    "rimraf": "5.0.5",
+    "run-sequence": "2.2.1",
+    "rx-lite": "4.0.8",
+    "sandbox": "0.8.6",
+    "semver": "7.5.4",
+    "should": "13.2.3",
+    "simple-git": "3.20.0",
+    "sinon": "17.0.0",
+    "temp": "0.9.4",
+    "test": "3.3.0",
+    "ts-md5": "1.3.1",
+    "xml2js": "0.6.2",
+    "yazl": "2.5.1"
+  },
+  "license": "MIT",
+  "type": "module",
+  "private": "false",
+  "publishConfig": {
+    "access": "public"
+  },
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
+  }
 }
