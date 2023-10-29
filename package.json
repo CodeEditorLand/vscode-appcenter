@@ -332,7 +332,7 @@
         "sandbox": "0.8.6",
         "semver": "5.5.0",
         "should": "13.2.1",
-        "simple-git": "1.92.0",
+        "simple-git": "3.16.0",
         "sinon": "4.5.0",
         "temp": "0.8.3",
         "test": "0.6.0",
