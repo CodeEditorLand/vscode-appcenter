@@ -1,268 +1,223 @@
-import should = require("should");
-import sinon = require("sinon");
+import should = require('should');
+import sinon = require('sinon');
 
-import FsProfileStorage from "../src/data/fsProfileStorage";
-import { ConsoleLogger } from "../src/extension/log/consoleLogger";
-import { VstsProfile } from "../src/helpers/interfaces";
-import { FSUtils } from "../src/helpers/utils/fsUtils";
+import FsProfileStorage from '../src/data/fsProfileStorage';
+import { ConsoleLogger } from '../src/extension/log/consoleLogger';
+import { VstsProfile } from '../src/helpers/interfaces';
+import { FSUtils } from '../src/helpers/utils/fsUtils';
 
-describe("FsProfileStorage", function () {
-	let path;
-	let fs;
-	let sandbox: sinon.SinonSandbox;
-	const fakeFilePath = "./file.json";
-	const mockFilePath = "./mock/profilesMock.json";
-	const mockFilePathMalformedDuplicateUserIds =
-		"./mock/profilesMockMalformedUserIds.json";
+describe('FsProfileStorage', function () {
 
-	before(() => {
-		sandbox = sinon.sandbox.create();
-		path = require("path");
-		fs = require("fs");
-	});
+  let path;
+  let fs;
+  let sandbox: sinon.SinonSandbox;
+  const fakeFilePath = "./file.json";
+  const mockFilePath = "./mock/profilesMock.json";
+  const mockFilePathMalformedDuplicateUserIds = "./mock/profilesMockMalformedUserIds.json";
 
-	afterEach(() => {
-		sandbox.restore();
-	});
+  before(() => {
+    sandbox = sinon.sandbox.create();
+    path = require("path");
+    fs = require('fs');
+  });
 
-	describe("#init", () => {
-		let profiles: VstsProfile[];
-		let vstsProfileStorage: FsProfileStorage<VstsProfile>;
+  afterEach(() => {
+    sandbox.restore();
+  });
 
-		before(() => {
-			profiles = require(mockFilePath);
-		});
+  describe('#init', () => {
+    let profiles: VstsProfile[];
+    let vstsProfileStorage: FsProfileStorage<VstsProfile>;
 
-		after(() => {
-			// Delete the file created during testing.
-			const absolutePath = path.resolve("test/" + fakeFilePath);
-			fs.unlinkSync(absolutePath);
-		});
+    before(() => {
+      profiles = require(mockFilePath);
+    });
 
-		it("should create empty storage", async () => {
-			const absolutePath = path.resolve("test/" + fakeFilePath);
-			vstsProfileStorage = new FsProfileStorage(
-				absolutePath,
-				new ConsoleLogger()
-			);
-			await vstsProfileStorage.init();
-			const existsStorage: boolean = await FSUtils.exists(absolutePath);
-			should.equal(existsStorage, true);
-		});
+    after(() => {
+      // Delete the file created during testing.
+      const absolutePath = path.resolve("test/" + fakeFilePath);
+      fs.unlinkSync(absolutePath);
+    });
 
-		it("should load profiles", async () => {
-			const absolutePath = path.resolve("test/" + mockFilePath);
-			vstsProfileStorage = new FsProfileStorage(
-				absolutePath,
-				new ConsoleLogger()
-			);
-			await vstsProfileStorage.init();
-			const expectedActiveProfile = profiles.filter(
-				(profile) => profile.isActive
-			)[0];
-			const activeProfile = vstsProfileStorage.activeProfile;
-			should.deepEqual(activeProfile, expectedActiveProfile);
-		});
-	});
+    it('should create empty storage', async () => {
+      const absolutePath = path.resolve("test/" + fakeFilePath);
+      vstsProfileStorage = new FsProfileStorage(absolutePath, new ConsoleLogger());
+      await vstsProfileStorage.init();
+      const existsStorage: boolean = await FSUtils.exists(absolutePath);
+      should.equal(existsStorage, true);
+    });
 
-	describe("#save", () => {
-		let vstsProfileStorage: FsProfileStorage<VstsProfile>;
-		let profiles: VstsProfile[];
-		const fakeProfile: VstsProfile = {
-			userId: "fake",
-			userName: "123",
-			displayName: "123",
-			isActive: true,
-			tenantName: "",
-		};
-		let saveProfilesStub: sinon.stub;
+    it('should load profiles', async () => {
+      const absolutePath = path.resolve("test/" + mockFilePath);
+      vstsProfileStorage = new FsProfileStorage(absolutePath, new ConsoleLogger());
+      await vstsProfileStorage.init();
+      const expectedActiveProfile = profiles.filter(profile => profile.isActive)[0];
+      const activeProfile = vstsProfileStorage.activeProfile;
+      should.deepEqual(activeProfile, expectedActiveProfile);
+    });
+  });
 
-		before(() => {
-			profiles = require(mockFilePath);
-		});
+  describe('#save', () => {
+    let vstsProfileStorage: FsProfileStorage<VstsProfile>;
+    let profiles: VstsProfile[];
+    const fakeProfile: VstsProfile = {
+      userId: "fake",
+      userName: "123",
+      displayName: "123",
+      isActive: true,
+      tenantName: ""
+    };
+    let saveProfilesStub: sinon.stub;
 
-		beforeEach(async () => {
-			const absolutePath = path.resolve("test/" + mockFilePath);
-			vstsProfileStorage = new FsProfileStorage(
-				absolutePath,
-				new ConsoleLogger()
-			);
-			saveProfilesStub = sandbox.stub(vstsProfileStorage, "saveProfiles");
-			saveProfilesStub.resolves();
-			await vstsProfileStorage.init();
-		});
+    before(() => {
+      profiles = require(mockFilePath);
+    });
 
-		after(() => {
-			sandbox.restore();
-		});
+    beforeEach(async () => {
+      const absolutePath = path.resolve("test/" + mockFilePath);
+      vstsProfileStorage = new FsProfileStorage(absolutePath, new ConsoleLogger());
+      saveProfilesStub = sandbox.stub(vstsProfileStorage, 'saveProfiles');
+      saveProfilesStub.resolves();
+      await vstsProfileStorage.init();
+    });
 
-		it("should make profile active", async () => {
-			await vstsProfileStorage.save(fakeProfile);
-			const activeProfile = vstsProfileStorage.activeProfile;
-			should.deepEqual(activeProfile, fakeProfile);
-			saveProfilesStub.calledOnce.should.be.true();
-		});
+    after(() => {
+      sandbox.restore();
+    });
 
-		it("should preserve active state on re-login", async () => {
-			const deleteSpy: sinon.spy = sandbox.spy(
-				vstsProfileStorage,
-				"delete"
-			);
-			const currentActiveProfile = profiles.filter(
-				(profile) => profile.isActive
-			)[0];
-			await vstsProfileStorage.save(currentActiveProfile);
-			deleteSpy.calledOnce.should.be.true();
-			const activeProfile = vstsProfileStorage.activeProfile;
-			should.deepEqual(activeProfile, currentActiveProfile);
-			saveProfilesStub.calledTwice.should.be.true();
-		});
-	});
+    it('should make profile active', async () => {
+      await vstsProfileStorage.save(fakeProfile);
+      const activeProfile = vstsProfileStorage.activeProfile;
+      should.deepEqual(activeProfile, fakeProfile);
+      saveProfilesStub.calledOnce.should.be.true();
+    });
 
-	describe("#delete", () => {
-		let vstsProfileStorage: FsProfileStorage<VstsProfile>;
-		let profiles: VstsProfile[];
-		let saveProfilesStub: sinon.stub;
+    it('should preserve active state on re-login', async () => {
+      const deleteSpy: sinon.spy = sandbox.spy(vstsProfileStorage, "delete");
+      const currentActiveProfile = profiles.filter(profile => profile.isActive)[0];
+      await vstsProfileStorage.save(currentActiveProfile);
+      deleteSpy.calledOnce.should.be.true();
+      const activeProfile = vstsProfileStorage.activeProfile;
+      should.deepEqual(activeProfile, currentActiveProfile);
+      saveProfilesStub.calledTwice.should.be.true();
+    });
+  });
 
-		before(() => {
-			profiles = require(mockFilePath);
-		});
+  describe('#delete', () => {
+    let vstsProfileStorage: FsProfileStorage<VstsProfile>;
+    let profiles: VstsProfile[];
+    let saveProfilesStub: sinon.stub;
 
-		beforeEach(async () => {
-			const absolutePath = path.resolve("test/" + mockFilePath);
-			vstsProfileStorage = new FsProfileStorage(
-				absolutePath,
-				new ConsoleLogger()
-			);
-			saveProfilesStub = sandbox.stub(vstsProfileStorage, "saveProfiles");
-			saveProfilesStub.resolves();
-			await vstsProfileStorage.init();
-		});
+    before(() => {
+      profiles = require(mockFilePath);
+    });
 
-		after(() => {
-			sandbox.restore();
-		});
+    beforeEach(async () => {
+      const absolutePath = path.resolve("test/" + mockFilePath);
+      vstsProfileStorage = new FsProfileStorage(absolutePath, new ConsoleLogger());
+      saveProfilesStub = sandbox.stub(vstsProfileStorage, 'saveProfiles');
+      saveProfilesStub.resolves();
+      await vstsProfileStorage.init();
+    });
 
-		it("should delete active profile", async () => {
-			const activeProfile = profiles.filter(
-				(profile) => profile.isActive
-			)[0];
-			const deletedProfile = await vstsProfileStorage.delete(
-				activeProfile.userId
-			);
-			const currentActiveProfile = vstsProfileStorage.activeProfile;
-			should.deepEqual(currentActiveProfile, null);
-			should.deepEqual(deletedProfile, activeProfile);
-			saveProfilesStub.calledOnce.should.be.true();
-		});
+    after(() => {
+      sandbox.restore();
+    });
 
-		it("should delete non-active profile and preserve the active one", async () => {
-			const nonActiveProfile = profiles.filter(
-				(profile) => !profile.isActive
-			)[0];
-			const activeProfile = profiles.filter(
-				(profile) => profile.isActive
-			)[0];
-			const deletedProfile = await vstsProfileStorage.delete(
-				nonActiveProfile.userId
-			);
-			const currentActiveProfile = vstsProfileStorage.activeProfile;
-			should.deepEqual(activeProfile, currentActiveProfile);
-			should.deepEqual(deletedProfile, nonActiveProfile);
-			saveProfilesStub.calledOnce.should.be.true();
-		});
+    it('should delete active profile', async () => {
+      const activeProfile = profiles.filter(profile => profile.isActive)[0];
+      const deletedProfile = await vstsProfileStorage.delete(activeProfile.userId);
+      const currentActiveProfile = vstsProfileStorage.activeProfile;
+      should.deepEqual(currentActiveProfile, null);
+      should.deepEqual(deletedProfile, activeProfile);
+      saveProfilesStub.calledOnce.should.be.true();
+    });
 
-		it("should not delete the profile thats not exist", async () => {
-			const deletedProfile =
-				await vstsProfileStorage.delete("fakeUserId");
-			should.equal(deletedProfile, null);
-			saveProfilesStub.called.should.be.false();
-		});
-	});
+    it('should delete non-active profile and preserve the active one', async () => {
+      const nonActiveProfile = profiles.filter(profile => !profile.isActive)[0];
+      const activeProfile = profiles.filter(profile => profile.isActive)[0];
+      const deletedProfile = await vstsProfileStorage.delete(nonActiveProfile.userId);
+      const currentActiveProfile = vstsProfileStorage.activeProfile;
+      should.deepEqual(activeProfile, currentActiveProfile);
+      should.deepEqual(deletedProfile, nonActiveProfile);
+      saveProfilesStub.calledOnce.should.be.true();
+    });
 
-	describe("#get", () => {
-		let vstsProfileStorage: FsProfileStorage<VstsProfile>;
-		let profiles: VstsProfile[];
-		let malformedProfiles: VstsProfile[];
+    it('should not delete the profile thats not exist', async () => {
+      const deletedProfile = await vstsProfileStorage.delete("fakeUserId");
+      should.equal(deletedProfile, null);
+      saveProfilesStub.called.should.be.false();
+    });
+  });
 
-		before(() => {
-			profiles = require(mockFilePath);
-			malformedProfiles = require(mockFilePathMalformedDuplicateUserIds);
-		});
+  describe('#get', () => {
+    let vstsProfileStorage: FsProfileStorage<VstsProfile>;
+    let profiles: VstsProfile[];
+    let malformedProfiles: VstsProfile[];
 
-		beforeEach(async () => {
-			const absolutePath = path.resolve("test/" + mockFilePath);
-			vstsProfileStorage = new FsProfileStorage(
-				absolutePath,
-				new ConsoleLogger()
-			);
-			await vstsProfileStorage.init();
-		});
+    before(() => {
+      profiles = require(mockFilePath);
+      malformedProfiles = require(mockFilePathMalformedDuplicateUserIds);
+    });
 
-		after(() => {
-			sandbox.restore();
-		});
+    beforeEach(async () => {
+      const absolutePath = path.resolve("test/" + mockFilePath);
+      vstsProfileStorage = new FsProfileStorage(absolutePath, new ConsoleLogger());
+      await vstsProfileStorage.init();
+    });
 
-		it("should return null if profile not found", async () => {
-			const foundProfile = await vstsProfileStorage.get("fakeUserId");
-			should.deepEqual(foundProfile, null);
-		});
+    after(() => {
+      sandbox.restore();
+    });
 
-		it("should throw if more than one profile found", async () => {
-			const absolutePath = path.resolve(
-				"test/" + mockFilePathMalformedDuplicateUserIds
-			);
-			vstsProfileStorage = new FsProfileStorage(
-				absolutePath,
-				new ConsoleLogger()
-			);
-			await vstsProfileStorage.init();
-			const duplicateProfile: VstsProfile = malformedProfiles[0];
-			return new Promise(function (resolve, reject) {
-				vstsProfileStorage
-					.get(duplicateProfile.userId)
-					.catch((error) => {
-						should.exist(error);
-						resolve();
-					})
-					.then(() => {
-						reject("the function should throw");
-					});
-			});
-		});
+    it('should return null if profile not found', async () => {
+      const foundProfile = await vstsProfileStorage.get("fakeUserId");
+      should.deepEqual(foundProfile, null);
+    });
 
-		it("should return valid profile", async () => {
-			const profile = profiles[0];
-			const foundProfile = await vstsProfileStorage.get(profile.userId);
-			should.deepEqual(foundProfile, profile);
-		});
-	});
+    it('should throw if more than one profile found', async () => {
+      const absolutePath = path.resolve("test/" + mockFilePathMalformedDuplicateUserIds);
+      vstsProfileStorage = new FsProfileStorage(absolutePath, new ConsoleLogger());
+      await vstsProfileStorage.init();
+      const duplicateProfile: VstsProfile = malformedProfiles[0];
+      return new Promise(function (resolve, reject) {
+        vstsProfileStorage.get(duplicateProfile.userId).catch(error => {
+          should.exist(error);
+          resolve();
+        }).then(() => {
+          reject("the function should throw");
+        });
+      });
+    });
 
-	describe("#list", () => {
-		let vstsProfileStorage: FsProfileStorage<VstsProfile>;
-		let profiles: VstsProfile[];
+    it('should return valid profile', async () => {
+      const profile = profiles[0];
+      const foundProfile = await vstsProfileStorage.get(profile.userId);
+      should.deepEqual(foundProfile, profile);
+    });
+  });
 
-		before(() => {
-			profiles = require(mockFilePath);
-		});
+  describe('#list', () => {
+    let vstsProfileStorage: FsProfileStorage<VstsProfile>;
+    let profiles: VstsProfile[];
 
-		beforeEach(async () => {
-			const absolutePath = path.resolve("test/" + mockFilePath);
-			vstsProfileStorage = new FsProfileStorage(
-				absolutePath,
-				new ConsoleLogger()
-			);
-			await vstsProfileStorage.init();
-		});
+    before(() => {
+      profiles = require(mockFilePath);
+    });
 
-		after(() => {
-			sandbox.restore();
-		});
+    beforeEach(async () => {
+      const absolutePath = path.resolve("test/" + mockFilePath);
+      vstsProfileStorage = new FsProfileStorage(absolutePath, new ConsoleLogger());
+      await vstsProfileStorage.init();
+    });
 
-		it("should list profiles", async () => {
-			const listedProfiles: VstsProfile[] =
-				await vstsProfileStorage.list();
-			should.deepEqual(listedProfiles, profiles);
-		});
-	});
+    after(() => {
+      sandbox.restore();
+    });
+
+    it('should list profiles', async () => {
+      const listedProfiles: VstsProfile[] = await vstsProfileStorage.list();
+      should.deepEqual(listedProfiles, profiles);
+    });
+  });
 });
