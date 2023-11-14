@@ -17,63 +17,57 @@ const fieldRe = /^([^:]+):\s(.*)$/;
 // field names to property names.
 //
 function fieldNameToPropertyName(fieldName: string): string {
-	const parts = fieldName.split(" ");
-	parts[0] = parts[0].toLowerCase();
-	return parts.join("");
+  const parts = fieldName.split(" ");
+  parts[0] = parts[0].toLowerCase();
+  return parts.join("");
 }
 
 //
 // Simple streaming parser, splits lines, collects them into single objects.
 //
 class WinCredStoreParsingStream extends Transform {
-	private currentEntry: any;
+  private currentEntry: any;
 
-	constructor() {
-		super({ objectMode: true });
-		this.currentEntry = null;
-	}
+  constructor() {
+    super({ objectMode: true });
+    this.currentEntry = null;
+  }
 
-	public _transform(
-		chunk: any,
-		_encoding: string,
-		callback: { (err?: Error): void }
-	): void {
-		const line = chunk.toString();
+  public _transform(chunk: any, _encoding: string, callback: { (err?: Error): void }): void {
 
-		if (line === "") {
-			if (this.currentEntry) {
-				this.push(this.currentEntry);
-				this.currentEntry = null;
-			}
-			return callback();
-		}
+    const line = chunk.toString();
 
-		this.currentEntry = this.currentEntry || {};
-		const match = fieldRe.exec(line);
-		const key = fieldNameToPropertyName(match[1]);
-		const value = match[2];
-		this.currentEntry[key] = value;
-		return callback();
-	}
+    if (line === "") {
+      if (this.currentEntry) {
+        this.push(this.currentEntry);
+        this.currentEntry = null;
+      }
+      return callback();
+    }
 
-	public _flush(callback: { (err?: Error): void }): void {
-		if (this.currentEntry) {
-			this.push(this.currentEntry);
-			this.currentEntry = null;
-		}
-		callback();
-	}
+    this.currentEntry = this.currentEntry || {};
+    const match = fieldRe.exec(line);
+    const key = fieldNameToPropertyName(match[1]);
+    const value = match[2];
+    this.currentEntry[key] = value;
+    return callback();
+  }
+
+  public _flush(callback: { (err?: Error): void }): void {
+    if (this.currentEntry) {
+      this.push(this.currentEntry);
+      this.currentEntry = null;
+    }
+    callback();
+  }
 }
 
 function createParsingStream(): NodeJS.ReadWriteStream {
-	return pipeline(
-		split(),
-		new WinCredStoreParsingStream()
-	) as NodeJS.ReadWriteStream;
+  return pipeline(split(), new WinCredStoreParsingStream()) as NodeJS.ReadWriteStream;
 }
 
 namespace createParsingStream {
-	export let ParsingStream = WinCredStoreParsingStream;
+  export let ParsingStream = WinCredStoreParsingStream;
 }
 
 export { createParsingStream };

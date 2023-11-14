@@ -4,53 +4,54 @@
  * regenerated.
  */
 
-"use strict";
+'use strict';
 
-const models = require("./index");
+const models = require('./index');
 
 /**
  * Resource usage for a single Mobile Center service
  *
  */
 class ServiceResourceUsage {
-	/**
-	 * Create a ServiceResourceUsage.
-	 * @member {object} [currentUsagePeriod]
-	 * @member {string} [currentUsagePeriod.startTime] Inclusive start time of
-	 * the usage period
-	 * @member {string} [currentUsagePeriod.endTime] Exclusive end time of the
-	 * usage period.
-	 * @member {object} [currentUsagePeriod.byAccount]
-	 * @member {object} [currentUsagePeriod.byApp]
-	 */
-	constructor() {}
+  /**
+   * Create a ServiceResourceUsage.
+   * @member {object} [currentUsagePeriod]
+   * @member {string} [currentUsagePeriod.startTime] Inclusive start time of
+   * the usage period
+   * @member {string} [currentUsagePeriod.endTime] Exclusive end time of the
+   * usage period.
+   * @member {object} [currentUsagePeriod.byAccount]
+   * @member {object} [currentUsagePeriod.byApp]
+   */
+  constructor() {
+  }
 
-	/**
-	 * Defines the metadata of ServiceResourceUsage
-	 *
-	 * @returns {object} metadata of ServiceResourceUsage
-	 *
-	 */
-	mapper() {
-		return {
-			required: false,
-			serializedName: "ServiceResourceUsage",
-			type: {
-				name: "Composite",
-				className: "ServiceResourceUsage",
-				modelProperties: {
-					currentUsagePeriod: {
-						required: false,
-						serializedName: "currentUsagePeriod",
-						type: {
-							name: "Composite",
-							className: "UsagePeriod",
-						},
-					},
-				},
-			},
-		};
-	}
+  /**
+   * Defines the metadata of ServiceResourceUsage
+   *
+   * @returns {object} metadata of ServiceResourceUsage
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'ServiceResourceUsage',
+      type: {
+        name: 'Composite',
+        className: 'ServiceResourceUsage',
+        modelProperties: {
+          currentUsagePeriod: {
+            required: false,
+            serializedName: 'currentUsagePeriod',
+            type: {
+              name: 'Composite',
+              className: 'UsagePeriod'
+            }
+          }
+        }
+      }
+    };
+  }
 }
 
 module.exports = ServiceResourceUsage;
