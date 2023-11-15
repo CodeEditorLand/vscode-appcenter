@@ -14,40 +14,40 @@ import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
 
-	private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
+  private final ReactNativeHost mReactNativeHost = new ReactNativeHost(this) {
 
-		@Override
-		protected String getJSBundleFile() {
-			return CodePush.getJSBundleFile();
-		}
+        @Override
+        protected String getJSBundleFile() {
+        return CodePush.getJSBundleFile();
+        }
+    
+    @Override
+    public boolean getUseDeveloperSupport() {
+      return BuildConfig.DEBUG;
+    }
 
-		@Override
-		public boolean getUseDeveloperSupport() {
-			return BuildConfig.DEBUG;
-		}
+    @Override
+    protected List<ReactPackage> getPackages() {
+      return Arrays.<ReactPackage>asList(
+          new MainReactPackage(),
+            new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey), getApplicationContext(), BuildConfig.DEBUG)
+      );
+    }
 
-		@Override
-		protected List<ReactPackage> getPackages() {
-			return Arrays.<ReactPackage>asList(
-					new MainReactPackage(),
-					new CodePush(getResources().getString(R.string.reactNativeCodePush_androidDeploymentKey),
-							getApplicationContext(), BuildConfig.DEBUG));
-		}
+    @Override
+    protected String getJSMainModuleName() {
+      return "index";
+    }
+  };
 
-		@Override
-		protected String getJSMainModuleName() {
-			return "index";
-		}
-	};
+  @Override
+  public ReactNativeHost getReactNativeHost() {
+    return mReactNativeHost;
+  }
 
-	@Override
-	public ReactNativeHost getReactNativeHost() {
-		return mReactNativeHost;
-	}
-
-	@Override
-	public void onCreate() {
-		super.onCreate();
-		SoLoader.init(this, /* native exopackage */ false);
-	}
+  @Override
+  public void onCreate() {
+    super.onCreate();
+    SoLoader.init(this, /* native exopackage */ false);
+  }
 }
