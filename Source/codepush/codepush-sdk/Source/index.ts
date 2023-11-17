@@ -9,10 +9,10 @@ import * as fileUtils from "./utils/file-utils";
 import * as validators from "./utils/validation-utils";
 
 export {
-  dateUtils,
-  fileUtils,
-  updateContents,
-  cordova,
-  reactNative,
-  validators
+	dateUtils,
+	fileUtils,
+	updateContents,
+	cordova,
+	reactNative,
+	validators,
 };
