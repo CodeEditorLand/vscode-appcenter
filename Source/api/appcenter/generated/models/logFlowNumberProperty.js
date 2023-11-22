@@ -4,73 +4,73 @@
  * regenerated.
  */
 
-"use strict";
+'use strict';
 
-const models = require("./index");
+const models = require('./index');
 
 /**
  * Number property.
  *
  * @extends models['LogFlowCustomProperty']
  */
-class LogFlowNumberProperty extends models["LogFlowCustomProperty"] {
-	/**
-	 * Create a LogFlowNumberProperty.
-	 * @member {number} value Number property value.
-	 */
-	constructor() {
-		super();
-	}
+class LogFlowNumberProperty extends models['LogFlowCustomProperty'] {
+  /**
+   * Create a LogFlowNumberProperty.
+   * @member {number} value Number property value.
+   */
+  constructor() {
+    super();
+  }
 
-	/**
-	 * Defines the metadata of LogFlowNumberProperty
-	 *
-	 * @returns {object} metadata of LogFlowNumberProperty
-	 *
-	 */
-	mapper() {
-		return {
-			required: false,
-			serializedName: "number",
-			type: {
-				name: "Composite",
-				polymorphicDiscriminator: {
-					serializedName: "type",
-					clientName: "type",
-				},
-				uberParent: "LogFlowCustomProperty",
-				className: "LogFlowNumberProperty",
-				modelProperties: {
-					name: {
-						required: true,
-						serializedName: "name",
-						constraints: {
-							MaxLength: 128,
-							Pattern: "^[a-zA-Z][a-zA-Z0-9-_]*$",
-						},
-						type: {
-							name: "String",
-						},
-					},
-					type: {
-						required: true,
-						serializedName: "type",
-						isPolymorphicDiscriminator: true,
-						type: {
-							name: "String",
-						},
-					},
-					value: {
-						required: true,
-						serializedName: "value",
-						type: {
-							name: "Number",
-						},
-					},
-				},
-			},
-		};
-	}
+  /**
+   * Defines the metadata of LogFlowNumberProperty
+   *
+   * @returns {object} metadata of LogFlowNumberProperty
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'number',
+      type: {
+        name: 'Composite',
+        polymorphicDiscriminator: {
+          serializedName: 'type',
+          clientName: 'type'
+        },
+        uberParent: 'LogFlowCustomProperty',
+        className: 'LogFlowNumberProperty',
+        modelProperties: {
+          name: {
+            required: true,
+            serializedName: 'name',
+            constraints: {
+              MaxLength: 128,
+              Pattern: '^[a-zA-Z][a-zA-Z0-9\-_]*$'
+            },
+            type: {
+              name: 'String'
+            }
+          },
+          type: {
+            required: true,
+            serializedName: 'type',
+            isPolymorphicDiscriminator: true,
+            type: {
+              name: 'String'
+            }
+          },
+          value: {
+            required: true,
+            serializedName: 'value',
+            type: {
+              name: 'Number'
+            }
+          }
+        }
+      }
+    };
+  }
 }
 
 module.exports = LogFlowNumberProperty;

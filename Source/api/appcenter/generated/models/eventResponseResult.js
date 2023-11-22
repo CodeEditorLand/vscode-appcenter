@@ -4,48 +4,48 @@
  * regenerated.
  */
 
-"use strict";
+'use strict';
 
-const models = require("./index");
+const models = require('./index');
 
 /**
  * Object returned in response to accepting an event occurance
  *
  * @extends models['AlertOperationResult']
  */
-class EventResponseResult extends models["AlertOperationResult"] {
-	/**
-	 * Create a EventResponseResult.
-	 */
-	constructor() {
-		super();
-	}
+class EventResponseResult extends models['AlertOperationResult'] {
+  /**
+   * Create a EventResponseResult.
+   */
+  constructor() {
+    super();
+  }
 
-	/**
-	 * Defines the metadata of EventResponseResult
-	 *
-	 * @returns {object} metadata of EventResponseResult
-	 *
-	 */
-	mapper() {
-		return {
-			required: false,
-			serializedName: "EventResponseResult",
-			type: {
-				name: "Composite",
-				className: "EventResponseResult",
-				modelProperties: {
-					requestId: {
-						required: true,
-						serializedName: "request_id",
-						type: {
-							name: "String",
-						},
-					},
-				},
-			},
-		};
-	}
+  /**
+   * Defines the metadata of EventResponseResult
+   *
+   * @returns {object} metadata of EventResponseResult
+   *
+   */
+  mapper() {
+    return {
+      required: false,
+      serializedName: 'EventResponseResult',
+      type: {
+        name: 'Composite',
+        className: 'EventResponseResult',
+        modelProperties: {
+          requestId: {
+            required: true,
+            serializedName: 'request_id',
+            type: {
+              name: 'String'
+            }
+          }
+        }
+      }
+    };
+  }
 }
 
 module.exports = EventResponseResult;

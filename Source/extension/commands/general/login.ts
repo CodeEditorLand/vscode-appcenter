@@ -10,68 +10,52 @@ import { Messages } from "../../resources/messages";
 import { LogStrings } from "../../resources/logStrings";
 
 export default class Login extends Command {
-	constructor(params: CommandParams) {
-		super(params);
-	}
 
-	public async runNoClient(): Promise<boolean | void> {
-		if (!(await super.runNoClient())) {
-			return false;
-		}
+    constructor(params: CommandParams) {
+        super(params);
+    }
 
-		const messageItems: IButtonMessageItem[] = [];
-		const loginUrl = `${SettingsHelper.getAppCenterLoginEndpoint()}?${qs.stringify(
-			{ hostname: os.hostname() }
-		)}`;
-		messageItems.push({
-			title: Strings.OkBtnLabel,
-			url: loginUrl,
-		});
+    public async runNoClient(): Promise<boolean | void> {
+        if (! await super.runNoClient()) {
+            return false;
+        }
 
-		const selection: IButtonMessageItem | undefined =
-			await VsCodeUI.ShowInfoMessage(
-				Messages.PleaseLoginViaBrowserMessage,
-				...messageItems
-			);
-		if (selection) {
-			const token: string = await VsCodeUI.showInput(
-				Strings.PleaseProvideTokenHint
-			);
-			this.loginWithToken(token);
-			return true;
-		} else {
-			return void 0;
-		}
-	}
+        const messageItems: IButtonMessageItem[] = [];
+        const loginUrl = `${SettingsHelper.getAppCenterLoginEndpoint()}?${qs.stringify({ hostname: os.hostname() })}`;
+        messageItems.push({
+            title: Strings.OkBtnLabel,
+            url: loginUrl
+        });
 
-	private async loginWithToken(token: string | undefined): Promise<boolean> {
-		if (!token) {
-			this.logger.info(LogStrings.NoTokenProvided);
-			return true;
-		}
-		try {
-			const profile: Profile = await this.appCenterAuth.doLogin({
-				token: token,
-			});
-			if (!profile) {
-				this.logger.error(LogStrings.FailedToGetUserFromServer);
-				VsCodeUI.ShowErrorMessage(
-					Messages.FailedToExecuteLoginMsg(AuthProvider.AppCenter)
-				);
-				return false;
-			}
-			VsCodeUI.ShowInfoMessage(
-				Messages.YouAreLoggedInMessage(
-					AuthProvider.AppCenter,
-					profile.displayName
-				)
-			);
-			await this.manager.setupAppCenterStatusBar(profile);
-			return true;
-		} catch (e) {
-			VsCodeUI.ShowErrorMessage(Messages.FailedToLogin);
-			this.logger.error(e.message, e, true);
-			return false;
-		}
-	}
+        const selection: IButtonMessageItem | undefined = await VsCodeUI.ShowInfoMessage(Messages.PleaseLoginViaBrowserMessage, ...messageItems);
+        if (selection) {
+            const token: string = await VsCodeUI.showInput(Strings.PleaseProvideTokenHint);
+            this.loginWithToken(token);
+            return true;
+        } else {
+            return void 0;
+        }
+    }
+
+    private async loginWithToken(token: string | undefined): Promise<boolean> {
+        if (!token) {
+            this.logger.info(LogStrings.NoTokenProvided);
+            return true;
+        }
+        try {
+            const profile: Profile = await this.appCenterAuth.doLogin({ token: token });
+            if (!profile) {
+                this.logger.error(LogStrings.FailedToGetUserFromServer);
+                VsCodeUI.ShowErrorMessage(Messages.FailedToExecuteLoginMsg(AuthProvider.AppCenter));
+                return false;
+            }
+            VsCodeUI.ShowInfoMessage(Messages.YouAreLoggedInMessage(AuthProvider.AppCenter, profile.displayName));
+            await this.manager.setupAppCenterStatusBar(profile);
+            return true;
+        } catch (e) {
+            VsCodeUI.ShowErrorMessage(Messages.FailedToLogin);
+            this.logger.error(e.message, e, true);
+            return false;
+        }
+    }
 }
