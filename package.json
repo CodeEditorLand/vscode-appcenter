@@ -1,22 +1,36 @@
 {
   "name": "vscode-appcenter",
   "displayName": "App Center",
-  "description": "Visual Studio App Center tools and services.",
   "version": "0.0.1",
-  "publisher": "playform",
-  "icon": "images/icon.png",
+  "private": "false",
+  "description": "Visual Studio App Center tools and services.",
+  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
+  "bugs": {
+    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/CodeEditorLand/CodeEditorLand.git"
   },
-  "bugs": {
-    "url": "https://github.com/CodeEditorLand/CodeEditorLand/issues"
+  "license": "MIT",
+  "author": {
+    "name": "Nikola Hristov",
+    "email": "nikola@nikolahristov.tech",
+    "url": "https://nikolahristov.tech"
   },
-  "homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
-  "activationEvents": [
-    "*"
-  ],
+  "publisher": "playform",
+  "type": "module",
   "main": "./src/extension/extension",
+  "scripts": {
+    "compile": "tsc -p ./",
+    "postinstall": "node ./node_modules/vscode/bin/install",
+    "integrationTest": "node ./node_modules/vscode/bin/test",
+    "lint": "tslint --project tsconfig.json -e src/*.d.ts -t verbose",
+    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+    "test": "./node_modules/.bin/mocha --reporter spec",
+    "vscode:prepublish": "gulp",
+    "watch": "tsc -watch -p ./"
+  },
   "contributes": {
     "commands": [
       {
@@ -270,31 +284,9 @@
       }
     }
   },
-  "scripts": {
-    "vscode:prepublish": "gulp",
-    "compile": "tsc -p ./",
-    "watch": "tsc -watch -p ./",
-    "lint": "tslint --project tsconfig.json -e src/*.d.ts -t verbose",
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "./node_modules/.bin/mocha --reporter spec",
-    "integrationTest": "node ./node_modules/vscode/bin/test",
-    "prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'"
-  },
-  "devDependencies": {
-    "@types/mocha": "10.0.6",
-    "@types/node": "20.9.4",
-    "@types/rimraf": "3.0.2",
-    "gulp": "4.0.2",
-    "gulp-sourcemaps": "3.0.0",
-    "gulp-tslint": "8.1.4",
-    "gulp-typescript": "5.0.1",
-    "mock-fs": "5.2.0",
-    "tslint": "5.20.1",
-    "tslint-microsoft-contrib": "5.0.3",
-    "typescript": "5.3.2",
-    "vscode": "1.1.21",
-    "typescript-esbuild": "0.3.1"
-  },
+  "activationEvents": [
+    "*"
+  ],
   "dependencies": {
     "btoa": "1.2.1",
     "chalk": "5.3.0",
@@ -330,15 +322,23 @@
     "xml2js": "0.6.2",
     "yazl": "2.5.1"
   },
-  "license": "MIT",
-  "type": "module",
-  "private": "false",
+  "devDependencies": {
+    "@types/mocha": "10.0.6",
+    "@types/node": "20.9.4",
+    "@types/rimraf": "3.0.2",
+    "gulp": "4.0.2",
+    "gulp-sourcemaps": "3.0.0",
+    "gulp-tslint": "8.1.4",
+    "gulp-typescript": "5.0.1",
+    "mock-fs": "5.2.0",
+    "tslint": "5.20.1",
+    "tslint-microsoft-contrib": "5.0.3",
+    "typescript": "5.3.2",
+    "typescript-esbuild": "0.3.1",
+    "vscode": "1.1.21"
+  },
   "publishConfig": {
     "access": "public"
   },
-  "author": {
-    "name": "Nikola Hristov",
-    "email": "nikola@nikolahristov.tech",
-    "url": "https://nikolahristov.tech"
-  }
+  "icon": "images/icon.png"
 }
