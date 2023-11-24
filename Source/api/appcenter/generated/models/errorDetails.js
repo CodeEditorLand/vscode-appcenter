@@ -4,54 +4,53 @@
  * regenerated.
  */
 
-'use strict';
+"use strict";
 
 /**
  * Class representing a ErrorDetails.
  */
 class ErrorDetails {
-  /**
-   * Create a ErrorDetails.
-   * @member {string} code Possible values include: 'BadRequest', 'Conflict',
-   * 'NotAcceptable', 'NotFound', 'InternalServerError', 'Unauthorized',
-   * 'TooManyRequests'
-   * @member {string} message
-   */
-  constructor() {
-  }
+	/**
+	 * Create a ErrorDetails.
+	 * @member {string} code Possible values include: 'BadRequest', 'Conflict',
+	 * 'NotAcceptable', 'NotFound', 'InternalServerError', 'Unauthorized',
+	 * 'TooManyRequests'
+	 * @member {string} message
+	 */
+	constructor() {}
 
-  /**
-   * Defines the metadata of ErrorDetails
-   *
-   * @returns {object} metadata of ErrorDetails
-   *
-   */
-  mapper() {
-    return {
-      required: false,
-      serializedName: 'ErrorDetails',
-      type: {
-        name: 'Composite',
-        className: 'ErrorDetails',
-        modelProperties: {
-          code: {
-            required: true,
-            serializedName: 'code',
-            type: {
-              name: 'String'
-            }
-          },
-          message: {
-            required: true,
-            serializedName: 'message',
-            type: {
-              name: 'String'
-            }
-          }
-        }
-      }
-    };
-  }
+	/**
+	 * Defines the metadata of ErrorDetails
+	 *
+	 * @returns {object} metadata of ErrorDetails
+	 *
+	 */
+	mapper() {
+		return {
+			required: false,
+			serializedName: "ErrorDetails",
+			type: {
+				name: "Composite",
+				className: "ErrorDetails",
+				modelProperties: {
+					code: {
+						required: true,
+						serializedName: "code",
+						type: {
+							name: "String",
+						},
+					},
+					message: {
+						required: true,
+						serializedName: "message",
+						type: {
+							name: "String",
+						},
+					},
+				},
+			},
+		};
+	}
 }
 
 module.exports = ErrorDetails;
