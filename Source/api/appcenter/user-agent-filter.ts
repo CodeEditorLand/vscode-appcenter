@@ -9,8 +9,7 @@ export function userAgentFilter(
 	callback: any
 ): any {
 	const scriptName: string = "vscode-appcenter";
-	resource.headers[
-		"user-agent"
-	] = `${scriptName}Cli/${cliVersion} ${platform()}/${release()}`;
+	resource.headers["user-agent"] =
+		`${scriptName}Cli/${cliVersion} ${platform()}/${release()}`;
 	return next(resource, callback);
 }
