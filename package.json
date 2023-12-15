@@ -2,7 +2,7 @@
 	"name": "vscode-appcenter",
 	"displayName": "App Center",
 	"version": "0.0.1",
-	"private": "false",
+	"private": false,
 	"description": "Visual Studio App Center tools and services.",
 	"homepage": "https://github.com/CodeEditorLand/CodeEditorLand#readme",
 	"bugs": {
