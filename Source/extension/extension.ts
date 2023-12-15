@@ -25,11 +25,11 @@ export async function activate(context: vscode.ExtensionContext) {
 		rootPath,
 		outputChannelLogger,
 		appCenterAuth,
-		vstsAuth
+		vstsAuth,
 	);
 	await _extensionManager.checkCurrentApps(appCenterAuth);
 	_extensionManager.setupAppCenterStatusBar(
-		await appCenterAuth.activeProfile
+		await appCenterAuth.activeProfile,
 	);
 
 	// Register the ext manager for disposal
@@ -46,66 +46,68 @@ function registerAppCenterCommands(context: vscode.ExtensionContext): void {
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.AppCenterPortal, () =>
 			_extensionManager.RunCommand(() =>
-				appCenterCommandHandler.AppCenterPortalMenu()
-			)
-		)
+				appCenterCommandHandler.AppCenterPortalMenu(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.WhoAmI, () =>
-			_extensionManager.RunCommand(() => appCenterCommandHandler.WhoAmI())
-		)
+			_extensionManager.RunCommand(() =>
+				appCenterCommandHandler.WhoAmI(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Login, () =>
-			_extensionManager.RunCommand(() => appCenterCommandHandler.Login())
-		)
+			_extensionManager.RunCommand(() => appCenterCommandHandler.Login()),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.ShowMenu, () =>
 			_extensionManager.RunCommand(() =>
-				appCenterCommandHandler.ShowMenu()
-			)
-		)
+				appCenterCommandHandler.ShowMenu(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Start, () =>
-			_extensionManager.RunCommand(() => appCenterCommandHandler.Start())
-		)
+			_extensionManager.RunCommand(() => appCenterCommandHandler.Start()),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.GetCurrentApp, () =>
 			_extensionManager.RunCommand(() =>
-				appCenterCommandHandler.GetCurrentApp()
-			)
-		)
+				appCenterCommandHandler.GetCurrentApp(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.SetCurrentApp, () =>
 			_extensionManager.RunCommand(() =>
-				appCenterCommandHandler.SetCurrentApp()
-			)
-		)
+				appCenterCommandHandler.SetCurrentApp(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.SimulateCrashes, () =>
 			_extensionManager.RunCommand(() =>
-				appCenterCommandHandler.SimulateCrashes()
-			)
-		)
+				appCenterCommandHandler.SimulateCrashes(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.InstallSDK, () =>
 			_extensionManager.RunCommand(() =>
-				appCenterCommandHandler.InstallSDK()
-			)
-		)
+				appCenterCommandHandler.InstallSDK(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.CreateNewApp, () =>
 			_extensionManager.RunCommand(() =>
-				appCenterCommandHandler.CreateNewApp()
-			)
-		)
+				appCenterCommandHandler.CreateNewApp(),
+			),
+		),
 	);
 
 	// Settings commands
@@ -116,64 +118,64 @@ function registerAppCenterCommands(context: vscode.ExtensionContext): void {
 			CommandNames.Settings.LoginToAnotherAccount,
 			() =>
 				_extensionManager.RunCommand(() =>
-					settingsCommandHandler.LoginToAnotherAccount()
-				)
-		)
+					settingsCommandHandler.LoginToAnotherAccount(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.Settings.SwitchAccount,
 			() =>
 				_extensionManager.RunCommand(() =>
-					settingsCommandHandler.SwitchAccount()
-				)
-		)
+					settingsCommandHandler.SwitchAccount(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Settings.Logout, () =>
-			_extensionManager.RunCommand(() => settingsCommandHandler.Logout())
-		)
+			_extensionManager.RunCommand(() => settingsCommandHandler.Logout()),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Settings.LoginVsts, () =>
 			_extensionManager.RunCommand(() =>
-				settingsCommandHandler.LoginToVsts()
-			)
-		)
+				settingsCommandHandler.LoginToVsts(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.Settings.SwitchAccountVsts,
 			() =>
 				_extensionManager.RunCommand(() =>
-					settingsCommandHandler.SwitchVstsAcc()
-				)
-		)
+					settingsCommandHandler.SwitchVstsAcc(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Settings.LogoutVsts, () =>
 			_extensionManager.RunCommand(() =>
-				settingsCommandHandler.LogoutVsts()
-			)
-		)
+				settingsCommandHandler.LogoutVsts(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.Settings.ShowStatusBar,
 			() =>
 				_extensionManager.RunCommand(() =>
-					settingsCommandHandler.ShowStatusBar()
-				)
-		)
+					settingsCommandHandler.ShowStatusBar(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.Settings.HideStatusBar,
 			() =>
 				_extensionManager.RunCommand(() =>
-					settingsCommandHandler.HideStatusBar()
-				)
-		)
+					settingsCommandHandler.HideStatusBar(),
+				),
+		),
 	);
 
 	// CodePush commands
@@ -184,45 +186,45 @@ function registerAppCenterCommands(context: vscode.ExtensionContext): void {
 			CommandNames.CodePush.SetCurrentDeployment,
 			() =>
 				_extensionManager.RunCommand(() =>
-					codepushCommandHandler.SetCurrentDeployment()
-				)
-		)
+					codepushCommandHandler.SetCurrentDeployment(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.CodePush.ReleaseReact,
 			() =>
 				_extensionManager.RunCommand(() =>
-					codepushCommandHandler.ReleaseReact()
-				)
-		)
+					codepushCommandHandler.ReleaseReact(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.CodePush.SwitchMandatoryPropForRelease,
 			() =>
 				_extensionManager.RunCommand(() =>
-					codepushCommandHandler.SwitchMandatoryPropForRelease()
-				)
-		)
+					codepushCommandHandler.SwitchMandatoryPropForRelease(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.CodePush.SetTargetBinaryVersion,
 			() =>
 				_extensionManager.RunCommand(() =>
-					codepushCommandHandler.SetTargetBinaryVersion()
-				)
-		)
+					codepushCommandHandler.SetTargetBinaryVersion(),
+				),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(
 			CommandNames.CodePush.LinkCodePush,
 			() =>
 				_extensionManager.RunCommand(() =>
-					codepushCommandHandler.LinkCodePush()
-				)
-		)
+					codepushCommandHandler.LinkCodePush(),
+				),
+		),
 	);
 
 	// Test commands
@@ -230,24 +232,26 @@ function registerAppCenterCommands(context: vscode.ExtensionContext): void {
 		_extensionManager.commandHandlers.testCommandHandler;
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Test.ShowMenu, () =>
-			_extensionManager.RunCommand(() => testCommandHandler.showMenu())
-		)
+			_extensionManager.RunCommand(() => testCommandHandler.showMenu()),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Test.RunUITests, () =>
-			_extensionManager.RunCommand(() => testCommandHandler.runUITests())
-		)
+			_extensionManager.RunCommand(() => testCommandHandler.runUITests()),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Test.RunUITestsAsync, () =>
 			_extensionManager.RunCommand(() =>
-				testCommandHandler.runUITestsAsync()
-			)
-		)
+				testCommandHandler.runUITestsAsync(),
+			),
+		),
 	);
 	context.subscriptions.push(
 		vscode.commands.registerCommand(CommandNames.Test.ViewResults, () =>
-			_extensionManager.RunCommand(() => testCommandHandler.viewResults())
-		)
+			_extensionManager.RunCommand(() =>
+				testCommandHandler.viewResults(),
+			),
+		),
 	);
 }

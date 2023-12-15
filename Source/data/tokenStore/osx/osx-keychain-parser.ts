@@ -42,7 +42,7 @@ export class OsxSecurityParsingStream extends stream.Transform {
 	public _transform(
 		chunk: any,
 		_encoding: string,
-		callback: { (err?: Error): void }
+		callback: { (err?: Error): void },
 	): void {
 		const line = chunk.toString();
 

@@ -48,7 +48,7 @@ export default class LoginToVsts extends Command {
 			if (!profile) {
 				this.logger.error(LogStrings.FailedToGetUserFromServer);
 				VsCodeUI.ShowErrorMessage(
-					Messages.FailedToExecuteLoginMsg(AuthProvider.Vsts)
+					Messages.FailedToExecuteLoginMsg(AuthProvider.Vsts),
 				);
 				return false;
 			}
@@ -64,7 +64,7 @@ export default class LoginToVsts extends Command {
 					accessToken: accessToken,
 					userName: userName,
 				},
-				this.logger
+				this.logger,
 			);
 			const isValid: boolean = await vsts.TestVstsConnection();
 			if (!isValid) {
@@ -75,8 +75,8 @@ export default class LoginToVsts extends Command {
 				VsCodeUI.ShowInfoMessage(
 					Messages.YouAreLoggedInMessage(
 						AuthProvider.Vsts,
-						profile.displayName
-					)
+						profile.displayName,
+					),
 				);
 			}
 			return true;

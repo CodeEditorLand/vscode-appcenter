@@ -91,7 +91,7 @@ function partToKeyValue(part: string): string[] {
 			accumulator: string[],
 			value: string,
 			_index: number,
-			_array: string[]
+			_array: string[],
 		): string[] => {
 			if (accumulator[1] !== null && endsWith(accumulator[1], "\\")) {
 				accumulator[1] += ":" + value;
@@ -104,7 +104,7 @@ function partToKeyValue(part: string): string[] {
 			}
 			return accumulator;
 		},
-		[null, null]
+		[null, null],
 	);
 	return value;
 }

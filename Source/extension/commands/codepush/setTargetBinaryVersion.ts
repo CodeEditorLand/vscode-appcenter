@@ -25,7 +25,7 @@ export default class SetTargetBinaryVersion extends RNCPAppCommand {
 			return void 0;
 		}
 		const appVersion: string = await VsCodeUI.showInput(
-			Strings.PleaseProvideTargetBinaryVersionHint
+			Strings.PleaseProvideTargetBinaryVersionHint,
 		);
 		if (!appVersion) {
 			// if user press esc do nothing then
@@ -51,13 +51,13 @@ export default class SetTargetBinaryVersion extends RNCPAppCommand {
 			appVersion,
 			app.type,
 			app.isMandatory,
-			app.appSecret
+			app.appSecret,
 		);
 		if (!currentApp) {
 			return;
 		}
 		VsCodeUI.ShowInfoMessage(
-			Messages.ChangedTargetBinaryVersionMessage(appVersion)
+			Messages.ChangedTargetBinaryVersionMessage(appVersion),
 		);
 	}
 }

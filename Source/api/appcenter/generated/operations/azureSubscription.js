@@ -49,7 +49,7 @@ function _listForOrg(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -116,7 +116,7 @@ function _listForOrg(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -156,12 +156,12 @@ function _listForOrg(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -263,7 +263,7 @@ function _listForUser(options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -303,12 +303,12 @@ function _listForUser(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -352,7 +352,7 @@ function _deleteForApp(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -371,7 +371,7 @@ function _deleteForApp(
 			typeof azureSubscriptionId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"azureSubscriptionId cannot be null or undefined and it must be of type string."
+				"azureSubscriptionId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -380,7 +380,7 @@ function _deleteForApp(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -389,7 +389,7 @@ function _deleteForApp(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -404,11 +404,11 @@ function _deleteForApp(
 		"v0.1/apps/{owner_name}/{app_name}/azure_subscriptions/{azure_subscription_id}";
 	requestUrl = requestUrl.replace(
 		"{azure_subscription_id}",
-		encodeURIComponent(azureSubscriptionId)
+		encodeURIComponent(azureSubscriptionId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -464,7 +464,7 @@ function _deleteForApp(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -525,7 +525,7 @@ function _listForApp(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -534,7 +534,7 @@ function _listForApp(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -549,7 +549,7 @@ function _listForApp(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/azure_subscriptions";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -605,7 +605,7 @@ function _listForApp(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -645,12 +645,12 @@ function _listForApp(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -706,7 +706,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -715,7 +715,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -724,7 +724,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			typeof subscriptionId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"subscriptionId cannot be null or undefined and it must be of type string."
+				"subscriptionId cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -746,7 +746,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/azure_subscriptions";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -779,7 +779,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				azureSubscriptionToAppData,
-				"azureSubscriptionToAppData"
+				"azureSubscriptionToAppData",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
@@ -789,8 +789,8 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 				`payload - ${JSON.stringify(
 					azureSubscriptionToAppData,
 					null,
-					2
-				)}.`
+					2,
+				)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -831,7 +831,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -898,7 +898,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -953,7 +953,7 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -982,7 +982,7 @@ class AzureSubscription {
 			self._listForUser(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response
+					response,
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -1072,7 +1072,7 @@ class AzureSubscription {
 		azureSubscriptionId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1092,7 +1092,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1138,7 +1138,7 @@ class AzureSubscription {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1160,7 +1160,7 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1169,7 +1169,7 @@ class AzureSubscription {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1210,7 +1210,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1268,7 +1268,7 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1276,7 +1276,7 @@ class AzureSubscription {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1305,7 +1305,7 @@ class AzureSubscription {
 		ownerName,
 		appName,
 		subscriptionId,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1325,7 +1325,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1386,7 +1386,7 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1395,7 +1395,7 @@ class AzureSubscription {
 				appName,
 				subscriptionId,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

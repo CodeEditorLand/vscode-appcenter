@@ -97,7 +97,7 @@ function _get(options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -124,12 +124,12 @@ function _get(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -230,7 +230,7 @@ function _update(options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(user, null, 2)}.`
+				`payload - ${JSON.stringify(user, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -271,7 +271,7 @@ function _update(options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -298,12 +298,12 @@ function _update(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -363,7 +363,7 @@ function _updateOrgRole(orgName, userName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -372,7 +372,7 @@ function _updateOrgRole(orgName, userName, options, callback) {
 			typeof userName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userName cannot be null or undefined and it must be of type string."
+				"userName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -400,7 +400,7 @@ function _updateOrgRole(orgName, userName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{user_name}",
-		encodeURIComponent(userName)
+		encodeURIComponent(userName),
 	);
 
 	// Create HTTP transport objects
@@ -429,14 +429,14 @@ function _updateOrgRole(orgName, userName, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				organizationUser,
-				"organizationUser"
+				"organizationUser",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(organizationUser, null, 2)}.`
+				`payload - ${JSON.stringify(organizationUser, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -477,7 +477,7 @@ function _updateOrgRole(orgName, userName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -504,12 +504,12 @@ function _updateOrgRole(orgName, userName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -563,7 +563,7 @@ function _removeFromOrg(orgName, userName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -572,7 +572,7 @@ function _removeFromOrg(orgName, userName, options, callback) {
 			typeof userName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userName cannot be null or undefined and it must be of type string."
+				"userName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -588,7 +588,7 @@ function _removeFromOrg(orgName, userName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{user_name}",
-		encodeURIComponent(userName)
+		encodeURIComponent(userName),
 	);
 
 	// Create HTTP transport objects
@@ -643,7 +643,7 @@ function _removeFromOrg(orgName, userName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -702,7 +702,7 @@ function _listForOrg(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -769,7 +769,7 @@ function _listForOrg(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -809,12 +809,12 @@ function _listForOrg(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -869,7 +869,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -878,7 +878,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -893,7 +893,7 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/users";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -949,7 +949,7 @@ function _list(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -989,12 +989,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1043,7 +1043,7 @@ class Users {
 			self._get(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response
+					response,
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -1133,7 +1133,7 @@ class Users {
 			self._update(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response
+					response,
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -1241,7 +1241,7 @@ class Users {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1304,7 +1304,7 @@ class Users {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1312,7 +1312,7 @@ class Users {
 				orgName,
 				userName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1353,7 +1353,7 @@ class Users {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1411,7 +1411,7 @@ class Users {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1419,7 +1419,7 @@ class Users {
 				orgName,
 				userName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1457,7 +1457,7 @@ class Users {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1512,7 +1512,7 @@ class Users {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1557,7 +1557,7 @@ class Users {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1616,7 +1616,7 @@ class Users {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {

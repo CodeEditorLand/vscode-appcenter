@@ -30,7 +30,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 
 	protected async handleShowCurrentAppQuickPickSelection(
 		selected: QuickPickAppItem,
-		rnApps: models.AppResponse[]
+		rnApps: models.AppResponse[],
 	) {
 		if (selected.target === CommandNames.CreateApp.CommandName) {
 			await new General.CreateNewApp(this._params).run();
@@ -41,7 +41,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 			const selectedApps: models.AppResponse[] = rnApps.filter(
 				(app) =>
 					app.name === selected.target &&
-					app.owner.type === selected.description
+					app.owner.type === selected.description,
 			);
 
 			// If this is not current app then we can assign current app, otherwise we will use GetCurrentApp method
@@ -60,7 +60,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 				const type: string = selectedApp.owner.type;
 
 				const OS: AppCenterOS | undefined = Utils.toAppCenterOS(
-					selectedApp.os
+					selectedApp.os,
 				);
 
 				const deployments: models.Deployment[] =
@@ -70,13 +70,13 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 						});
 						return await this.client.codePushDeployments.list(
 							selectedApp.owner.name,
-							selectedApp.name
+							selectedApp.name,
 						);
 					});
 				const appDeployments: models.Deployment[] = deployments.sort(
 					(a, b): any => {
 						return a.name < b.name; // sort alphabetically
-					}
+					},
 				);
 
 				let currentDeployments: CurrentAppDeployments | null = null;
@@ -86,7 +86,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 							return {
 								name: d.name,
 							};
-						}
+						},
 					);
 					currentDeployments = {
 						codePushDeployments: deployments,
@@ -102,7 +102,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 					Constants.AppCenterDefaultTargetBinaryVersion,
 					type,
 					false,
-					selectedAppSecret
+					selectedAppSecret,
 				);
 			} else {
 				const currentApp: CurrentApp | null =
@@ -117,7 +117,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 
 			return new AppCenterPortalMenu(
 				currentAppToUse,
-				this._params
+				this._params,
 			).show();
 		}
 	}

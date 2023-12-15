@@ -53,7 +53,7 @@ function _profile(releaseId, ownerName, appName, options, callback) {
 			typeof releaseId !== "number"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type number."
+				"releaseId cannot be null or undefined and it must be of type number.",
 			);
 		}
 		if (
@@ -62,7 +62,7 @@ function _profile(releaseId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -71,7 +71,7 @@ function _profile(releaseId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -86,11 +86,11 @@ function _profile(releaseId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/releases/{release_id}/provisioning_profile";
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId.toString())
+		encodeURIComponent(releaseId.toString()),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -160,12 +160,12 @@ function _profile(releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -185,12 +185,12 @@ function _profile(releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -253,7 +253,7 @@ class Provisioning {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -314,7 +314,7 @@ class Provisioning {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -323,7 +323,7 @@ class Provisioning {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

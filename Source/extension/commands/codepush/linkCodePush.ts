@@ -12,10 +12,7 @@ import { VsCodeUI } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
 
 export default class LinkCodePush extends LinkCommand {
-	public constructor(
-		params: CommandParams,
-		private _app: CurrentApp = null
-	) {
+	public constructor(params: CommandParams, private _app: CurrentApp = null) {
 		super(params);
 	}
 
@@ -38,14 +35,14 @@ export default class LinkCodePush extends LinkCommand {
 					false,
 					true,
 					false,
-					Strings.ProvideSecondAppHint
+					Strings.ProvideSecondAppHint,
 				);
 			} else {
 				this.refreshCachedAppsAndRepaintQuickPickIfNeeded(
 					true,
 					false,
 					false,
-					Strings.ProvideFirstAppHint
+					Strings.ProvideFirstAppHint,
 				);
 			}
 		}
@@ -57,14 +54,14 @@ export default class LinkCodePush extends LinkCommand {
 		const codePushLinker: CodePushLinker = new CodePushLinker(
 			appCenterAppCreator,
 			this.logger,
-			this.rootPath
+			this.rootPath,
 		);
 
 		if (
 			!Utils.isReactNativeCodePushProject(
 				this.logger,
 				this.rootPath,
-				false
+				false,
 			)
 		) {
 			const codePushInstalled: boolean =
@@ -79,7 +76,7 @@ export default class LinkCodePush extends LinkCommand {
 
 		deployments = await codePushLinker.createCodePushDeployments(
 			this.pickedApps,
-			this.pickedApps[0].ownerName
+			this.pickedApps[0].ownerName,
 		);
 
 		if (deployments.length < 1) {

@@ -43,7 +43,7 @@ function _resendInvite(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -66,7 +66,7 @@ function _resendInvite(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -75,7 +75,7 @@ function _resendInvite(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -84,7 +84,7 @@ function _resendInvite(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(userEmails)) {
@@ -115,12 +115,12 @@ function _resendInvite(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/resend_invite";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
@@ -149,14 +149,14 @@ function _resendInvite(
 			requestModel = client.serialize(
 				requestModelMapper,
 				members,
-				"members"
+				"members",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(members, null, 2)}.`
+				`payload - ${JSON.stringify(members, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -197,7 +197,7 @@ function _resendInvite(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -249,7 +249,7 @@ function _removeUser(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -272,7 +272,7 @@ function _removeUser(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -281,7 +281,7 @@ function _removeUser(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -290,7 +290,7 @@ function _removeUser(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(userEmails)) {
@@ -321,12 +321,12 @@ function _removeUser(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members/bulk_delete";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
@@ -355,14 +355,14 @@ function _removeUser(
 			requestModel = client.serialize(
 				requestModelMapper,
 				members,
-				"members"
+				"members",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(members, null, 2)}.`
+				`payload - ${JSON.stringify(members, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -403,7 +403,7 @@ function _removeUser(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -444,12 +444,12 @@ function _removeUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -495,7 +495,7 @@ function _listUsers(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -518,7 +518,7 @@ function _listUsers(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -527,7 +527,7 @@ function _listUsers(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -536,7 +536,7 @@ function _listUsers(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -545,7 +545,7 @@ function _listUsers(
 			typeof excludePendingInvitations !== "boolean"
 		) {
 			throw new Error(
-				"excludePendingInvitations must be of type boolean."
+				"excludePendingInvitations must be of type boolean.",
 			);
 		}
 	} catch (error) {
@@ -560,12 +560,12 @@ function _listUsers(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 	let queryParameters = [];
 	if (
@@ -574,7 +574,7 @@ function _listUsers(
 	) {
 		queryParameters.push(
 			"exclude_pending_invitations=" +
-				encodeURIComponent(excludePendingInvitations.toString())
+				encodeURIComponent(excludePendingInvitations.toString()),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -633,7 +633,7 @@ function _listUsers(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -674,12 +674,12 @@ function _listUsers(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -724,7 +724,7 @@ function _addUser(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -747,7 +747,7 @@ function _addUser(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -756,7 +756,7 @@ function _addUser(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -765,7 +765,7 @@ function _addUser(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(userEmails)) {
@@ -796,12 +796,12 @@ function _addUser(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
@@ -830,14 +830,14 @@ function _addUser(
 			requestModel = client.serialize(
 				requestModelMapper,
 				members,
-				"members"
+				"members",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(members, null, 2)}.`
+				`payload - ${JSON.stringify(members, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -878,7 +878,7 @@ function _addUser(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -919,12 +919,12 @@ function _addUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -982,7 +982,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -991,7 +991,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1000,7 +1000,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1015,12 +1015,12 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
@@ -1075,7 +1075,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1102,12 +1102,12 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1174,7 +1174,7 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1183,7 +1183,7 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1192,7 +1192,7 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1232,12 +1232,12 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
@@ -1266,14 +1266,14 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				distributionGroup,
-				"distributionGroup"
+				"distributionGroup",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`
+				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1314,7 +1314,7 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1341,12 +1341,12 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1389,7 +1389,7 @@ function _deleteMethod(
 	ownerName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -1408,7 +1408,7 @@ function _deleteMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1417,7 +1417,7 @@ function _deleteMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1426,7 +1426,7 @@ function _deleteMethod(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1442,11 +1442,11 @@ function _deleteMethod(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
@@ -1501,7 +1501,7 @@ function _deleteMethod(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1562,7 +1562,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1571,7 +1571,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1586,7 +1586,7 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1642,7 +1642,7 @@ function _list(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1682,12 +1682,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1745,7 +1745,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1754,7 +1754,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1763,7 +1763,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1783,7 +1783,7 @@ function _create(ownerName, appName, name, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1813,14 +1813,14 @@ function _create(ownerName, appName, name, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				distributionGroup,
-				"distributionGroup"
+				"distributionGroup",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`
+				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1861,7 +1861,7 @@ function _create(ownerName, appName, name, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1888,12 +1888,12 @@ function _create(ownerName, appName, name, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1951,7 +1951,7 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1971,7 +1971,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2019,7 +2019,7 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2041,7 +2041,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2050,7 +2050,7 @@ class DistributionGroups {
 				appName,
 				distributionGroupName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -2081,7 +2081,7 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2101,7 +2101,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2148,7 +2148,7 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2170,7 +2170,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2179,7 +2179,7 @@ class DistributionGroups {
 				appName,
 				distributionGroupName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -2211,7 +2211,7 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2231,7 +2231,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2279,7 +2279,7 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2301,7 +2301,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2310,7 +2310,7 @@ class DistributionGroups {
 				appName,
 				distributionGroupName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -2341,7 +2341,7 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2361,7 +2361,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2408,7 +2408,7 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2430,7 +2430,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2439,7 +2439,7 @@ class DistributionGroups {
 				appName,
 				distributionGroupName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -2468,7 +2468,7 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2488,7 +2488,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2551,7 +2551,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2560,7 +2560,7 @@ class DistributionGroups {
 				appName,
 				distributionGroupName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -2593,7 +2593,7 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2613,7 +2613,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2664,7 +2664,7 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2686,7 +2686,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2695,7 +2695,7 @@ class DistributionGroups {
 				appName,
 				distributionGroupName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -2724,7 +2724,7 @@ class DistributionGroups {
 		appName,
 		ownerName,
 		distributionGroupName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2744,7 +2744,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2789,7 +2789,7 @@ class DistributionGroups {
 		ownerName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -2811,7 +2811,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2820,7 +2820,7 @@ class DistributionGroups {
 				ownerName,
 				distributionGroupName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -2861,7 +2861,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2919,7 +2919,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2966,7 +2966,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3029,7 +3029,7 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -3038,7 +3038,7 @@ class DistributionGroups {
 				appName,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

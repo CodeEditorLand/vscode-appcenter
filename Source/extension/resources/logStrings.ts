@@ -78,7 +78,7 @@ export class LogStrings {
 	public static DeploymentInfo(
 		name: string,
 		key: string,
-		os: string
+		os: string,
 	): string {
 		return `Deployment name: ${name}, secret: ${key}, OS: ${os}.`;
 	}
@@ -95,14 +95,14 @@ export class LogStrings {
 	}
 	public static DistributionGroupCreated(
 		groupName: string,
-		projectName: string
+		projectName: string,
 	): string {
 		return `"${groupName}" distribution group was created for your project "${projectName}".`;
 	}
 
 	public static ProjectConnected(
 		projectName: string,
-		repoUrl: string
+		repoUrl: string,
 	): string {
 		return `Project "${projectName}" was connected to repositry "${repoUrl}".`;
 	}
@@ -125,7 +125,7 @@ export class LogStrings {
 
 	public static DistributionGroupExists(
 		group: string,
-		appName: string
+		appName: string,
 	): string {
 		return `Distribution group "${group}" in "${appName}" already exists.`;
 	}
@@ -140,7 +140,7 @@ export class LogStrings {
 
 	public static FailedCreateAppUnder(
 		appName: string,
-		orgName?: string
+		orgName?: string,
 	): string {
 		let failed = `An unexpected error occurred trying to create "${appName}"`;
 		failed += orgName ? `under ${orgName}.` : ".";
@@ -181,7 +181,7 @@ export class LogStrings {
 
 	public static MultipleProfiles(
 		userId: string,
-		storageFilePath: string
+		storageFilePath: string,
 	): string {
 		return `There are more than one profile saved with userId ${userId}. Try deleting ${storageFilePath} and log in again.`;
 	}
@@ -216,7 +216,7 @@ export class LogStrings {
 
 	public static SuccessfullyPushedTo(
 		remoteRepoName: string,
-		branch: string
+		branch: string,
 	): string {
 		return `Successfully pushed changes to remote repository: "${remoteRepoName}" branchname: "${branch}"`;
 	}

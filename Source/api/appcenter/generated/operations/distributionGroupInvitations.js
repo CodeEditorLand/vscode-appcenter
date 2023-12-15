@@ -100,7 +100,7 @@ function _acceptAll(options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -152,7 +152,7 @@ class DistributionGroupInvitations {
 			self._acceptAll(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response
+					response,
 				);
 				httpOperationResponse.body = result;
 				if (err) {

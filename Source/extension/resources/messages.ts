@@ -84,7 +84,7 @@ export class Messages {
 
 	public static ReleaseMadeMessage(
 		deploymentName: string,
-		appName: string
+		appName: string,
 	): string {
 		return `Successfully released an update to the "${deploymentName}" deployment of the "${appName}" app.`;
 	}
@@ -120,7 +120,7 @@ export class Messages {
 	public static AppCreatedMessage(
 		appName: string,
 		squash?: boolean,
-		secondAppName?: string
+		secondAppName?: string,
 	): string {
 		if (secondAppName) {
 			return `Apps ${appName} and ${secondAppName} have been created in App Center.`;
@@ -137,7 +137,7 @@ export class Messages {
 
 	public static YouAreLoggedInMessage(
 		provider: AuthProvider,
-		name: string
+		name: string,
 	): string {
 		return `You are logged into ${provider} as '${name}'.`;
 	}
@@ -145,7 +145,7 @@ export class Messages {
 	public static YouAreLoggedInCurrentAppIsMessage(
 		provider: AuthProvider,
 		name: string,
-		currentAppName: string
+		currentAppName: string,
 	): string {
 		return `You are logged into ${provider} as '${name}'.
 The current app is '${currentAppName}'.`;
@@ -153,7 +153,7 @@ The current app is '${currentAppName}'.`;
 
 	public static YourCurrentAppAndDeploymentMessage(
 		appName: string,
-		deploymentName: string
+		deploymentName: string,
 	): string {
 		if (deploymentName) {
 			return `${appName} (${deploymentName}) is now your current app and deployment.`;
@@ -164,21 +164,21 @@ The current app is '${currentAppName}'.`;
 
 	public static UserLoggedOutMessage(
 		provider: AuthProvider,
-		name: string
+		name: string,
 	): string {
 		return `You have successfully logged out of ${provider} as '${name}'.`;
 	}
 
 	public static UserSwitchedMessage(
 		provider: AuthProvider,
-		name: string
+		name: string,
 	): string {
 		return `Successfully switched ${provider} account to '${name}'.`;
 	}
 
 	public static AppCenterSecretsHintMessage(
 		androidSecret: string,
-		iosSecret: string
+		iosSecret: string,
 	): string {
 		let secretsHint = "Paste these app secrets when needed. ";
 		if (androidSecret) {
@@ -263,7 +263,7 @@ The current app is '${currentAppName}'.`;
 	}
 
 	public static FailedToPushChangesToRemoteRepoMsg: (
-		repoName: string
+		repoName: string,
 	) => string = (repoName: string) => {
 		return `Failed to push local changes to remote repository '${repoName}'.`;
 	};

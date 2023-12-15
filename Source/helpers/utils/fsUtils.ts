@@ -102,7 +102,7 @@ export class FSUtils {
 	}
 	public static rimraf(
 		path: string,
-		options?: rimraf.Options
+		options?: rimraf.Options,
 	): Promise<void> {
 		return new Promise((resolve, reject) => {
 			if (!options) {

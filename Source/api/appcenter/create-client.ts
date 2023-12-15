@@ -19,11 +19,11 @@ export interface AppCenterClientFactory {
 	fromUserNameAndPassword(
 		userName: string,
 		password: string,
-		endpoint: string
+		endpoint: string,
 	): AppCenterClient;
 	fromToken(
 		token: string | Promise<string> | (() => Promise<string>),
-		endpoint: string
+		endpoint: string,
 	): AppCenterClient;
 	fromProfile(user: Profile, endpoint: string): AppCenterClient | null;
 }
@@ -45,18 +45,18 @@ export function createAppCenterClient(): AppCenterClientFactory {
 		fromUserNameAndPassword(
 			userName: string,
 			password: string,
-			endpoint: string
+			endpoint: string,
 		): AppCenterClient {
 			return new AppCenterClient(
 				new BasicAuthenticationCredentials(userName, password),
 				endpoint,
-				createClientOptions()
+				createClientOptions(),
 			);
 		},
 
 		fromToken(
 			token: string | Promise<string> | (() => Promise<string>),
-			endpoint: string
+			endpoint: string,
 		): AppCenterClient {
 			let tokenFunc: () => Promise<string>;
 
@@ -70,7 +70,7 @@ export function createAppCenterClient(): AppCenterClientFactory {
 			return new AppCenterClient(
 				new AppCenterClientCredentials(tokenFunc),
 				endpoint,
-				createClientOptions()
+				createClientOptions(),
 			);
 		},
 
@@ -81,7 +81,7 @@ export function createAppCenterClient(): AppCenterClientFactory {
 			return new AppCenterClient(
 				new AppCenterClientCredentials(() => Auth.accessTokenFor(user)),
 				endpoint,
-				createClientOptions()
+				createClientOptions(),
 			);
 		},
 	};
@@ -115,7 +115,7 @@ export async function handleHttpError(
 	check404: boolean,
 	messageDefault: string,
 	message404: string = `404 Error received from api`,
-	message401: string = `401 Error received from api`
+	message401: string = `401 Error received from api`,
 ): Promise<void> {
 	if (check404 && error.statusCode === 404) {
 		throw failure(ErrorCodes.InvalidParameter, message404);
@@ -138,14 +138,14 @@ export function clientRequest<T>(action: {
 				err: Error | ServiceError,
 				result: T,
 				_request: WebResource,
-				response: IncomingMessage
+				response: IncomingMessage,
 			) => {
 				if (err) {
 					reject(err);
 				} else {
 					resolve({ result, response });
 				}
-			}
+			},
 		);
 	});
 }

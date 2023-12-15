@@ -20,7 +20,7 @@ export default class ShowMenu extends Command {
 		return new SettingsMenu(
 			profiles.length,
 			vstsProfiles.length,
-			this._params
+			this._params,
 		).show();
 	}
 }

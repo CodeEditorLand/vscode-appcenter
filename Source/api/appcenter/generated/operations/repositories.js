@@ -72,7 +72,7 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 			typeof sourceHost.valueOf() !== "string"
 		) {
 			throw new Error(
-				"sourceHost cannot be null or undefined and it must be of type string."
+				"sourceHost cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -102,7 +102,7 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -111,7 +111,7 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -126,22 +126,22 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/source_hosts/{source_host}/repositories";
 	requestUrl = requestUrl.replace(
 		"{source_host}",
-		encodeURIComponent(sourceHost)
+		encodeURIComponent(sourceHost),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (vstsAccountName !== null && vstsAccountName !== undefined) {
 		queryParameters.push(
-			"vstsAccountName=" + encodeURIComponent(vstsAccountName)
+			"vstsAccountName=" + encodeURIComponent(vstsAccountName),
 		);
 	}
 	if (vstsProjectId !== null && vstsProjectId !== undefined) {
 		queryParameters.push(
-			"vstsProjectId=" + encodeURIComponent(vstsProjectId)
+			"vstsProjectId=" + encodeURIComponent(vstsProjectId),
 		);
 	}
 	if (form !== null && form !== undefined) {
@@ -203,7 +203,7 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -242,12 +242,12 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -319,7 +319,7 @@ class Repositories {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -390,7 +390,7 @@ class Repositories {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -399,7 +399,7 @@ class Repositories {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

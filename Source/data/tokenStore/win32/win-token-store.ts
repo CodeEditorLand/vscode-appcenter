@@ -91,8 +91,8 @@ export class WinTokenStore implements TokenStore {
 					.pipe(parser.createParsingStream())
 					.pipe(
 						es.mapSync(
-							prefixer.removePrefixFromCred.bind(prefixer)
-						) as any as Duplex
+							prefixer.removePrefixFromCred.bind(prefixer),
+						) as any as Duplex,
 					);
 
 				credStream.on("data", (cred: any) => {
@@ -103,7 +103,7 @@ export class WinTokenStore implements TokenStore {
 				});
 
 				credStream.on("error", (err: Error) => observer.onError(err));
-			}
+			},
 		);
 	}
 
@@ -115,7 +115,7 @@ export class WinTokenStore implements TokenStore {
 	 */
 	public get(
 		key: TokenKeyType,
-		useOldName: boolean = false
+		useOldName: boolean = false,
 	): Promise<TokenEntry> {
 		const prefixer = new Prefixer(useOldName);
 		const args = ["-s", "-t", prefixer.ensurePrefix(key)];
@@ -130,13 +130,13 @@ export class WinTokenStore implements TokenStore {
 				.pipe(parser.createParsingStream())
 				.pipe(
 					es.mapSync(
-						prefixer.removePrefixFromCred.bind(prefixer)
-					) as any as Duplex
+						prefixer.removePrefixFromCred.bind(prefixer),
+					) as any as Duplex,
 				)
 				.on("data", (credential: any) => {
 					result = credential;
 					result.targetName = prefixer.removePrefix(
-						result.targetName
+						result.targetName,
 					);
 				});
 
@@ -154,9 +154,9 @@ export class WinTokenStore implements TokenStore {
 				return reject(
 					new Error(
 						`Getting credential failed, exit code ${code}: ${errors.join(
-							", "
-						)}`
-					)
+							", ",
+						)}`,
+					),
 				);
 			});
 		});

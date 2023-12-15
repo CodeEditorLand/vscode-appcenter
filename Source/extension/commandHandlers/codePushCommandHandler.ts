@@ -16,13 +16,13 @@ export default class CodePushCommandHandler extends BaseCommandHandler {
 
 	public async SwitchMandatoryPropForRelease(): Promise<void> {
 		await new CodePush.SwitchMandatoryPropForRelease(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).run();
 	}
 
 	public async SetTargetBinaryVersion(): Promise<void> {
 		await new CodePush.SetTargetBinaryVersion(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).run();
 	}
 

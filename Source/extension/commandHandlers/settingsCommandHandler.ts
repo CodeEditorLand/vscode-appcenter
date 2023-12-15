@@ -31,7 +31,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 
 	public async SwitchVstsAcc(): Promise<void> {
 		await new Settings.SwitchVstsAccount(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).runNoClient();
 	}
 
@@ -41,7 +41,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 			return;
 		}
 		await new Settings.ToggleStatusBar(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).runNoClient();
 	}
 
@@ -51,7 +51,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 			return;
 		}
 		await new Settings.ToggleStatusBar(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).runNoClient();
 	}
 }

@@ -60,7 +60,7 @@ function _promote(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -81,7 +81,7 @@ function _promote(
 			typeof deploymentName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deploymentName cannot be null or undefined and it must be of type string."
+				"deploymentName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -90,7 +90,7 @@ function _promote(
 			typeof promoteDeploymentName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"promoteDeploymentName cannot be null or undefined and it must be of type string."
+				"promoteDeploymentName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -99,7 +99,7 @@ function _promote(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -108,7 +108,7 @@ function _promote(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -123,15 +123,15 @@ function _promote(
 		"v0.1/apps/{owner_name}/{app_name}/deployments/{deployment_name}/promote_release/{promote_deployment_name}";
 	requestUrl = requestUrl.replace(
 		"{deployment_name}",
-		encodeURIComponent(deploymentName)
+		encodeURIComponent(deploymentName),
 	);
 	requestUrl = requestUrl.replace(
 		"{promote_deployment_name}",
-		encodeURIComponent(promoteDeploymentName)
+		encodeURIComponent(promoteDeploymentName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -161,14 +161,14 @@ function _promote(
 			requestModel = client.serialize(
 				requestModelMapper,
 				release,
-				"release"
+				"release",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(release, null, 2)}.`
+				`payload - ${JSON.stringify(release, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -207,7 +207,7 @@ function _promote(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -234,12 +234,12 @@ function _promote(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -295,7 +295,7 @@ function _deleteMethod(deploymentName, ownerName, appName, options, callback) {
 			typeof deploymentName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deploymentName cannot be null or undefined and it must be of type string."
+				"deploymentName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -304,7 +304,7 @@ function _deleteMethod(deploymentName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -313,7 +313,7 @@ function _deleteMethod(deploymentName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -328,11 +328,11 @@ function _deleteMethod(deploymentName, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/deployments/{deployment_name}";
 	requestUrl = requestUrl.replace(
 		"{deployment_name}",
-		encodeURIComponent(deploymentName)
+		encodeURIComponent(deploymentName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -386,7 +386,7 @@ function _deleteMethod(deploymentName, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -450,7 +450,7 @@ function _get(deploymentName, ownerName, appName, options, callback) {
 			typeof deploymentName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deploymentName cannot be null or undefined and it must be of type string."
+				"deploymentName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -459,7 +459,7 @@ function _get(deploymentName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -468,7 +468,7 @@ function _get(deploymentName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -483,11 +483,11 @@ function _get(deploymentName, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/deployments/{deployment_name}";
 	requestUrl = requestUrl.replace(
 		"{deployment_name}",
-		encodeURIComponent(deploymentName)
+		encodeURIComponent(deploymentName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -541,7 +541,7 @@ function _get(deploymentName, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -568,12 +568,12 @@ function _get(deploymentName, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -631,7 +631,7 @@ function _update(deploymentName, ownerName, appName, name, options, callback) {
 			typeof deploymentName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deploymentName cannot be null or undefined and it must be of type string."
+				"deploymentName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -640,7 +640,7 @@ function _update(deploymentName, ownerName, appName, name, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -649,7 +649,7 @@ function _update(deploymentName, ownerName, appName, name, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -658,18 +658,18 @@ function _update(deploymentName, ownerName, appName, name, options, callback) {
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (name !== null && name !== undefined) {
 			if (name.length > 1000) {
 				throw new Error(
-					'"name" should satisfy the constraint - "MaxLength": 1000'
+					'"name" should satisfy the constraint - "MaxLength": 1000',
 				);
 			}
 			if (name.length < 1) {
 				throw new Error(
-					'"name" should satisfy the constraint - "MinLength": 1'
+					'"name" should satisfy the constraint - "MinLength": 1',
 				);
 			}
 		}
@@ -690,11 +690,11 @@ function _update(deploymentName, ownerName, appName, name, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/deployments/{deployment_name}";
 	requestUrl = requestUrl.replace(
 		"{deployment_name}",
-		encodeURIComponent(deploymentName)
+		encodeURIComponent(deploymentName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -724,14 +724,14 @@ function _update(deploymentName, ownerName, appName, name, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				deployment,
-				"deployment"
+				"deployment",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(deployment, null, 2)}.`
+				`payload - ${JSON.stringify(deployment, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -770,7 +770,7 @@ function _update(deploymentName, ownerName, appName, name, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -831,7 +831,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -840,7 +840,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -855,7 +855,7 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/deployments";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -909,7 +909,7 @@ function _list(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -948,12 +948,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1052,7 +1052,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1061,7 +1061,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1077,7 +1077,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1103,7 +1103,7 @@ function _create(ownerName, appName, name, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/deployments";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1131,14 +1131,14 @@ function _create(ownerName, appName, name, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				deployment,
-				"deployment"
+				"deployment",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(deployment, null, 2)}.`
+				`payload - ${JSON.stringify(deployment, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1177,7 +1177,7 @@ function _create(ownerName, appName, name, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1204,12 +1204,12 @@ function _create(ownerName, appName, name, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1280,7 +1280,7 @@ class CodePushDeployments {
 		promoteDeploymentName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1301,7 +1301,7 @@ class CodePushDeployments {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1366,7 +1366,7 @@ class CodePushDeployments {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1389,7 +1389,7 @@ class CodePushDeployments {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1399,7 +1399,7 @@ class CodePushDeployments {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1428,7 +1428,7 @@ class CodePushDeployments {
 		deploymentName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1448,7 +1448,7 @@ class CodePushDeployments {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1493,7 +1493,7 @@ class CodePushDeployments {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1515,7 +1515,7 @@ class CodePushDeployments {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1524,7 +1524,7 @@ class CodePushDeployments {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1568,7 +1568,7 @@ class CodePushDeployments {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1630,7 +1630,7 @@ class CodePushDeployments {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1639,7 +1639,7 @@ class CodePushDeployments {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1671,7 +1671,7 @@ class CodePushDeployments {
 		ownerName,
 		appName,
 		name,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1692,7 +1692,7 @@ class CodePushDeployments {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1740,7 +1740,7 @@ class CodePushDeployments {
 		appName,
 		name,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1763,7 +1763,7 @@ class CodePushDeployments {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1773,7 +1773,7 @@ class CodePushDeployments {
 				appName,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1814,7 +1814,7 @@ class CodePushDeployments {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1872,7 +1872,7 @@ class CodePushDeployments {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1956,7 +1956,7 @@ class CodePushDeployments {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2055,7 +2055,7 @@ class CodePushDeployments {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -2064,7 +2064,7 @@ class CodePushDeployments {
 				appName,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

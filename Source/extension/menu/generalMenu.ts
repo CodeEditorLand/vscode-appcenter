@@ -17,10 +17,7 @@ import {
 import { Menu, MenuItems } from "./menu";
 
 export class GeneralMenu extends Menu {
-	constructor(
-		private profile: Profile | undefined,
-		params: CommandParams
-	) {
+	constructor(private profile: Profile | undefined, params: CommandParams) {
 		super(params);
 	}
 

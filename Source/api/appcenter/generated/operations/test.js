@@ -55,7 +55,7 @@ function _getDeviceSetOfUser(id, ownerName, appName, options, callback) {
 			!msRest.isValidUuid(id)
 		) {
 			throw new Error(
-				"id cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"id cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -64,7 +64,7 @@ function _getDeviceSetOfUser(id, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -73,7 +73,7 @@ function _getDeviceSetOfUser(id, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -89,7 +89,7 @@ function _getDeviceSetOfUser(id, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{id}", encodeURIComponent(id.toString()));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -159,12 +159,12 @@ function _getDeviceSetOfUser(id, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -213,7 +213,7 @@ function _updateDeviceSetOfUser(
 	devices,
 	name,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -233,7 +233,7 @@ function _updateDeviceSetOfUser(
 			!msRest.isValidUuid(id)
 		) {
 			throw new Error(
-				"id cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"id cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -242,7 +242,7 @@ function _updateDeviceSetOfUser(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -251,12 +251,12 @@ function _updateDeviceSetOfUser(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (!Array.isArray(devices)) {
 			throw new Error(
-				"devices cannot be null or undefined and it must be of type array."
+				"devices cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < devices.length; i++) {
@@ -274,7 +274,7 @@ function _updateDeviceSetOfUser(
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -299,7 +299,7 @@ function _updateDeviceSetOfUser(
 	requestUrl = requestUrl.replace("{id}", encodeURIComponent(id.toString()));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -329,14 +329,14 @@ function _updateDeviceSetOfUser(
 			requestModel = client.serialize(
 				requestModelMapper,
 				deviceSet,
-				"deviceSet"
+				"deviceSet",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(deviceSet, null, 2)}.`
+				`payload - ${JSON.stringify(deviceSet, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -391,12 +391,12 @@ function _updateDeviceSetOfUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -416,12 +416,12 @@ function _updateDeviceSetOfUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -479,7 +479,7 @@ function _deleteDeviceSetOfUser(id, ownerName, appName, options, callback) {
 			!msRest.isValidUuid(id)
 		) {
 			throw new Error(
-				"id cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"id cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -488,7 +488,7 @@ function _deleteDeviceSetOfUser(id, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -497,7 +497,7 @@ function _deleteDeviceSetOfUser(id, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -513,7 +513,7 @@ function _deleteDeviceSetOfUser(id, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{id}", encodeURIComponent(id.toString()));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -617,7 +617,7 @@ function _listDeviceSetsOfUser(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -626,7 +626,7 @@ function _listDeviceSetsOfUser(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -641,7 +641,7 @@ function _listDeviceSetsOfUser(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/user/device_sets";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -723,12 +723,12 @@ function _listDeviceSetsOfUser(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -774,7 +774,7 @@ function _createDeviceSetOfUser(
 	devices,
 	name,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -793,7 +793,7 @@ function _createDeviceSetOfUser(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -802,12 +802,12 @@ function _createDeviceSetOfUser(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (!Array.isArray(devices)) {
 			throw new Error(
-				"devices cannot be null or undefined and it must be of type array."
+				"devices cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < devices.length; i++) {
@@ -825,7 +825,7 @@ function _createDeviceSetOfUser(
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -849,7 +849,7 @@ function _createDeviceSetOfUser(
 		"v0.1/apps/{owner_name}/{app_name}/user/device_sets";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -879,14 +879,14 @@ function _createDeviceSetOfUser(
 			requestModel = client.serialize(
 				requestModelMapper,
 				deviceSet,
-				"deviceSet"
+				"deviceSet",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(deviceSet, null, 2)}.`
+				`payload - ${JSON.stringify(deviceSet, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -941,12 +941,12 @@ function _createDeviceSetOfUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -966,12 +966,12 @@ function _createDeviceSetOfUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1015,7 +1015,7 @@ function _getAllTestRunsForSeries(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -1034,7 +1034,7 @@ function _getAllTestRunsForSeries(
 			typeof testSeriesSlug.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testSeriesSlug cannot be null or undefined and it must be of type string."
+				"testSeriesSlug cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1043,7 +1043,7 @@ function _getAllTestRunsForSeries(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1052,7 +1052,7 @@ function _getAllTestRunsForSeries(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1067,11 +1067,11 @@ function _getAllTestRunsForSeries(
 		"v0.1/apps/{owner_name}/{app_name}/test_series/{test_series_slug}/test_runs";
 	requestUrl = requestUrl.replace(
 		"{test_series_slug}",
-		encodeURIComponent(testSeriesSlug)
+		encodeURIComponent(testSeriesSlug),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1153,12 +1153,12 @@ function _getAllTestRunsForSeries(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1201,7 +1201,7 @@ function _deleteTestSeries(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -1220,7 +1220,7 @@ function _deleteTestSeries(
 			typeof testSeriesSlug.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testSeriesSlug cannot be null or undefined and it must be of type string."
+				"testSeriesSlug cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1229,7 +1229,7 @@ function _deleteTestSeries(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1238,7 +1238,7 @@ function _deleteTestSeries(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1253,11 +1253,11 @@ function _deleteTestSeries(
 		"v0.1/apps/{owner_name}/{app_name}/test_series/{test_series_slug}";
 	requestUrl = requestUrl.replace(
 		"{test_series_slug}",
-		encodeURIComponent(testSeriesSlug)
+		encodeURIComponent(testSeriesSlug),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1354,7 +1354,7 @@ function _patchTestSeries(
 	appName,
 	name,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -1373,7 +1373,7 @@ function _patchTestSeries(
 			typeof testSeriesSlug.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testSeriesSlug cannot be null or undefined and it must be of type string."
+				"testSeriesSlug cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1382,7 +1382,7 @@ function _patchTestSeries(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1391,7 +1391,7 @@ function _patchTestSeries(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1400,7 +1400,7 @@ function _patchTestSeries(
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1420,11 +1420,11 @@ function _patchTestSeries(
 		"v0.1/apps/{owner_name}/{app_name}/test_series/{test_series_slug}";
 	requestUrl = requestUrl.replace(
 		"{test_series_slug}",
-		encodeURIComponent(testSeriesSlug)
+		encodeURIComponent(testSeriesSlug),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1457,7 +1457,7 @@ function _patchTestSeries(
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(name1, null, 2)}.`
+				`payload - ${JSON.stringify(name1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1512,12 +1512,12 @@ function _patchTestSeries(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1571,7 +1571,7 @@ function _getAllTestSeries(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1580,7 +1580,7 @@ function _getAllTestSeries(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1595,7 +1595,7 @@ function _getAllTestSeries(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_series";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1677,12 +1677,12 @@ function _getAllTestSeries(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1738,7 +1738,7 @@ function _createTestSeries(ownerName, appName, name, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1747,7 +1747,7 @@ function _createTestSeries(ownerName, appName, name, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1756,7 +1756,7 @@ function _createTestSeries(ownerName, appName, name, options, callback) {
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1776,7 +1776,7 @@ function _createTestSeries(ownerName, appName, name, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_series";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1806,14 +1806,14 @@ function _createTestSeries(ownerName, appName, name, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				testSeriesName,
-				"testSeriesName"
+				"testSeriesName",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(testSeriesName, null, 2)}.`
+				`payload - ${JSON.stringify(testSeriesName, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1868,12 +1868,12 @@ function _createTestSeries(ownerName, appName, name, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1893,12 +1893,12 @@ function _createTestSeries(ownerName, appName, name, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1956,7 +1956,7 @@ function _stopTestRun(testRunId, ownerName, appName, options, callback) {
 			typeof testRunId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string."
+				"testRunId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1965,7 +1965,7 @@ function _stopTestRun(testRunId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1974,7 +1974,7 @@ function _stopTestRun(testRunId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1989,11 +1989,11 @@ function _stopTestRun(testRunId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}/stop";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId)
+		encodeURIComponent(testRunId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -2061,12 +2061,12 @@ function _stopTestRun(testRunId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2123,7 +2123,7 @@ function _getTestRunState(testRunId, ownerName, appName, options, callback) {
 			typeof testRunId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string."
+				"testRunId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2132,7 +2132,7 @@ function _getTestRunState(testRunId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2141,7 +2141,7 @@ function _getTestRunState(testRunId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2156,11 +2156,11 @@ function _getTestRunState(testRunId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}/state";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId)
+		encodeURIComponent(testRunId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -2230,12 +2230,12 @@ function _getTestRunState(testRunId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2298,7 +2298,7 @@ function _startTestRun(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -2317,7 +2317,7 @@ function _startTestRun(
 			typeof testRunId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string."
+				"testRunId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (startOptions === null || startOptions === undefined) {
@@ -2329,7 +2329,7 @@ function _startTestRun(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2338,7 +2338,7 @@ function _startTestRun(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2353,11 +2353,11 @@ function _startTestRun(
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}/start";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId)
+		encodeURIComponent(testRunId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -2387,14 +2387,14 @@ function _startTestRun(
 			requestModel = client.serialize(
 				requestModelMapper,
 				startOptions,
-				"startOptions"
+				"startOptions",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(startOptions, null, 2)}.`
+				`payload - ${JSON.stringify(startOptions, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -2449,12 +2449,12 @@ function _startTestRun(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2512,7 +2512,7 @@ function _getTestReport(testRunId, ownerName, appName, options, callback) {
 			!msRest.isValidUuid(testRunId)
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"testRunId cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -2521,7 +2521,7 @@ function _getTestReport(testRunId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2530,7 +2530,7 @@ function _getTestReport(testRunId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2545,11 +2545,11 @@ function _getTestReport(testRunId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}/report";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId.toString())
+		encodeURIComponent(testRunId.toString()),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -2619,12 +2619,12 @@ function _getTestReport(testRunId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2670,7 +2670,7 @@ function _uploadHashesBatch(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -2689,7 +2689,7 @@ function _uploadHashesBatch(
 			typeof testRunId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string."
+				"testRunId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2698,7 +2698,7 @@ function _uploadHashesBatch(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2707,7 +2707,7 @@ function _uploadHashesBatch(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2722,11 +2722,11 @@ function _uploadHashesBatch(
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}/hashes/batch";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId)
+		encodeURIComponent(testRunId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -2768,14 +2768,14 @@ function _uploadHashesBatch(
 			requestModel = client.serialize(
 				requestModelMapper,
 				fileInfo,
-				"fileInfo"
+				"fileInfo",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(fileInfo, null, 2)}.`
+				`payload - ${JSON.stringify(fileInfo, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -2843,12 +2843,12 @@ function _uploadHashesBatch(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2904,7 +2904,7 @@ function _uploadHash(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -2923,7 +2923,7 @@ function _uploadHash(
 			typeof testRunId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string."
+				"testRunId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (fileInfo === null || fileInfo === undefined) {
@@ -2935,7 +2935,7 @@ function _uploadHash(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2944,7 +2944,7 @@ function _uploadHash(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2959,11 +2959,11 @@ function _uploadHash(
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}/hashes";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId)
+		encodeURIComponent(testRunId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -2993,14 +2993,14 @@ function _uploadHash(
 			requestModel = client.serialize(
 				requestModelMapper,
 				fileInfo,
-				"fileInfo"
+				"fileInfo",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(fileInfo, null, 2)}.`
+				`payload - ${JSON.stringify(fileInfo, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -3091,7 +3091,7 @@ function _startUploadingFile(testRunId, ownerName, appName, options, callback) {
 			typeof testRunId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string."
+				"testRunId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3100,7 +3100,7 @@ function _startUploadingFile(testRunId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3109,7 +3109,7 @@ function _startUploadingFile(testRunId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3124,11 +3124,11 @@ function _startUploadingFile(testRunId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}/files";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId)
+		encodeURIComponent(testRunId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -3236,7 +3236,7 @@ function _getTestRun(testRunId, ownerName, appName, options, callback) {
 			!msRest.isValidUuid(testRunId)
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"testRunId cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -3245,7 +3245,7 @@ function _getTestRun(testRunId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3254,7 +3254,7 @@ function _getTestRun(testRunId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3269,11 +3269,11 @@ function _getTestRun(testRunId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId.toString())
+		encodeURIComponent(testRunId.toString()),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -3341,12 +3341,12 @@ function _getTestRun(testRunId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -3404,7 +3404,7 @@ function _archiveTestRun(testRunId, ownerName, appName, options, callback) {
 			!msRest.isValidUuid(testRunId)
 		) {
 			throw new Error(
-				"testRunId cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"testRunId cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -3413,7 +3413,7 @@ function _archiveTestRun(testRunId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3422,7 +3422,7 @@ function _archiveTestRun(testRunId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3437,11 +3437,11 @@ function _archiveTestRun(testRunId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs/{test_run_id}";
 	requestUrl = requestUrl.replace(
 		"{test_run_id}",
-		encodeURIComponent(testRunId.toString())
+		encodeURIComponent(testRunId.toString()),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -3509,12 +3509,12 @@ function _archiveTestRun(testRunId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -3568,7 +3568,7 @@ function _getTestRuns(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3577,7 +3577,7 @@ function _getTestRuns(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3592,7 +3592,7 @@ function _getTestRuns(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -3674,12 +3674,12 @@ function _getTestRuns(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -3733,7 +3733,7 @@ function _createTestRun(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3742,7 +3742,7 @@ function _createTestRun(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3757,7 +3757,7 @@ function _createTestRun(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/test_runs";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -3862,7 +3862,7 @@ function _getSubscriptions(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3871,7 +3871,7 @@ function _getSubscriptions(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3886,7 +3886,7 @@ function _getSubscriptions(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/subscriptions";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -3956,12 +3956,12 @@ function _getSubscriptions(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4016,7 +4016,7 @@ function _createSubscription(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4025,7 +4025,7 @@ function _createSubscription(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4040,7 +4040,7 @@ function _createSubscription(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/subscriptions";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -4110,12 +4110,12 @@ function _createSubscription(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4173,7 +4173,7 @@ function _getDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 			!msRest.isValidUuid(id)
 		) {
 			throw new Error(
-				"id cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"id cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -4182,7 +4182,7 @@ function _getDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4191,7 +4191,7 @@ function _getDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4207,7 +4207,7 @@ function _getDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{id}", encodeURIComponent(id.toString()));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -4277,12 +4277,12 @@ function _getDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4331,7 +4331,7 @@ function _updateDeviceSetOfOwner(
 	devices,
 	name,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -4351,7 +4351,7 @@ function _updateDeviceSetOfOwner(
 			!msRest.isValidUuid(id)
 		) {
 			throw new Error(
-				"id cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"id cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -4360,7 +4360,7 @@ function _updateDeviceSetOfOwner(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4369,12 +4369,12 @@ function _updateDeviceSetOfOwner(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (!Array.isArray(devices)) {
 			throw new Error(
-				"devices cannot be null or undefined and it must be of type array."
+				"devices cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < devices.length; i++) {
@@ -4392,7 +4392,7 @@ function _updateDeviceSetOfOwner(
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4417,7 +4417,7 @@ function _updateDeviceSetOfOwner(
 	requestUrl = requestUrl.replace("{id}", encodeURIComponent(id.toString()));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -4447,14 +4447,14 @@ function _updateDeviceSetOfOwner(
 			requestModel = client.serialize(
 				requestModelMapper,
 				deviceSet,
-				"deviceSet"
+				"deviceSet",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(deviceSet, null, 2)}.`
+				`payload - ${JSON.stringify(deviceSet, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -4509,12 +4509,12 @@ function _updateDeviceSetOfOwner(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4534,12 +4534,12 @@ function _updateDeviceSetOfOwner(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -4597,7 +4597,7 @@ function _deleteDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 			!msRest.isValidUuid(id)
 		) {
 			throw new Error(
-				"id cannot be null or undefined and it must be of type string and must be a valid uuid."
+				"id cannot be null or undefined and it must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -4606,7 +4606,7 @@ function _deleteDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4615,7 +4615,7 @@ function _deleteDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4631,7 +4631,7 @@ function _deleteDeviceSetOfOwner(id, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{id}", encodeURIComponent(id.toString()));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -4735,7 +4735,7 @@ function _listDeviceSetsOfOwner(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4744,7 +4744,7 @@ function _listDeviceSetsOfOwner(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4759,7 +4759,7 @@ function _listDeviceSetsOfOwner(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/owner/device_sets";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -4841,12 +4841,12 @@ function _listDeviceSetsOfOwner(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4892,7 +4892,7 @@ function _createDeviceSetOfOwner(
 	devices,
 	name,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -4911,7 +4911,7 @@ function _createDeviceSetOfOwner(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4920,12 +4920,12 @@ function _createDeviceSetOfOwner(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (!Array.isArray(devices)) {
 			throw new Error(
-				"devices cannot be null or undefined and it must be of type array."
+				"devices cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < devices.length; i++) {
@@ -4943,7 +4943,7 @@ function _createDeviceSetOfOwner(
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4967,7 +4967,7 @@ function _createDeviceSetOfOwner(
 		"v0.1/apps/{owner_name}/{app_name}/owner/device_sets";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -4997,14 +4997,14 @@ function _createDeviceSetOfOwner(
 			requestModel = client.serialize(
 				requestModelMapper,
 				deviceSet,
-				"deviceSet"
+				"deviceSet",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(deviceSet, null, 2)}.`
+				`payload - ${JSON.stringify(deviceSet, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -5059,12 +5059,12 @@ function _createDeviceSetOfOwner(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -5084,12 +5084,12 @@ function _createDeviceSetOfOwner(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -5133,7 +5133,7 @@ function _createDeviceSelection(
 	appName,
 	devices,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -5152,7 +5152,7 @@ function _createDeviceSelection(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5161,12 +5161,12 @@ function _createDeviceSelection(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (!Array.isArray(devices)) {
 			throw new Error(
-				"devices cannot be null or undefined and it must be of type array."
+				"devices cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < devices.length; i++) {
@@ -5195,7 +5195,7 @@ function _createDeviceSelection(
 		"v0.1/apps/{owner_name}/{app_name}/device_selection";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -5223,14 +5223,14 @@ function _createDeviceSelection(
 			requestModel = client.serialize(
 				requestModelMapper,
 				deviceList,
-				"deviceList"
+				"deviceList",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(deviceList, null, 2)}.`
+				`payload - ${JSON.stringify(deviceList, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -5285,12 +5285,12 @@ function _createDeviceSelection(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -5310,12 +5310,12 @@ function _createDeviceSelection(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -5379,7 +5379,7 @@ function _getDeviceConfigurations(ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"appUploadId must be of type string and must be a valid uuid."
+				"appUploadId must be of type string and must be a valid uuid.",
 			);
 		}
 		if (
@@ -5388,7 +5388,7 @@ function _getDeviceConfigurations(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5397,7 +5397,7 @@ function _getDeviceConfigurations(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -5412,13 +5412,13 @@ function _getDeviceConfigurations(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/device_configurations";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (appUploadId !== null && appUploadId !== undefined) {
 		queryParameters.push(
-			"app_upload_id=" + encodeURIComponent(appUploadId.toString())
+			"app_upload_id=" + encodeURIComponent(appUploadId.toString()),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -5504,12 +5504,12 @@ function _getDeviceConfigurations(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -5585,7 +5585,7 @@ class Test {
 		id,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -5605,7 +5605,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -5667,7 +5667,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -5676,7 +5676,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -5711,7 +5711,7 @@ class Test {
 		appName,
 		devices,
 		name,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -5733,7 +5733,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -5784,7 +5784,7 @@ class Test {
 		devices,
 		name,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -5808,7 +5808,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -5819,7 +5819,7 @@ class Test {
 				devices,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -5848,7 +5848,7 @@ class Test {
 		id,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -5868,7 +5868,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -5929,7 +5929,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -5938,7 +5938,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -5979,7 +5979,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6037,7 +6037,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6045,7 +6045,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6077,7 +6077,7 @@ class Test {
 		appName,
 		devices,
 		name,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6098,7 +6098,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6146,7 +6146,7 @@ class Test {
 		devices,
 		name,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6169,7 +6169,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6179,7 +6179,7 @@ class Test {
 				devices,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6208,7 +6208,7 @@ class Test {
 		testSeriesSlug,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6228,7 +6228,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6273,7 +6273,7 @@ class Test {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6295,7 +6295,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6304,7 +6304,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6333,7 +6333,7 @@ class Test {
 		testSeriesSlug,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6353,7 +6353,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6398,7 +6398,7 @@ class Test {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6420,7 +6420,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6429,7 +6429,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6461,7 +6461,7 @@ class Test {
 		ownerName,
 		appName,
 		name,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6482,7 +6482,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6531,7 +6531,7 @@ class Test {
 		appName,
 		name,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6554,7 +6554,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6564,7 +6564,7 @@ class Test {
 				appName,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6605,7 +6605,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6663,7 +6663,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6671,7 +6671,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6700,7 +6700,7 @@ class Test {
 		ownerName,
 		appName,
 		name,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6720,7 +6720,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6781,7 +6781,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6790,7 +6790,7 @@ class Test {
 				appName,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6819,7 +6819,7 @@ class Test {
 		testRunId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6839,7 +6839,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -6901,7 +6901,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -6910,7 +6910,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -6939,7 +6939,7 @@ class Test {
 		testRunId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -6959,7 +6959,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7021,7 +7021,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7030,7 +7030,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -7077,7 +7077,7 @@ class Test {
 		startOptions,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7098,7 +7098,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7163,7 +7163,7 @@ class Test {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7186,7 +7186,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7196,7 +7196,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -7225,7 +7225,7 @@ class Test {
 		testRunId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7245,7 +7245,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7307,7 +7307,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7316,7 +7316,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -7348,7 +7348,7 @@ class Test {
 		fileInfo,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7369,7 +7369,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7417,7 +7417,7 @@ class Test {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7440,7 +7440,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7450,7 +7450,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -7492,7 +7492,7 @@ class Test {
 		fileInfo,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7513,7 +7513,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7571,7 +7571,7 @@ class Test {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7594,7 +7594,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7604,7 +7604,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -7633,7 +7633,7 @@ class Test {
 		testRunId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7653,7 +7653,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7698,7 +7698,7 @@ class Test {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7720,7 +7720,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7729,7 +7729,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -7758,7 +7758,7 @@ class Test {
 		testRunId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7778,7 +7778,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7840,7 +7840,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7849,7 +7849,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -7878,7 +7878,7 @@ class Test {
 		testRunId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -7898,7 +7898,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -7960,7 +7960,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -7969,7 +7969,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8010,7 +8010,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8068,7 +8068,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8076,7 +8076,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8117,7 +8117,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8175,7 +8175,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8183,7 +8183,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8224,7 +8224,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8283,7 +8283,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8291,7 +8291,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8332,7 +8332,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8391,7 +8391,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8399,7 +8399,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8428,7 +8428,7 @@ class Test {
 		id,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -8448,7 +8448,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8510,7 +8510,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8519,7 +8519,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8554,7 +8554,7 @@ class Test {
 		appName,
 		devices,
 		name,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -8576,7 +8576,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8627,7 +8627,7 @@ class Test {
 		devices,
 		name,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -8651,7 +8651,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8662,7 +8662,7 @@ class Test {
 				devices,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8691,7 +8691,7 @@ class Test {
 		id,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -8711,7 +8711,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8772,7 +8772,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8781,7 +8781,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8807,7 +8807,7 @@ class Test {
 	listDeviceSetsOfOwnerWithHttpOperationResponse(
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -8826,7 +8826,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8884,7 +8884,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -8892,7 +8892,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -8924,7 +8924,7 @@ class Test {
 		appName,
 		devices,
 		name,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -8945,7 +8945,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8993,7 +8993,7 @@ class Test {
 		devices,
 		name,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -9016,7 +9016,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -9026,7 +9026,7 @@ class Test {
 				devices,
 				name,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -9055,7 +9055,7 @@ class Test {
 		ownerName,
 		appName,
 		devices,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -9075,7 +9075,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9120,7 +9120,7 @@ class Test {
 		appName,
 		devices,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -9142,7 +9142,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -9151,7 +9151,7 @@ class Test {
 				appName,
 				devices,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -9179,7 +9179,7 @@ class Test {
 	getDeviceConfigurationsWithHttpOperationResponse(
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -9198,7 +9198,7 @@ class Test {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9258,7 +9258,7 @@ class Test {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -9266,7 +9266,7 @@ class Test {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

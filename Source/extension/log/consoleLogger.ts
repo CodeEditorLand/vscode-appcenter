@@ -28,10 +28,10 @@ export class ConsoleLogger implements ILogger {
 	public error(
 		errorMessage: string,
 		error?: Error,
-		logStack: boolean = true
+		logStack: boolean = true,
 	) {
 		console.error(
-			ConsoleLogger.getFormattedMessage(errorMessage, LogLevel.Error)
+			ConsoleLogger.getFormattedMessage(errorMessage, LogLevel.Error),
 		);
 
 		// Print the error stack if necessary
@@ -50,7 +50,7 @@ export class ConsoleLogger implements ILogger {
 
 	protected static getFormattedMessage(
 		message: string,
-		level: LogLevel
+		level: LogLevel,
 	): string {
 		return `[${AppCenterExtensionLogPrefix}: ${LogLevel[level]}] ${message}\n`;
 	}

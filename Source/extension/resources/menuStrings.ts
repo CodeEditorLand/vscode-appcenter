@@ -49,7 +49,7 @@ export class MenuStrings {
 	}
 
 	public static setCurrentAppTargetBinaryVersionMenuLabel(
-		app: CurrentApp
+		app: CurrentApp,
 	): string {
 		const targetBinaryVersionProvided =
 			app.targetBinaryVersion !== undefined && app.targetBinaryVersion;

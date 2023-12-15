@@ -17,7 +17,7 @@ interface CodeSigningClaims {
 
 export default async function sign(
 	privateKeyPath: string,
-	updateContentsPath: string
+	updateContentsPath: string,
 ): Promise<void> {
 	if (!privateKeyPath) {
 		return Promise.resolve<void>(void 0);
@@ -31,8 +31,8 @@ export default async function sign(
 	} catch (err) {
 		return Promise.reject(
 			new Error(
-				`The path specified for the signing key ("${privateKeyPath}") was not valid.`
-			)
+				`The path specified for the signing key ("${privateKeyPath}") was not valid.`,
+			),
 		);
 	}
 
@@ -56,22 +56,22 @@ export default async function sign(
 			return Promise.reject<void>(
 				new Error(
 					`Could not delete previous release signature at ${signatureFilePath}.
-                Please, check your access rights.`
-				)
+                Please, check your access rights.`,
+				),
 			);
 		}
 	}
 
 	if (prevSignatureExists) {
 		console.log(
-			`Deleting previous release signature at ${signatureFilePath}`
+			`Deleting previous release signature at ${signatureFilePath}`,
 		);
 		await fileUtils.rmDir(signatureFilePath);
 	}
 
 	const hash: string = await hashUtils.generatePackageHashFromDirectory(
 		updateContentsPath,
-		path.join(updateContentsPath, "..")
+		path.join(updateContentsPath, ".."),
 	);
 	const claims: CodeSigningClaims = {
 		claimVersion: CURRENT_CLAIM_VERSION,
@@ -87,21 +87,21 @@ export default async function sign(
 				if (err) {
 					reject(
 						new Error(
-							"The specified signing key file was not valid"
-						)
+							"The specified signing key file was not valid",
+						),
 					);
 				}
 
 				try {
 					fs.writeFileSync(signatureFilePath, signedJwt);
 					console.log(
-						`Generated a release signature and wrote it to ${signatureFilePath}`
+						`Generated a release signature and wrote it to ${signatureFilePath}`,
 					);
 					resolve(void 0);
 				} catch (error) {
 					reject(error);
 				}
-			}
+			},
 		);
 	});
 }

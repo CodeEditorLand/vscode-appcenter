@@ -53,7 +53,7 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -62,7 +62,7 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -71,7 +71,7 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -86,11 +86,11 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}/status";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -165,12 +165,12 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -188,12 +188,12 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -212,12 +212,12 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -236,12 +236,12 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -298,7 +298,7 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -307,7 +307,7 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -316,7 +316,7 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -331,11 +331,11 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}/location";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -410,12 +410,12 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -433,12 +433,12 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -457,12 +457,12 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -481,12 +481,12 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -543,7 +543,7 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -552,7 +552,7 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -561,7 +561,7 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -576,11 +576,11 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}/ignore";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -653,12 +653,12 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -676,12 +676,12 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -700,12 +700,12 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -724,12 +724,12 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -786,7 +786,7 @@ function _get(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -795,7 +795,7 @@ function _get(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -804,7 +804,7 @@ function _get(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -819,11 +819,11 @@ function _get(symbolId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -896,12 +896,12 @@ function _get(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -919,12 +919,12 @@ function _get(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -943,12 +943,12 @@ function _get(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -967,12 +967,12 @@ function _get(symbolId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -1027,7 +1027,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1036,7 +1036,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1051,7 +1051,7 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/symbols";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1133,12 +1133,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1156,12 +1156,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1180,12 +1180,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1252,7 +1252,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1313,7 +1313,7 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1322,7 +1322,7 @@ class Symbols {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1351,7 +1351,7 @@ class Symbols {
 		symbolId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1371,7 +1371,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1432,7 +1432,7 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1441,7 +1441,7 @@ class Symbols {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1485,7 +1485,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1546,7 +1546,7 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1555,7 +1555,7 @@ class Symbols {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1599,7 +1599,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1660,7 +1660,7 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1669,7 +1669,7 @@ class Symbols {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1710,7 +1710,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1768,7 +1768,7 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {

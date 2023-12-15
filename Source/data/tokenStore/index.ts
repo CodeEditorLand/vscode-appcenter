@@ -34,10 +34,10 @@ if (os.platform() === "win32") {
 	store = createOsxTokenStore();
 } else {
 	store = createFileTokenStore(
-		getTokenFilePath(Constants.AppCenterTokenFileName)
+		getTokenFilePath(Constants.AppCenterTokenFileName),
 	);
 }
 export const tokenStore = store;
 export const fileTokenStore = createFileTokenStore(
-	getTokenFilePath(Constants.AppCenterTokenFileName)
+	getTokenFilePath(Constants.AppCenterTokenFileName),
 );

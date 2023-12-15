@@ -31,11 +31,11 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 						description: "",
 						target: deployment.key,
 					};
-				}
+				},
 			);
 		const deployment: CustomQuickPickItem = await VsCodeUI.showQuickPick(
 			deploymentOptions,
-			Strings.SelectCurrentDeploymentHint
+			Strings.SelectCurrentDeploymentHint,
 		);
 		if (deployment) {
 			this.saveCurrentApp(
@@ -49,10 +49,10 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 				currentApp.targetBinaryVersion,
 				currentApp.type,
 				currentApp.isMandatory,
-				currentApp.appSecret
+				currentApp.appSecret,
 			);
 			VsCodeUI.ShowInfoMessage(
-				Messages.YourCurrentDeploymentMessage(deployment.label)
+				Messages.YourCurrentDeploymentMessage(deployment.label),
 			);
 		}
 	}

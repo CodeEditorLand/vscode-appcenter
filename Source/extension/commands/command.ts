@@ -50,7 +50,7 @@ export class Command {
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
 			VsCodeUI.ShowWarningMessage(
-				Messages.NoProjectRootFolderFoundWarning
+				Messages.NoProjectRootFolderFoundWarning,
 			);
 			return Promise.resolve(false);
 		}
@@ -63,7 +63,7 @@ export class Command {
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
 			VsCodeUI.ShowWarningMessage(
-				Messages.NoProjectRootFolderFoundWarning
+				Messages.NoProjectRootFolderFoundWarning,
 			);
 			return Promise.resolve(false);
 		}
@@ -85,13 +85,13 @@ export class Command {
 	}
 
 	private resolveAppCenterClient(
-		profile: AppCenterProfile
+		profile: AppCenterProfile,
 	): AppCenterClient | null {
 		if (!this.client) {
 			if (profile) {
 				return this.clientFactory.fromProfile(
 					profile,
-					SettingsHelper.getAppCenterAPIEndpoint()
+					SettingsHelper.getAppCenterAPIEndpoint(),
 				);
 			} else {
 				this.logger.error(LogStrings.NoUserSpecified);
@@ -108,7 +108,7 @@ export class Command {
 		targetBinaryVersion: string,
 		type: string,
 		isMandatory: boolean,
-		appSecret: string
+		appSecret: string,
 	): Promise<CurrentApp | null> {
 		const currentApp = Utils.toCurrentApp(
 			currentAppName,
@@ -117,7 +117,7 @@ export class Command {
 			targetBinaryVersion,
 			type,
 			isMandatory,
-			appSecret
+			appSecret,
 		);
 		if (!currentApp) {
 			VsCodeUI.ShowWarningMessage(Messages.InvalidCurrentAppNameWarning);

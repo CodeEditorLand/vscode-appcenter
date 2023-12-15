@@ -61,7 +61,7 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 			typeof crashGroupId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"crashGroupId cannot be null or undefined and it must be of type string."
+				"crashGroupId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -77,7 +77,7 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -86,7 +86,7 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -101,17 +101,17 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}/stacktrace";
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
-		encodeURIComponent(crashGroupId)
+		encodeURIComponent(crashGroupId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (groupingOnly !== null && groupingOnly !== undefined) {
 		queryParameters.push(
-			"grouping_only=" + encodeURIComponent(groupingOnly.toString())
+			"grouping_only=" + encodeURIComponent(groupingOnly.toString()),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -168,7 +168,7 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -195,12 +195,12 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -257,7 +257,7 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 			typeof crashGroupId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"crashGroupId cannot be null or undefined and it must be of type string."
+				"crashGroupId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -266,7 +266,7 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -275,7 +275,7 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -290,11 +290,11 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}";
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
-		encodeURIComponent(crashGroupId)
+		encodeURIComponent(crashGroupId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -348,7 +348,7 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -375,12 +375,12 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -447,7 +447,7 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 			typeof crashGroupId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"crashGroupId cannot be null or undefined and it must be of type string."
+				"crashGroupId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -456,7 +456,7 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -465,7 +465,7 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -503,11 +503,11 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}";
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
-		encodeURIComponent(crashGroupId)
+		encodeURIComponent(crashGroupId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -540,7 +540,7 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(group, null, 2)}.`
+				`payload - ${JSON.stringify(group, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -579,7 +579,7 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -606,12 +606,12 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -789,7 +789,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -798,7 +798,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -813,20 +813,20 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/crash_groups";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (lastOccurrenceFrom !== null && lastOccurrenceFrom !== undefined) {
 		queryParameters.push(
 			"last_occurrence_from=" +
-				encodeURIComponent(client.serializeObject(lastOccurrenceFrom))
+				encodeURIComponent(client.serializeObject(lastOccurrenceFrom)),
 		);
 	}
 	if (lastOccurrenceTo !== null && lastOccurrenceTo !== undefined) {
 		queryParameters.push(
 			"last_occurrence_to=" +
-				encodeURIComponent(client.serializeObject(lastOccurrenceTo))
+				encodeURIComponent(client.serializeObject(lastOccurrenceTo)),
 		);
 	}
 	if (appVersion !== null && appVersion !== undefined) {
@@ -840,7 +840,7 @@ function _list(ownerName, appName, options, callback) {
 	}
 	if (groupTextSearch !== null && groupTextSearch !== undefined) {
 		queryParameters.push(
-			"group_text_search=" + encodeURIComponent(groupTextSearch)
+			"group_text_search=" + encodeURIComponent(groupTextSearch),
 		);
 	}
 	if (orderby !== null && orderby !== undefined) {
@@ -848,7 +848,7 @@ function _list(ownerName, appName, options, callback) {
 	}
 	if (continuationToken !== null && continuationToken !== undefined) {
 		queryParameters.push(
-			"continuation_token=" + encodeURIComponent(continuationToken)
+			"continuation_token=" + encodeURIComponent(continuationToken),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -905,7 +905,7 @@ function _list(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -932,12 +932,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -990,7 +990,7 @@ class CrashGroups {
 		crashGroupId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1010,7 +1010,7 @@ class CrashGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1075,7 +1075,7 @@ class CrashGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1084,7 +1084,7 @@ class CrashGroups {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1128,7 +1128,7 @@ class CrashGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1190,7 +1190,7 @@ class CrashGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1199,7 +1199,7 @@ class CrashGroups {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1247,7 +1247,7 @@ class CrashGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1313,7 +1313,7 @@ class CrashGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1322,7 +1322,7 @@ class CrashGroups {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1392,7 +1392,7 @@ class CrashGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1480,7 +1480,7 @@ class CrashGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {

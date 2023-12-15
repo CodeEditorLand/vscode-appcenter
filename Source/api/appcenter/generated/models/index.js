@@ -559,12 +559,12 @@ exports.DataSubjectRightResponse = require("./dataSubjectRightResponse");
 exports.DataSubjectRightStatusResponse = require("./dataSubjectRightStatusResponse");
 exports.ListOKResponseItem = require("./listOKResponseItem");
 exports.discriminators = {
-	"Log": exports.Log,
+	Log: exports.Log,
 	"Log.LogWithProperties": exports.LogWithProperties,
 	"Log.start_session": exports.StartSessionLog,
 	"Log.handled_error": exports.HanledErrorLog,
 	"Log.start_service": exports.StartServiceLog,
-	"CustomProperty": exports.CustomProperty,
+	CustomProperty: exports.CustomProperty,
 	"Log.custom_properties": exports.CustomPropertyLog,
 	"CustomProperty.string": exports.StringProperty,
 	"CustomProperty.number": exports.NumberProperty,
@@ -575,11 +575,11 @@ exports.discriminators = {
 	"Log.event": exports.EventLog,
 	"Log.push_installation": exports.PushInstallationLog,
 	"Log.error": exports.ErrorLog,
-	"LogFlowLog": exports.LogFlowLog,
+	LogFlowLog: exports.LogFlowLog,
 	"LogFlowLog.LogFlowLogWithProperties": exports.LogFlowLogWithProperties,
 	"LogFlowLog.start_session": exports.LogFlowStartSessionLog,
 	"LogFlowLog.start_service": exports.LogFlowStartServiceLog,
-	"LogFlowCustomProperty": exports.LogFlowCustomProperty,
+	LogFlowCustomProperty: exports.LogFlowCustomProperty,
 	"LogFlowLog.custom_properties": exports.LogFlowCustomPropertyLog,
 	"LogFlowCustomProperty.string": exports.LogFlowStringProperty,
 	"LogFlowCustomProperty.number": exports.LogFlowNumberProperty,
@@ -590,16 +590,16 @@ exports.discriminators = {
 	"LogFlowLog.event": exports.LogFlowEventLog,
 	"LogFlowLog.push_installation": exports.LogFlowPushInstallationLog,
 	"LogFlowLog.error": exports.LogFlowErrorLog,
-	"NotificationTarget": exports.NotificationTarget,
+	NotificationTarget: exports.NotificationTarget,
 	"NotificationTarget.audiences_target": exports.NotificationTargetAudiences,
 	"NotificationTarget.devices_target": exports.NotificationTargetDevices,
-	"NotificationConfig": exports.NotificationConfig,
+	NotificationConfig: exports.NotificationConfig,
 	"NotificationConfig.apns_config": exports.NotificationConfigApple,
 	"NotificationConfig.apns_token_config":
 		exports.NotificationConfigAppleToken,
 	"NotificationConfig.gcm_config": exports.NotificationConfigGoogle,
 	"NotificationConfig.wns_config": exports.NotificationConfigWindows,
-	"NotificationConfigResult": exports.NotificationConfigResult,
+	NotificationConfigResult: exports.NotificationConfigResult,
 	"NotificationConfigResult.apns_config":
 		exports.NotificationConfigAppleResult,
 	"NotificationConfigResult.apns_token_config":
@@ -608,7 +608,7 @@ exports.discriminators = {
 		exports.NotificationConfigGoogleResult,
 	"NotificationConfigResult.wns_config":
 		exports.NotificationConfigWindowsResult,
-	"ExportConfiguration": exports.ExportConfiguration,
+	ExportConfiguration: exports.ExportConfiguration,
 	"ExportConfiguration.blob_storage_connection_string":
 		exports.ExportConfigurationBlobStorageConnectionString,
 	"ExportConfiguration.application_insights_instrumentation_key":
@@ -617,7 +617,7 @@ exports.discriminators = {
 		exports.ExportConfigurationBlobStorageLinkedSubscription,
 	"ExportConfiguration.application_insights_linked_subscription":
 		exports.ExportConfigurationAppInsightsLinkedSubscription,
-	"AlertingBugtrackerSettings": exports.AlertingBugtrackerSettings,
+	AlertingBugtrackerSettings: exports.AlertingBugtrackerSettings,
 	"AlertingBugtrackerSettings.vsts": exports.AlertingVstsBugtrackerSettings,
 	"AlertingBugtrackerSettings.github":
 		exports.AlertingGithubBugtrackerSettings,

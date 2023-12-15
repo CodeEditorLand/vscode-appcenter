@@ -50,7 +50,7 @@ function _reject(invitationToken, options, callback) {
 			typeof invitationToken.valueOf() !== "string"
 		) {
 			throw new Error(
-				"invitationToken cannot be null or undefined and it must be of type string."
+				"invitationToken cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -65,7 +65,7 @@ function _reject(invitationToken, options, callback) {
 		"v0.1/user/invitations/apps/{invitation_token}/reject";
 	requestUrl = requestUrl.replace(
 		"{invitation_token}",
-		encodeURIComponent(invitationToken)
+		encodeURIComponent(invitationToken),
 	);
 
 	// Create HTTP transport objects
@@ -120,7 +120,7 @@ function _reject(invitationToken, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -180,7 +180,7 @@ function _accept(invitationToken, options, callback) {
 			typeof invitationToken.valueOf() !== "string"
 		) {
 			throw new Error(
-				"invitationToken cannot be null or undefined and it must be of type string."
+				"invitationToken cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -195,7 +195,7 @@ function _accept(invitationToken, options, callback) {
 		"v0.1/user/invitations/apps/{invitation_token}/accept";
 	requestUrl = requestUrl.replace(
 		"{invitation_token}",
-		encodeURIComponent(invitationToken)
+		encodeURIComponent(invitationToken),
 	);
 
 	// Create HTTP transport objects
@@ -250,7 +250,7 @@ function _accept(invitationToken, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -313,7 +313,7 @@ function _createByEmail(ownerName, appName, userEmail, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -322,7 +322,7 @@ function _createByEmail(ownerName, appName, userEmail, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -331,7 +331,7 @@ function _createByEmail(ownerName, appName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -346,12 +346,12 @@ function _createByEmail(ownerName, appName, userEmail, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/invitations/{user_email}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{user_email}",
-		encodeURIComponent(userEmail)
+		encodeURIComponent(userEmail),
 	);
 
 	// Create HTTP transport objects
@@ -406,7 +406,7 @@ function _createByEmail(ownerName, appName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -460,7 +460,7 @@ function _updatePermissions(
 	userEmail,
 	permissions,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -479,7 +479,7 @@ function _updatePermissions(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -488,7 +488,7 @@ function _updatePermissions(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -497,12 +497,12 @@ function _updatePermissions(
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (!Array.isArray(permissions)) {
 			throw new Error(
-				"permissions cannot be null or undefined and it must be of type array."
+				"permissions cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < permissions.length; i++) {
@@ -533,12 +533,12 @@ function _updatePermissions(
 		"v0.1/apps/{owner_name}/{app_name}/invitations/{user_email}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{user_email}",
-		encodeURIComponent(userEmail)
+		encodeURIComponent(userEmail),
 	);
 
 	// Create HTTP transport objects
@@ -570,7 +570,7 @@ function _updatePermissions(
 			requestModel = client.serialize(
 				requestModelMapper,
 				userInvitationPermissionsData,
-				"userInvitationPermissionsData"
+				"userInvitationPermissionsData",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
@@ -580,8 +580,8 @@ function _updatePermissions(
 				`payload - ${JSON.stringify(
 					userInvitationPermissionsData,
 					null,
-					2
-				)}.`
+					2,
+				)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -622,7 +622,7 @@ function _updatePermissions(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -685,7 +685,7 @@ function _deleteMethod(ownerName, appName, userEmail, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -694,7 +694,7 @@ function _deleteMethod(ownerName, appName, userEmail, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -703,7 +703,7 @@ function _deleteMethod(ownerName, appName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -718,12 +718,12 @@ function _deleteMethod(ownerName, appName, userEmail, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/invitations/{user_email}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{user_email}",
-		encodeURIComponent(userEmail)
+		encodeURIComponent(userEmail),
 	);
 
 	// Create HTTP transport objects
@@ -778,7 +778,7 @@ function _deleteMethod(ownerName, appName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -841,7 +841,7 @@ function _create(ownerName, appName, userEmail, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -850,7 +850,7 @@ function _create(ownerName, appName, userEmail, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -859,7 +859,7 @@ function _create(ownerName, appName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -879,7 +879,7 @@ function _create(ownerName, appName, userEmail, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/invitations";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -909,14 +909,14 @@ function _create(ownerName, appName, userEmail, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1"
+				"userEmail1",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -957,7 +957,7 @@ function _create(ownerName, appName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1020,7 +1020,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1029,7 +1029,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1044,7 +1044,7 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/invitations";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1100,7 +1100,7 @@ function _list(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1127,12 +1127,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1195,7 +1195,7 @@ class AppInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1251,7 +1251,7 @@ class AppInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1293,7 +1293,7 @@ class AppInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1349,7 +1349,7 @@ class AppInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1381,7 +1381,7 @@ class AppInvitations {
 		ownerName,
 		appName,
 		userEmail,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1401,7 +1401,7 @@ class AppInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1462,7 +1462,7 @@ class AppInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1471,7 +1471,7 @@ class AppInvitations {
 				appName,
 				userEmail,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1504,7 +1504,7 @@ class AppInvitations {
 		appName,
 		userEmail,
 		permissions,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1525,7 +1525,7 @@ class AppInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1574,7 +1574,7 @@ class AppInvitations {
 		userEmail,
 		permissions,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1597,7 +1597,7 @@ class AppInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1607,7 +1607,7 @@ class AppInvitations {
 				userEmail,
 				permissions,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1636,7 +1636,7 @@ class AppInvitations {
 		ownerName,
 		appName,
 		userEmail,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -1656,7 +1656,7 @@ class AppInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1717,7 +1717,7 @@ class AppInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1726,7 +1726,7 @@ class AppInvitations {
 				appName,
 				userEmail,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1770,7 +1770,7 @@ class AppInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1831,7 +1831,7 @@ class AppInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1840,7 +1840,7 @@ class AppInvitations {
 				appName,
 				userEmail,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1881,7 +1881,7 @@ class AppInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1941,7 +1941,7 @@ class AppInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {

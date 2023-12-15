@@ -37,7 +37,7 @@ export class CreateAppCommand extends Command {
 	> {
 		const sortOrganizations = function (
 			a: models.ListOKResponseItem,
-			b: models.ListOKResponseItem
+			b: models.ListOKResponseItem,
 		): number {
 			if (a.displayName && b.displayName) {
 				const nameA = a.displayName.toUpperCase();
@@ -71,7 +71,7 @@ export class CreateAppCommand extends Command {
 	}
 
 	protected async appAlreadyExistInAppCenter(
-		projectName: string
+		projectName: string,
 	): Promise<boolean> {
 		let exist: boolean = false;
 		this.logger.debug(LogStrings.CheckingProjectName(projectName));
@@ -91,11 +91,11 @@ export class CreateAppCommand extends Command {
 	protected async getProjectName(
 		option: CreateNewAppOption,
 		appNameFromPackage: string = "",
-		isNewProject: boolean = true
+		isNewProject: boolean = true,
 	): Promise<string | null> {
 		let projectName = await VsCodeUI.showInput(
 			Strings.PleaseEnterProjectNameHint,
-			appNameFromPackage
+			appNameFromPackage,
 		);
 		projectName = projectName.trim();
 
@@ -112,13 +112,13 @@ export class CreateAppCommand extends Command {
 		) {
 			if (
 				await this.appAlreadyExistInAppCenter(
-					AppCenterAppBuilder.getAndroidAppName(projectName)
+					AppCenterAppBuilder.getAndroidAppName(projectName),
 				)
 			) {
 				VsCodeUI.ShowErrorMessage(
 					Messages.AppAlreadyExistInAppCenterWarning(
-						AppCenterAppBuilder.getAndroidAppName(projectName)
-					)
+						AppCenterAppBuilder.getAndroidAppName(projectName),
+					),
 				);
 				return null;
 			}
@@ -129,13 +129,13 @@ export class CreateAppCommand extends Command {
 		) {
 			if (
 				await this.appAlreadyExistInAppCenter(
-					AppCenterAppBuilder.getiOSAppName(projectName)
+					AppCenterAppBuilder.getiOSAppName(projectName),
 				)
 			) {
 				VsCodeUI.ShowErrorMessage(
 					Messages.AppAlreadyExistInAppCenterWarning(
-						AppCenterAppBuilder.getiOSAppName(projectName)
-					)
+						AppCenterAppBuilder.getiOSAppName(projectName),
+					),
 				);
 				return null;
 			}
@@ -149,17 +149,17 @@ export class CreateAppCommand extends Command {
 		const selectedQuickPickItem: CustomQuickPickItem =
 			await VsCodeUI.showQuickPick(
 				userOrOrgQuickPickItems,
-				Strings.PleaseSelectCurrentAppOrgHint
+				Strings.PleaseSelectCurrentAppOrgHint,
 			);
 		if (selectedQuickPickItem) {
 			const userOrOrgItem: UserOrOrganizationItem | null =
 				Menu.getSelectedUserOrOrgItem(
 					selectedQuickPickItem,
-					userOrOrgQuickPickItems
+					userOrOrgQuickPickItems,
 				);
 			if (!userOrOrgItem) {
 				VsCodeUI.ShowErrorMessage(
-					Messages.FailedToGetSelectedUserOrOrganizationMsg
+					Messages.FailedToGetSelectedUserOrOrganizationMsg,
 				);
 				return null;
 			}
@@ -177,7 +177,7 @@ export class CreateAppCommand extends Command {
 			Constants.AppCenterDefaultTargetBinaryVersion,
 			this.userOrOrg.isOrganization ? "organization" : "user",
 			Constants.AppCenterDefaultIsMandatoryParam,
-			app.appSecret
+			app.appSecret,
 		);
 	}
 
@@ -194,7 +194,7 @@ export class CreateAppCommand extends Command {
 			url: AppCenterUrlBuilder.GetAppCenterAppLink(
 				this.userOrOrg.name,
 				apps[0].appName,
-				this.userOrOrg.isOrganization
+				this.userOrOrg.isOrganization,
 			),
 		});
 
@@ -203,13 +203,13 @@ export class CreateAppCommand extends Command {
 			url: AppCenterUrlBuilder.GetAppCenterAppLink(
 				this.userOrOrg.name,
 				apps[1].appName,
-				this.userOrOrg.isOrganization
+				this.userOrOrg.isOrganization,
 			),
 		});
 
 		VsCodeUI.ShowInfoMessage(
 			Messages.AppCreatedMessage(apps[0].appName, false, apps[1].appName),
-			...messageItems
+			...messageItems,
 		);
 
 		const options: QuickPickAppItem[] = [
@@ -226,7 +226,7 @@ export class CreateAppCommand extends Command {
 		];
 		const selected: QuickPickAppItem = await VsCodeUI.showQuickPick(
 			options,
-			Strings.ChooseAppToBeSetHint
+			Strings.ChooseAppToBeSetHint,
 		);
 		if (selected) {
 			await this.setCurrentApp(apps[+selected.target]);
@@ -234,7 +234,7 @@ export class CreateAppCommand extends Command {
 			const appUrl = AppCenterUrlBuilder.GetAppCenterAppLink(
 				this.userOrOrg.name,
 				apps[+selected.target].appName,
-				this.userOrOrg.isOrganization
+				this.userOrOrg.isOrganization,
 			);
 			messageItems.push({
 				title: Strings.AppCreatedBtnLabel,
@@ -242,7 +242,7 @@ export class CreateAppCommand extends Command {
 			});
 			return VsCodeUI.ShowInfoMessage(
 				Messages.AppCreatedMessage(apps[+selected.target].appName),
-				...messageItems
+				...messageItems,
 			);
 		} else {
 			return false;

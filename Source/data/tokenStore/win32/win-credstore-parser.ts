@@ -36,7 +36,7 @@ class WinCredStoreParsingStream extends Transform {
 	public _transform(
 		chunk: any,
 		_encoding: string,
-		callback: { (err?: Error): void }
+		callback: { (err?: Error): void },
 	): void {
 		const line = chunk.toString();
 
@@ -68,7 +68,7 @@ class WinCredStoreParsingStream extends Transform {
 function createParsingStream(): NodeJS.ReadWriteStream {
 	return pipeline(
 		split(),
-		new WinCredStoreParsingStream()
+		new WinCredStoreParsingStream(),
 	) as NodeJS.ReadWriteStream;
 }
 

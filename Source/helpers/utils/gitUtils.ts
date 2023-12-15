@@ -10,7 +10,7 @@ export class GitUtils {
 	private static gitFirstCommitName: string = "Configure App Center apps";
 
 	public static async IsGitInstalled(
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<boolean> {
 		try {
 			await cpUtils.executeCommand(
@@ -21,7 +21,7 @@ export class GitUtils {
 				[],
 				true,
 				{},
-				"--version"
+				"--version",
 			);
 			return true;
 		} catch (error) {
@@ -31,7 +31,7 @@ export class GitUtils {
 
 	public static async IsGitRepo(
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<boolean> {
 		try {
 			const result: boolean = await git(workingDirectory).checkIsRepo();
@@ -44,7 +44,7 @@ export class GitUtils {
 
 	public static async GitInit(
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<void> {
 		try {
 			await git(workingDirectory).init();
@@ -56,14 +56,14 @@ export class GitUtils {
 	public static async GitRemoveRemote(
 		remoteName: string,
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<boolean> {
 		try {
 			await git(workingDirectory).removeRemote(remoteName);
 			return true;
 		} catch (e) {
 			logger.error(
-				`${LogStrings.FailedToRemoveRemote(remoteName)}: ${e.message}`
+				`${LogStrings.FailedToRemoveRemote(remoteName)}: ${e.message}`,
 			);
 			return false;
 		}
@@ -73,7 +73,7 @@ export class GitUtils {
 		remoteName: string,
 		remoteUrl: string,
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
@@ -81,7 +81,7 @@ export class GitUtils {
 			return true;
 		} catch (e) {
 			logger.error(
-				`${LogStrings.FailedToAddRemote(remoteName)}: ${e.message}`
+				`${LogStrings.FailedToAddRemote(remoteName)}: ${e.message}`,
 			);
 			return false;
 		}
@@ -89,14 +89,14 @@ export class GitUtils {
 
 	public static async GitGetRemoteName(
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<string[]> {
 		try {
 			const remote: string[] = await git(workingDirectory).getRemotes();
 			return remote;
 		} catch (e) {
 			logger.error(
-				`${LogStrings.FailedToGetRemote("name")}: ${e.message}`
+				`${LogStrings.FailedToGetRemote("name")}: ${e.message}`,
 			);
 			return [];
 		}
@@ -104,7 +104,7 @@ export class GitUtils {
 
 	public static async GitGetRemoteUrl(
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<string> {
 		try {
 			const remote: string = await git(workingDirectory).listRemote([
@@ -113,7 +113,7 @@ export class GitUtils {
 			return remote;
 		} catch (e) {
 			logger.error(
-				`${LogStrings.FailedToGetRemote("url")}: ${e.message}`
+				`${LogStrings.FailedToGetRemote("url")}: ${e.message}`,
 			);
 			return "";
 		}
@@ -123,7 +123,7 @@ export class GitUtils {
 		remoteRepo: string,
 		branch: string,
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<boolean> {
 		try {
 			await git(workingDirectory).pull(remoteRepo, branch, {
@@ -133,7 +133,7 @@ export class GitUtils {
 			return true;
 		} catch (e) {
 			logger.error(
-				`${LogStrings.FailedToPullRemote(remoteRepo)}: ${e.message}`
+				`${LogStrings.FailedToPullRemote(remoteRepo)}: ${e.message}`,
 			);
 			return false;
 		}
@@ -143,7 +143,7 @@ export class GitUtils {
 		remoteRepoName: string,
 		branch: string,
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
@@ -151,12 +151,12 @@ export class GitUtils {
 			await gitrepo.commit(this.gitFirstCommitName);
 			await gitrepo.push(remoteRepoName, branch);
 			logger.debug(
-				LogStrings.SuccessfullyPushedTo(remoteRepoName, branch)
+				LogStrings.SuccessfullyPushedTo(remoteRepoName, branch),
 			);
 			return true;
 		} catch (e) {
 			logger.error(
-				`${LogStrings.FailedToPushTo(remoteRepoName)}: ${e.message}`
+				`${LogStrings.FailedToPushTo(remoteRepoName)}: ${e.message}`,
 			);
 			return false;
 		}
@@ -165,7 +165,7 @@ export class GitUtils {
 	public static async GitCloneIntoExistingDir(
 		logger: ILogger,
 		workingDirectory: string,
-		remoteRepo: string
+		remoteRepo: string,
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
@@ -184,7 +184,7 @@ export class GitUtils {
 		remoteRepo: string,
 		branch: string,
 		logger: ILogger,
-		workingDirectory: string
+		workingDirectory: string,
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
@@ -196,7 +196,7 @@ export class GitUtils {
 			logger.debug(LogStrings.SuccessfullyPushedTo(remoteRepo, branch));
 		} catch (e) {
 			logger.error(
-				`${LogStrings.FailedToPushTo(remoteRepo)}: ${e.message}`
+				`${LogStrings.FailedToPushTo(remoteRepo)}: ${e.message}`,
 			);
 			return false;
 		}

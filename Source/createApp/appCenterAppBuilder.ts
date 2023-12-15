@@ -34,7 +34,7 @@ export default class AppCenterAppBuilder {
 		private repoUrl: string,
 		private client: AppCenterClient,
 		private logger: ILogger,
-		private defaultBranchName = SettingsHelper.defaultBranchName()
+		private defaultBranchName = SettingsHelper.defaultBranchName(),
 	) {
 		if (
 			this.userOrOrg.name === undefined ||
@@ -91,42 +91,42 @@ export default class AppCenterAppBuilder {
 	}
 
 	public withIOSApp(
-		ok: boolean = SettingsHelper.createIOSAppInAppCenter()
+		ok: boolean = SettingsHelper.createIOSAppInAppCenter(),
 	): AppCenterAppBuilder {
 		this._createIOSApp = ok;
 		return this;
 	}
 
 	public withAndroidApp(
-		ok: boolean = SettingsHelper.createAndroidAppInAppCenter()
+		ok: boolean = SettingsHelper.createAndroidAppInAppCenter(),
 	): AppCenterAppBuilder {
 		this._createAndroidApp = ok;
 		return this;
 	}
 
 	public withBetaTestersDistributionGroup(
-		ok: boolean = SettingsHelper.createTestersDistributionGroupInAppCenter()
+		ok: boolean = SettingsHelper.createTestersDistributionGroupInAppCenter(),
 	): AppCenterAppBuilder {
 		this._createBetaTestersDistributionGroup = ok;
 		return this;
 	}
 
 	public withConnectedRepositoryToBuildService(
-		ok: boolean = SettingsHelper.connectRepoToBuildService()
+		ok: boolean = SettingsHelper.connectRepoToBuildService(),
 	): AppCenterAppBuilder {
 		this._connectRepositoryToBuildService = ok;
 		return this;
 	}
 
 	public withBranchConfigurationCreatedAndBuildKickOff(
-		ok: boolean = SettingsHelper.configureBranchAndStartNewBuild()
+		ok: boolean = SettingsHelper.configureBranchAndStartNewBuild(),
 	): AppCenterAppBuilder {
 		this._withBranchConfigurationCreatedAndBuildKickOff = ok;
 		return this;
 	}
 
 	public async createApps(
-		option: CreateNewAppOption = CreateNewAppOption.Both
+		option: CreateNewAppOption = CreateNewAppOption.Both,
 	): Promise<void> {
 		let created: any;
 		if (!this.appsCreated) {
@@ -143,24 +143,24 @@ export default class AppCenterAppBuilder {
 						promises.push(
 							this.iOSAppCreator.createAppForOrg(
 								AppCenterAppBuilder.getiOSAppName(
-									this.projectName
+									this.projectName,
 								),
 								AppCenterAppBuilder.getiOSDisplayName(
-									this.projectName
+									this.projectName,
 								),
-								this.ownerName
-							)
+								this.ownerName,
+							),
 						);
 					} else {
 						promises.push(
 							this.iOSAppCreator.createApp(
 								AppCenterAppBuilder.getiOSAppName(
-									this.projectName
+									this.projectName,
 								),
 								AppCenterAppBuilder.getiOSDisplayName(
-									this.projectName
-								)
-							)
+									this.projectName,
+								),
+							),
 						);
 					}
 				}
@@ -173,24 +173,24 @@ export default class AppCenterAppBuilder {
 						promises.push(
 							this.androidAppCreator.createAppForOrg(
 								AppCenterAppBuilder.getAndroidAppName(
-									this.projectName
+									this.projectName,
 								),
 								AppCenterAppBuilder.getAndroidDisplayName(
-									this.projectName
+									this.projectName,
 								),
-								this.ownerName
-							)
+								this.ownerName,
+							),
 						);
 					} else {
 						promises.push(
 							this.androidAppCreator.createApp(
 								AppCenterAppBuilder.getAndroidAppName(
-									this.projectName
+									this.projectName,
 								),
 								AppCenterAppBuilder.getAndroidDisplayName(
-									this.projectName
-								)
-							)
+									this.projectName,
+								),
+							),
 						);
 					}
 				}
@@ -206,7 +206,7 @@ export default class AppCenterAppBuilder {
 					})
 				) {
 					VsCodeUI.ShowErrorMessage(
-						Messages.FailedToCreateAppInAppCenter
+						Messages.FailedToCreateAppInAppCenter,
 					);
 				}
 
@@ -232,11 +232,11 @@ export default class AppCenterAppBuilder {
 				const createdBetaTestersGroup: boolean[] = await Promise.all([
 					this.iOSAppCreator.createBetaTestersDistributionGroup(
 						AppCenterAppBuilder.getiOSAppName(this.projectName),
-						this.ownerName
+						this.ownerName,
 					),
 					this.androidAppCreator.createBetaTestersDistributionGroup(
 						AppCenterAppBuilder.getAndroidAppName(this.projectName),
-						this.ownerName
+						this.ownerName,
 					),
 				]);
 
@@ -246,14 +246,14 @@ export default class AppCenterAppBuilder {
 					})
 				) {
 					VsCodeUI.ShowErrorMessage(
-						Messages.FailedToCreateDistributionGroup
+						Messages.FailedToCreateDistributionGroup,
 					);
 				} else {
 					this.logger.debug(
 						LogStrings.DistributionGroupCreated(
 							SettingsHelper.distribitionGroupTestersName(),
-							this.projectName
-						)
+							this.projectName,
+						),
 					);
 				}
 			}
@@ -268,13 +268,13 @@ export default class AppCenterAppBuilder {
 						AppCenterAppBuilder.getiOSAppName(this.projectName),
 						this.ownerName,
 						this.repoUrl,
-						this.isCreatedForOrganization()
+						this.isCreatedForOrganization(),
 					),
 					this.androidAppCreator.connectRepositoryToBuildService(
 						AppCenterAppBuilder.getAndroidAppName(this.projectName),
 						this.ownerName,
 						this.repoUrl,
-						this.isCreatedForOrganization()
+						this.isCreatedForOrganization(),
 					),
 				]);
 				if (
@@ -283,14 +283,14 @@ export default class AppCenterAppBuilder {
 					})
 				) {
 					VsCodeUI.ShowErrorMessage(
-						Messages.FailedToConnectRepoToBuildService
+						Messages.FailedToConnectRepoToBuildService,
 					);
 				} else {
 					this.logger.debug(
 						LogStrings.ProjectConnected(
 							this.projectName,
-							this.repoUrl
-						)
+							this.repoUrl,
+						),
 					);
 					if (this._withBranchConfigurationCreatedAndBuildKickOff) {
 						progress.report({
@@ -301,30 +301,30 @@ export default class AppCenterAppBuilder {
 							await Promise.all([
 								this.iOSAppCreator.withBranchConfigurationCreatedAndBuildKickOff(
 									AppCenterAppBuilder.getiOSAppName(
-										this.projectName
+										this.projectName,
 									),
 									this.defaultBranchName,
 									this.ownerName,
-									this.isCreatedForOrganization()
+									this.isCreatedForOrganization(),
 								),
 								this.androidAppCreator.withBranchConfigurationCreatedAndBuildKickOff(
 									AppCenterAppBuilder.getAndroidAppName(
-										this.projectName
+										this.projectName,
 									),
 									this.defaultBranchName,
 									this.ownerName,
-									this.isCreatedForOrganization()
+									this.isCreatedForOrganization(),
 								),
 							]);
 						if (
 							!branchConfiguredAndBuildStarted.every(
 								(val: boolean) => {
 									return val === true;
-								}
+								},
 							)
 						) {
 							VsCodeUI.ShowErrorMessage(
-								Messages.FailedToConfigureBranchAndStartNewBuild
+								Messages.FailedToConfigureBranchAndStartNewBuild,
 							);
 						}
 					}

@@ -7,7 +7,7 @@ import { LogStrings } from "../extension/resources/logStrings";
 export default abstract class Auth<T extends Profile> {
 	public constructor(
 		protected profileStorage: ProfileStorage<T>,
-		protected logger: ILogger
+		protected logger: ILogger,
 	) {}
 
 	protected abstract async getUserInfo(credentials: LoginInfo): Promise<T>;

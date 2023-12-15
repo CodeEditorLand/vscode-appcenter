@@ -22,7 +22,7 @@ export function success(res: any): CommandResult {
 // Used when there's a failure otherwise
 export function failure(
 	errorCode: number,
-	errorMessage: string
+	errorMessage: string,
 ): CommandResult {
 	return {
 		succeeded: false,

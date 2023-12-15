@@ -9,7 +9,7 @@ export class AppCenterClientCredentials {
 
 	public signRequest(
 		request: WebResource,
-		callback: { (err: Error): void }
+		callback: { (err: Error): void },
 	): void {
 		this.getToken()
 			.then((token) => {

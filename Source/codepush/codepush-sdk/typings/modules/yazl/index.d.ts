@@ -26,21 +26,21 @@ declare module "yazl" {
 		public addBuffer(
 			buffer: Buffer,
 			metadataPath: string,
-			options?: IOptions
+			options?: IOptions,
 		): void;
 		public addEmptyDirectory(
 			metadataPath: string,
-			options?: IOptions
+			options?: IOptions,
 		): void;
 		public addFile(
 			realPath: string,
 			metadataPath: string,
-			options?: IOptions
+			options?: IOptions,
 		): void;
 		public addReadStream(
 			readStream: stream.Readable,
 			metadataPath: string,
-			options?: IOptions
+			options?: IOptions,
 		): void;
 		public end(finalSizeCallback?: IFinalSizeCallback): void;
 	}

@@ -64,7 +64,7 @@ class AppCenterClient extends ServiceClient {
 		this.missingSymbolGroups = new operations.MissingSymbolGroups(this);
 		this.repositories = new operations.Repositories(this);
 		this.repositoryConfigurations = new operations.RepositoryConfigurations(
-			this
+			this,
 		);
 		this.provisioning = new operations.Provisioning(this);
 		this.releaseUploads = new operations.ReleaseUploads(this);

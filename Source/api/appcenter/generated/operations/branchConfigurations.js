@@ -54,7 +54,7 @@ function _get(branch, ownerName, appName, options, callback) {
 			typeof branch.valueOf() !== "string"
 		) {
 			throw new Error(
-				"branch cannot be null or undefined and it must be of type string."
+				"branch cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -63,7 +63,7 @@ function _get(branch, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -72,7 +72,7 @@ function _get(branch, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -88,7 +88,7 @@ function _get(branch, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{branch}", encodeURIComponent(branch));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -144,7 +144,7 @@ function _get(branch, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -171,12 +171,12 @@ function _get(branch, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -233,7 +233,7 @@ function _create(branch, ownerName, appName, options, callback) {
 			typeof branch.valueOf() !== "string"
 		) {
 			throw new Error(
-				"branch cannot be null or undefined and it must be of type string."
+				"branch cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -242,7 +242,7 @@ function _create(branch, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -251,7 +251,7 @@ function _create(branch, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -267,7 +267,7 @@ function _create(branch, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{branch}", encodeURIComponent(branch));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -340,12 +340,12 @@ function _create(branch, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -402,7 +402,7 @@ function _update(branch, ownerName, appName, options, callback) {
 			typeof branch.valueOf() !== "string"
 		) {
 			throw new Error(
-				"branch cannot be null or undefined and it must be of type string."
+				"branch cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -411,7 +411,7 @@ function _update(branch, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -420,7 +420,7 @@ function _update(branch, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -436,7 +436,7 @@ function _update(branch, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{branch}", encodeURIComponent(branch));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -506,12 +506,12 @@ function _update(branch, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -568,7 +568,7 @@ function _deleteMethod(branch, ownerName, appName, options, callback) {
 			typeof branch.valueOf() !== "string"
 		) {
 			throw new Error(
-				"branch cannot be null or undefined and it must be of type string."
+				"branch cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -577,7 +577,7 @@ function _deleteMethod(branch, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -586,7 +586,7 @@ function _deleteMethod(branch, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -602,7 +602,7 @@ function _deleteMethod(branch, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{branch}", encodeURIComponent(branch));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -672,12 +672,12 @@ function _deleteMethod(branch, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -742,7 +742,7 @@ class BranchConfigurations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -804,7 +804,7 @@ class BranchConfigurations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -813,7 +813,7 @@ class BranchConfigurations {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -857,7 +857,7 @@ class BranchConfigurations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -919,7 +919,7 @@ class BranchConfigurations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -928,7 +928,7 @@ class BranchConfigurations {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -972,7 +972,7 @@ class BranchConfigurations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1034,7 +1034,7 @@ class BranchConfigurations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1043,7 +1043,7 @@ class BranchConfigurations {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}
@@ -1087,7 +1087,7 @@ class BranchConfigurations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1149,7 +1149,7 @@ class BranchConfigurations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -1158,7 +1158,7 @@ class BranchConfigurations {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

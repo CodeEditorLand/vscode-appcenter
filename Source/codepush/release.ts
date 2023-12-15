@@ -15,14 +15,14 @@ export default class CodePushRelease {
 	public static exec(
 		client: AppCenterClient,
 		params: ICodePushReleaseParams,
-		logger: ILogger
+		logger: ILogger,
 	): Promise<CommandResult> {
 		return ((): Promise<CodePushRelease | void> => {
 			if (useLegacyCodePushServer) {
 				return legacyCodePushRelease(
 					params,
 					<string>params.token,
-					SettingsHelper.getLegacyCodePushEndpoint()
+					SettingsHelper.getLegacyCodePushEndpoint(),
 				);
 			} else {
 				return appCenterCodePushRelease(client, params);
@@ -47,7 +47,7 @@ export default class CodePushRelease {
 				} else {
 					return failure(
 						ErrorCodes.Exception,
-						LogStrings.CodePushError
+						LogStrings.CodePushError,
 					);
 				}
 			});

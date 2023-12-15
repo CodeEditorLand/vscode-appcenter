@@ -13,13 +13,13 @@ export function getAppVersion(projectRoot?: string): Promise<string> {
 			projectRoot = projectRoot || process.cwd();
 			configString = fs.readFileSync(
 				path.join(projectRoot, "config.xml"),
-				{ encoding: "utf8" }
+				{ encoding: "utf8" },
 			);
 		} catch (error) {
 			reject(
 				new Error(
-					`Unable to find or read "config.xml" in the CWD. The "release-cordova" command must be executed in a Cordova project folder.`
-				)
+					`Unable to find or read "config.xml" in the CWD. The "release-cordova" command must be executed in a Cordova project folder.`,
+				),
 			);
 		}
 
@@ -27,8 +27,8 @@ export function getAppVersion(projectRoot?: string): Promise<string> {
 			if (err) {
 				reject(
 					new Error(
-						`Unable to parse "config.xml" in the CWD. Ensure that the contents of "config.xml" is valid XML.`
-					)
+						`Unable to parse "config.xml" in the CWD. Ensure that the contents of "config.xml" is valid XML.`,
+					),
 				);
 			}
 
@@ -87,7 +87,7 @@ export function makeUpdateContents(os: string): string {
 			"src",
 			"main",
 			"assets",
-			"www"
+			"www",
 		);
 		if (fs.existsSync(outputFolderVer7)) {
 			outputFolder = outputFolderVer7;

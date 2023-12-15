@@ -51,14 +51,14 @@ export class ConfigurationReader {
       the value that was provided */
 	public static readIntWithDefaultSync(
 		value: any,
-		defaultValue: number
+		defaultValue: number,
 	): number {
 		return value ? this.readInt(value) : defaultValue;
 	}
 
 	public static readIntWithDefaultAsync(
 		value: any,
-		defaultValuePromise: Promise<number>
+		defaultValuePromise: Promise<number>,
 	): Promise<number> {
 		return defaultValuePromise.then((defaultValue) => {
 			return this.readIntWithDefaultSync(value, defaultValue);

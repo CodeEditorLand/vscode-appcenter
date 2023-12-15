@@ -21,7 +21,7 @@ export default class Login extends Command {
 
 		const messageItems: IButtonMessageItem[] = [];
 		const loginUrl = `${SettingsHelper.getAppCenterLoginEndpoint()}?${qs.stringify(
-			{ hostname: os.hostname() }
+			{ hostname: os.hostname() },
 		)}`;
 		messageItems.push({
 			title: Strings.OkBtnLabel,
@@ -31,11 +31,11 @@ export default class Login extends Command {
 		const selection: IButtonMessageItem | undefined =
 			await VsCodeUI.ShowInfoMessage(
 				Messages.PleaseLoginViaBrowserMessage,
-				...messageItems
+				...messageItems,
 			);
 		if (selection) {
 			const token: string = await VsCodeUI.showInput(
-				Strings.PleaseProvideTokenHint
+				Strings.PleaseProvideTokenHint,
 			);
 			this.loginWithToken(token);
 			return true;
@@ -56,15 +56,15 @@ export default class Login extends Command {
 			if (!profile) {
 				this.logger.error(LogStrings.FailedToGetUserFromServer);
 				VsCodeUI.ShowErrorMessage(
-					Messages.FailedToExecuteLoginMsg(AuthProvider.AppCenter)
+					Messages.FailedToExecuteLoginMsg(AuthProvider.AppCenter),
 				);
 				return false;
 			}
 			VsCodeUI.ShowInfoMessage(
 				Messages.YouAreLoggedInMessage(
 					AuthProvider.AppCenter,
-					profile.displayName
-				)
+					profile.displayName,
+				),
 			);
 			await this.manager.setupAppCenterStatusBar(profile);
 			return true;

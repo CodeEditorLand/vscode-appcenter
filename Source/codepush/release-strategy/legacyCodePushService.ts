@@ -41,16 +41,16 @@ export default class LegacyCodePushServiceClient {
 	constructor(
 		private accessKey: string,
 		private app: CurrentApp,
-		private serverUrl: string
+		private serverUrl: string,
 	) {
 		if (!accessKey) {
 			throw new Error(
-				"A token must be specified to execute server calls."
+				"A token must be specified to execute server calls.",
 			);
 		}
 		if (!serverUrl) {
 			throw new Error(
-				"A server url must be specified to execute server calls."
+				"A server url must be specified to execute server calls.",
 			);
 		}
 	}
@@ -58,7 +58,7 @@ export default class LegacyCodePushServiceClient {
 	public release(
 		deploymentName: string,
 		filePath: string,
-		updateMetadata: PackageInfo
+		updateMetadata: PackageInfo,
 	): Promise<models.CodePushRelease> {
 		const appName = this.app.identifier;
 		return new Promise<models.CodePushRelease>((resolve, reject) => {
@@ -67,8 +67,8 @@ export default class LegacyCodePushServiceClient {
 					this.serverUrl +
 					this.urlEncode(
 						`/apps/${this.appNameParam(
-							appName
-						)}/deployments/${deploymentName}/release`
+							appName,
+						)}/deployments/${deploymentName}/release`,
 					),
 				headers: {
 					Accept: `application/vnd.code-push.v${LegacyCodePushServiceClient.API_VERSION}+json`,
@@ -89,7 +89,7 @@ export default class LegacyCodePushServiceClient {
 					resolve(
 						<models.CodePushRelease>(
 							JSON.parse(httpResponse.body).package
-						)
+						),
 					);
 				} else {
 					reject(this.getErrorMessage(null, httpResponse));
@@ -129,7 +129,7 @@ export default class LegacyCodePushServiceClient {
 
 	private getErrorMessage(
 		error: Error | null,
-		response: request.RequestResponse
+		response: request.RequestResponse,
 	): string {
 		return response && response.body
 			? response.body

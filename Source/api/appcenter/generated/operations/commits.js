@@ -49,7 +49,7 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 	try {
 		if (!Array.isArray(hashes)) {
 			throw new Error(
-				"hashes cannot be null or undefined and it must be of type array."
+				"hashes cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < hashes.length; i++) {
@@ -67,7 +67,7 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -76,7 +76,7 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -91,7 +91,7 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/commits/batch";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
@@ -178,12 +178,12 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -230,7 +230,7 @@ class Commits {
 		hashes,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
 		let client = this.client;
 		let self = this;
@@ -250,7 +250,7 @@ class Commits {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -311,7 +311,7 @@ class Commits {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
 		} else {
@@ -320,7 +320,7 @@ class Commits {
 				ownerName,
 				appName,
 				options,
-				optionalCallback
+				optionalCallback,
 			);
 		}
 	}

@@ -16,8 +16,8 @@ export default class WhoAmI extends Command {
 			VsCodeUI.ShowInfoMessage(
 				Messages.YouAreLoggedInMessage(
 					AuthProvider.AppCenter,
-					profile.displayName
-				)
+					profile.displayName,
+				),
 			);
 		} else {
 			VsCodeUI.ShowWarningMessage(Messages.UserIsNotLoggedInWarning);

@@ -35,7 +35,7 @@ export class OsxTokenStore implements TokenStore {
 				.pipe(
 					es.mapSync(function (line: string) {
 						return line.replace(/\\134/g, "\\");
-					}) as any as stream.Duplex
+					}) as any as stream.Duplex,
 				)
 				.pipe(new OsxSecurityParsingStream());
 
@@ -68,7 +68,7 @@ export class OsxTokenStore implements TokenStore {
 
 	public get(
 		key: TokenKeyType,
-		_useOldName: boolean = false
+		_useOldName: boolean = false,
 	): Promise<TokenEntry> {
 		const args = [
 			"find-generic-password",
@@ -91,7 +91,7 @@ export class OsxTokenStore implements TokenStore {
 						return reject(err);
 					}
 					const match = /^password: (?:0x[0-9A-F]+. )?"(.*)"$/m.exec(
-						stderr
+						stderr,
 					);
 					if (match) {
 						const accessToken = match[1].replace(/\\134/g, "\\");
@@ -101,7 +101,7 @@ export class OsxTokenStore implements TokenStore {
 						// Parse the rest of the information from stdout to get user & token ID
 						const source = es.through();
 						const parsed = source.pipe(
-							createOsxSecurityParsingStream()
+							createOsxSecurityParsingStream(),
 						);
 						parsed.on("data", (data: any) => {
 							//debug(`got data on key lookup: ${inspect(data)}`);
@@ -123,7 +123,7 @@ export class OsxTokenStore implements TokenStore {
 					} else {
 						reject(new Error("Password in incorrect format"));
 					}
-				}
+				},
 			);
 		});
 	}
@@ -154,12 +154,12 @@ export class OsxTokenStore implements TokenStore {
 					if (err) {
 						return reject(
 							new Error(
-								"Could not add password to keychain: " + stderr
-							)
+								"Could not add password to keychain: " + stderr,
+							),
 						);
 					}
 					return resolve();
-				}
+				},
 			);
 		});
 	}
@@ -176,12 +176,12 @@ export class OsxTokenStore implements TokenStore {
 						return reject(
 							new Error(
 								"Could not remove account from keychain, " +
-									stderr
-							)
+									stderr,
+							),
 						);
 					}
 					return resolve();
-				}
+				},
 			);
 		});
 	}

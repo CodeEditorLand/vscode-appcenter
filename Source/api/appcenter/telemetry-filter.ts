@@ -24,10 +24,10 @@ export function telemetryFilter(): {
 				resource.headers["diagnostic-context"] = sessionId;
 				const nextStream = next(resource, callback);
 				(resource.pipeInput(input, nextStream) as any as Readable).pipe(
-					output
+					output,
 				);
 				input.resume();
-			}
+			},
 		);
 	};
 }
