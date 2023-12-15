@@ -146,11 +146,11 @@ export class ExtensionManager implements Disposable {
 						AuthProvider.AppCenter,
 						profile.userName,
 						currentAppName
-				  )
+					)
 				: Messages.YouAreLoggedInMessage(
 						AuthProvider.AppCenter,
 						profile.userName
-				  );
+					);
 
 			return VsCodeUI.setStatusBar(
 				this._appCenterStatusBarItem,
