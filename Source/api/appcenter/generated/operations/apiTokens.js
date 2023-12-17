@@ -50,7 +50,7 @@ function _deleteMethod(apiTokenId, options, callback) {
 			typeof apiTokenId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"apiTokenId cannot be null or undefined and it must be of type string.",
+				"apiTokenId cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -65,7 +65,7 @@ function _deleteMethod(apiTokenId, options, callback) {
 		"v0.1/api_tokens/{api_token_id}";
 	requestUrl = requestUrl.replace(
 		"{api_token_id}",
-		encodeURIComponent(apiTokenId),
+		encodeURIComponent(apiTokenId)
 	);
 
 	// Create HTTP transport objects
@@ -139,12 +139,12 @@ function _deleteMethod(apiTokenId, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -164,12 +164,12 @@ function _deleteMethod(apiTokenId, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -190,12 +190,12 @@ function _deleteMethod(apiTokenId, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -323,12 +323,12 @@ function _list(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -348,12 +348,12 @@ function _list(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -374,12 +374,12 @@ function _list(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -496,14 +496,14 @@ function _newMethod(options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				description1,
-				"description1",
+				"description1"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(description1, null, 2)}.`,
+				`payload - ${JSON.stringify(description1, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -558,12 +558,12 @@ function _newMethod(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -583,12 +583,12 @@ function _newMethod(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -609,12 +609,12 @@ function _newMethod(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -673,7 +673,7 @@ class ApiTokens {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -729,7 +729,7 @@ class ApiTokens {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -758,7 +758,7 @@ class ApiTokens {
 			self._list(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -848,7 +848,7 @@ class ApiTokens {
 			self._newMethod(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {

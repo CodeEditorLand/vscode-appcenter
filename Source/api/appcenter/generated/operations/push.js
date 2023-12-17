@@ -51,7 +51,7 @@ function _configExists(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -60,7 +60,7 @@ function _configExists(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -75,7 +75,7 @@ function _configExists(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications_config";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -131,7 +131,7 @@ function _configExists(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -194,7 +194,7 @@ function _getConfig(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -203,7 +203,7 @@ function _getConfig(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -218,7 +218,7 @@ function _getConfig(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications_config";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -274,7 +274,7 @@ function _getConfig(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -301,12 +301,12 @@ function _getConfig(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -369,7 +369,7 @@ function _setConfig(properties, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -378,7 +378,7 @@ function _setConfig(properties, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -393,7 +393,7 @@ function _setConfig(properties, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications_config";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -423,14 +423,14 @@ function _setConfig(properties, ownerName, appName, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				properties,
-				"properties",
+				"properties"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(properties, null, 2)}.`,
+				`payload - ${JSON.stringify(properties, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -471,7 +471,7 @@ function _setConfig(properties, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -498,12 +498,12 @@ function _setConfig(properties, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -557,7 +557,7 @@ function _deleteConfig(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -566,7 +566,7 @@ function _deleteConfig(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -581,7 +581,7 @@ function _deleteConfig(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications_config";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -637,7 +637,7 @@ function _deleteConfig(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -702,7 +702,7 @@ function _get(notificationId, ownerName, appName, options, callback) {
 			typeof notificationId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"notificationId cannot be null or undefined and it must be of type string.",
+				"notificationId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -711,7 +711,7 @@ function _get(notificationId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -720,7 +720,7 @@ function _get(notificationId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -735,11 +735,11 @@ function _get(notificationId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications/{notification_id}";
 	requestUrl = requestUrl.replace(
 		"{notification_id}",
-		encodeURIComponent(notificationId),
+		encodeURIComponent(notificationId)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -795,7 +795,7 @@ function _get(notificationId, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -822,12 +822,12 @@ function _get(notificationId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -883,7 +883,7 @@ function _notificationArchive(ownerName, appName, values, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -892,12 +892,12 @@ function _notificationArchive(ownerName, appName, values, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (!Array.isArray(values)) {
 			throw new Error(
-				"values cannot be null or undefined and it must be of type array.",
+				"values cannot be null or undefined and it must be of type array."
 			);
 		}
 		for (let i = 0; i < values.length; i++) {
@@ -926,7 +926,7 @@ function _notificationArchive(ownerName, appName, values, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications/campaign/archive";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -956,14 +956,14 @@ function _notificationArchive(ownerName, appName, values, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				notificationIds,
-				"notificationIds",
+				"notificationIds"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(notificationIds, null, 2)}.`,
+				`payload - ${JSON.stringify(notificationIds, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -1004,7 +1004,7 @@ function _notificationArchive(ownerName, appName, values, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1101,12 +1101,12 @@ function _list(ownerName, appName, options, callback) {
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
 				);
 			}
 		}
@@ -1144,7 +1144,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1153,7 +1153,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1168,7 +1168,7 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
@@ -1186,8 +1186,7 @@ function _list(ownerName, appName, options, callback) {
 	}
 	if (includeArchived !== null && includeArchived !== undefined) {
 		queryParameters.push(
-			"include_archived=" +
-				encodeURIComponent(includeArchived.toString()),
+			"include_archived=" + encodeURIComponent(includeArchived.toString())
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1246,7 +1245,7 @@ function _list(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1273,12 +1272,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1353,7 +1352,7 @@ function _send(ownerName, appName, notificationContent, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1362,7 +1361,7 @@ function _send(ownerName, appName, notificationContent, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (notificationContent === null || notificationContent === undefined) {
@@ -1389,7 +1388,7 @@ function _send(ownerName, appName, notificationContent, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/push/notifications";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1419,14 +1418,14 @@ function _send(ownerName, appName, notificationContent, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				properties,
-				"properties",
+				"properties"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(properties, null, 2)}.`,
+				`payload - ${JSON.stringify(properties, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -1467,7 +1466,7 @@ function _send(ownerName, appName, notificationContent, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1494,12 +1493,12 @@ function _send(ownerName, appName, notificationContent, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1565,7 +1564,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1623,7 +1622,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1631,7 +1630,7 @@ class Push {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1672,7 +1671,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1732,7 +1731,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1740,7 +1739,7 @@ class Push {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1771,7 +1770,7 @@ class Push {
 		properties,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -1791,7 +1790,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1856,7 +1855,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1865,7 +1864,7 @@ class Push {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1906,7 +1905,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1964,7 +1963,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1972,7 +1971,7 @@ class Push {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2016,7 +2015,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2079,7 +2078,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2088,7 +2087,7 @@ class Push {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2117,7 +2116,7 @@ class Push {
 		ownerName,
 		appName,
 		values,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2137,7 +2136,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2198,7 +2197,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2207,7 +2206,7 @@ class Push {
 				appName,
 				values,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2265,7 +2264,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2342,7 +2341,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2387,7 +2386,7 @@ class Push {
 		ownerName,
 		appName,
 		notificationContent,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2407,7 +2406,7 @@ class Push {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2483,7 +2482,7 @@ class Push {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2492,7 +2491,7 @@ class Push {
 				appName,
 				notificationContent,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}

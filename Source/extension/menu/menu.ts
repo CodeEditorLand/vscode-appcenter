@@ -40,7 +40,7 @@ export abstract class Menu {
 		return Utils.isReactNativeCodePushProject(
 			this.logger,
 			this.rootPath,
-			false,
+			false
 		);
 	}
 
@@ -58,7 +58,7 @@ export abstract class Menu {
 
 	protected abstract getMenuItems(): MenuQuickPickItem[];
 	protected abstract handleMenuSelection(
-		menuItem: MenuQuickPickItem,
+		menuItem: MenuQuickPickItem
 	): Promise<void>;
 }
 
@@ -116,7 +116,7 @@ export class MenuItems {
 	public static TestTab: MenuQuickPickItem = {
 		label: MenuStrings.TestTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.TestTabMenuLabel,
+			MenuStrings.TestTabMenuLabel
 		),
 		command: AppCenterBeacons.Test,
 	};
@@ -124,7 +124,7 @@ export class MenuItems {
 	public static BuildTab: MenuQuickPickItem = {
 		label: MenuStrings.BuildTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.BuildTabMenuLabel,
+			MenuStrings.BuildTabMenuLabel
 		),
 		command: AppCenterBeacons.Build,
 	};
@@ -132,7 +132,7 @@ export class MenuItems {
 	public static DistributeTab: MenuQuickPickItem = {
 		label: MenuStrings.DistributeTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.DistributeTabMenuLabel,
+			MenuStrings.DistributeTabMenuLabel
 		),
 		command: AppCenterBeacons.Distribute,
 	};
@@ -140,7 +140,7 @@ export class MenuItems {
 	public static CrashesTab: MenuQuickPickItem = {
 		label: MenuStrings.CrashesTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.CrashesTabMenuLabel,
+			MenuStrings.CrashesTabMenuLabel
 		),
 		command: AppCenterBeacons.Crashes,
 	};
@@ -148,7 +148,7 @@ export class MenuItems {
 	public static AnalyticsTab: MenuQuickPickItem = {
 		label: MenuStrings.AnalyticsTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.AnalyticsTabMenuLabel,
+			MenuStrings.AnalyticsTabMenuLabel
 		),
 		command: AppCenterBeacons.Analytics,
 	};
@@ -156,7 +156,7 @@ export class MenuItems {
 	public static DistributeGroupsTab: MenuQuickPickItem = {
 		label: MenuStrings.DistributeGroupsTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.DistributeGroupsTabMenuLabel,
+			MenuStrings.DistributeGroupsTabMenuLabel
 		),
 		command: AppCenterDistributionTabs.Groups,
 	};
@@ -164,7 +164,7 @@ export class MenuItems {
 	public static DistributeStoresTab: MenuQuickPickItem = {
 		label: MenuStrings.DistributeStoresTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.DistributeStoresTabMenuLabel,
+			MenuStrings.DistributeStoresTabMenuLabel
 		),
 		command: AppCenterDistributionTabs.Stores,
 	};
@@ -172,7 +172,7 @@ export class MenuItems {
 	public static DistributeReleasesTab: MenuQuickPickItem = {
 		label: MenuStrings.DistributeReleasesTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.DistributeReleasesTabMenuLabel,
+			MenuStrings.DistributeReleasesTabMenuLabel
 		),
 		command: AppCenterDistributionTabs.Releases,
 	};
@@ -204,7 +204,7 @@ export class MenuItems {
 	public static OpenCodePush: MenuQuickPickItem = {
 		label: MenuStrings.DistributeCodePushTabMenuLabel,
 		description: MenuStrings.OpenTabInBrowserMenuDescription(
-			MenuStrings.DistributeCodePushTabMenuLabel,
+			MenuStrings.DistributeCodePushTabMenuLabel
 		),
 		command: AppCenterDistributionTabs.CodePush,
 	};
@@ -218,7 +218,7 @@ export class MenuItems {
 	}
 
 	public static SetCurrentDeployment(
-		currentApp: CurrentApp,
+		currentApp: CurrentApp
 	): MenuQuickPickItem {
 		return {
 			label: MenuStrings.setCurrentAppDeploymentMenuLabel(currentApp),
@@ -228,11 +228,11 @@ export class MenuItems {
 	}
 
 	public static SetTargetBinaryVersion(
-		currentApp: CurrentApp,
+		currentApp: CurrentApp
 	): MenuQuickPickItem {
 		return {
 			label: MenuStrings.setCurrentAppTargetBinaryVersionMenuLabel(
-				currentApp,
+				currentApp
 			),
 			description: "",
 			command: CommandNames.CodePush.SetTargetBinaryVersion,
@@ -280,11 +280,11 @@ export class MenuItems {
 
 export function getSelectedUserOrOrgItem(
 	selected: CustomQuickPickItem,
-	allItems: CustomQuickPickItem[],
+	allItems: CustomQuickPickItem[]
 ): UserOrOrganizationItem | null {
 	let userOrOrgItem: UserOrOrganizationItem;
 	const selectedUserOrOrgs: CustomQuickPickItem[] = allItems.filter(
-		(item) => item.target === selected.target,
+		(item) => item.target === selected.target
 	);
 	if (selectedUserOrOrgs && selectedUserOrOrgs.length === 1) {
 		userOrOrgItem = {
@@ -332,7 +332,7 @@ export function getQuickPickItemsForAppsList(appsList: models.AppResponse[]) {
 
 export function getQuickPickItemsForOrgList(
 	orgList: models.ListOKResponseItem[],
-	myself: Profile | null,
+	myself: Profile | null
 ): CustomQuickPickItem[] {
 	const options: CustomQuickPickItem[] = orgList.map((item) => {
 		return {

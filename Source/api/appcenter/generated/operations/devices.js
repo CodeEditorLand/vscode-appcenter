@@ -70,7 +70,7 @@ function _registerUserForDevice(userId, body, options, callback) {
 			typeof userId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userId cannot be null or undefined and it must be of type string.",
+				"userId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (body === null || body === undefined) {
@@ -117,7 +117,7 @@ function _registerUserForDevice(userId, body, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(body, null, 2)}.`,
+				`payload - ${JSON.stringify(body, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -172,12 +172,12 @@ function _registerUserForDevice(userId, body, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -197,12 +197,12 @@ function _registerUserForDevice(userId, body, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -255,7 +255,7 @@ function _deviceDetails(deviceUdid, options, callback) {
 			typeof deviceUdid.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deviceUdid cannot be null or undefined and it must be of type string.",
+				"deviceUdid cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -270,7 +270,7 @@ function _deviceDetails(deviceUdid, options, callback) {
 		"v0.1/user/devices/{device_udid}";
 	requestUrl = requestUrl.replace(
 		"{device_udid}",
-		encodeURIComponent(deviceUdid),
+		encodeURIComponent(deviceUdid)
 	);
 
 	// Create HTTP transport objects
@@ -344,12 +344,12 @@ function _deviceDetails(deviceUdid, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -369,12 +369,12 @@ function _deviceDetails(deviceUdid, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -395,12 +395,12 @@ function _deviceDetails(deviceUdid, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -421,12 +421,12 @@ function _deviceDetails(deviceUdid, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -480,7 +480,7 @@ function _removeUserDevice(deviceUdid, options, callback) {
 			typeof deviceUdid.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deviceUdid cannot be null or undefined and it must be of type string.",
+				"deviceUdid cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -495,7 +495,7 @@ function _removeUserDevice(deviceUdid, options, callback) {
 		"v0.1/user/devices/{device_udid}";
 	requestUrl = requestUrl.replace(
 		"{device_udid}",
-		encodeURIComponent(deviceUdid),
+		encodeURIComponent(deviceUdid)
 	);
 
 	// Create HTTP transport objects
@@ -564,12 +564,12 @@ function _removeUserDevice(deviceUdid, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -589,12 +589,12 @@ function _removeUserDevice(deviceUdid, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -726,12 +726,12 @@ function _userDevicesList(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -751,12 +751,12 @@ function _userDevicesList(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -777,12 +777,12 @@ function _userDevicesList(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -803,12 +803,12 @@ function _userDevicesList(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -855,7 +855,7 @@ function _getReleaseUpdateDevicesStatus(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -874,7 +874,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof releaseId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type string.",
+				"releaseId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -883,7 +883,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof resignId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"resignId cannot be null or undefined and it must be of type string.",
+				"resignId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -892,7 +892,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -901,7 +901,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -916,15 +916,15 @@ function _getReleaseUpdateDevicesStatus(
 		"v0.1/apps/{owner_name}/{app_name}/releases/{release_id}/update_devices/{resign_id}";
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId),
+		encodeURIComponent(releaseId)
 	);
 	requestUrl = requestUrl.replace(
 		"{resign_id}",
-		encodeURIComponent(resignId),
+		encodeURIComponent(resignId)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -994,12 +994,12 @@ function _getReleaseUpdateDevicesStatus(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1019,12 +1019,12 @@ function _getReleaseUpdateDevicesStatus(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1045,12 +1045,12 @@ function _getReleaseUpdateDevicesStatus(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1097,7 +1097,7 @@ function _getUpdateDevicesStatus(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -1116,7 +1116,7 @@ function _getUpdateDevicesStatus(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string.",
+				"distributionGroupName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1125,7 +1125,7 @@ function _getUpdateDevicesStatus(
 			typeof resignId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"resignId cannot be null or undefined and it must be of type string.",
+				"resignId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1134,7 +1134,7 @@ function _getUpdateDevicesStatus(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1143,7 +1143,7 @@ function _getUpdateDevicesStatus(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1158,15 +1158,15 @@ function _getUpdateDevicesStatus(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/update_devices/{resign_id}";
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName),
+		encodeURIComponent(distributionGroupName)
 	);
 	requestUrl = requestUrl.replace(
 		"{resign_id}",
-		encodeURIComponent(resignId),
+		encodeURIComponent(resignId)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1236,12 +1236,12 @@ function _getUpdateDevicesStatus(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1261,12 +1261,12 @@ function _getUpdateDevicesStatus(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1287,12 +1287,12 @@ function _getUpdateDevicesStatus(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1342,7 +1342,7 @@ function _listCsvFormat(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -1367,7 +1367,7 @@ function _listCsvFormat(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string.",
+				"distributionGroupName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1394,7 +1394,7 @@ function _listCsvFormat(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1403,7 +1403,7 @@ function _listCsvFormat(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1418,18 +1418,18 @@ function _listCsvFormat(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/devices/download_devices_list";
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName),
+		encodeURIComponent(distributionGroupName)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (unprovisionedOnly !== null && unprovisionedOnly !== undefined) {
 		queryParameters.push(
 			"unprovisioned_only=" +
-				encodeURIComponent(unprovisionedOnly.toString()),
+				encodeURIComponent(unprovisionedOnly.toString())
 		);
 	}
 	if (udids !== null && udids !== undefined) {
@@ -1556,7 +1556,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string.",
+				"distributionGroupName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1572,7 +1572,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1581,7 +1581,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1596,17 +1596,17 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/devices";
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName),
+		encodeURIComponent(distributionGroupName)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (releaseId !== null && releaseId !== undefined) {
 		queryParameters.push(
-			"release_id=" + encodeURIComponent(releaseId.toString()),
+			"release_id=" + encodeURIComponent(releaseId.toString())
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1691,12 +1691,12 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1716,12 +1716,12 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1742,12 +1742,12 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1833,7 +1833,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1910,7 +1910,7 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1918,7 +1918,7 @@ class Devices {
 				userId,
 				body,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1956,7 +1956,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2011,7 +2011,7 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2052,7 +2052,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2108,14 +2108,14 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
 			return self._removeUserDevice(
 				deviceUdid,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2141,7 +2141,7 @@ class Devices {
 			self._userDevicesList(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -2201,7 +2201,7 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2236,7 +2236,7 @@ class Devices {
 		resignId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2257,7 +2257,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2305,7 +2305,7 @@ class Devices {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -2328,7 +2328,7 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2338,7 +2338,7 @@ class Devices {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2370,7 +2370,7 @@ class Devices {
 		resignId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2391,7 +2391,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2439,7 +2439,7 @@ class Devices {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -2462,7 +2462,7 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2472,7 +2472,7 @@ class Devices {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2507,7 +2507,7 @@ class Devices {
 		distributionGroupName,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2527,7 +2527,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2578,7 +2578,7 @@ class Devices {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -2600,7 +2600,7 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2609,7 +2609,7 @@ class Devices {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2642,7 +2642,7 @@ class Devices {
 		distributionGroupName,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2662,7 +2662,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2727,7 +2727,7 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2736,7 +2736,7 @@ class Devices {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}

@@ -7,7 +7,7 @@ import LegacyCodePushServiceClient, {
 export function legacyCodePushRelease(
 	params: ICodePushReleaseParams,
 	token: string,
-	serverUrl: string,
+	serverUrl: string
 ): Promise<models.CodePushRelease> {
 	const releaseData: PackageInfo = {
 		description: params.description,
@@ -20,6 +20,6 @@ export function legacyCodePushRelease(
 	return new LegacyCodePushServiceClient(
 		token,
 		params.app,
-		serverUrl,
+		serverUrl
 	).release(params.deploymentName, params.updatedContentZipPath, releaseData);
 }

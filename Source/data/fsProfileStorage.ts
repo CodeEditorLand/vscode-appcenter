@@ -9,7 +9,10 @@ export default class FsProfileStorage<T extends Profile>
 	protected profiles: T[];
 	protected indexOfActiveProfile: number | null;
 
-	constructor(protected storageFilePath: string, protected logger: ILogger) {
+	constructor(
+		protected storageFilePath: string,
+		protected logger: ILogger
+	) {
 		this.profiles = [];
 	}
 
@@ -42,7 +45,7 @@ export default class FsProfileStorage<T extends Profile>
 		} catch (e) {
 			this.logger.info(
 				LogStrings.FailedToParseStorage(this.storageFilePath) +
-					(e && e.message) || "",
+					(e && e.message) || ""
 			);
 			FSUtils.removeFile(this.storageFilePath);
 			return;
@@ -50,16 +53,16 @@ export default class FsProfileStorage<T extends Profile>
 
 		// Identify active profile
 		const activeProfiles: T[] = this.profiles.filter(
-			(profile) => profile.isActive,
+			(profile) => profile.isActive
 		);
 
 		if (activeProfiles.length > 1) {
 			this.logger.error(
-				LogStrings.MultipleActiveProfiles(this.storageFilePath),
+				LogStrings.MultipleActiveProfiles(this.storageFilePath)
 			);
 		} else if (activeProfiles.length === 1) {
 			this.indexOfActiveProfile = this.profiles.indexOf(
-				activeProfiles[0],
+				activeProfiles[0]
 			);
 		}
 	}
@@ -69,7 +72,7 @@ export default class FsProfileStorage<T extends Profile>
 			return false;
 		}
 		const activeProfiles: T[] = this.profiles.filter(
-			(profile) => profile.isActive,
+			(profile) => profile.isActive
 		);
 
 		if (activeProfiles.length > 1) {
@@ -77,14 +80,14 @@ export default class FsProfileStorage<T extends Profile>
 				activeProfile.isActive = false;
 			}
 			const indexInArray: number = this.profiles.indexOf(
-				activeProfiles[0],
+				activeProfiles[0]
 			);
 			this.profiles[indexInArray].isActive = true;
 			this.indexOfActiveProfile = indexInArray;
 			this.saveProfiles();
 		} else if (activeProfiles.length === 1) {
 			this.indexOfActiveProfile = this.profiles.indexOf(
-				activeProfiles[0],
+				activeProfiles[0]
 			);
 		} else {
 			this.profiles[0].isActive = true;
@@ -101,7 +104,7 @@ export default class FsProfileStorage<T extends Profile>
 		} catch (e) {
 			this.logger.info(
 				LogStrings.FailedToWriteProfiles(this.storageFilePath) +
-					(e && e.message) || "",
+					(e && e.message) || ""
 			);
 			return;
 		}
@@ -148,13 +151,13 @@ export default class FsProfileStorage<T extends Profile>
 
 	public async get(userId: string): Promise<T | null> {
 		const foundProfiles: T[] = this.profiles.filter(
-			(value) => value.userId === userId,
+			(value) => value.userId === userId
 		);
 		if (foundProfiles.length === 1) {
 			return foundProfiles[0];
 		} else if (foundProfiles.length > 1) {
 			throw new Error(
-				LogStrings.MultipleProfiles(userId, this.storageFilePath),
+				LogStrings.MultipleProfiles(userId, this.storageFilePath)
 			);
 		}
 		return null;

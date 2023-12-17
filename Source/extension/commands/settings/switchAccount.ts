@@ -30,7 +30,7 @@ export default class SwitchAccount extends Command {
 		try {
 			const selected: ProfileQuickPickItem = await VsCodeUI.showQuickPick(
 				menuOptions,
-				Strings.SelectProfileTitleHint,
+				Strings.SelectProfileTitleHint
 			);
 			if (!selected) {
 				// User cancel selection
@@ -43,7 +43,7 @@ export default class SwitchAccount extends Command {
 	}
 
 	private async switchActiveProfile(
-		selectedProfile: Profile,
+		selectedProfile: Profile
 	): Promise<boolean> {
 		try {
 			selectedProfile.isActive = true;
@@ -52,11 +52,11 @@ export default class SwitchAccount extends Command {
 			VsCodeUI.ShowInfoMessage(
 				Messages.UserSwitchedMessage(
 					AuthProvider.AppCenter,
-					selectedProfile.userName,
-				),
+					selectedProfile.userName
+				)
 			);
 			await this.manager.setupAppCenterStatusBar(
-				await this.appCenterAuth.activeProfile,
+				await this.appCenterAuth.activeProfile
 			);
 		} catch (e) {
 			this.handleError(e);

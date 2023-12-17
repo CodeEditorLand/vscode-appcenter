@@ -13,7 +13,7 @@ export class CrashGenerator {
 	constructor(
 		currentApp: CurrentApp,
 		private _baseUrl: string,
-		private logger: ILogger = new ConsoleLogger(),
+		private logger: ILogger = new ConsoleLogger()
 	) {
 		this._appSecret = currentApp.appSecret;
 	}
@@ -61,7 +61,7 @@ export class CrashGenerator {
 			const requestInfo = this.getRequestInfo(
 				HTTP_METHODS.POST,
 				body,
-				installId,
+				installId
 			);
 
 			const response = await fetch(url, requestInfo);
@@ -73,7 +73,7 @@ export class CrashGenerator {
 			return response;
 		} catch (e) {
 			this.logger.error(
-				LogStrings.FailedToSendCrashes + (e && e.message) || "",
+				LogStrings.FailedToSendCrashes + (e && e.message) || ""
 			);
 			throw new Error(e);
 		}
@@ -82,7 +82,7 @@ export class CrashGenerator {
 	private getRequestInfo(
 		method: HTTP_METHODS,
 		body: object,
-		installId: string,
+		installId: string
 	) {
 		const headers = {
 			"Install-ID": installId,

@@ -10,7 +10,10 @@ import { Command } from "../command";
 import { VsCodeUI, IButtonMessageItem } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
 export default class SimulateCrashes extends Command {
-	public constructor(params: CommandParams, private _app: CurrentApp = null) {
+	public constructor(
+		params: CommandParams,
+		private _app: CurrentApp = null
+	) {
 		super(params);
 	}
 
@@ -31,7 +34,7 @@ export default class SimulateCrashes extends Command {
 							this._app = profile.currentApp;
 						} else {
 							VsCodeUI.ShowWarningMessage(
-								Messages.NoCurrentAppSetWarning,
+								Messages.NoCurrentAppSetWarning
 							);
 						}
 					}
@@ -43,24 +46,24 @@ export default class SimulateCrashes extends Command {
 					const crashGenerator: CrashGenerator = new CrashGenerator(
 						this._app,
 						AppCenterUrlBuilder.getCrashesEndpoint(),
-						this.logger,
+						this.logger
 					);
 					try {
 						await crashGenerator.generateCrashes();
 						return AppCenterUrlBuilder.GetPortalCrashesLink(
 							this._app.ownerName,
 							this._app.appName,
-							this._app.type !== "user",
+							this._app.type !== "user"
 						);
 					} catch (e) {
 						VsCodeUI.ShowErrorMessage(
-							Messages.FailedToGenerateCrashes,
+							Messages.FailedToGenerateCrashes
 						);
 						this.logger.error(e.message, e);
 					}
 
 					return null;
-				},
+				}
 			);
 			if (link) {
 				const messageItems: IButtonMessageItem[] = [];
@@ -70,7 +73,7 @@ export default class SimulateCrashes extends Command {
 				});
 				VsCodeUI.ShowInfoMessage(
 					Messages.CrashesSimulatedMessage,
-					...messageItems,
+					...messageItems
 				);
 			}
 		} catch (e) {

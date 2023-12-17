@@ -15,10 +15,10 @@ export class AppCenterUrlBuilder {
 		ownerName: string,
 		appName: string,
 		beaconName: AppCenterBeacons,
-		isOrg: boolean,
+		isOrg: boolean
 	): string {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${ownerName}/apps/${appName}/${beaconName}/`;
 	}
 
@@ -26,20 +26,20 @@ export class AppCenterUrlBuilder {
 		ownerName: string,
 		appName: string,
 		tabName: AppCenterDistributionTabs,
-		isOrg: boolean,
+		isOrg: boolean
 	): string {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${ownerName}/apps/${appName}/distribute/${tabName}/`;
 	}
 
 	public static GetAppCenterAppLink(
 		ownerName: string,
 		appName: string,
-		isOrg: boolean,
+		isOrg: boolean
 	): string {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${ownerName}/apps/${appName}/`;
 	}
 
@@ -47,30 +47,30 @@ export class AppCenterUrlBuilder {
 		appOwner: string,
 		appName: string,
 		branchName: string,
-		isOrg: boolean,
+		isOrg: boolean
 	): string {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${appOwner}/apps/${appName}/build/branches/${branchName}/setup`;
 	}
 
 	public static GetPortalConnectRepoLink(
 		appOwner: string,
 		appName: string,
-		isOrg: boolean,
+		isOrg: boolean
 	): string {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${appOwner}/apps/${appName}/build/connect`;
 	}
 
 	public static GetPortalCrashesLink(
 		appOwner: string,
 		appName: string,
-		isOrg: boolean,
+		isOrg: boolean
 	): string {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${appOwner}/apps/${appName}/crashes/`;
 	}
 
@@ -79,10 +79,10 @@ export class AppCenterUrlBuilder {
 		appName: string,
 		branchName: string,
 		buildId: string,
-		isOrg: boolean,
+		isOrg: boolean
 	): string {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${appOwner}/apps/${appName}/build/branches/${branchName}/builds/${buildId}`;
 	}
 
@@ -104,10 +104,10 @@ export class AppCenterUrlBuilder {
 	public static getTestLink(
 		appOwner: string,
 		appName: string,
-		isOrg: boolean,
+		isOrg: boolean
 	) {
 		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
-			isOrg,
+			isOrg
 		)}/${appOwner}/apps/${appName}/test/runs`;
 	}
 }

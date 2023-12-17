@@ -53,7 +53,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -62,7 +62,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -71,7 +71,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			typeof userName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userName cannot be null or undefined and it must be of type string.",
+				"userName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -87,11 +87,11 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 	requestUrl = requestUrl.replace(
 		"{user_name}",
-		encodeURIComponent(userName),
+		encodeURIComponent(userName)
 	);
 
 	// Create HTTP transport objects
@@ -146,7 +146,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -208,7 +208,7 @@ function _getUsers(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -217,7 +217,7 @@ function _getUsers(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -233,7 +233,7 @@ function _getUsers(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 
 	// Create HTTP transport objects
@@ -288,7 +288,7 @@ function _getUsers(orgName, teamName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -315,12 +315,12 @@ function _getUsers(orgName, teamName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -377,7 +377,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -386,7 +386,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -395,7 +395,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string.",
+				"userEmail cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -416,7 +416,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 
 	// Create HTTP transport objects
@@ -445,14 +445,14 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1",
+				"userEmail1"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -493,7 +493,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -520,12 +520,12 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -574,7 +574,7 @@ function _updatePermissions(
 	appName,
 	permissions,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -593,7 +593,7 @@ function _updatePermissions(
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -602,7 +602,7 @@ function _updatePermissions(
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -611,12 +611,12 @@ function _updatePermissions(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (!Array.isArray(permissions)) {
 			throw new Error(
-				"permissions cannot be null or undefined and it must be of type array.",
+				"permissions cannot be null or undefined and it must be of type array."
 			);
 		}
 		for (let i = 0; i < permissions.length; i++) {
@@ -646,7 +646,7 @@ function _updatePermissions(
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -679,7 +679,7 @@ function _updatePermissions(
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(team, null, 2)}.`,
+				`payload - ${JSON.stringify(team, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -720,7 +720,7 @@ function _updatePermissions(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -747,12 +747,12 @@ function _updatePermissions(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -808,7 +808,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -817,7 +817,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -826,7 +826,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -842,7 +842,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -898,7 +898,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -963,7 +963,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -972,7 +972,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -981,7 +981,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string.",
+				"name cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1002,7 +1002,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 
 	// Create HTTP transport objects
@@ -1034,7 +1034,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(app, null, 2)}.`,
+				`payload - ${JSON.stringify(app, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -1075,7 +1075,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1102,12 +1102,12 @@ function _addApp(orgName, teamName, name, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1161,7 +1161,7 @@ function _listApps(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1170,7 +1170,7 @@ function _listApps(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1186,7 +1186,7 @@ function _listApps(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 
 	// Create HTTP transport objects
@@ -1241,7 +1241,7 @@ function _listApps(orgName, teamName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1281,12 +1281,12 @@ function _listApps(orgName, teamName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1341,7 +1341,7 @@ function _getTeam(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1350,7 +1350,7 @@ function _getTeam(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1366,7 +1366,7 @@ function _getTeam(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 
 	// Create HTTP transport objects
@@ -1421,7 +1421,7 @@ function _getTeam(orgName, teamName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1448,12 +1448,12 @@ function _getTeam(orgName, teamName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1507,7 +1507,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1516,7 +1516,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1532,7 +1532,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 
 	// Create HTTP transport objects
@@ -1587,7 +1587,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1660,7 +1660,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1669,7 +1669,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string.",
+				"teamName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1678,7 +1678,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 			typeof displayName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"displayName cannot be null or undefined and it must be of type string.",
+				"displayName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1719,7 +1719,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName),
+		encodeURIComponent(teamName)
 	);
 
 	// Create HTTP transport objects
@@ -1751,7 +1751,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(team, null, 2)}.`,
+				`payload - ${JSON.stringify(team, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -1792,7 +1792,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1819,12 +1819,12 @@ function _update(orgName, teamName, displayName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1876,7 +1876,7 @@ function _listAll(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1943,7 +1943,7 @@ function _listAll(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1982,12 +1982,12 @@ function _listAll(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2050,7 +2050,7 @@ function _createTeam(orgName, displayName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -2059,7 +2059,7 @@ function _createTeam(orgName, displayName, options, callback) {
 			typeof displayName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"displayName cannot be null or undefined and it must be of type string.",
+				"displayName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -2128,7 +2128,7 @@ function _createTeam(orgName, displayName, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(team, null, 2)}.`,
+				`payload - ${JSON.stringify(team, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -2169,7 +2169,7 @@ function _createTeam(orgName, displayName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -2200,12 +2200,12 @@ function _createTeam(orgName, displayName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2278,7 +2278,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2339,7 +2339,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2348,7 +2348,7 @@ class Teams {
 				teamName,
 				userName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2389,7 +2389,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2448,7 +2448,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2495,7 +2495,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2557,7 +2557,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2566,7 +2566,7 @@ class Teams {
 				teamName,
 				userEmail,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2599,7 +2599,7 @@ class Teams {
 		teamName,
 		appName,
 		permissions,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2620,7 +2620,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2671,7 +2671,7 @@ class Teams {
 		appName,
 		permissions,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -2694,7 +2694,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2704,7 +2704,7 @@ class Teams {
 				appName,
 				permissions,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2748,7 +2748,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2809,7 +2809,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2818,7 +2818,7 @@ class Teams {
 				teamName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2862,7 +2862,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2925,7 +2925,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2934,7 +2934,7 @@ class Teams {
 				teamName,
 				name,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2975,7 +2975,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3033,7 +3033,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3077,7 +3077,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3136,7 +3136,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3180,7 +3180,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3238,7 +3238,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3246,7 +3246,7 @@ class Teams {
 				orgName,
 				teamName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3294,7 +3294,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3360,7 +3360,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3369,7 +3369,7 @@ class Teams {
 				teamName,
 				displayName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3407,7 +3407,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3462,7 +3462,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3510,7 +3510,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3572,7 +3572,7 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3580,7 +3580,7 @@ class Teams {
 				orgName,
 				displayName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}

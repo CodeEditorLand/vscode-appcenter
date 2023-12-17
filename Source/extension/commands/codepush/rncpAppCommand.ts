@@ -16,7 +16,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 			!Utils.isReactNativeCodePushProject(
 				this.logger,
 				this.rootPath,
-				true,
+				true
 			)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotCodePushProjectWarning);
@@ -34,7 +34,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 			!Utils.isReactNativeCodePushProject(
 				this.logger,
 				this.rootPath,
-				true,
+				true
 			)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotCodePushProjectWarning);

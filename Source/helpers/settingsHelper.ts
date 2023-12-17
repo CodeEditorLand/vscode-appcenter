@@ -11,7 +11,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.demoAppGitRepo")) {
 			const demoAppGitRepo: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.demoAppGitRepo"),
+				workspaceConfiguration.get("appcenter.demoAppGitRepo")
 			);
 			return demoAppGitRepo;
 		}
@@ -22,7 +22,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.api.loginendpoint")) {
 			const loginEndpoint: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.api.loginendpoint"),
+				workspaceConfiguration.get("appcenter.api.loginendpoint")
 			);
 			return loginEndpoint;
 		}
@@ -33,7 +33,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.portalEndpoint")) {
 			const portalEndpoint: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.portalEndpoint"),
+				workspaceConfiguration.get("appcenter.portalEndpoint")
 			);
 			return portalEndpoint;
 		}
@@ -44,7 +44,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.api.endpoint")) {
 			const apiEndpoint: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.api.endpoint"),
+				workspaceConfiguration.get("appcenter.api.endpoint")
 			);
 			return apiEndpoint;
 		}
@@ -56,7 +56,7 @@ export class SettingsHelper {
 		if (workspaceConfiguration.has("appcenter.createiosapp")) {
 			const createIOSAppInAppCenter: boolean =
 				ConfigurationReader.readBoolean(
-					workspaceConfiguration.get("appcenter.createiosapp"),
+					workspaceConfiguration.get("appcenter.createiosapp")
 				);
 			return createIOSAppInAppCenter;
 		}
@@ -68,7 +68,7 @@ export class SettingsHelper {
 		if (workspaceConfiguration.has("appcenter.createandroidapp")) {
 			const createAndroidAppInAppCenter: boolean =
 				ConfigurationReader.readBoolean(
-					workspaceConfiguration.get("appcenter.createandroidapp"),
+					workspaceConfiguration.get("appcenter.createandroidapp")
 				);
 			return createAndroidAppInAppCenter;
 		}
@@ -79,14 +79,14 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (
 			workspaceConfiguration.has(
-				"appcenter.createtestersdistibutiongroup",
+				"appcenter.createtestersdistibutiongroup"
 			)
 		) {
 			const createTestersDistributionGroupInAppCenter: boolean =
 				ConfigurationReader.readBoolean(
 					workspaceConfiguration.get(
-						"appcenter.createtestersdistibutiongroup",
-					),
+						"appcenter.createtestersdistibutiongroup"
+					)
 				);
 			return createTestersDistributionGroupInAppCenter;
 		}
@@ -99,8 +99,8 @@ export class SettingsHelper {
 			const createTestersDistributionGroupInAppCenter: boolean =
 				ConfigurationReader.readBoolean(
 					workspaceConfiguration.get(
-						"appcenter.connectrepotobuildservice",
-					),
+						"appcenter.connectrepotobuildservice"
+					)
 				);
 			return createTestersDistributionGroupInAppCenter;
 		}
@@ -111,14 +111,14 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (
 			workspaceConfiguration.has(
-				"appcenter.configurebranchandstartnewbuild",
+				"appcenter.configurebranchandstartnewbuild"
 			)
 		) {
 			const createTestersDistributionGroupInAppCenter: boolean =
 				ConfigurationReader.readBoolean(
 					workspaceConfiguration.get(
-						"appcenter.configurebranchandstartnewbuild",
-					),
+						"appcenter.configurebranchandstartnewbuild"
+					)
 				);
 			return createTestersDistributionGroupInAppCenter;
 		}
@@ -133,8 +133,8 @@ export class SettingsHelper {
 			const distribitionGroupTestersName: string =
 				ConfigurationReader.readString(
 					workspaceConfiguration.get(
-						"appcenter.distribitiongrouptestersname",
-					),
+						"appcenter.distribitiongrouptestersname"
+					)
 				);
 			return distribitionGroupTestersName;
 		}
@@ -145,7 +145,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.defaultbranchname")) {
 			const branchName: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.defaultbranchname"),
+				workspaceConfiguration.get("appcenter.defaultbranchname")
 			);
 			return branchName;
 		}
@@ -164,7 +164,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.logLevel")) {
 			const logLevelString: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.logLevel"),
+				workspaceConfiguration.get("appcenter.logLevel")
 			);
 			return <LogLevel>parseInt(LogLevel[<any>logLevelString], 10);
 		}
@@ -175,7 +175,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.environment")) {
 			const appCenterEnvironment: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.environment"),
+				workspaceConfiguration.get("appcenter.environment")
 			);
 			return <AppCenterEnvironment>(
 				parseInt(AppCenterEnvironment[<any>appCenterEnvironment], 10)
@@ -188,7 +188,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.crashes")) {
 			const crashesEnabled: boolean = ConfigurationReader.readBoolean(
-				workspaceConfiguration.get("appcenter.crashes"),
+				workspaceConfiguration.get("appcenter.crashes")
 			);
 			return crashesEnabled;
 		}
@@ -199,7 +199,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.showStatusBar")) {
 			const showStatusBar: boolean = ConfigurationReader.readBoolean(
-				workspaceConfiguration.get("appcenter.showStatusBar"),
+				workspaceConfiguration.get("appcenter.showStatusBar")
 			);
 			return showStatusBar;
 		}
@@ -224,7 +224,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.linkTwoApps")) {
 			const linkTwoApps: boolean = ConfigurationReader.readBoolean(
-				workspaceConfiguration.get("appcenter.linkTwoApps"),
+				workspaceConfiguration.get("appcenter.linkTwoApps")
 			);
 			return linkTwoApps;
 		}
@@ -235,7 +235,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.telemetryEnabled")) {
 			const telemetryEnabled: boolean = ConfigurationReader.readBoolean(
-				workspaceConfiguration.get("appcenter.telemetryEnabled"),
+				workspaceConfiguration.get("appcenter.telemetryEnabled")
 			);
 			return telemetryEnabled;
 		}
@@ -246,7 +246,7 @@ export class SettingsHelper {
 		const workspaceConfiguration = vscode.workspace.getConfiguration();
 		if (workspaceConfiguration.has("appcenter.codePushMixinPath")) {
 			const mixinPath: string = ConfigurationReader.readString(
-				workspaceConfiguration.get("appcenter.codePushMixinPath"),
+				workspaceConfiguration.get("appcenter.codePushMixinPath")
 			);
 			if (mixinPath.length === 0) {
 				return null;
@@ -262,8 +262,8 @@ export class SettingsHelper {
 			const codePushRNBundelDevFlag: boolean =
 				ConfigurationReader.readBoolean(
 					workspaceConfiguration.get(
-						"appcenter.codePushRNBundleDevFlag",
-					),
+						"appcenter.codePushRNBundleDevFlag"
+					)
 				);
 			return codePushRNBundelDevFlag;
 		}

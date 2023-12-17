@@ -36,10 +36,10 @@ export default class SwitchMandatoryPropForRelease extends RNCPAppCommand {
 			app.targetBinaryVersion,
 			app.type,
 			newMandatoryValue,
-			app.appSecret,
+			app.appSecret
 		);
 		VsCodeUI.ShowInfoMessage(
-			Messages.ChangedMandatoryMessage(newMandatoryValue),
+			Messages.ChangedMandatoryMessage(newMandatoryValue)
 		);
 	}
 }

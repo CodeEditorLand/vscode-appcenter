@@ -50,7 +50,7 @@ function _reject(invitationToken, options, callback) {
 			typeof invitationToken.valueOf() !== "string"
 		) {
 			throw new Error(
-				"invitationToken cannot be null or undefined and it must be of type string.",
+				"invitationToken cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -65,7 +65,7 @@ function _reject(invitationToken, options, callback) {
 		"v0.1/user/invitations/orgs/{invitation_token}/reject";
 	requestUrl = requestUrl.replace(
 		"{invitation_token}",
-		encodeURIComponent(invitationToken),
+		encodeURIComponent(invitationToken)
 	);
 
 	// Create HTTP transport objects
@@ -120,7 +120,7 @@ function _reject(invitationToken, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -180,7 +180,7 @@ function _accept(invitationToken, options, callback) {
 			typeof invitationToken.valueOf() !== "string"
 		) {
 			throw new Error(
-				"invitationToken cannot be null or undefined and it must be of type string.",
+				"invitationToken cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -195,7 +195,7 @@ function _accept(invitationToken, options, callback) {
 		"v0.1/user/invitations/orgs/{invitation_token}/accept";
 	requestUrl = requestUrl.replace(
 		"{invitation_token}",
-		encodeURIComponent(invitationToken),
+		encodeURIComponent(invitationToken)
 	);
 
 	// Create HTTP transport objects
@@ -250,7 +250,7 @@ function _accept(invitationToken, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -315,7 +315,7 @@ function _update(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -324,7 +324,7 @@ function _update(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string.",
+				"userEmail cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -352,7 +352,7 @@ function _update(orgName, userEmail, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{user_email}",
-		encodeURIComponent(userEmail),
+		encodeURIComponent(userEmail)
 	);
 
 	// Create HTTP transport objects
@@ -381,14 +381,14 @@ function _update(orgName, userEmail, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				userRole,
-				"userRole",
+				"userRole"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userRole, null, 2)}.`,
+				`payload - ${JSON.stringify(userRole, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -429,7 +429,7 @@ function _update(orgName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -490,7 +490,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -499,7 +499,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string.",
+				"userEmail cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -545,14 +545,14 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1",
+				"userEmail1"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -593,7 +593,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -654,7 +654,7 @@ function _create(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -663,7 +663,7 @@ function _create(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string.",
+				"userEmail cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -709,14 +709,14 @@ function _create(orgName, userEmail, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1",
+				"userEmail1"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -757,7 +757,7 @@ function _create(orgName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -818,7 +818,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -827,7 +827,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string.",
+				"userEmail cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -873,14 +873,14 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1",
+				"userEmail1"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -921,7 +921,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -980,7 +980,7 @@ function _listPending(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1047,7 +1047,7 @@ function _listPending(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1088,12 +1088,12 @@ function _listPending(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1156,7 +1156,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1212,7 +1212,7 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1254,7 +1254,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1310,7 +1310,7 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1357,7 +1357,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1418,7 +1418,7 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1462,7 +1462,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1520,7 +1520,7 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1528,7 +1528,7 @@ class OrgInvitations {
 				orgName,
 				userEmail,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1569,7 +1569,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1627,7 +1627,7 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1671,7 +1671,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1729,7 +1729,7 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1737,7 +1737,7 @@ class OrgInvitations {
 				orgName,
 				userEmail,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1775,7 +1775,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1830,7 +1830,7 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {

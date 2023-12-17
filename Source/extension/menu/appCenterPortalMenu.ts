@@ -20,7 +20,10 @@ import { VsCodeUI } from "../ui/vscodeUI";
 
 export class AppCenterPortalMenu extends Menu {
 	private isOrg: boolean;
-	constructor(private app: CurrentApp, params: CommandParams) {
+	constructor(
+		private app: CurrentApp,
+		params: CommandParams
+	) {
 		super(params);
 		this.isOrg =
 			app.type.toLowerCase() === AppCenterAppType.Org.toLowerCase();
@@ -41,7 +44,7 @@ export class AppCenterPortalMenu extends Menu {
 	}
 
 	protected async handleMenuSelection(
-		menuItem: MenuQuickPickItem,
+		menuItem: MenuQuickPickItem
 	): Promise<void> {
 		switch (menuItem.command) {
 			case AppCenterBeacons.Build:
@@ -50,14 +53,14 @@ export class AppCenterPortalMenu extends Menu {
 						this.app.ownerName,
 						this.app.appName,
 						AppCenterBeacons.Build,
-						this.isOrg,
-					),
+						this.isOrg
+					)
 				);
 				break;
 			case AppCenterBeacons.Distribute:
 				const selected: MenuQuickPickItem =
 					await VsCodeUI.showQuickPick(
-						this.getAppCenterDistributeTabMenuItems(),
+						this.getAppCenterDistributeTabMenuItems()
 					);
 				if (!selected) {
 					return;
@@ -69,8 +72,8 @@ export class AppCenterPortalMenu extends Menu {
 								this.app.ownerName,
 								this.app.appName,
 								AppCenterDistributionTabs.Groups,
-								this.isOrg,
-							),
+								this.isOrg
+							)
 						);
 						break;
 					case AppCenterDistributionTabs.Stores:
@@ -79,8 +82,8 @@ export class AppCenterPortalMenu extends Menu {
 								this.app.ownerName,
 								this.app.appName,
 								AppCenterDistributionTabs.Stores,
-								this.isOrg,
-							),
+								this.isOrg
+							)
 						);
 						break;
 					case AppCenterDistributionTabs.Releases:
@@ -89,8 +92,8 @@ export class AppCenterPortalMenu extends Menu {
 								this.app.ownerName,
 								this.app.appName,
 								AppCenterDistributionTabs.Releases,
-								this.isOrg,
-							),
+								this.isOrg
+							)
 						);
 						break;
 					default:
@@ -100,7 +103,7 @@ export class AppCenterPortalMenu extends Menu {
 			case AppCenterBeacons.Crashes:
 				const selectedCrash: MenuQuickPickItem =
 					await VsCodeUI.showQuickPick(
-						this.getAppCenterCrashesTabMenuItems(),
+						this.getAppCenterCrashesTabMenuItems()
 					);
 				if (!selectedCrash) {
 					return;
@@ -112,8 +115,8 @@ export class AppCenterPortalMenu extends Menu {
 								this.app.ownerName,
 								this.app.appName,
 								AppCenterBeacons.Crashes,
-								this.isOrg,
-							),
+								this.isOrg
+							)
 						);
 						break;
 					case AppCenterCrashesTabs.Simulate:
@@ -128,8 +131,8 @@ export class AppCenterPortalMenu extends Menu {
 						this.app.ownerName,
 						this.app.appName,
 						AppCenterBeacons.Analytics,
-						this.isOrg,
-					),
+						this.isOrg
+					)
 				);
 				break;
 			case AppCenterBeacons.CodePush:
@@ -149,7 +152,7 @@ export class AppCenterPortalMenu extends Menu {
 		getAppCenterDistributeTabMenuItems.push(MenuItems.DistributeGroupsTab);
 		getAppCenterDistributeTabMenuItems.push(MenuItems.DistributeStoresTab);
 		getAppCenterDistributeTabMenuItems.push(
-			MenuItems.DistributeReleasesTab,
+			MenuItems.DistributeReleasesTab
 		);
 		return getAppCenterDistributeTabMenuItems;
 	}

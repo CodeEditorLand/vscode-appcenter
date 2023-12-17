@@ -87,17 +87,17 @@ export class PackageManifest {
 
 export async function generatePackageHashFromDirectory(
 	directoryPath: string,
-	basePath: string,
+	basePath: string
 ): Promise<string> {
 	try {
 		if (!fileUtils.isDirectory(directoryPath)) {
 			throw new Error(
-				"Not a directory. Please either create a directory, or use hashFile().",
+				"Not a directory. Please either create a directory, or use hashFile()."
 			);
 		}
 	} catch (error) {
 		throw new Error(
-			"Directory does not exist. Please either create a directory, or use hashFile().",
+			"Directory does not exist. Please either create a directory, or use hashFile()."
 		);
 	}
 
@@ -108,7 +108,7 @@ export async function generatePackageHashFromDirectory(
 
 export function generatePackageManifestFromDirectory(
 	directoryPath: string,
-	basePath: string,
+	basePath: string
 ): Promise<PackageManifest> {
 	return new Promise<PackageManifest>(async (resolve, reject) => {
 		const fileHashesMap = new Map<string, string>();
@@ -117,7 +117,7 @@ export function generatePackageManifestFromDirectory(
 
 		if (!files || files.length === 0) {
 			reject(
-				`Error: Can"t sign the release because no files were found.`,
+				`Error: Can"t sign the release because no files were found.`
 			);
 			return;
 		}
@@ -127,7 +127,7 @@ export function generatePackageManifestFromDirectory(
 			(soFar: Promise<void>, filePath: string) => {
 				return soFar.then(() => {
 					const relativePath: string = fileUtils.normalizePath(
-						path.relative(basePath, filePath),
+						path.relative(basePath, filePath)
 					);
 					if (!PackageManifest.isIgnored(relativePath)) {
 						return hashFile(filePath).then((hash: string) => {
@@ -137,7 +137,7 @@ export function generatePackageManifestFromDirectory(
 					return undefined;
 				});
 			},
-			Promise.resolve(void 0),
+			Promise.resolve(void 0)
 		);
 
 		generateManifestPromise.then(() => {

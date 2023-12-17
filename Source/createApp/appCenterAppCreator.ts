@@ -17,13 +17,16 @@ export default class AppCenterAppCreator {
 	protected platform: AppCenterPlatform = AppCenterPlatform.ReactNative;
 	protected os: AppCenterOS;
 
-	constructor(private client: AppCenterClient, private logger: ILogger) {}
+	constructor(
+		private client: AppCenterClient,
+		private logger: ILogger
+	) {}
 
 	public async withBranchConfigurationCreatedAndBuildKickOff(
 		appName: string,
 		branchName: string,
 		ownerName: string,
-		isOrg: boolean,
+		isOrg: boolean
 	): Promise<boolean> {
 		// TODO: get out what to do with this magic with not working of method to create default config!
 		try {
@@ -34,7 +37,7 @@ export default class AppCenterAppCreator {
 				branchName,
 				ownerName,
 				appName,
-				configObj,
+				configObj
 			);
 			const queueBuildRequestResponse: models.Build =
 				await this.client.builds.create(branchName, ownerName, appName);
@@ -46,7 +49,7 @@ export default class AppCenterAppCreator {
 				appName,
 				realBranchName,
 				buildId.toString(),
-				isOrg,
+				isOrg
 			);
 			this.logger.info(`Queued a new build for "${appName}": ${url}`);
 		} catch (error) {
@@ -55,7 +58,7 @@ export default class AppCenterAppCreator {
 					ownerName,
 					appName,
 					branchName,
-					isOrg,
+					isOrg
 				);
 			if (error.statusCode === 400) {
 				this.logger.error(LogStrings.BuildConfigureError(appName));
@@ -69,7 +72,7 @@ export default class AppCenterAppCreator {
 			});
 			VsCodeUI.ShowInfoMessage(
 				Messages.BuildManualConfigureMessage(appName),
-				...messageItems,
+				...messageItems
 			);
 			return false;
 		}
@@ -80,13 +83,13 @@ export default class AppCenterAppCreator {
 		appName: string,
 		ownerName: string,
 		repoUrl: string,
-		isOrg: boolean,
+		isOrg: boolean
 	): Promise<boolean> {
 		try {
 			await this.client.repositoryConfigurations.createOrUpdate(
 				ownerName,
 				appName,
-				repoUrl,
+				repoUrl
 			);
 			return true;
 		} catch (err) {
@@ -94,7 +97,7 @@ export default class AppCenterAppCreator {
 				AppCenterUrlBuilder.GetPortalConnectRepoLink(
 					ownerName,
 					appName,
-					isOrg,
+					isOrg
 				);
 			this.logger.error(LogStrings.BuildConnectError(appName, repoUrl));
 
@@ -105,7 +108,7 @@ export default class AppCenterAppCreator {
 			});
 			VsCodeUI.ShowInfoMessage(
 				Messages.RepoManualConnectMessage(appName),
-				...messageItems,
+				...messageItems
 			);
 			return false;
 		}
@@ -113,27 +116,27 @@ export default class AppCenterAppCreator {
 
 	public async createBetaTestersDistributionGroup(
 		appName: string,
-		ownerName: string,
+		ownerName: string
 	): Promise<boolean> {
 		try {
 			await this.client.distributionGroups.create(
 				ownerName,
 				appName,
-				SettingsHelper.distribitionGroupTestersName(),
+				SettingsHelper.distribitionGroupTestersName()
 			);
 		} catch (error) {
 			if (error === 409) {
 				this.logger.error(
 					LogStrings.DistributionGroupExists(
 						SettingsHelper.distribitionGroupTestersName(),
-						appName,
-					),
+						appName
+					)
 				);
 			} else {
 				this.logger.error(
 					`${LogStrings.ErrorCreatingDistributionGroup(
-						appName,
-					)} ${error}`,
+						appName
+					)} ${error}`
 				);
 			}
 			return false;
@@ -144,7 +147,7 @@ export default class AppCenterAppCreator {
 	public async createAppForOrg(
 		appName: string,
 		displayName: string,
-		orgName: string,
+		orgName: string
 	): Promise<CreatedAppFromAppCenter | false> {
 		try {
 			const result: models.AppResponse =
@@ -167,7 +170,7 @@ export default class AppCenterAppCreator {
 				this.logger.error(
 					`${LogStrings.FailedCreateAppUnder(appName, orgName)} ${
 						(err && err.message) || ""
-					}`,
+					}`
 				);
 			}
 			return false;
@@ -176,7 +179,7 @@ export default class AppCenterAppCreator {
 
 	public async createApp(
 		appName: string,
-		displayName: string,
+		displayName: string
 	): Promise<CreatedAppFromAppCenter | false> {
 		try {
 			const result: models.AppResponse = await this.client.apps.create({
@@ -198,7 +201,7 @@ export default class AppCenterAppCreator {
 				this.logger.error(
 					`${LogStrings.FailedCreateAppUnder(appName)} ${
 						(err && err.message) || ""
-					}`,
+					}`
 				);
 			}
 			return false;
@@ -207,14 +210,14 @@ export default class AppCenterAppCreator {
 
 	public async createCodePushDeployment(
 		appName: string,
-		ownerName: string,
+		ownerName: string
 	): Promise<models.Deployment | null> {
 		try {
 			const result: models.Deployment =
 				await this.client.codePushDeployments.create(
 					ownerName,
 					appName,
-					Constants.CodePushStagingDeploymentName,
+					Constants.CodePushStagingDeploymentName
 				);
 			return result;
 		} catch (err) {
@@ -225,21 +228,21 @@ export default class AppCenterAppCreator {
 						await this.client.codePushDeployments.get(
 							Constants.CodePushStagingDeploymentName,
 							ownerName,
-							appName,
+							appName
 						);
 					return result;
 				} catch (err) {
 					this.logger.error(
 						`${LogStrings.ErrorCreatingDeploymentsFor(appName)} ${
 							(err && err.message) || ""
-						}`,
+						}`
 					);
 				}
 			} else {
 				this.logger.error(
 					`${LogStrings.ErrorCreatingDeploymentsFor(appName)} ${
 						(err && err.message) || ""
-					}`,
+					}`
 				);
 			}
 			return null;
@@ -270,7 +273,7 @@ export class NullAppCenterAppCreator extends AppCenterAppCreator {
 	public async withBranchConfigurationCreatedAndBuildKickOff(
 		_appName: string,
 		_branchName: string,
-		_ownerName: string,
+		_ownerName: string
 	): Promise<boolean> {
 		return true;
 	}
@@ -278,14 +281,14 @@ export class NullAppCenterAppCreator extends AppCenterAppCreator {
 	public async connectRepositoryToBuildService(
 		_appName: string,
 		_ownerName: string,
-		_repoUrl: string,
+		_repoUrl: string
 	): Promise<boolean> {
 		return true;
 	}
 
 	public async createBetaTestersDistributionGroup(
 		_appName: string,
-		_ownerName: string,
+		_ownerName: string
 	): Promise<boolean> {
 		return true;
 	}
@@ -293,14 +296,14 @@ export class NullAppCenterAppCreator extends AppCenterAppCreator {
 	public async createAppForOrg(
 		_appName: string,
 		_displayName: string,
-		_orgName: string,
+		_orgName: string
 	): Promise<CreatedAppFromAppCenter | false> {
 		return false;
 	}
 
 	public async createApp(
 		_appName: string,
-		_displayName: string,
+		_displayName: string
 	): Promise<CreatedAppFromAppCenter | false> {
 		return false;
 	}

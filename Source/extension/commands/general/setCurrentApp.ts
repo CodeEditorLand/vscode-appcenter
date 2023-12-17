@@ -33,7 +33,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 
 	protected async handleShowCurrentAppQuickPickSelection(
 		selected: QuickPickAppItem,
-		rnApps: models.AppResponse[],
+		rnApps: models.AppResponse[]
 	) {
 		if (selected.target === CommandNames.CreateApp.CommandName) {
 			await new General.CreateNewApp(this._params).run();
@@ -42,7 +42,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 			const selectedApps: models.AppResponse[] = rnApps.filter(
 				(app) =>
 					app.name === selected.target &&
-					app.owner.type === selected.description,
+					app.owner.type === selected.description
 			);
 			if (!selectedApps || selectedApps.length !== 1) {
 				return;
@@ -53,11 +53,11 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 			const type: string = selectedApp.owner.type;
 
 			const OS: AppCenterOS | undefined = Utils.toAppCenterOS(
-				selectedApp.os,
+				selectedApp.os
 			);
 			if (!OS) {
 				this.logger.error(
-					LogStrings.UnknownOSFromCodePush(selectedApp.os),
+					LogStrings.UnknownOSFromCodePush(selectedApp.os)
 				);
 				return;
 			}
@@ -69,13 +69,13 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 						});
 						return await this.client.codePushDeployments.list(
 							selectedApp.owner.name,
-							selectedApp.name,
+							selectedApp.name
 						);
 					});
 				const appDeployments: models.Deployment[] = deployments.sort(
 					(a, b): any => {
 						return a.name < b.name; // sort alphabetically
-					},
+					}
 				);
 
 				let currentDeployments: CurrentAppDeployments | null = null;
@@ -85,7 +85,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 							return {
 								name: d.name,
 							};
-						},
+						}
 					);
 					currentDeployments = {
 						codePushDeployments: deployments,
@@ -100,12 +100,12 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 					Constants.AppCenterDefaultTargetBinaryVersion,
 					type,
 					Constants.AppCenterDefaultIsMandatoryParam,
-					selectedAppSecret,
+					selectedAppSecret
 				);
 				if (app) {
 					const message = Messages.YourCurrentAppAndDeploymentMessage(
 						selected.target,
-						app.currentAppDeployments.currentDeploymentName,
+						app.currentAppDeployments.currentDeploymentName
 					);
 					VsCodeUI.ShowInfoMessage(message);
 				} else {

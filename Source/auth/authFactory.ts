@@ -9,14 +9,14 @@ import VstsAuth from "./vstsAuth";
 export class AuthFactory {
 	public static async getAuth(
 		authType: AuthProvider,
-		logger: ILogger,
+		logger: ILogger
 	): Promise<AppCenterAuth | VstsAuth> {
 		switch (authType) {
 			case AuthProvider.Vsts:
 				const vstsProfileStorage: FsProfileStorage<VstsProfile> =
 					new FsProfileStorage(
 						Utils.getVstsProfileFileName(),
-						logger,
+						logger
 					);
 				let vstsAuth: VstsAuth;
 				vstsAuth = new VstsAuth(vstsProfileStorage, logger);
@@ -26,12 +26,12 @@ export class AuthFactory {
 				const appcenterProfileStorage: FsProfileStorage<AppCenterProfile> =
 					new FsProfileStorage(
 						Utils.getAppCenterProfileFileName(),
-						logger,
+						logger
 					);
 				let appCenterAuth: AppCenterAuth;
 				appCenterAuth = new AppCenterAuth(
 					appcenterProfileStorage,
-					logger,
+					logger
 				);
 				await appCenterAuth.initialize();
 				return appCenterAuth;

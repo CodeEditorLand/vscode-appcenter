@@ -51,7 +51,7 @@ function _listTester(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -60,7 +60,7 @@ function _listTester(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -75,7 +75,7 @@ function _listTester(ownerName, appName, options, callback) {
 		"v0.1/tester/apps/{owner_name}/{app_name}/releases";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -157,12 +157,12 @@ function _listTester(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -290,12 +290,12 @@ function _listLatest(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -357,7 +357,7 @@ function _getLatestByHash(appSecret, releaseHash, options, callback) {
 			typeof appSecret.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appSecret cannot be null or undefined and it must be of type string.",
+				"appSecret cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -366,7 +366,7 @@ function _getLatestByHash(appSecret, releaseHash, options, callback) {
 			typeof releaseHash.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseHash cannot be null or undefined and it must be of type string.",
+				"releaseHash cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -388,11 +388,11 @@ function _getLatestByHash(appSecret, releaseHash, options, callback) {
 		"v0.1/sdk/apps/{app_secret}/releases/{release_hash}";
 	requestUrl = requestUrl.replace(
 		"{app_secret}",
-		encodeURIComponent(appSecret),
+		encodeURIComponent(appSecret)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_hash}",
-		encodeURIComponent(releaseHash),
+		encodeURIComponent(releaseHash)
 	);
 	let queryParameters = [];
 	if (udid !== null && udid !== undefined) {
@@ -468,12 +468,12 @@ function _getLatestByHash(appSecret, releaseHash, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -493,12 +493,12 @@ function _getLatestByHash(appSecret, releaseHash, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -564,7 +564,7 @@ function _getLatestByUser(releaseId, ownerName, appName, options, callback) {
 			typeof releaseId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type string.",
+				"releaseId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -580,7 +580,7 @@ function _getLatestByUser(releaseId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -589,7 +589,7 @@ function _getLatestByUser(releaseId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -604,11 +604,11 @@ function _getLatestByUser(releaseId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/releases/{release_id}";
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId),
+		encodeURIComponent(releaseId)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
@@ -685,12 +685,12 @@ function _getLatestByUser(releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -710,12 +710,12 @@ function _getLatestByUser(releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -736,12 +736,12 @@ function _getLatestByUser(releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -838,7 +838,7 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 			typeof releaseId !== "number"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type number.",
+				"releaseId cannot be null or undefined and it must be of type number."
 			);
 		}
 		if (body === null || body === undefined) {
@@ -850,7 +850,7 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -859,7 +859,7 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -874,11 +874,11 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/releases/{release_id}";
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId.toString()),
+		encodeURIComponent(releaseId.toString())
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -911,7 +911,7 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(body, null, 2)}.`,
+				`payload - ${JSON.stringify(body, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -966,12 +966,12 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -991,12 +991,12 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1017,12 +1017,12 @@ function _update(releaseId, body, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1080,7 +1080,7 @@ function _deleteMethod(releaseId, ownerName, appName, options, callback) {
 			typeof releaseId !== "number"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type number.",
+				"releaseId cannot be null or undefined and it must be of type number."
 			);
 		}
 		if (
@@ -1089,7 +1089,7 @@ function _deleteMethod(releaseId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1098,7 +1098,7 @@ function _deleteMethod(releaseId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1113,11 +1113,11 @@ function _deleteMethod(releaseId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/releases/{release_id}";
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId.toString()),
+		encodeURIComponent(releaseId.toString())
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1187,12 +1187,12 @@ function _deleteMethod(releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1212,12 +1212,12 @@ function _deleteMethod(releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1287,7 +1287,7 @@ function _availableToTester(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1296,7 +1296,7 @@ function _availableToTester(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1311,13 +1311,13 @@ function _availableToTester(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/releases/filter_by_tester";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (publishedOnly !== null && publishedOnly !== undefined) {
 		queryParameters.push(
-			"published_only=" + encodeURIComponent(publishedOnly.toString()),
+			"published_only=" + encodeURIComponent(publishedOnly.toString())
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1403,12 +1403,12 @@ function _availableToTester(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1477,7 +1477,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1486,7 +1486,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1501,13 +1501,13 @@ function _list(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/releases";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	let queryParameters = [];
 	if (publishedOnly !== null && publishedOnly !== undefined) {
 		queryParameters.push(
-			"published_only=" + encodeURIComponent(publishedOnly.toString()),
+			"published_only=" + encodeURIComponent(publishedOnly.toString())
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1593,12 +1593,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1653,7 +1653,7 @@ function _listLatest1(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1662,7 +1662,7 @@ function _listLatest1(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1677,7 +1677,7 @@ function _listLatest1(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/recent_releases";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1760,12 +1760,12 @@ function _listLatest1(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1814,7 +1814,7 @@ function _getLatestByDistributionGroup(
 	distributionGroupName,
 	releaseId,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -1833,7 +1833,7 @@ function _getLatestByDistributionGroup(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1842,7 +1842,7 @@ function _getLatestByDistributionGroup(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1851,7 +1851,7 @@ function _getLatestByDistributionGroup(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string.",
+				"distributionGroupName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1860,7 +1860,7 @@ function _getLatestByDistributionGroup(
 			typeof releaseId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type string.",
+				"releaseId cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1875,16 +1875,16 @@ function _getLatestByDistributionGroup(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/releases/{release_id}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName),
+		encodeURIComponent(distributionGroupName)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId),
+		encodeURIComponent(releaseId)
 	);
 
 	// Create HTTP transport objects
@@ -1953,12 +1953,12 @@ function _getLatestByDistributionGroup(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1978,12 +1978,12 @@ function _getLatestByDistributionGroup(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -2004,12 +2004,12 @@ function _getLatestByDistributionGroup(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -2057,7 +2057,7 @@ function _deleteWithDistributionGroupId(
 	distributionGroupName,
 	releaseId,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -2076,7 +2076,7 @@ function _deleteWithDistributionGroupId(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -2085,7 +2085,7 @@ function _deleteWithDistributionGroupId(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -2094,7 +2094,7 @@ function _deleteWithDistributionGroupId(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string.",
+				"distributionGroupName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -2103,7 +2103,7 @@ function _deleteWithDistributionGroupId(
 			typeof releaseId !== "number"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type number.",
+				"releaseId cannot be null or undefined and it must be of type number."
 			);
 		}
 	} catch (error) {
@@ -2118,16 +2118,16 @@ function _deleteWithDistributionGroupId(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/releases/{release_id}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName),
+		encodeURIComponent(distributionGroupName)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId.toString()),
+		encodeURIComponent(releaseId.toString())
 	);
 
 	// Create HTTP transport objects
@@ -2196,12 +2196,12 @@ function _deleteWithDistributionGroupId(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2245,7 +2245,7 @@ function _listByDistributionGroup(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -2264,7 +2264,7 @@ function _listByDistributionGroup(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string.",
+				"distributionGroupName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -2273,7 +2273,7 @@ function _listByDistributionGroup(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -2282,7 +2282,7 @@ function _listByDistributionGroup(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -2297,11 +2297,11 @@ function _listByDistributionGroup(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/releases";
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName),
+		encodeURIComponent(distributionGroupName)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -2384,12 +2384,12 @@ function _listByDistributionGroup(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2409,12 +2409,12 @@ function _listByDistributionGroup(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -2485,7 +2485,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2543,7 +2543,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2551,7 +2551,7 @@ class Releases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2578,7 +2578,7 @@ class Releases {
 			self._listLatest(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -2687,7 +2687,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2752,7 +2752,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2760,7 +2760,7 @@ class Releases {
 				appSecret,
 				releaseHash,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2797,7 +2797,7 @@ class Releases {
 		releaseId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2817,7 +2817,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2886,7 +2886,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2895,7 +2895,7 @@ class Releases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2965,7 +2965,7 @@ class Releases {
 		body,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2986,7 +2986,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3088,7 +3088,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3098,7 +3098,7 @@ class Releases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3127,7 +3127,7 @@ class Releases {
 		releaseId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -3147,7 +3147,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3209,7 +3209,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3218,7 +3218,7 @@ class Releases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3263,7 +3263,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3325,7 +3325,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3333,7 +3333,7 @@ class Releases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3378,7 +3378,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3440,7 +3440,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3485,7 +3485,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3544,7 +3544,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3552,7 +3552,7 @@ class Releases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3587,7 +3587,7 @@ class Releases {
 		appName,
 		distributionGroupName,
 		releaseId,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -3608,7 +3608,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3659,7 +3659,7 @@ class Releases {
 		distributionGroupName,
 		releaseId,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -3682,7 +3682,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3692,7 +3692,7 @@ class Releases {
 				distributionGroupName,
 				releaseId,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3724,7 +3724,7 @@ class Releases {
 		appName,
 		distributionGroupName,
 		releaseId,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -3745,7 +3745,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3794,7 +3794,7 @@ class Releases {
 		distributionGroupName,
 		releaseId,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -3817,7 +3817,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3827,7 +3827,7 @@ class Releases {
 				distributionGroupName,
 				releaseId,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3857,7 +3857,7 @@ class Releases {
 		distributionGroupName,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -3877,7 +3877,7 @@ class Releases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3923,7 +3923,7 @@ class Releases {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -3945,7 +3945,7 @@ class Releases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3954,7 +3954,7 @@ class Releases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}

@@ -16,12 +16,12 @@ export default class CodePushLinker {
 	constructor(
 		private appCenterAppCreator: AppCenterAppCreator,
 		private logger: ILogger,
-		private rootPath: string,
+		private rootPath: string
 	) {}
 
 	public async createCodePushDeployments(
 		apps: LinkableApp[],
-		ownerName: string,
+		ownerName: string
 	): Promise<Deployment[] | null> {
 		if (!apps || apps.length === 0) {
 			return null;
@@ -36,7 +36,7 @@ export default class CodePushLinker {
 				const deployment: Deployment =
 					await this.appCenterAppCreator.createCodePushDeployment(
 						app.appName,
-						ownerName,
+						ownerName
 					);
 				if (!deployment) {
 					continue;
@@ -60,7 +60,7 @@ export default class CodePushLinker {
 					this.logger,
 					true,
 					this.rootPath,
-					installCodePushCmd,
+					installCodePushCmd
 				);
 				const isLowerThan027: boolean =
 					await this.isReactNativeLowerThan027(this.rootPath);
@@ -70,7 +70,7 @@ export default class CodePushLinker {
 							this.logger,
 							true,
 							this.rootPath,
-							installRNPMCmd,
+							installRNPMCmd
 						);
 					} catch (error) {
 						this.logger.error(`Failed to run ${installRNPMCmd}`);
@@ -87,13 +87,13 @@ export default class CodePushLinker {
 	}
 
 	private async isReactNativeLowerThan027(
-		rootPath: string,
+		rootPath: string
 	): Promise<boolean> {
 		const version = await cpUtils.executeCommand(
 			this.logger,
 			true,
 			rootPath,
-			"npm view react-native version",
+			"npm view react-native version"
 		);
 		const versionNumber: number = Number.parseFloat(version);
 		return versionNumber < 0.27;
@@ -104,11 +104,11 @@ export default class CodePushLinker {
 		const cmd = this.useRNPM ? "rnpm" : "react-native";
 		const iosStagingDeploymentKey = this.findDeploymentKeyFor(
 			AppCenterOS.iOS,
-			deployments,
+			deployments
 		);
 		const androidStagingDeploymentKey = this.findDeploymentKeyFor(
 			AppCenterOS.Android,
-			deployments,
+			deployments
 		);
 		if (!iosStagingDeploymentKey && !androidStagingDeploymentKey) {
 			self.logger.error("Deployment keys are missing.");
@@ -134,7 +134,7 @@ export default class CodePushLinker {
 					true,
 					this.rootPath,
 					`${cmd} link react-native-code-push`,
-					inputValues,
+					inputValues
 				);
 				return true;
 			} catch (err) {
@@ -146,12 +146,12 @@ export default class CodePushLinker {
 
 	private findDeploymentKeyFor(
 		os: AppCenterOS,
-		deployments: Deployment[],
+		deployments: Deployment[]
 	): string {
 		const filteredDeployments: Deployment[] = deployments.filter(
 			(deployment) => {
 				return deployment.os.toLowerCase() === os.toLowerCase();
-			},
+			}
 		);
 		if (filteredDeployments.length === 0) {
 			return "";

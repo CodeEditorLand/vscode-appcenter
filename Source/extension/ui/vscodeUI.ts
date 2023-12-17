@@ -47,7 +47,7 @@ export class VsCodeUI {
 		statusBar: StatusBarItem,
 		text: string,
 		tooltip: string,
-		commandOnClick?: string,
+		commandOnClick?: string
 	): Promise<void> {
 		if (statusBar !== undefined) {
 			statusBar.command = commandOnClick; // undefined clears the command
@@ -75,7 +75,7 @@ export class VsCodeUI {
 	}
 
 	public static async ShowWarningMessage(
-		message: string,
+		message: string
 	): Promise<IButtonMessageItem> {
 		return this.showMessage(message, MessageTypes.Warn);
 	}
@@ -101,19 +101,19 @@ export class VsCodeUI {
 			case MessageTypes.Error:
 				chosenItem = await window.showErrorMessage(
 					messageToDisplay,
-					...messageItems,
+					...messageItems
 				);
 				break;
 			case MessageTypes.Info:
 				chosenItem = await window.showInformationMessage(
 					messageToDisplay,
-					...messageItems,
+					...messageItems
 				);
 				break;
 			case MessageTypes.Warn:
 				chosenItem = await window.showWarningMessage(
 					messageToDisplay,
-					...messageItems,
+					...messageItems
 				);
 				break;
 			default:
@@ -133,20 +133,20 @@ export class VsCodeUI {
 
 	public static async showProgress<R>(
 		task: (progress: Progress<{ message?: string }>) => Promise<R>,
-		title?: string,
+		title?: string
 	): Promise<R> {
 		return await window.withProgress(
 			{
 				location: ProgressLocation.Window,
 				title: title || Messages.VSCodeProgressLoadingTitle,
 			},
-			task,
+			task
 		);
 	}
 
 	public static async showInput(
 		prompt: string,
-		value?: string,
+		value?: string
 	): Promise<string> {
 		return await window.showInputBox({
 			prompt: prompt,
@@ -157,7 +157,7 @@ export class VsCodeUI {
 
 	public static async showQuickPick<T extends QuickPickItem>(
 		items: T[],
-		placeholder?: string,
+		placeholder?: string
 	): Promise<T> {
 		return await window.showQuickPick(items, {
 			placeHolder: placeholder || Strings.MenuTitleHint,

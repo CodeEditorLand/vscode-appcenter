@@ -58,7 +58,7 @@ function _update(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -77,7 +77,7 @@ function _update(
 			typeof deploymentName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deploymentName cannot be null or undefined and it must be of type string.",
+				"deploymentName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -86,7 +86,7 @@ function _update(
 			typeof releaseLabel.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseLabel cannot be null or undefined and it must be of type string.",
+				"releaseLabel cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (release === null || release === undefined) {
@@ -98,7 +98,7 @@ function _update(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -107,7 +107,7 @@ function _update(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -122,15 +122,15 @@ function _update(
 		"v0.1/apps/{owner_name}/{app_name}/deployments/{deployment_name}/releases/{release_label}";
 	requestUrl = requestUrl.replace(
 		"{deployment_name}",
-		encodeURIComponent(deploymentName),
+		encodeURIComponent(deploymentName)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_label}",
-		encodeURIComponent(releaseLabel),
+		encodeURIComponent(releaseLabel)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -160,14 +160,14 @@ function _update(
 			requestModel = client.serialize(
 				requestModelMapper,
 				release,
-				"release",
+				"release"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(release, null, 2)}.`,
+				`payload - ${JSON.stringify(release, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -206,7 +206,7 @@ function _update(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -233,12 +233,12 @@ function _update(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -302,7 +302,7 @@ class DeploymentReleases {
 		release,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -324,7 +324,7 @@ class DeploymentReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -387,7 +387,7 @@ class DeploymentReleases {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -411,7 +411,7 @@ class DeploymentReleases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -422,7 +422,7 @@ class DeploymentReleases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}

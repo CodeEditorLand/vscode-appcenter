@@ -45,7 +45,7 @@ function _getRealTimeStatusByReleaseId(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -64,7 +64,7 @@ function _getRealTimeStatusByReleaseId(
 			typeof storeName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"storeName cannot be null or undefined and it must be of type string.",
+				"storeName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -73,7 +73,7 @@ function _getRealTimeStatusByReleaseId(
 			typeof releaseId !== "number"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type number.",
+				"releaseId cannot be null or undefined and it must be of type number."
 			);
 		}
 		if (
@@ -82,7 +82,7 @@ function _getRealTimeStatusByReleaseId(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -91,7 +91,7 @@ function _getRealTimeStatusByReleaseId(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -106,15 +106,15 @@ function _getRealTimeStatusByReleaseId(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}/realtimestatus";
 	requestUrl = requestUrl.replace(
 		"{store_name}",
-		encodeURIComponent(storeName),
+		encodeURIComponent(storeName)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId.toString()),
+		encodeURIComponent(releaseId.toString())
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -170,7 +170,7 @@ function _getRealTimeStatusByReleaseId(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -197,12 +197,12 @@ function _getRealTimeStatusByReleaseId(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -250,7 +250,7 @@ function _getPublishError(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -269,7 +269,7 @@ function _getPublishError(
 			typeof storeName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"storeName cannot be null or undefined and it must be of type string.",
+				"storeName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -278,7 +278,7 @@ function _getPublishError(
 			typeof releaseId !== "number"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type number.",
+				"releaseId cannot be null or undefined and it must be of type number."
 			);
 		}
 		if (
@@ -287,7 +287,7 @@ function _getPublishError(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -296,7 +296,7 @@ function _getPublishError(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -311,15 +311,15 @@ function _getPublishError(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}/publish_error_details";
 	requestUrl = requestUrl.replace(
 		"{store_name}",
-		encodeURIComponent(storeName),
+		encodeURIComponent(storeName)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId.toString()),
+		encodeURIComponent(releaseId.toString())
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -375,7 +375,7 @@ function _getPublishError(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -402,12 +402,12 @@ function _getPublishError(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -465,7 +465,7 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 			typeof storeName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"storeName cannot be null or undefined and it must be of type string.",
+				"storeName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -474,7 +474,7 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 			typeof releaseId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type string.",
+				"releaseId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -483,7 +483,7 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -492,7 +492,7 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -507,15 +507,15 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}";
 	requestUrl = requestUrl.replace(
 		"{store_name}",
-		encodeURIComponent(storeName),
+		encodeURIComponent(storeName)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId),
+		encodeURIComponent(releaseId)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -571,7 +571,7 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -602,12 +602,12 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -653,7 +653,7 @@ function _deleteMethod(
 	ownerName,
 	appName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -672,7 +672,7 @@ function _deleteMethod(
 			typeof storeName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"storeName cannot be null or undefined and it must be of type string.",
+				"storeName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -681,7 +681,7 @@ function _deleteMethod(
 			typeof releaseId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type string.",
+				"releaseId cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -690,7 +690,7 @@ function _deleteMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -699,7 +699,7 @@ function _deleteMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -714,15 +714,15 @@ function _deleteMethod(
 		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}";
 	requestUrl = requestUrl.replace(
 		"{store_name}",
-		encodeURIComponent(storeName),
+		encodeURIComponent(storeName)
 	);
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId),
+		encodeURIComponent(releaseId)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -778,7 +778,7 @@ function _deleteMethod(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -841,7 +841,7 @@ function _list(storeName, ownerName, appName, options, callback) {
 			typeof storeName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"storeName cannot be null or undefined and it must be of type string.",
+				"storeName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -850,7 +850,7 @@ function _list(storeName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -859,7 +859,7 @@ function _list(storeName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -874,11 +874,11 @@ function _list(storeName, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases";
 	requestUrl = requestUrl.replace(
 		"{store_name}",
-		encodeURIComponent(storeName),
+		encodeURIComponent(storeName)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -934,7 +934,7 @@ function _list(storeName, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -974,12 +974,12 @@ function _list(storeName, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1035,7 +1035,7 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 			typeof storeName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"storeName cannot be null or undefined and it must be of type string.",
+				"storeName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1044,7 +1044,7 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1053,7 +1053,7 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1068,11 +1068,11 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/latest_release";
 	requestUrl = requestUrl.replace(
 		"{store_name}",
-		encodeURIComponent(storeName),
+		encodeURIComponent(storeName)
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1128,7 +1128,7 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1159,12 +1159,12 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1219,7 +1219,7 @@ class StoreReleases {
 		releaseId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -1240,7 +1240,7 @@ class StoreReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1290,7 +1290,7 @@ class StoreReleases {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -1313,7 +1313,7 @@ class StoreReleases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1323,7 +1323,7 @@ class StoreReleases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1355,7 +1355,7 @@ class StoreReleases {
 		releaseId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -1376,7 +1376,7 @@ class StoreReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1426,7 +1426,7 @@ class StoreReleases {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -1449,7 +1449,7 @@ class StoreReleases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1459,7 +1459,7 @@ class StoreReleases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1491,7 +1491,7 @@ class StoreReleases {
 		releaseId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -1512,7 +1512,7 @@ class StoreReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1576,7 +1576,7 @@ class StoreReleases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1586,7 +1586,7 @@ class StoreReleases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1618,7 +1618,7 @@ class StoreReleases {
 		releaseId,
 		ownerName,
 		appName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -1639,7 +1639,7 @@ class StoreReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1687,7 +1687,7 @@ class StoreReleases {
 		ownerName,
 		appName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -1710,7 +1710,7 @@ class StoreReleases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1720,7 +1720,7 @@ class StoreReleases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1764,7 +1764,7 @@ class StoreReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1825,7 +1825,7 @@ class StoreReleases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1834,7 +1834,7 @@ class StoreReleases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -1878,7 +1878,7 @@ class StoreReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1939,7 +1939,7 @@ class StoreReleases {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1948,7 +1948,7 @@ class StoreReleases {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}

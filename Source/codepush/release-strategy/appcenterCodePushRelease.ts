@@ -4,7 +4,7 @@ import { ICodePushReleaseParams } from "../../helpers/interfaces";
 
 export async function appCenterCodePushRelease(
 	client: AppCenterClient,
-	params: ICodePushReleaseParams,
+	params: ICodePushReleaseParams
 ): Promise<void> {
 	const app = params.app;
 	await client.codePushDeploymentReleases.create(
@@ -20,6 +20,6 @@ export async function appCenterCodePushRelease(
 			mandatory: params.isMandatory,
 			noDuplicateReleaseError: false, // TODO: remove it, not needed to send to server
 			rollout: params.rollout,
-		},
+		}
 	);
 }

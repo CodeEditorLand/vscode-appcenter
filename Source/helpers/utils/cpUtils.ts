@@ -33,12 +33,12 @@ export namespace cpUtils {
 				const childProc: cp.ChildProcess = cp.spawn(
 					command,
 					args,
-					options,
+					options
 				);
 
 				if (logger && !logErrorsOnly) {
 					logger.info(
-						`runningCommand', 'Running command: "${command} ${formattedArgs}"...`,
+						`runningCommand', 'Running command: "${command} ${formattedArgs}"...`
 					);
 				}
 
@@ -59,7 +59,7 @@ export namespace cpUtils {
 							const filtered = inputValues.filter(
 								(inputValue) => {
 									return line.indexOf(inputValue.label) > 0;
-								},
+								}
 							);
 							if (filtered.length > 0 && !filtered[0].sent) {
 								sentResponse = true;
@@ -101,13 +101,13 @@ export namespace cpUtils {
 					} else {
 						if (logger && !logErrorsOnly) {
 							logger.info(
-								`finishedRunningCommand', 'Finished running command: "${command} ${formattedArgs}".`,
+								`finishedRunningCommand', 'Finished running command: "${command} ${formattedArgs}".`
 							);
 						}
 						resolve();
 					}
 				});
-			},
+			}
 		);
 
 		return cmdOutput;

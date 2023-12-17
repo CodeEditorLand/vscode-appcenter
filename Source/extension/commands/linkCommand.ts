@@ -19,7 +19,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 
 	protected async handleShowCurrentAppQuickPickSelection(
 		selected: QuickPickAppItem,
-		_rnApps: models.AppResponse[],
+		_rnApps: models.AppResponse[]
 	) {
 		let currentApp: CurrentApp | null;
 		if (selected.target === this.currentAppMenuTarget) {
@@ -28,7 +28,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 			const selectedApps: models.AppResponse[] = _rnApps.filter(
 				(app) =>
 					app.name === selected.target &&
-					app.owner.type === selected.description,
+					app.owner.type === selected.description
 			);
 			if (!selectedApps || selectedApps.length !== 1) {
 				this.showedCount = 0;
@@ -41,7 +41,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 			const type: string = selectedApp.owner.type;
 
 			const OS: AppCenterOS | undefined = Utils.toAppCenterOS(
-				selectedApp.os,
+				selectedApp.os
 			);
 			currentApp = Utils.toCurrentApp(
 				selectedAppName,
@@ -50,7 +50,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 				Constants.AppCenterDefaultTargetBinaryVersion,
 				type,
 				Constants.AppCenterDefaultIsMandatoryParam,
-				selectedAppSecret,
+				selectedAppSecret
 			);
 		}
 		this.pickedApps.push(currentApp);
@@ -62,7 +62,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 					? AppCenterOS.iOS
 					: AppCenterOS.Android;
 			const cachedFilteredApps = this.getRnApps(
-				this.CachedAllApps,
+				this.CachedAllApps
 			).filter((cachedApp) => {
 				return cachedApp.os.toLowerCase() === missingOS.toLowerCase();
 			});
@@ -75,7 +75,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 				showCurrentApp,
 				false,
 				Strings.ProvideSecondAppHint,
-				true,
+				true
 			);
 		} else {
 			this.linkApps();

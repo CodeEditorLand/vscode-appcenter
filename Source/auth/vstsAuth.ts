@@ -19,7 +19,7 @@ class VstsProfileImpl implements VstsProfile {
 
 export default class VstsAuth extends Auth<VstsProfile> {
 	protected async getUserInfo(
-		loginInfo: VstsLoginInfo,
+		loginInfo: VstsLoginInfo
 	): Promise<VstsProfile> {
 		return new VstsProfileImpl(loginInfo);
 	}

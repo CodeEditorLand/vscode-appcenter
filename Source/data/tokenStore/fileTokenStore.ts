@@ -32,7 +32,7 @@ export class FileTokenStore implements TokenStore {
 	public list(): rx.Observable<TokenEntry> {
 		this.loadTokenStoreCache();
 		return rx.Observable.from(toPairs(this.tokenStoreCache)).map(
-			(pair) => ({ key: pair[0], accessToken: pair[1] }),
+			(pair) => ({ key: pair[0], accessToken: pair[1] })
 		);
 	}
 
@@ -70,7 +70,7 @@ export class FileTokenStore implements TokenStore {
 		if (!this.tokenStoreCache) {
 			try {
 				this.tokenStoreCache = JSON.parse(
-					fs.readFileSync(this.filePath, "utf8"),
+					fs.readFileSync(this.filePath, "utf8")
 				);
 			} catch (err) {
 				// No token cache file, creating new empty cache
@@ -82,7 +82,7 @@ export class FileTokenStore implements TokenStore {
 	private writeTokenStoreCache(): void {
 		fs.writeFileSync(
 			this.filePath,
-			JSON.stringify(this.tokenStoreCache, null, "\t"),
+			JSON.stringify(this.tokenStoreCache, null, "\t")
 		);
 	}
 }

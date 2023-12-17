@@ -17,7 +17,7 @@ export default class GetCurrentApp extends ReactNativeAppCommand {
 		const app: CurrentApp | null = await this.getCurrentApp();
 		if (app) {
 			VsCodeUI.ShowInfoMessage(
-				Messages.YourCurrentAppMessage(app.identifier),
+				Messages.YourCurrentAppMessage(app.identifier)
 			);
 		} else {
 			VsCodeUI.ShowWarningMessage(Messages.NoCurrentAppSetWarning);

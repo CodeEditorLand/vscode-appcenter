@@ -7,11 +7,11 @@ export class NullLogger implements ILogger {
 	public error(
 		_errorMessage: string,
 		_error?: Error | undefined,
-		_stack?: boolean | undefined,
+		_stack?: boolean | undefined
 	) {}
 	public debug(_message: string) {}
 	public logStream(
 		_data: String | Buffer,
-		_stream?: NodeJS.WritableStream | undefined,
+		_stream?: NodeJS.WritableStream | undefined
 	) {}
 }

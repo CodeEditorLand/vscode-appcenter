@@ -4,7 +4,10 @@ import { RNCPAppCommand } from "./rncpAppCommand";
 
 /* Internal command */
 export default class ShowMenu extends RNCPAppCommand {
-	constructor(params: CommandParams, private _app: CurrentApp = null) {
+	constructor(
+		params: CommandParams,
+		private _app: CurrentApp = null
+	) {
 		super(params);
 		this.checkForCodePush = false;
 	}

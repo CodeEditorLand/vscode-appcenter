@@ -8,7 +8,7 @@ export class SettingsMenu extends Menu {
 	constructor(
 		private appCenterProfilesCount: number,
 		private vstsProfilesCount: number,
-		params: CommandParams,
+		params: CommandParams
 	) {
 		super(params);
 	}

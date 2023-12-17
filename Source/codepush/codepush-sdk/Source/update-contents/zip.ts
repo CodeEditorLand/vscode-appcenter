@@ -16,7 +16,7 @@ interface ReleaseFile {
 
 export default function zip(
 	updateContentsPath: string,
-	outputDir?: string,
+	outputDir?: string
 ): Promise<string> {
 	return new Promise<string>(async (resolve, reject) => {
 		const releaseFiles: ReleaseFile[] = [];
@@ -26,7 +26,7 @@ export default function zip(
 				releaseFiles.push({
 					sourceLocation: updateContentsPath,
 					targetLocation: fileUtils.normalizePath(
-						path.basename(updateContentsPath),
+						path.basename(updateContentsPath)
 					), // Put the file in the root
 				});
 			}
@@ -45,7 +45,7 @@ export default function zip(
 		files.forEach((filePath: string) => {
 			const relativePath: string = path.relative(
 				baseDirectoryPath,
-				filePath,
+				filePath
 			);
 			releaseFiles.push({
 				sourceLocation: filePath,
@@ -59,7 +59,7 @@ export default function zip(
 
 		const packagePath: string = path.join(
 			outputDir,
-			fileUtils.generateRandomFilename(15) + ".zip",
+			fileUtils.generateRandomFilename(15) + ".zip"
 		);
 		const zipFile = new yazl.ZipFile();
 		const writeStream: fs.WriteStream = fs.createWriteStream(packagePath);
@@ -76,7 +76,7 @@ export default function zip(
 		releaseFiles.forEach((releaseFile: ReleaseFile) => {
 			zipFile.addFile(
 				releaseFile.sourceLocation,
-				releaseFile.targetLocation,
+				releaseFile.targetLocation
 			);
 		});
 

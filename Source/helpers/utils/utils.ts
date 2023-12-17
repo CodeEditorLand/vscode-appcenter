@@ -38,7 +38,7 @@ export class Utils {
 				0,
 				hint.length
 					? ELLIPSIZE_LENGTH_WITH_HINT
-					: ELLIPSIZE_LENGTH_WO_HINT,
+					: ELLIPSIZE_LENGTH_WO_HINT
 			) +
 			"..." +
 			hint
@@ -47,7 +47,7 @@ export class Utils {
 
 	public static Delay<T>(millis: number, value?: T): Promise<T> {
 		return new Promise((resolve) =>
-			setTimeout(() => resolve(value), millis),
+			setTimeout(() => resolve(value), millis)
 		);
 	}
 
@@ -105,7 +105,7 @@ export class Utils {
 		projectRoot: string | undefined,
 		packageName: string,
 		installHint: string,
-		showMessageOnError?: boolean,
+		showMessageOnError?: boolean
 	): boolean {
 		if (!projectRoot) {
 			return false;
@@ -115,7 +115,7 @@ export class Utils {
 			projectRoot,
 			"node_modules",
 			packageName,
-			"package.json",
+			"package.json"
 		);
 
 		try {
@@ -133,42 +133,42 @@ export class Utils {
 	public static isReactNativeProject(
 		logger: ILogger,
 		projectRoot: string | undefined,
-		showMessageOnError?: boolean,
+		showMessageOnError?: boolean
 	) {
 		return Utils.projectHaveNpmPackage(
 			logger,
 			projectRoot,
 			"react-native",
 			LogStrings.ReactNativeInstallMessage,
-			showMessageOnError,
+			showMessageOnError
 		);
 	}
 
 	public static isReactNativeCodePushProject(
 		logger: ILogger,
 		projectRoot: string | undefined,
-		showMessageOnError?: boolean,
+		showMessageOnError?: boolean
 	) {
 		return Utils.projectHaveNpmPackage(
 			logger,
 			projectRoot,
 			"react-native-code-push",
 			LogStrings.CodePushInstallMessage,
-			showMessageOnError,
+			showMessageOnError
 		);
 	}
 
 	public static isReactNativeAppCenterProject(
 		logger: ILogger,
 		projectRoot: string | undefined,
-		showMessageOnError?: boolean,
+		showMessageOnError?: boolean
 	) {
 		return Utils.projectHaveNpmPackage(
 			logger,
 			projectRoot,
 			"appcenter",
 			LogStrings.AppCenterInstallMessage,
-			showMessageOnError,
+			showMessageOnError
 		);
 	}
 
@@ -192,7 +192,7 @@ export class Utils {
 		targetBinaryVersion: string,
 		type: string,
 		isMandatory: boolean,
-		appSecret: string,
+		appSecret: string
 	): CurrentApp | null {
 		const matches = app.match(Validators.ValidAppCenterAppName);
 		if (matches !== null) {
@@ -210,7 +210,7 @@ export class Utils {
 					: {
 							codePushDeployments: [],
 							currentDeploymentName: "",
-					  },
+						},
 			};
 		}
 		return null;
@@ -229,7 +229,7 @@ export class Utils {
 		return path.join(
 			Utils.getUserDir(),
 			Constants.ProfileDir,
-			Constants.AppCenterProfileFileName,
+			Constants.AppCenterProfileFileName
 		);
 	}
 
@@ -237,7 +237,7 @@ export class Utils {
 		return path.join(
 			Utils.getUserDir(),
 			Constants.ProfileDir,
-			Constants.VstsProfileFileName,
+			Constants.VstsProfileFileName
 		);
 	}
 
@@ -245,7 +245,7 @@ export class Utils {
 		return path.join(
 			Utils.getUserDir(),
 			Constants.TokenDir,
-			Constants.AppCenterTokenFileName,
+			Constants.AppCenterTokenFileName
 		);
 	}
 
@@ -269,7 +269,7 @@ export class Utils {
 				[],
 				true,
 				{},
-				...["list", "--depth", "1", "-g", packageName],
+				...["list", "--depth", "1", "-g", packageName]
 			);
 		} catch (e) {
 			if (e instanceof SpawnError) {
@@ -289,19 +289,19 @@ export class Utils {
 	public static createAppCenterConfigFrom(
 		appName: string,
 		projectRootPath: string,
-		logger: ILogger,
+		logger: ILogger
 	): AppCenterConfig {
 		const pathToAppCenterConfigPlist: string = path.join(
 			projectRootPath,
 			"ios",
 			appName,
-			"AppCenter-Config.plist",
+			"AppCenter-Config.plist"
 		);
 		const pathToMainPlist: string = path.join(
 			projectRootPath,
 			"ios",
 			appName,
-			"Info.plist",
+			"Info.plist"
 		);
 		const pathToAndroidConfig: string = path.join(
 			projectRootPath,
@@ -310,7 +310,7 @@ export class Utils {
 			"src",
 			"main",
 			"assets",
-			"appcenter-config.json",
+			"appcenter-config.json"
 		);
 		const pathToAndroidStringResources: string = path.join(
 			projectRootPath,
@@ -320,20 +320,20 @@ export class Utils {
 			"main",
 			"res",
 			"values",
-			"strings.xml",
+			"strings.xml"
 		);
 		return new AppCenterConfig(
 			pathToAppCenterConfigPlist,
 			pathToMainPlist,
 			pathToAndroidConfig,
 			pathToAndroidStringResources,
-			logger,
+			logger
 		);
 	}
 
 	public static selectCurrentDeploymentName(
 		deployments: Deployment[],
-		currentDeploymentName: string = null,
+		currentDeploymentName: string = null
 	): string {
 		if (deployments.length === 0) {
 			return "";
@@ -348,7 +348,7 @@ export class Utils {
 
 		if (
 			deployments.some(
-				(depl) => depl.name === Constants.CodePushStagingDeploymentName,
+				(depl) => depl.name === Constants.CodePushStagingDeploymentName
 			)
 		) {
 			return Constants.CodePushStagingDeploymentName;

@@ -50,7 +50,7 @@ function _get(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -115,7 +115,7 @@ function _get(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -142,12 +142,12 @@ function _get(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -210,7 +210,7 @@ function _update(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -275,7 +275,7 @@ function _update(orgName, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(org, null, 2)}.`,
+				`payload - ${JSON.stringify(org, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -316,7 +316,7 @@ function _update(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -343,12 +343,12 @@ function _update(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -400,7 +400,7 @@ function _deleteMethod(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -465,7 +465,7 @@ function _deleteMethod(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -583,14 +583,14 @@ function _createOrUpdate(options, callback) {
 			requestModel = client.serialize(
 				requestModelMapper,
 				organization,
-				"organization",
+				"organization"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(organization, null, 2)}.`,
+				`payload - ${JSON.stringify(organization, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -631,7 +631,7 @@ function _createOrUpdate(options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -658,12 +658,12 @@ function _createOrUpdate(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -762,7 +762,7 @@ function _list(options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -801,12 +801,12 @@ function _list(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -856,7 +856,7 @@ class Organizations {
 			self._get(orgName, options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -920,7 +920,7 @@ class Organizations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -956,7 +956,7 @@ class Organizations {
 			self._update(orgName, options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -1025,7 +1025,7 @@ class Organizations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1066,7 +1066,7 @@ class Organizations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -1121,7 +1121,7 @@ class Organizations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1154,7 +1154,7 @@ class Organizations {
 			self._createOrUpdate(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -1219,7 +1219,7 @@ class Organizations {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -1248,7 +1248,7 @@ class Organizations {
 			self._list(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {

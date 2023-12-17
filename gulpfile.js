@@ -17,11 +17,11 @@ var sources = [srcPath, testPath, integrationTestPath].map(function (tsFolder) {
 	return tsFolder + "/**/*.ts";
 });
 
-var lintSources = [srcPath, testPath, integrationTestPath].map(function (
-	tsFolder,
-) {
-	return tsFolder + "/**/*.ts";
-});
+var lintSources = [srcPath, testPath, integrationTestPath].map(
+	function (tsFolder) {
+		return tsFolder + "/**/*.ts";
+	}
+);
 lintSources = lintSources.concat(["!src/api/appcenter/generated/**"]);
 
 gulp.task("tslint", function () {
@@ -32,7 +32,7 @@ gulp.task("tslint", function () {
 			tslint({
 				formatter: "verbose",
 				program: program,
-			}),
+			})
 		)
 		.pipe(tslint.report());
 });
@@ -72,12 +72,12 @@ gulp.task("build", function (callback) {
 				sourcemaps.write(".", {
 					includeContent: false,
 					sourceRoot: ".",
-				}),
+				})
 			)
 			.pipe(
 				gulp.dest(function (file) {
 					return file.cwd;
-				}),
+				})
 			)
 	);
 });

@@ -66,7 +66,7 @@ function _createForOrg(orgName, app, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (app === null || app === undefined) {
@@ -111,7 +111,7 @@ function _createForOrg(orgName, app, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(app, null, 2)}.`,
+				`payload - ${JSON.stringify(app, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -152,7 +152,7 @@ function _createForOrg(orgName, app, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -179,12 +179,12 @@ function _createForOrg(orgName, app, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -204,12 +204,12 @@ function _createForOrg(orgName, app, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -262,7 +262,7 @@ function _listForOrg(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string.",
+				"orgName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -329,7 +329,7 @@ function _listForOrg(orgName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -368,12 +368,12 @@ function _listForOrg(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -429,7 +429,7 @@ function _removeUser(ownerName, appName, userEmail, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -438,7 +438,7 @@ function _removeUser(ownerName, appName, userEmail, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -447,7 +447,7 @@ function _removeUser(ownerName, appName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string.",
+				"userEmail cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -462,12 +462,12 @@ function _removeUser(ownerName, appName, userEmail, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/users/{user_email}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{user_email}",
-		encodeURIComponent(userEmail),
+		encodeURIComponent(userEmail)
 	);
 
 	// Create HTTP transport objects
@@ -522,7 +522,7 @@ function _removeUser(ownerName, appName, userEmail, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -575,7 +575,7 @@ function _updateUserPermissions(
 	userEmail,
 	permissions,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -594,7 +594,7 @@ function _updateUserPermissions(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -603,7 +603,7 @@ function _updateUserPermissions(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -612,12 +612,12 @@ function _updateUserPermissions(
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string.",
+				"userEmail cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (!Array.isArray(permissions)) {
 			throw new Error(
-				"permissions cannot be null or undefined and it must be of type array.",
+				"permissions cannot be null or undefined and it must be of type array."
 			);
 		}
 		for (let i = 0; i < permissions.length; i++) {
@@ -648,12 +648,12 @@ function _updateUserPermissions(
 		"v0.1/apps/{owner_name}/{app_name}/users/{user_email}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{user_email}",
-		encodeURIComponent(userEmail),
+		encodeURIComponent(userEmail)
 	);
 
 	// Create HTTP transport objects
@@ -685,14 +685,14 @@ function _updateUserPermissions(
 			requestModel = client.serialize(
 				requestModelMapper,
 				userAppPermissionsData,
-				"userAppPermissionsData",
+				"userAppPermissionsData"
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userAppPermissionsData, null, 2)}.`,
+				`payload - ${JSON.stringify(userAppPermissionsData, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -733,7 +733,7 @@ function _updateUserPermissions(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -785,7 +785,7 @@ function _transferOwnership(
 	appName,
 	destinationOwnerName,
 	options,
-	callback,
+	callback
 ) {
 	/* jshint validthis: true */
 	let client = this.client;
@@ -804,7 +804,7 @@ function _transferOwnership(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -813,7 +813,7 @@ function _transferOwnership(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -822,7 +822,7 @@ function _transferOwnership(
 			typeof destinationOwnerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"destinationOwnerName cannot be null or undefined and it must be of type string.",
+				"destinationOwnerName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -837,12 +837,12 @@ function _transferOwnership(
 		"v0.1/apps/{owner_name}/{app_name}/transfer/{destination_owner_name}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{destination_owner_name}",
-		encodeURIComponent(destinationOwnerName),
+		encodeURIComponent(destinationOwnerName)
 	);
 
 	// Create HTTP transport objects
@@ -897,7 +897,7 @@ function _transferOwnership(
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -924,12 +924,12 @@ function _transferOwnership(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -984,7 +984,7 @@ function _listTesters(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -993,7 +993,7 @@ function _listTesters(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1008,7 +1008,7 @@ function _listTesters(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}/testers";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1064,7 +1064,7 @@ function _listTesters(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1104,12 +1104,12 @@ function _listTesters(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1163,7 +1163,7 @@ function _getTeams(appName, ownerName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1172,7 +1172,7 @@ function _getTeams(appName, ownerName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1188,7 +1188,7 @@ function _getTeams(appName, ownerName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 
 	// Create HTTP transport objects
@@ -1243,7 +1243,7 @@ function _getTeams(appName, ownerName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1282,12 +1282,12 @@ function _getTeams(appName, ownerName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1343,7 +1343,7 @@ function _get(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1352,7 +1352,7 @@ function _get(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1367,7 +1367,7 @@ function _get(ownerName, appName, options, callback) {
 		"v0.1/apps/{owner_name}/{app_name}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
@@ -1423,7 +1423,7 @@ function _get(ownerName, appName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1450,12 +1450,12 @@ function _get(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1522,7 +1522,7 @@ function _update(appName, ownerName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1531,7 +1531,7 @@ function _update(appName, ownerName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1547,7 +1547,7 @@ function _update(appName, ownerName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 
 	// Create HTTP transport objects
@@ -1579,7 +1579,7 @@ function _update(appName, ownerName, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(app, null, 2)}.`,
+				`payload - ${JSON.stringify(app, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -1620,7 +1620,7 @@ function _update(appName, ownerName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1647,12 +1647,12 @@ function _update(appName, ownerName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1706,7 +1706,7 @@ function _deleteMethod(appName, ownerName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string.",
+				"appName cannot be null or undefined and it must be of type string."
 			);
 		}
 		if (
@@ -1715,7 +1715,7 @@ function _deleteMethod(appName, ownerName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string.",
+				"ownerName cannot be null or undefined and it must be of type string."
 			);
 		}
 	} catch (error) {
@@ -1731,7 +1731,7 @@ function _deleteMethod(appName, ownerName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName),
+		encodeURIComponent(ownerName)
 	);
 
 	// Create HTTP transport objects
@@ -1786,7 +1786,7 @@ function _deleteMethod(appName, ownerName, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1892,7 +1892,7 @@ function _create(app, options, callback) {
 	} catch (error) {
 		let serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(app, null, 2)}.`,
+				`payload - ${JSON.stringify(app, null, 2)}.`
 		);
 		return callback(serializationError);
 	}
@@ -1933,7 +1933,7 @@ function _create(app, options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -1960,12 +1960,12 @@ function _create(app, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2090,7 +2090,7 @@ function _list(options, callback) {
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body",
+						"error.body"
 					);
 				}
 			} catch (defaultError) {
@@ -2129,12 +2129,12 @@ function _list(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result",
+						"result"
 					);
 				}
 			} catch (error) {
 				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2218,7 +2218,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2291,7 +2291,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2332,7 +2332,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2387,7 +2387,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2419,7 +2419,7 @@ class Apps {
 		ownerName,
 		appName,
 		userEmail,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2439,7 +2439,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2500,7 +2500,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2509,7 +2509,7 @@ class Apps {
 				appName,
 				userEmail,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2541,7 +2541,7 @@ class Apps {
 		appName,
 		userEmail,
 		permissions,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2562,7 +2562,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2610,7 +2610,7 @@ class Apps {
 		userEmail,
 		permissions,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -2633,7 +2633,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2643,7 +2643,7 @@ class Apps {
 				userEmail,
 				permissions,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2673,7 +2673,7 @@ class Apps {
 		ownerName,
 		appName,
 		destinationOwnerName,
-		options,
+		options
 	) {
 		let client = this.client;
 		let self = this;
@@ -2693,7 +2693,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2740,7 +2740,7 @@ class Apps {
 		appName,
 		destinationOwnerName,
 		options,
-		optionalCallback,
+		optionalCallback
 	) {
 		let client = this.client;
 		let self = this;
@@ -2762,7 +2762,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2771,7 +2771,7 @@ class Apps {
 				appName,
 				destinationOwnerName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2813,7 +2813,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2872,7 +2872,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2880,7 +2880,7 @@ class Apps {
 				ownerName,
 				appName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -2921,7 +2921,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -2979,7 +2979,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -2987,7 +2987,7 @@ class Apps {
 				appName,
 				ownerName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3029,7 +3029,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3089,7 +3089,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3144,7 +3144,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3214,7 +3214,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3258,7 +3258,7 @@ class Apps {
 						resolve(httpOperationResponse);
 					}
 					return;
-				},
+				}
 			);
 		});
 	}
@@ -3316,7 +3316,7 @@ class Apps {
 							resolve(result);
 						}
 						return;
-					},
+					}
 				);
 			});
 		} else {
@@ -3324,7 +3324,7 @@ class Apps {
 				appName,
 				ownerName,
 				options,
-				optionalCallback,
+				optionalCallback
 			);
 		}
 	}
@@ -3366,7 +3366,7 @@ class Apps {
 			self._create(app, options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -3474,7 +3474,7 @@ class Apps {
 			self._list(options, (err, result, request, response) => {
 				let httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response,
+					response
 				);
 				httpOperationResponse.body = result;
 				if (err) {
