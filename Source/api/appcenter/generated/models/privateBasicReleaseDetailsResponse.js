@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Basic information on a release for private apis
  *

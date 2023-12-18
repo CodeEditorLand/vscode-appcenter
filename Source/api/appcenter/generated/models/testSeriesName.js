@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * @summary Name of the test series
  *

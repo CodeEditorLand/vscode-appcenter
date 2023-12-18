@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * The response from the release creation API that just contains the created
  * release's distinct id.

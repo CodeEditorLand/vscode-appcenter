@@ -1,9 +1,9 @@
 import { CommandParams, CurrentApp } from "../../../helpers/interfaces";
 import { AppCenterOS } from "../../resources/constants";
-import { RNCPAppCommand } from "./rncpAppCommand";
-import { VsCodeUI, CustomQuickPickItem } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
+import { CustomQuickPickItem, VsCodeUI } from "../../ui/vscodeUI";
+import { RNCPAppCommand } from "./rncpAppCommand";
 
 export default class SetCurrentDeployment extends RNCPAppCommand {
 	constructor(params: CommandParams) {
@@ -31,11 +31,11 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 						description: "",
 						target: deployment.key,
 					};
-				}
+				},
 			);
 		const deployment: CustomQuickPickItem = await VsCodeUI.showQuickPick(
 			deploymentOptions,
-			Strings.SelectCurrentDeploymentHint
+			Strings.SelectCurrentDeploymentHint,
 		);
 		if (deployment) {
 			this.saveCurrentApp(
@@ -49,10 +49,10 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 				currentApp.targetBinaryVersion,
 				currentApp.type,
 				currentApp.isMandatory,
-				currentApp.appSecret
+				currentApp.appSecret,
 			);
 			VsCodeUI.ShowInfoMessage(
-				Messages.YourCurrentDeploymentMessage(deployment.label)
+				Messages.YourCurrentDeploymentMessage(deployment.label),
 			);
 		}
 	}

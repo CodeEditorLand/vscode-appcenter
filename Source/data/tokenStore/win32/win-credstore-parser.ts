@@ -2,8 +2,8 @@
 // Parser for the output of the creds.exe helper program.
 //
 
-import { pipeline, split } from "event-stream";
 import { Transform } from "stream";
+import { pipeline, split } from "event-stream";
 
 //
 // Regular expression to match the various fields in the input.
@@ -36,7 +36,7 @@ class WinCredStoreParsingStream extends Transform {
 	public _transform(
 		chunk: any,
 		_encoding: string,
-		callback: { (err?: Error): void }
+		callback: { (err?: Error): void },
 	): void {
 		const line = chunk.toString();
 
@@ -68,12 +68,12 @@ class WinCredStoreParsingStream extends Transform {
 function createParsingStream(): NodeJS.ReadWriteStream {
 	return pipeline(
 		split(),
-		new WinCredStoreParsingStream()
+		new WinCredStoreParsingStream(),
 	) as NodeJS.ReadWriteStream;
 }
 
 namespace createParsingStream {
-	export let ParsingStream = WinCredStoreParsingStream;
+	export const ParsingStream = WinCredStoreParsingStream;
 }
 
 export { createParsingStream };

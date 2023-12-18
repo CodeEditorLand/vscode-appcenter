@@ -1,15 +1,15 @@
 import * as vscode from "vscode";
 import {
+	AppCenterExtensionLogPrefix,
 	ILogger,
 	LogHelper,
 	LogLevel,
-	AppCenterExtensionLogPrefix,
 } from "./logHelper";
 
 const channels: { [channelName: string]: OutputChannelLogger } = {};
 
 export class OutputChannelLogger implements ILogger {
-	public static MAIN_CHANNEL_NAME: string = "React Native";
+	public static MAIN_CHANNEL_NAME = "React Native";
 	private outputChannel: vscode.OutputChannel;
 
 	public static disposeChannel(channelName: string): void {
@@ -26,13 +26,13 @@ export class OutputChannelLogger implements ILogger {
 	public static getChannel(
 		channelName: string,
 		lazy?: boolean,
-		preserveFocus?: boolean
+		preserveFocus?: boolean,
 	): OutputChannelLogger {
 		if (!channels[channelName]) {
 			channels[channelName] = new OutputChannelLogger(
 				channelName,
 				lazy,
-				preserveFocus
+				preserveFocus,
 			);
 		}
 
@@ -41,8 +41,8 @@ export class OutputChannelLogger implements ILogger {
 
 	constructor(
 		public readonly channelName: string,
-		lazy: boolean = false,
-		private preserveFocus: boolean = false
+		lazy = false,
+		private preserveFocus = false,
 	) {
 		if (!lazy) {
 			this.channel = vscode.window.createOutputChannel(this.channelName);
@@ -69,16 +69,12 @@ export class OutputChannelLogger implements ILogger {
 		this.log(message.toString(), LogLevel.Warning);
 	}
 
-	public error(
-		errorMessage: string,
-		error?: Error,
-		logStack: boolean = true
-	): void {
+	public error(errorMessage: string, error?: Error, logStack = true): void {
 		this.channel.appendLine(
 			OutputChannelLogger.getFormattedMessage(
 				errorMessage,
-				LogLevel.Error
-			)
+				LogLevel.Error,
+			),
 		);
 
 		// Print the error stack if necessary
@@ -101,7 +97,7 @@ export class OutputChannelLogger implements ILogger {
 
 	protected static getFormattedMessage(
 		message: string,
-		level: LogLevel
+		level: LogLevel,
 	): string {
 		return `[${AppCenterExtensionLogPrefix}: ${LogLevel[level]}] ${message}\n`;
 	}
@@ -119,7 +115,7 @@ export class OutputChannelLogger implements ILogger {
 			return this.outputChannel;
 		} else {
 			this.outputChannel = vscode.window.createOutputChannel(
-				this.channelName
+				this.channelName,
 			);
 			this.outputChannel.show(this.preserveFocus);
 			return this.outputChannel;

@@ -8,8 +8,6 @@
 /* jshint forin:false */
 /* jshint noempty:false */
 
-"use strict";
-
 exports.GetInAppUpdateTokenResponse = require("./getInAppUpdateTokenResponse");
 exports.ApiTokensCreateResponse = require("./apiTokensCreateResponse");
 exports.ApiTokensCreateRequest = require("./apiTokensCreateRequest");

@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Properties of new application release
  *

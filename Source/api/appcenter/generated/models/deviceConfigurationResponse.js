@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * A response containing the fully encoded binary blob for a mobileconfig
  *

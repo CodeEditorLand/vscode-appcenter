@@ -8,8 +8,6 @@
 /* jshint forin:false */
 /* jshint noempty:false */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const ServiceClient = msRest.ServiceClient;
 
@@ -43,7 +41,7 @@ class AppCenterClient extends ServiceClient {
 		}
 		this.credentials = credentials;
 
-		let packageInfo = this.getPackageJsonInfo(__dirname);
+		const packageInfo = this.getPackageJsonInfo(__dirname);
 		this.addUserAgentInfo(`${packageInfo.name}/${packageInfo.version}`);
 		this.devices = new operations.Devices(this);
 		this.orgInvitations = new operations.OrgInvitations(this);
@@ -64,7 +62,7 @@ class AppCenterClient extends ServiceClient {
 		this.missingSymbolGroups = new operations.MissingSymbolGroups(this);
 		this.repositories = new operations.Repositories(this);
 		this.repositoryConfigurations = new operations.RepositoryConfigurations(
-			this
+			this,
 		);
 		this.provisioning = new operations.Provisioning(this);
 		this.releaseUploads = new operations.ReleaseUploads(this);

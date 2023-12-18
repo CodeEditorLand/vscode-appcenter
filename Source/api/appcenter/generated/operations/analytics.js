@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -46,7 +44,7 @@ const WebResource = msRest.WebResource;
  */
 function _versionsMethod(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -54,9 +52,9 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let top = options && options.top !== undefined ? options.top : 30;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const top = options && options.top !== undefined ? options.top : 30;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -71,7 +69,7 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -89,12 +87,12 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -115,7 +113,7 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -124,7 +122,7 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -132,23 +130,23 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/versions";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (top !== null && top !== undefined) {
@@ -156,7 +154,7 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -164,14 +162,14 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -184,9 +182,9 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -209,13 +207,13 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -236,16 +234,18 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Versions"]().mapper();
+					const resultMapper = new client.models[
+						"Versions"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -299,10 +299,10 @@ function _perDeviceCounts(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -310,8 +310,8 @@ function _perDeviceCounts(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -326,7 +326,7 @@ function _perDeviceCounts(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -344,7 +344,7 @@ function _perDeviceCounts(
 			typeof interval.valueOf() !== "string"
 		) {
 			throw new Error(
-				"interval cannot be null or undefined and it must be of type string."
+				"interval cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(versions)) {
@@ -364,7 +364,7 @@ function _perDeviceCounts(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -373,7 +373,7 @@ function _perDeviceCounts(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -381,29 +381,29 @@ function _perDeviceCounts(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/sessions_per_device";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	queryParameters.push("interval=" + encodeURIComponent(interval));
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -411,14 +411,14 @@ function _perDeviceCounts(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -431,9 +431,9 @@ function _perDeviceCounts(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -456,13 +456,13 @@ function _perDeviceCounts(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -483,18 +483,18 @@ function _perDeviceCounts(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"SessionsPerDevice"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -544,10 +544,10 @@ function _sessionDurationsDistributionMethod(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -555,8 +555,8 @@ function _sessionDurationsDistributionMethod(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -571,7 +571,7 @@ function _sessionDurationsDistributionMethod(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -600,7 +600,7 @@ function _sessionDurationsDistributionMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -609,7 +609,7 @@ function _sessionDurationsDistributionMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -617,28 +617,28 @@ function _sessionDurationsDistributionMethod(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/session_durations_distribution";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -646,14 +646,14 @@ function _sessionDurationsDistributionMethod(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -666,9 +666,9 @@ function _sessionDurationsDistributionMethod(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -691,13 +691,13 @@ function _sessionDurationsDistributionMethod(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -718,18 +718,18 @@ function _sessionDurationsDistributionMethod(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"SessionDurationsDistribution"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -782,10 +782,10 @@ function _sessionCounts(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -793,8 +793,8 @@ function _sessionCounts(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -809,7 +809,7 @@ function _sessionCounts(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -827,7 +827,7 @@ function _sessionCounts(
 			typeof interval.valueOf() !== "string"
 		) {
 			throw new Error(
-				"interval cannot be null or undefined and it must be of type string."
+				"interval cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(versions)) {
@@ -847,7 +847,7 @@ function _sessionCounts(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -856,7 +856,7 @@ function _sessionCounts(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -864,29 +864,29 @@ function _sessionCounts(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/session_counts";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	queryParameters.push("interval=" + encodeURIComponent(interval));
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -894,14 +894,14 @@ function _sessionCounts(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -914,9 +914,9 @@ function _sessionCounts(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -939,13 +939,13 @@ function _sessionCounts(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -966,7 +966,7 @@ function _sessionCounts(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -984,12 +984,12 @@ function _sessionCounts(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1038,7 +1038,7 @@ function _sessionCounts(
  */
 function _placeCounts(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1046,9 +1046,9 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let top = options && options.top !== undefined ? options.top : 30;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const top = options && options.top !== undefined ? options.top : 30;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -1063,7 +1063,7 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -1081,12 +1081,12 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -1107,7 +1107,7 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1116,7 +1116,7 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1124,23 +1124,23 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/places";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (top !== null && top !== undefined) {
@@ -1148,7 +1148,7 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1156,14 +1156,14 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1176,9 +1176,9 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1201,13 +1201,13 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1228,16 +1228,16 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Places"]().mapper();
+					const resultMapper = new client.models["Places"]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1286,7 +1286,7 @@ function _placeCounts(start, ownerName, appName, options, callback) {
  */
 function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1294,9 +1294,9 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let top = options && options.top !== undefined ? options.top : 30;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const top = options && options.top !== undefined ? options.top : 30;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -1311,7 +1311,7 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -1329,12 +1329,12 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -1355,7 +1355,7 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1364,7 +1364,7 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1372,23 +1372,23 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/oses";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (top !== null && top !== undefined) {
@@ -1396,7 +1396,7 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1404,14 +1404,14 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1424,9 +1424,9 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1449,13 +1449,13 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1476,16 +1476,16 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["OSes"]().mapper();
+					const resultMapper = new client.models["OSes"]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1534,7 +1534,7 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
  */
 function _modelCounts(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1542,9 +1542,9 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let top = options && options.top !== undefined ? options.top : 30;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const top = options && options.top !== undefined ? options.top : 30;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -1559,7 +1559,7 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -1577,12 +1577,12 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -1603,7 +1603,7 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1612,7 +1612,7 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1620,23 +1620,23 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/models";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (top !== null && top !== undefined) {
@@ -1644,7 +1644,7 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1652,14 +1652,14 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1672,9 +1672,9 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1697,13 +1697,13 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1724,18 +1724,18 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AnalyticsModels"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1779,7 +1779,7 @@ function _modelCounts(start, ownerName, appName, options, callback) {
  */
 function _logFlow(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1787,7 +1787,7 @@ function _logFlow(ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let start =
+	const start =
 		options && options.start !== undefined ? options.start : undefined;
 	// Validate
 	try {
@@ -1807,7 +1807,7 @@ function _logFlow(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1816,7 +1816,7 @@ function _logFlow(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1824,20 +1824,20 @@ function _logFlow(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/log_flow";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	if (start !== null && start !== undefined) {
 		queryParameters.push(
-			"start=" + encodeURIComponent(client.serializeObject(start))
+			"start=" + encodeURIComponent(client.serializeObject(start)),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1845,14 +1845,14 @@ function _logFlow(ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1865,9 +1865,9 @@ function _logFlow(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1890,13 +1890,13 @@ function _logFlow(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1917,18 +1917,18 @@ function _logFlow(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"LogFlowLogContainer"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1977,7 +1977,7 @@ function _logFlow(ownerName, appName, options, callback) {
  */
 function _languageCounts(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1985,9 +1985,9 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let top = options && options.top !== undefined ? options.top : 30;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const top = options && options.top !== undefined ? options.top : 30;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -2002,7 +2002,7 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -2020,12 +2020,12 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -2046,7 +2046,7 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2055,7 +2055,7 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2063,23 +2063,23 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/languages";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (top !== null && top !== undefined) {
@@ -2087,7 +2087,7 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -2095,14 +2095,14 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -2115,9 +2115,9 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -2140,13 +2140,13 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -2167,18 +2167,18 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"Languages"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2223,7 +2223,7 @@ function _languageCounts(start, ownerName, appName, options, callback) {
  */
 function _genericLogFlow(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -2231,7 +2231,7 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let start =
+	const start =
 		options && options.start !== undefined ? options.start : undefined;
 	// Validate
 	try {
@@ -2251,7 +2251,7 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2260,7 +2260,7 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2268,20 +2268,20 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/generic_log_flow";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	if (start !== null && start !== undefined) {
 		queryParameters.push(
-			"start=" + encodeURIComponent(client.serializeObject(start))
+			"start=" + encodeURIComponent(client.serializeObject(start)),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -2289,14 +2289,14 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -2309,9 +2309,9 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -2334,13 +2334,13 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -2361,18 +2361,18 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"LogFlowGenericLogContainer"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2430,10 +2430,10 @@ function _eventPropertyCounts(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -2441,12 +2441,12 @@ function _eventPropertyCounts(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
-	let count = options && options.count !== undefined ? options.count : 5;
+	const count = options && options.count !== undefined ? options.count : 5;
 	// Validate
 	try {
 		if (
@@ -2455,7 +2455,7 @@ function _eventPropertyCounts(
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2464,7 +2464,7 @@ function _eventPropertyCounts(
 			typeof eventPropertyName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventPropertyName cannot be null or undefined and it must be of type string."
+				"eventPropertyName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2476,7 +2476,7 @@ function _eventPropertyCounts(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -2509,12 +2509,12 @@ function _eventPropertyCounts(
 		if (count !== null && count !== undefined) {
 			if (count > 10) {
 				throw new Error(
-					'"count" should satisfy the constraint - "InclusiveMaximum": 10'
+					'"count" should satisfy the constraint - "InclusiveMaximum": 10',
 				);
 			}
 			if (count < 1) {
 				throw new Error(
-					'"count" should satisfy the constraint - "InclusiveMinimum": 1'
+					'"count" should satisfy the constraint - "InclusiveMinimum": 1',
 				);
 			}
 		}
@@ -2524,7 +2524,7 @@ function _eventPropertyCounts(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2533,7 +2533,7 @@ function _eventPropertyCounts(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2541,36 +2541,36 @@ function _eventPropertyCounts(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/properties/{event_property_name}/counts";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{event_property_name}",
-		encodeURIComponent(eventPropertyName)
+		encodeURIComponent(eventPropertyName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (count !== null && count !== undefined) {
@@ -2581,14 +2581,14 @@ function _eventPropertyCounts(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -2601,9 +2601,9 @@ function _eventPropertyCounts(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -2626,13 +2626,13 @@ function _eventPropertyCounts(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -2653,18 +2653,18 @@ function _eventPropertyCounts(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"EventPropertyValues"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2708,10 +2708,10 @@ function _eventPropertiesMethod(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -2727,7 +2727,7 @@ function _eventPropertiesMethod(
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2736,7 +2736,7 @@ function _eventPropertiesMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2745,7 +2745,7 @@ function _eventPropertiesMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2753,30 +2753,30 @@ function _eventPropertiesMethod(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/properties";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -2789,9 +2789,9 @@ function _eventPropertiesMethod(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -2814,13 +2814,13 @@ function _eventPropertiesMethod(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -2841,18 +2841,18 @@ function _eventPropertiesMethod(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"EventProperties"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2904,10 +2904,10 @@ function _eventCountMethod(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -2915,8 +2915,8 @@ function _eventCountMethod(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -2928,7 +2928,7 @@ function _eventCountMethod(
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2940,7 +2940,7 @@ function _eventCountMethod(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -2969,7 +2969,7 @@ function _eventCountMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2978,7 +2978,7 @@ function _eventCountMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -2986,32 +2986,32 @@ function _eventCountMethod(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/event_count";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -3019,14 +3019,14 @@ function _eventCountMethod(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -3039,9 +3039,9 @@ function _eventCountMethod(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -3064,13 +3064,13 @@ function _eventCountMethod(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -3091,18 +3091,18 @@ function _eventCountMethod(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"EventCount"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -3154,10 +3154,10 @@ function _eventDeviceCountMethod(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -3165,8 +3165,8 @@ function _eventDeviceCountMethod(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -3178,7 +3178,7 @@ function _eventDeviceCountMethod(
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3190,7 +3190,7 @@ function _eventDeviceCountMethod(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -3219,7 +3219,7 @@ function _eventDeviceCountMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3228,7 +3228,7 @@ function _eventDeviceCountMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3236,32 +3236,32 @@ function _eventDeviceCountMethod(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/device_count";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -3269,14 +3269,14 @@ function _eventDeviceCountMethod(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -3289,9 +3289,9 @@ function _eventDeviceCountMethod(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -3314,13 +3314,13 @@ function _eventDeviceCountMethod(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -3341,18 +3341,18 @@ function _eventDeviceCountMethod(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"EventDeviceCount"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -3404,10 +3404,10 @@ function _eventPerSessionCount(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -3415,8 +3415,8 @@ function _eventPerSessionCount(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -3428,7 +3428,7 @@ function _eventPerSessionCount(
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3440,7 +3440,7 @@ function _eventPerSessionCount(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -3469,7 +3469,7 @@ function _eventPerSessionCount(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3478,7 +3478,7 @@ function _eventPerSessionCount(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3486,32 +3486,32 @@ function _eventPerSessionCount(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/count_per_session";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -3519,14 +3519,14 @@ function _eventPerSessionCount(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -3539,9 +3539,9 @@ function _eventPerSessionCount(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -3564,13 +3564,13 @@ function _eventPerSessionCount(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -3591,18 +3591,18 @@ function _eventPerSessionCount(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"EventCountPerSession"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -3654,10 +3654,10 @@ function _eventPerDeviceCount(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -3665,8 +3665,8 @@ function _eventPerDeviceCount(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -3678,7 +3678,7 @@ function _eventPerDeviceCount(
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3690,7 +3690,7 @@ function _eventPerDeviceCount(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -3719,7 +3719,7 @@ function _eventPerDeviceCount(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3728,7 +3728,7 @@ function _eventPerDeviceCount(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3736,32 +3736,32 @@ function _eventPerDeviceCount(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/count_per_device";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -3769,14 +3769,14 @@ function _eventPerDeviceCount(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -3789,9 +3789,9 @@ function _eventPerDeviceCount(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -3814,13 +3814,13 @@ function _eventPerDeviceCount(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -3841,18 +3841,18 @@ function _eventPerDeviceCount(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"EventCountPerDevice"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -3892,7 +3892,7 @@ function _eventPerDeviceCount(
  */
 function _eventsDelete(eventName, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -3908,7 +3908,7 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3917,7 +3917,7 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -3926,7 +3926,7 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -3934,30 +3934,30 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -3970,9 +3970,9 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -3995,13 +3995,13 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -4013,7 +4013,7 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -4070,7 +4070,7 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
  */
 function _eventsMethod(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -4078,22 +4078,22 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
-	let eventName =
+	const eventName =
 		options && options.eventName !== undefined
 			? options.eventName
 			: undefined;
-	let top = options && options.top !== undefined ? options.top : 30;
-	let skip = options && options.skip !== undefined ? options.skip : 0;
-	let inlinecount =
+	const top = options && options.top !== undefined ? options.top : 30;
+	const skip = options && options.skip !== undefined ? options.skip : 0;
+	const inlinecount =
 		options && options.inlinecount !== undefined
 			? options.inlinecount
 			: "none";
-	let orderby =
+	const orderby =
 		options && options.orderby !== undefined
 			? options.orderby
 			: "count desc";
@@ -4108,7 +4108,7 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -4148,12 +4148,12 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -4163,7 +4163,7 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 		if (skip !== null && skip !== undefined) {
 			if (skip < 0) {
 				throw new Error(
-					'"skip" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"skip" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -4187,7 +4187,7 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4196,7 +4196,7 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4204,33 +4204,33 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/events";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (eventName !== null && eventName !== undefined) {
 		queryParameters.push(
-			"event_name=" + encodeURIComponent(eventName.join("|"))
+			"event_name=" + encodeURIComponent(eventName.join("|")),
 		);
 	}
 	if (top !== null && top !== undefined) {
@@ -4250,14 +4250,14 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -4270,9 +4270,9 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -4295,13 +4295,13 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -4322,16 +4322,16 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Events"]().mapper();
+					const resultMapper = new client.models["Events"]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4371,7 +4371,7 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
  */
 function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -4387,7 +4387,7 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 			typeof eventName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"eventName cannot be null or undefined and it must be of type string."
+				"eventName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4396,7 +4396,7 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4405,7 +4405,7 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4413,30 +4413,30 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/event_logs/{event_name}";
 	requestUrl = requestUrl.replace(
 		"{event_name}",
-		encodeURIComponent(eventName)
+		encodeURIComponent(eventName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -4449,9 +4449,9 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -4474,13 +4474,13 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -4492,7 +4492,7 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -4531,10 +4531,10 @@ function _distributionReleaseCounts(
 	appName,
 	releases,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -4550,7 +4550,7 @@ function _distributionReleaseCounts(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4559,13 +4559,13 @@ function _distributionReleaseCounts(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (releases !== null && releases !== undefined) {
 			if (releases.length < 1) {
 				throw new Error(
-					'"releases" should satisfy the constraint - "MinItems": 1'
+					'"releases" should satisfy the constraint - "MinItems": 1',
 				);
 			}
 		}
@@ -4579,26 +4579,26 @@ function _distributionReleaseCounts(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/distribution/release_counts";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -4610,20 +4610,20 @@ function _distributionReleaseCounts(
 	let requestModel = null;
 	try {
 		if (releases1 !== null && releases1 !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"GetReleasesContainer"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				releases1,
-				"releases1"
+				"releases1",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(releases1, null, 2)}.`
+				`payload - ${JSON.stringify(releases1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -4633,9 +4633,9 @@ function _distributionReleaseCounts(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -4658,13 +4658,13 @@ function _distributionReleaseCounts(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -4685,18 +4685,18 @@ function _distributionReleaseCounts(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ReleaseCounts"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4748,10 +4748,10 @@ function _crashFreeDevicePercentagesMethod(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -4759,8 +4759,8 @@ function _crashFreeDevicePercentagesMethod(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -4775,7 +4775,7 @@ function _crashFreeDevicePercentagesMethod(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -4804,7 +4804,7 @@ function _crashFreeDevicePercentagesMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -4813,7 +4813,7 @@ function _crashFreeDevicePercentagesMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -4821,28 +4821,28 @@ function _crashFreeDevicePercentagesMethod(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/crashfree_device_percentages";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -4850,14 +4850,14 @@ function _crashFreeDevicePercentagesMethod(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -4870,9 +4870,9 @@ function _crashFreeDevicePercentagesMethod(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -4895,13 +4895,13 @@ function _crashFreeDevicePercentagesMethod(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -4922,18 +4922,18 @@ function _crashFreeDevicePercentagesMethod(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"CrashFreeDevicePercentages"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -4981,10 +4981,10 @@ function _crashGroupTotals(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -5000,7 +5000,7 @@ function _crashGroupTotals(
 			typeof crashGroupId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"crashGroupId cannot be null or undefined and it must be of type string."
+				"crashGroupId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5009,7 +5009,7 @@ function _crashGroupTotals(
 			typeof version.valueOf() !== "string"
 		) {
 			throw new Error(
-				"version cannot be null or undefined and it must be of type string."
+				"version cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5018,7 +5018,7 @@ function _crashGroupTotals(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5027,7 +5027,7 @@ function _crashGroupTotals(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -5035,35 +5035,35 @@ function _crashGroupTotals(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/overall";
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
-		encodeURIComponent(crashGroupId)
+		encodeURIComponent(crashGroupId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push("version=" + encodeURIComponent(version));
 	if (queryParameters.length > 0) {
 		requestUrl += "?" + queryParameters.join("&");
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -5076,9 +5076,9 @@ function _crashGroupTotals(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -5101,13 +5101,13 @@ function _crashGroupTotals(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -5128,18 +5128,18 @@ function _crashGroupTotals(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"CrashOverall"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -5190,10 +5190,10 @@ function _crashGroupOperatingSystemCounts(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -5201,7 +5201,7 @@ function _crashGroupOperatingSystemCounts(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let top = options && options.top !== undefined ? options.top : 30;
+	const top = options && options.top !== undefined ? options.top : 30;
 	// Validate
 	try {
 		if (
@@ -5210,7 +5210,7 @@ function _crashGroupOperatingSystemCounts(
 			typeof crashGroupId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"crashGroupId cannot be null or undefined and it must be of type string."
+				"crashGroupId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5219,7 +5219,7 @@ function _crashGroupOperatingSystemCounts(
 			typeof version.valueOf() !== "string"
 		) {
 			throw new Error(
-				"version cannot be null or undefined and it must be of type string."
+				"version cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (top !== null && top !== undefined && typeof top !== "number") {
@@ -5228,12 +5228,12 @@ function _crashGroupOperatingSystemCounts(
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -5243,7 +5243,7 @@ function _crashGroupOperatingSystemCounts(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5252,7 +5252,7 @@ function _crashGroupOperatingSystemCounts(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -5260,21 +5260,21 @@ function _crashGroupOperatingSystemCounts(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/operating_systems";
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
-		encodeURIComponent(crashGroupId)
+		encodeURIComponent(crashGroupId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push("version=" + encodeURIComponent(version));
 	if (top !== null && top !== undefined) {
 		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
@@ -5284,14 +5284,14 @@ function _crashGroupOperatingSystemCounts(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -5304,9 +5304,9 @@ function _crashGroupOperatingSystemCounts(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -5329,13 +5329,13 @@ function _crashGroupOperatingSystemCounts(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -5356,18 +5356,18 @@ function _crashGroupOperatingSystemCounts(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"CrashGroupOperatingSystems"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -5417,10 +5417,10 @@ function _crashGroupModelCounts(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -5428,7 +5428,7 @@ function _crashGroupModelCounts(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let top = options && options.top !== undefined ? options.top : 30;
+	const top = options && options.top !== undefined ? options.top : 30;
 	// Validate
 	try {
 		if (
@@ -5437,7 +5437,7 @@ function _crashGroupModelCounts(
 			typeof crashGroupId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"crashGroupId cannot be null or undefined and it must be of type string."
+				"crashGroupId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5446,7 +5446,7 @@ function _crashGroupModelCounts(
 			typeof version.valueOf() !== "string"
 		) {
 			throw new Error(
-				"version cannot be null or undefined and it must be of type string."
+				"version cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (top !== null && top !== undefined && typeof top !== "number") {
@@ -5455,12 +5455,12 @@ function _crashGroupModelCounts(
 		if (top !== null && top !== undefined) {
 			if (top > 2000) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMaximum": 2000'
+					'"top" should satisfy the constraint - "InclusiveMaximum": 2000',
 				);
 			}
 			if (top < 0) {
 				throw new Error(
-					'"top" should satisfy the constraint - "InclusiveMinimum": 0'
+					'"top" should satisfy the constraint - "InclusiveMinimum": 0',
 				);
 			}
 		}
@@ -5470,7 +5470,7 @@ function _crashGroupModelCounts(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5479,7 +5479,7 @@ function _crashGroupModelCounts(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -5487,21 +5487,21 @@ function _crashGroupModelCounts(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/models";
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
-		encodeURIComponent(crashGroupId)
+		encodeURIComponent(crashGroupId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push("version=" + encodeURIComponent(version));
 	if (top !== null && top !== undefined) {
 		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
@@ -5511,14 +5511,14 @@ function _crashGroupModelCounts(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -5531,9 +5531,9 @@ function _crashGroupModelCounts(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -5556,13 +5556,13 @@ function _crashGroupModelCounts(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -5583,18 +5583,18 @@ function _crashGroupModelCounts(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"CrashGroupModels"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -5648,10 +5648,10 @@ function _crashGroupCounts(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -5659,7 +5659,7 @@ function _crashGroupCounts(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
+	const end = options && options.end !== undefined ? options.end : undefined;
 	// Validate
 	try {
 		if (
@@ -5668,7 +5668,7 @@ function _crashGroupCounts(
 			typeof crashGroupId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"crashGroupId cannot be null or undefined and it must be of type string."
+				"crashGroupId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5677,7 +5677,7 @@ function _crashGroupCounts(
 			typeof version.valueOf() !== "string"
 		) {
 			throw new Error(
-				"version cannot be null or undefined and it must be of type string."
+				"version cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5689,7 +5689,7 @@ function _crashGroupCounts(
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -5707,7 +5707,7 @@ function _crashGroupCounts(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5716,7 +5716,7 @@ function _crashGroupCounts(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -5724,28 +5724,28 @@ function _crashGroupCounts(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/crash_counts";
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
-		encodeURIComponent(crashGroupId)
+		encodeURIComponent(crashGroupId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push("version=" + encodeURIComponent(version));
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -5753,14 +5753,14 @@ function _crashGroupCounts(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -5773,9 +5773,9 @@ function _crashGroupCounts(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -5798,13 +5798,13 @@ function _crashGroupCounts(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -5825,18 +5825,18 @@ function _crashGroupCounts(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"CrashCounts"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -5880,10 +5880,10 @@ function _crashGroupsTotals(
 	appName,
 	crashGroups,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -5899,7 +5899,7 @@ function _crashGroupsTotals(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -5908,13 +5908,13 @@ function _crashGroupsTotals(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (crashGroups !== null && crashGroups !== undefined) {
 			if (crashGroups.length < 1) {
 				throw new Error(
-					'"crashGroups" should satisfy the constraint - "MinItems": 1'
+					'"crashGroups" should satisfy the constraint - "MinItems": 1',
 				);
 			}
 		}
@@ -5928,26 +5928,26 @@ function _crashGroupsTotals(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -5959,20 +5959,20 @@ function _crashGroupsTotals(
 	let requestModel = null;
 	try {
 		if (crashGroups1 !== null && crashGroups1 !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"CrashGroupContainer"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				crashGroups1,
-				"crashGroups1"
+				"crashGroups1",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(crashGroups1, null, 2)}.`
+				`payload - ${JSON.stringify(crashGroups1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -5982,9 +5982,9 @@ function _crashGroupsTotals(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -6007,13 +6007,13 @@ function _crashGroupsTotals(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -6034,7 +6034,7 @@ function _crashGroupsTotals(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -6052,12 +6052,12 @@ function _crashGroupsTotals(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -6103,7 +6103,7 @@ function _crashGroupsTotals(
  */
 function _crashCountsMethod(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -6111,8 +6111,8 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -6127,7 +6127,7 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -6156,7 +6156,7 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -6165,7 +6165,7 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -6173,28 +6173,28 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_counts";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -6202,14 +6202,14 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -6222,9 +6222,9 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -6247,13 +6247,13 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -6274,18 +6274,18 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"CrashCounts"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -6328,10 +6328,10 @@ function _audienceNameExists(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -6347,18 +6347,18 @@ function _audienceNameExists(
 			typeof audienceName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"audienceName cannot be null or undefined and it must be of type string."
+				"audienceName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (audienceName !== null && audienceName !== undefined) {
 			if (audienceName.length > 64) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "MaxLength": 64'
+					'"audienceName" should satisfy the constraint - "MaxLength": 64',
 				);
 			}
 			if (audienceName.match(/[^\/]+/) === null) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/'
+					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/',
 				);
 			}
 		}
@@ -6368,7 +6368,7 @@ function _audienceNameExists(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -6377,7 +6377,7 @@ function _audienceNameExists(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -6385,30 +6385,30 @@ function _audienceNameExists(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
-		encodeURIComponent(audienceName)
+		encodeURIComponent(audienceName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "HEAD";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -6421,9 +6421,9 @@ function _audienceNameExists(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204 && statusCode !== 404) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -6446,13 +6446,13 @@ function _audienceNameExists(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -6464,7 +6464,7 @@ function _audienceNameExists(
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -6499,7 +6499,7 @@ function _audienceNameExists(
  */
 function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -6515,18 +6515,18 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 			typeof audienceName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"audienceName cannot be null or undefined and it must be of type string."
+				"audienceName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (audienceName !== null && audienceName !== undefined) {
 			if (audienceName.length > 64) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "MaxLength": 64'
+					'"audienceName" should satisfy the constraint - "MaxLength": 64',
 				);
 			}
 			if (audienceName.match(/[^\/]+/) === null) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/'
+					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/',
 				);
 			}
 		}
@@ -6536,7 +6536,7 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -6545,7 +6545,7 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -6553,30 +6553,30 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
-		encodeURIComponent(audienceName)
+		encodeURIComponent(audienceName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -6589,9 +6589,9 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204 && statusCode !== 404) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -6614,13 +6614,13 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -6632,7 +6632,7 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -6668,7 +6668,7 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
  */
 function _getAudience(audienceName, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -6684,18 +6684,18 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 			typeof audienceName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"audienceName cannot be null or undefined and it must be of type string."
+				"audienceName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (audienceName !== null && audienceName !== undefined) {
 			if (audienceName.length > 64) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "MaxLength": 64'
+					'"audienceName" should satisfy the constraint - "MaxLength": 64',
 				);
 			}
 			if (audienceName.match(/[^\/]+/) === null) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/'
+					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/',
 				);
 			}
 		}
@@ -6705,7 +6705,7 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -6714,7 +6714,7 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -6722,30 +6722,30 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
-		encodeURIComponent(audienceName)
+		encodeURIComponent(audienceName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -6758,9 +6758,9 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -6783,13 +6783,13 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -6810,16 +6810,18 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Audience"]().mapper();
+					const resultMapper = new client.models[
+						"Audience"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -6875,10 +6877,10 @@ function _createOrUpdateAudience(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -6894,18 +6896,18 @@ function _createOrUpdateAudience(
 			typeof audienceName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"audienceName cannot be null or undefined and it must be of type string."
+				"audienceName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (audienceName !== null && audienceName !== undefined) {
 			if (audienceName.length > 64) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "MaxLength": 64'
+					'"audienceName" should satisfy the constraint - "MaxLength": 64',
 				);
 			}
 			if (audienceName.match(/[^\/]+/) === null) {
 				throw new Error(
-					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/'
+					'"audienceName" should satisfy the constraint - "Pattern": /[^/]+/',
 				);
 			}
 		}
@@ -6918,7 +6920,7 @@ function _createOrUpdateAudience(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -6927,7 +6929,7 @@ function _createOrUpdateAudience(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -6935,30 +6937,30 @@ function _createOrUpdateAudience(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
-		encodeURIComponent(audienceName)
+		encodeURIComponent(audienceName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "PUT";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -6970,20 +6972,20 @@ function _createOrUpdateAudience(
 	let requestModel = null;
 	try {
 		if (audience !== null && audience !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"AudienceDefinition"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				audience,
-				"audience"
+				"audience",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(audience, null, 2)}.`
+				`payload - ${JSON.stringify(audience, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -6993,9 +6995,9 @@ function _createOrUpdateAudience(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -7018,13 +7020,13 @@ function _createOrUpdateAudience(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -7045,16 +7047,18 @@ function _createOrUpdateAudience(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Audience"]().mapper();
+					const resultMapper = new client.models[
+						"Audience"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -7101,10 +7105,10 @@ function _listDevicePropertyValues(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -7112,7 +7116,7 @@ function _listDevicePropertyValues(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let contains =
+	const contains =
 		options && options.contains !== undefined
 			? options.contains
 			: undefined;
@@ -7124,7 +7128,7 @@ function _listDevicePropertyValues(
 			typeof propertyName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"propertyName cannot be null or undefined and it must be of type string."
+				"propertyName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -7140,7 +7144,7 @@ function _listDevicePropertyValues(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -7149,7 +7153,7 @@ function _listDevicePropertyValues(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -7157,21 +7161,21 @@ function _listDevicePropertyValues(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/device_properties/{property_name}/values";
 	requestUrl = requestUrl.replace(
 		"{property_name}",
-		encodeURIComponent(propertyName)
+		encodeURIComponent(propertyName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	if (contains !== null && contains !== undefined) {
 		queryParameters.push("contains=" + encodeURIComponent(contains));
 	}
@@ -7180,14 +7184,14 @@ function _listDevicePropertyValues(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -7200,9 +7204,9 @@ function _listDevicePropertyValues(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -7225,13 +7229,13 @@ function _listDevicePropertyValues(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -7252,18 +7256,18 @@ function _listDevicePropertyValues(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AudienceDevicePropertyValuesListResult"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -7303,7 +7307,7 @@ function _listDevicePropertyValues(
  */
 function _listDeviceProperties(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -7319,7 +7323,7 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -7328,7 +7332,7 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -7336,26 +7340,26 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/device_properties";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -7368,9 +7372,9 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -7393,13 +7397,13 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -7420,18 +7424,18 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AudienceDevicePropertiesListResult"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -7471,7 +7475,7 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
  */
 function _listCustomProperties(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -7487,7 +7491,7 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -7496,7 +7500,7 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -7504,26 +7508,26 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/custom_properties";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -7536,9 +7540,9 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -7561,13 +7565,13 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -7588,18 +7592,18 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AudienceDevicePropertiesListResult"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -7649,7 +7653,7 @@ function _listCustomProperties(ownerName, appName, options, callback) {
  */
 function _testAudience(audience, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -7668,7 +7672,7 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -7677,7 +7681,7 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -7685,26 +7689,26 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/definition/test";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -7716,20 +7720,20 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 	let requestModel = null;
 	try {
 		if (audience !== null && audience !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"AudienceDefinition"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				audience,
-				"audience"
+				"audience",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(audience, null, 2)}.`
+				`payload - ${JSON.stringify(audience, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -7739,9 +7743,9 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -7764,13 +7768,13 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -7791,18 +7795,18 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AudienceTestResult"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -7844,7 +7848,7 @@ function _testAudience(audience, ownerName, appName, options, callback) {
  */
 function _listAudiences(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -7852,7 +7856,7 @@ function _listAudiences(ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let includeDisabled =
+	const includeDisabled =
 		options && options.includeDisabled !== undefined
 			? options.includeDisabled
 			: undefined;
@@ -7871,7 +7875,7 @@ function _listAudiences(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -7880,7 +7884,7 @@ function _listAudiences(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -7888,20 +7892,21 @@ function _listAudiences(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	if (includeDisabled !== null && includeDisabled !== undefined) {
 		queryParameters.push(
-			"include_disabled=" + encodeURIComponent(includeDisabled.toString())
+			"include_disabled=" +
+				encodeURIComponent(includeDisabled.toString()),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -7909,14 +7914,14 @@ function _listAudiences(ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -7929,9 +7934,9 @@ function _listAudiences(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -7954,13 +7959,13 @@ function _listAudiences(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -7981,18 +7986,18 @@ function _listAudiences(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AudienceListResult"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -8038,7 +8043,7 @@ function _listAudiences(ownerName, appName, options, callback) {
  */
 function _deviceCounts(start, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -8046,8 +8051,8 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let end = options && options.end !== undefined ? options.end : undefined;
-	let versions =
+	const end = options && options.end !== undefined ? options.end : undefined;
+	const versions =
 		options && options.versions !== undefined
 			? options.versions
 			: undefined;
@@ -8062,7 +8067,7 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 			)
 		) {
 			throw new Error(
-				"start cannot be null or undefined and it must be of type date."
+				"start cannot be null or undefined and it must be of type date.",
 			);
 		}
 		if (
@@ -8091,7 +8096,7 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -8100,7 +8105,7 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -8108,28 +8113,28 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/analytics/active_device_counts";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start))
+		"start=" + encodeURIComponent(client.serializeObject(start)),
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end))
+			"end=" + encodeURIComponent(client.serializeObject(end)),
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|"))
+			"versions=" + encodeURIComponent(versions.join("|")),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -8137,14 +8142,14 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -8157,9 +8162,9 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -8182,13 +8187,13 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorModel"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -8209,18 +8214,18 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ActiveDeviceCounts"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -8314,18 +8319,17 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._versionsMethod(
+			this._versionsMethod(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -8334,7 +8338,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8384,15 +8388,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	versionsMethod(start, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._versionsMethod(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._versionsMethod(
+				this._versionsMethod(
 					start,
 					ownerName,
 					appName,
@@ -8404,17 +8415,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._versionsMethod(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -8452,19 +8455,18 @@ class Analytics {
 		interval,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._perDeviceCounts(
+			this._perDeviceCounts(
 				start,
 				interval,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -8473,7 +8475,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8529,17 +8531,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._perDeviceCounts(
+				start,
+				interval,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._perDeviceCounts(
+				this._perDeviceCounts(
 					start,
 					interval,
 					ownerName,
@@ -8552,18 +8562,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._perDeviceCounts(
-				start,
-				interval,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -8596,18 +8597,17 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._sessionDurationsDistributionMethod(
+			this._sessionDurationsDistributionMethod(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -8616,7 +8616,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8668,17 +8668,24 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._sessionDurationsDistributionMethod(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._sessionDurationsDistributionMethod(
+				this._sessionDurationsDistributionMethod(
 					start,
 					ownerName,
 					appName,
@@ -8690,17 +8697,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._sessionDurationsDistributionMethod(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -8738,19 +8737,18 @@ class Analytics {
 		interval,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._sessionCounts(
+			this._sessionCounts(
 				start,
 				interval,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -8759,7 +8757,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8814,17 +8812,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._sessionCounts(
+				start,
+				interval,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._sessionCounts(
+				this._sessionCounts(
 					start,
 					interval,
 					ownerName,
@@ -8837,18 +8843,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._sessionCounts(
-				start,
-				interval,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -8881,16 +8878,15 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	placeCountsWithHttpOperationResponse(start, ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._placeCounts(
+			this._placeCounts(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -8899,7 +8895,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -8949,15 +8945,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	placeCounts(start, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._placeCounts(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._placeCounts(
+				this._placeCounts(
 					start,
 					ownerName,
 					appName,
@@ -8969,17 +8972,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._placeCounts(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -9015,18 +9010,17 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._operatingSystemCounts(
+			this._operatingSystemCounts(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9035,7 +9029,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9089,17 +9083,24 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._operatingSystemCounts(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._operatingSystemCounts(
+				this._operatingSystemCounts(
 					start,
 					ownerName,
 					appName,
@@ -9111,17 +9112,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._operatingSystemCounts(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -9154,16 +9147,15 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	modelCountsWithHttpOperationResponse(start, ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._modelCounts(
+			this._modelCounts(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9172,7 +9164,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9222,15 +9214,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	modelCounts(start, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._modelCounts(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._modelCounts(
+				this._modelCounts(
 					start,
 					ownerName,
 					appName,
@@ -9242,17 +9241,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._modelCounts(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -9280,15 +9271,14 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	logFlowWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._logFlow(
+			this._logFlow(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9297,7 +9287,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9342,15 +9332,16 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	logFlow(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._logFlow(ownerName, appName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._logFlow(
+				this._logFlow(
 					ownerName,
 					appName,
 					options,
@@ -9361,11 +9352,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._logFlow(ownerName, appName, options, optionalCallback);
 		}
 	}
 
@@ -9401,18 +9390,17 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._languageCounts(
+			this._languageCounts(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9421,7 +9409,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9471,15 +9459,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	languageCounts(start, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._languageCounts(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._languageCounts(
+				this._languageCounts(
 					start,
 					ownerName,
 					appName,
@@ -9491,17 +9486,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._languageCounts(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -9529,15 +9516,14 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	genericLogFlowWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._genericLogFlow(
+			this._genericLogFlow(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9546,7 +9532,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9592,15 +9578,21 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	genericLogFlow(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._genericLogFlow(
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._genericLogFlow(
+				this._genericLogFlow(
 					ownerName,
 					appName,
 					options,
@@ -9611,16 +9603,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._genericLogFlow(
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -9662,12 +9647,11 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventPropertyCounts(
+			this._eventPropertyCounts(
 				eventName,
 				eventPropertyName,
 				start,
@@ -9675,7 +9659,7 @@ class Analytics {
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9684,7 +9668,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9744,17 +9728,26 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventPropertyCounts(
+				eventName,
+				eventPropertyName,
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventPropertyCounts(
+				this._eventPropertyCounts(
 					eventName,
 					eventPropertyName,
 					start,
@@ -9768,19 +9761,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventPropertyCounts(
-				eventName,
-				eventPropertyName,
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -9808,18 +9791,17 @@ class Analytics {
 		eventName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventPropertiesMethod(
+			this._eventPropertiesMethod(
 				eventName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9828,7 +9810,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -9874,17 +9856,24 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventPropertiesMethod(
+				eventName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventPropertiesMethod(
+				this._eventPropertiesMethod(
 					eventName,
 					ownerName,
 					appName,
@@ -9896,17 +9885,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventPropertiesMethod(
-				eventName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -9942,19 +9923,18 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventCountMethod(
+			this._eventCountMethod(
 				eventName,
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -9963,7 +9943,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10017,17 +9997,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventCountMethod(
+				eventName,
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventCountMethod(
+				this._eventCountMethod(
 					eventName,
 					start,
 					ownerName,
@@ -10040,18 +10028,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventCountMethod(
-				eventName,
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -10087,19 +10066,18 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventDeviceCountMethod(
+			this._eventDeviceCountMethod(
 				eventName,
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -10108,7 +10086,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10162,17 +10140,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventDeviceCountMethod(
+				eventName,
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventDeviceCountMethod(
+				this._eventDeviceCountMethod(
 					eventName,
 					start,
 					ownerName,
@@ -10185,18 +10171,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventDeviceCountMethod(
-				eventName,
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -10232,19 +10209,18 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventPerSessionCount(
+			this._eventPerSessionCount(
 				eventName,
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -10253,7 +10229,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10307,17 +10283,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventPerSessionCount(
+				eventName,
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventPerSessionCount(
+				this._eventPerSessionCount(
 					eventName,
 					start,
 					ownerName,
@@ -10330,18 +10314,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventPerSessionCount(
-				eventName,
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -10377,19 +10352,18 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventPerDeviceCount(
+			this._eventPerDeviceCount(
 				eventName,
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -10398,7 +10372,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10452,17 +10426,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventPerDeviceCount(
+				eventName,
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventPerDeviceCount(
+				this._eventPerDeviceCount(
 					eventName,
 					start,
 					ownerName,
@@ -10475,18 +10457,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventPerDeviceCount(
-				eventName,
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -10514,18 +10487,17 @@ class Analytics {
 		eventName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventsDelete(
+			this._eventsDelete(
 				eventName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -10534,7 +10506,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10575,15 +10547,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	eventsDelete(eventName, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventsDelete(
+				eventName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventsDelete(
+				this._eventsDelete(
 					eventName,
 					ownerName,
 					appName,
@@ -10595,17 +10574,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventsDelete(
-				eventName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -10651,16 +10622,15 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	eventsMethodWithHttpOperationResponse(start, ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventsMethod(
+			this._eventsMethod(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -10669,7 +10639,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10732,15 +10702,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	eventsMethod(start, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventsMethod(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventsMethod(
+				this._eventsMethod(
 					start,
 					ownerName,
 					appName,
@@ -10752,17 +10729,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventsMethod(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -10790,18 +10759,17 @@ class Analytics {
 		eventName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._eventsDeleteLogs(
+			this._eventsDeleteLogs(
 				eventName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -10810,7 +10778,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10851,15 +10819,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	eventsDeleteLogs(eventName, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._eventsDeleteLogs(
+				eventName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._eventsDeleteLogs(
+				this._eventsDeleteLogs(
 					eventName,
 					ownerName,
 					appName,
@@ -10871,17 +10846,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._eventsDeleteLogs(
-				eventName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -10909,18 +10876,17 @@ class Analytics {
 		ownerName,
 		appName,
 		releases,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._distributionReleaseCounts(
+			this._distributionReleaseCounts(
 				ownerName,
 				appName,
 				releases,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -10929,7 +10895,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -10975,17 +10941,24 @@ class Analytics {
 		appName,
 		releases,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._distributionReleaseCounts(
+				ownerName,
+				appName,
+				releases,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._distributionReleaseCounts(
+				this._distributionReleaseCounts(
 					ownerName,
 					appName,
 					releases,
@@ -10997,17 +10970,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._distributionReleaseCounts(
-				ownerName,
-				appName,
-				releases,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -11042,18 +11007,17 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._crashFreeDevicePercentagesMethod(
+			this._crashFreeDevicePercentagesMethod(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -11062,7 +11026,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -11116,17 +11080,24 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._crashFreeDevicePercentagesMethod(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._crashFreeDevicePercentagesMethod(
+				this._crashFreeDevicePercentagesMethod(
 					start,
 					ownerName,
 					appName,
@@ -11138,17 +11109,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._crashFreeDevicePercentagesMethod(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -11180,19 +11143,18 @@ class Analytics {
 		version,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._crashGroupTotals(
+			this._crashGroupTotals(
 				crashGroupId,
 				version,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -11201,7 +11163,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -11251,17 +11213,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._crashGroupTotals(
+				crashGroupId,
+				version,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._crashGroupTotals(
+				this._crashGroupTotals(
 					crashGroupId,
 					version,
 					ownerName,
@@ -11274,18 +11244,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._crashGroupTotals(
-				crashGroupId,
-				version,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -11319,19 +11280,18 @@ class Analytics {
 		version,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._crashGroupOperatingSystemCounts(
+			this._crashGroupOperatingSystemCounts(
 				crashGroupId,
 				version,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -11340,7 +11300,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -11393,17 +11353,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._crashGroupOperatingSystemCounts(
+				crashGroupId,
+				version,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._crashGroupOperatingSystemCounts(
+				this._crashGroupOperatingSystemCounts(
 					crashGroupId,
 					version,
 					ownerName,
@@ -11416,18 +11384,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._crashGroupOperatingSystemCounts(
-				crashGroupId,
-				version,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -11461,19 +11420,18 @@ class Analytics {
 		version,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._crashGroupModelCounts(
+			this._crashGroupModelCounts(
 				crashGroupId,
 				version,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -11482,7 +11440,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -11534,17 +11492,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._crashGroupModelCounts(
+				crashGroupId,
+				version,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._crashGroupModelCounts(
+				this._crashGroupModelCounts(
 					crashGroupId,
 					version,
 					ownerName,
@@ -11557,18 +11523,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._crashGroupModelCounts(
-				crashGroupId,
-				version,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -11606,12 +11563,11 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._crashGroupCounts(
+			this._crashGroupCounts(
 				crashGroupId,
 				version,
 				start,
@@ -11619,7 +11575,7 @@ class Analytics {
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -11628,7 +11584,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -11684,17 +11640,26 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._crashGroupCounts(
+				crashGroupId,
+				version,
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._crashGroupCounts(
+				this._crashGroupCounts(
 					crashGroupId,
 					version,
 					start,
@@ -11708,19 +11673,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._crashGroupCounts(
-				crashGroupId,
-				version,
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -11749,18 +11704,17 @@ class Analytics {
 		ownerName,
 		appName,
 		crashGroups,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._crashGroupsTotals(
+			this._crashGroupsTotals(
 				ownerName,
 				appName,
 				crashGroups,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -11769,7 +11723,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -11815,17 +11769,24 @@ class Analytics {
 		appName,
 		crashGroups,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._crashGroupsTotals(
+				ownerName,
+				appName,
+				crashGroups,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._crashGroupsTotals(
+				this._crashGroupsTotals(
 					ownerName,
 					appName,
 					crashGroups,
@@ -11837,17 +11798,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._crashGroupsTotals(
-				ownerName,
-				appName,
-				crashGroups,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -11880,18 +11833,17 @@ class Analytics {
 		start,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._crashCountsMethod(
+			this._crashCountsMethod(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -11900,7 +11852,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -11947,15 +11899,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	crashCountsMethod(start, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._crashCountsMethod(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._crashCountsMethod(
+				this._crashCountsMethod(
 					start,
 					ownerName,
 					appName,
@@ -11967,17 +11926,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._crashCountsMethod(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12005,18 +11956,17 @@ class Analytics {
 		audienceName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._audienceNameExists(
+			this._audienceNameExists(
 				audienceName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12025,7 +11975,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12070,17 +12020,24 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._audienceNameExists(
+				audienceName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._audienceNameExists(
+				this._audienceNameExists(
 					audienceName,
 					ownerName,
 					appName,
@@ -12092,17 +12049,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._audienceNameExists(
-				audienceName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12130,18 +12079,17 @@ class Analytics {
 		audienceName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deleteAudience(
+			this._deleteAudience(
 				audienceName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12150,7 +12098,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12195,17 +12143,24 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deleteAudience(
+				audienceName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deleteAudience(
+				this._deleteAudience(
 					audienceName,
 					ownerName,
 					appName,
@@ -12217,17 +12172,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deleteAudience(
-				audienceName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12255,18 +12202,17 @@ class Analytics {
 		audienceName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._getAudience(
+			this._getAudience(
 				audienceName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12275,7 +12221,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12317,15 +12263,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	getAudience(audienceName, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._getAudience(
+				audienceName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._getAudience(
+				this._getAudience(
 					audienceName,
 					ownerName,
 					appName,
@@ -12337,17 +12290,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._getAudience(
-				audienceName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12387,19 +12332,18 @@ class Analytics {
 		audience,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._createOrUpdateAudience(
+			this._createOrUpdateAudience(
 				audienceName,
 				audience,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12408,7 +12352,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12466,17 +12410,25 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._createOrUpdateAudience(
+				audienceName,
+				audience,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._createOrUpdateAudience(
+				this._createOrUpdateAudience(
 					audienceName,
 					audience,
 					ownerName,
@@ -12489,18 +12441,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._createOrUpdateAudience(
-				audienceName,
-				audience,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12530,18 +12473,17 @@ class Analytics {
 		propertyName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listDevicePropertyValues(
+			this._listDevicePropertyValues(
 				propertyName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12550,7 +12492,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12599,17 +12541,24 @@ class Analytics {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listDevicePropertyValues(
+				propertyName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listDevicePropertyValues(
+				this._listDevicePropertyValues(
 					propertyName,
 					ownerName,
 					appName,
@@ -12621,17 +12570,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listDevicePropertyValues(
-				propertyName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12654,15 +12595,14 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	listDevicePropertiesWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listDeviceProperties(
+			this._listDeviceProperties(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12671,7 +12611,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12712,15 +12652,21 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listDeviceProperties(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listDeviceProperties(
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listDeviceProperties(
+				this._listDeviceProperties(
 					ownerName,
 					appName,
 					options,
@@ -12731,16 +12677,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listDeviceProperties(
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12763,15 +12702,14 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	listCustomPropertiesWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listCustomProperties(
+			this._listCustomProperties(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12780,7 +12718,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12821,15 +12759,21 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listCustomProperties(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listCustomProperties(
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listCustomProperties(
+				this._listCustomProperties(
 					ownerName,
 					appName,
 					options,
@@ -12840,16 +12784,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listCustomProperties(
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -12886,18 +12823,17 @@ class Analytics {
 		audience,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._testAudience(
+			this._testAudience(
 				audience,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -12906,7 +12842,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -12957,15 +12893,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	testAudience(audience, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._testAudience(
+				audience,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._testAudience(
+				this._testAudience(
 					audience,
 					ownerName,
 					appName,
@@ -12977,17 +12920,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._testAudience(
-				audience,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -13013,15 +12948,14 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	listAudiencesWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listAudiences(
+			this._listAudiences(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -13030,7 +12964,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -13073,15 +13007,21 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listAudiences(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listAudiences(
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listAudiences(
+				this._listAudiences(
 					ownerName,
 					appName,
 					options,
@@ -13092,16 +13032,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listAudiences(
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -13131,16 +13064,15 @@ class Analytics {
 	 * @reject {Error} - The error object.
 	 */
 	deviceCountsWithHttpOperationResponse(start, ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deviceCounts(
+			this._deviceCounts(
 				start,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -13149,7 +13081,7 @@ class Analytics {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -13196,15 +13128,22 @@ class Analytics {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	deviceCounts(start, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deviceCounts(
+				start,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deviceCounts(
+				this._deviceCounts(
 					start,
 					ownerName,
 					appName,
@@ -13216,17 +13155,9 @@ class Analytics {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deviceCounts(
-				start,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 }

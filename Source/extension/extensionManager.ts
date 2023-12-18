@@ -1,17 +1,17 @@
 import { Disposable, StatusBarItem } from "vscode";
+import { AppCenterClient, createAppCenterClient } from "../api/appcenter";
 import AppCenterAuth from "../auth/appCenterAuth";
 import VstsAuth from "../auth/vstsAuth";
-import { Profile, AppCenterProfile } from "../helpers/interfaces";
+import { AppCenterProfile, Profile } from "../helpers/interfaces";
+import { SettingsHelper } from "../helpers/settingsHelper";
 import { Utils } from "../helpers/utils/utils";
 import * as CommandHandlers from "./commandHandlers";
 import { ConsoleLogger } from "./log/consoleLogger";
 import { ILogger } from "./log/logHelper";
 import { AuthProvider, CommandNames } from "./resources/constants";
+import { Messages } from "./resources/messages";
 import { Strings } from "./resources/strings";
 import { VsCodeUI } from "./ui/vscodeUI";
-import { Messages } from "./resources/messages";
-import { AppCenterClient, createAppCenterClient } from "../api/appcenter";
-import { SettingsHelper } from "../helpers/settingsHelper";
 
 class CommandHandlersContainer {
 	private _appCenterCommandHandler: CommandHandlers.AppCenter;
@@ -22,27 +22,27 @@ class CommandHandlersContainer {
 	constructor(
 		private manager: ExtensionManager,
 		private appCenterAuth: AppCenterAuth,
-		private vstsAuth: VstsAuth
+		private vstsAuth: VstsAuth,
 	) {
 		this._appCenterCommandHandler = new CommandHandlers.AppCenter(
 			this.manager,
 			this.appCenterAuth,
-			this.vstsAuth
+			this.vstsAuth,
 		);
 		this._settingsCommandHandler = new CommandHandlers.Settings(
 			this.manager,
 			this.appCenterAuth,
-			this.vstsAuth
+			this.vstsAuth,
 		);
 		this._codePushCommandHandler = new CommandHandlers.CodePush(
 			this.manager,
 			this.appCenterAuth,
-			this.vstsAuth
+			this.vstsAuth,
 		);
 		this._testCommandHandler = new CommandHandlers.Test(
 			this.manager,
 			this.appCenterAuth,
-			this.vstsAuth
+			this.vstsAuth,
 		);
 	}
 
@@ -81,7 +81,7 @@ export class ExtensionManager implements Disposable {
 		projectRootPath: string | undefined,
 		logger: ILogger = new ConsoleLogger(),
 		appCenterAuth: AppCenterAuth,
-		vstsAuth: VstsAuth
+		vstsAuth: VstsAuth,
 	): Promise<void> {
 		this._logger = logger;
 		this._projectRootPath = projectRootPath;
@@ -89,7 +89,7 @@ export class ExtensionManager implements Disposable {
 		this._commandHandlersContainer = new CommandHandlersContainer(
 			this,
 			appCenterAuth,
-			vstsAuth
+			vstsAuth,
 		);
 		await this.initializeExtension();
 	}
@@ -108,17 +108,17 @@ export class ExtensionManager implements Disposable {
 
 	private async checkAppExists(
 		profile: AppCenterProfile,
-		appCenterAuth: AppCenterAuth
+		appCenterAuth: AppCenterAuth,
 	) {
 		const clientForProfile: AppCenterClient =
 			createAppCenterClient().fromProfile(
 				profile,
-				SettingsHelper.getAppCenterAPIEndpoint()
+				SettingsHelper.getAppCenterAPIEndpoint(),
 			);
 		try {
 			await clientForProfile.apps.get(
 				profile.currentApp.ownerName,
-				profile.currentApp.appName
+				profile.currentApp.appName,
 			);
 		} catch (e) {
 			if (e.statusCode === 404) {
@@ -136,7 +136,7 @@ export class ExtensionManager implements Disposable {
 				Utils.isReactNativeProject(
 					this._logger,
 					this.projectRootPath,
-					false
+					false,
 				)
 					? profile.currentApp.appName
 					: null;
@@ -145,12 +145,12 @@ export class ExtensionManager implements Disposable {
 				? Messages.YouAreLoggedInCurrentAppIsMessage(
 						AuthProvider.AppCenter,
 						profile.userName,
-						currentAppName
-					)
+						currentAppName,
+				  )
 				: Messages.YouAreLoggedInMessage(
 						AuthProvider.AppCenter,
-						profile.userName
-					);
+						profile.userName,
+				  );
 
 			return VsCodeUI.setStatusBar(
 				this._appCenterStatusBarItem,
@@ -158,14 +158,14 @@ export class ExtensionManager implements Disposable {
 					? `App Center: ${Utils.FormatAppName(currentAppName)}`
 					: `App Center: ${profile.userName}`,
 				tooltip,
-				`${CommandNames.ShowMenu}`
+				`${CommandNames.ShowMenu}`,
 			);
 		} else {
 			VsCodeUI.setStatusBar(
 				this._appCenterStatusBarItem,
 				`$(icon octicon-sign-in) ${Strings.LoginToAppCenterStatusBarButton}`,
 				Strings.UserMustSignInStatusBarMessage,
-				`${CommandNames.Login}`
+				`${CommandNames.Login}`,
 			);
 		}
 		return Promise.resolve(void 0);

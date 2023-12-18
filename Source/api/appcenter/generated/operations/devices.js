@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -54,7 +52,7 @@ const WebResource = msRest.WebResource;
  */
 function _registerUserForDevice(userId, body, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -70,7 +68,7 @@ function _registerUserForDevice(userId, body, options, callback) {
 			typeof userId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userId cannot be null or undefined and it must be of type string."
+				"userId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (body === null || body === undefined) {
@@ -81,7 +79,7 @@ function _registerUserForDevice(userId, body, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -89,14 +87,14 @@ function _registerUserForDevice(userId, body, options, callback) {
 	requestUrl = requestUrl.replace("{user_id}", encodeURIComponent(userId));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -108,16 +106,16 @@ function _registerUserForDevice(userId, body, options, callback) {
 	let requestModel = null;
 	try {
 		if (body !== null && body !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"DeviceInfoRequest"
 			]().mapper();
 			requestModel = client.serialize(requestModelMapper, body, "body");
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(body, null, 2)}.`
+				`payload - ${JSON.stringify(body, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -127,9 +125,9 @@ function _registerUserForDevice(userId, body, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200 && statusCode !== 404) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -166,18 +164,18 @@ function _registerUserForDevice(userId, body, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"DeviceInfoResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -191,18 +189,18 @@ function _registerUserForDevice(userId, body, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -239,7 +237,7 @@ function _registerUserForDevice(userId, body, options, callback) {
  */
 function _deviceDetails(deviceUdid, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -255,7 +253,7 @@ function _deviceDetails(deviceUdid, options, callback) {
 			typeof deviceUdid.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deviceUdid cannot be null or undefined and it must be of type string."
+				"deviceUdid cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -263,25 +261,25 @@ function _deviceDetails(deviceUdid, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/user/devices/{device_udid}";
 	requestUrl = requestUrl.replace(
 		"{device_udid}",
-		encodeURIComponent(deviceUdid)
+		encodeURIComponent(deviceUdid),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -294,14 +292,14 @@ function _deviceDetails(deviceUdid, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (
 			statusCode !== 200 &&
 			statusCode !== 400 &&
 			statusCode !== 403 &&
 			statusCode !== 404
 		) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -338,18 +336,18 @@ function _deviceDetails(deviceUdid, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"DeviceInfoResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -363,18 +361,18 @@ function _deviceDetails(deviceUdid, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -389,18 +387,18 @@ function _deviceDetails(deviceUdid, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -415,18 +413,18 @@ function _deviceDetails(deviceUdid, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError3 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -464,7 +462,7 @@ function _deviceDetails(deviceUdid, options, callback) {
  */
 function _removeUserDevice(deviceUdid, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -480,7 +478,7 @@ function _removeUserDevice(deviceUdid, options, callback) {
 			typeof deviceUdid.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deviceUdid cannot be null or undefined and it must be of type string."
+				"deviceUdid cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -488,25 +486,25 @@ function _removeUserDevice(deviceUdid, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/user/devices/{device_udid}";
 	requestUrl = requestUrl.replace(
 		"{device_udid}",
-		encodeURIComponent(deviceUdid)
+		encodeURIComponent(deviceUdid),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -519,9 +517,9 @@ function _removeUserDevice(deviceUdid, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200 && statusCode !== 403 && statusCode !== 404) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -558,18 +556,18 @@ function _removeUserDevice(deviceUdid, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -583,18 +581,18 @@ function _removeUserDevice(deviceUdid, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -629,7 +627,7 @@ function _removeUserDevice(deviceUdid, options, callback) {
  */
 function _userDevicesList(options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -639,19 +637,19 @@ function _userDevicesList(options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
-	let requestUrl =
+	const baseUrl = this.client.baseUri;
+	const requestUrl =
 		baseUrl + (baseUrl.endsWith("/") ? "" : "/") + "v0.1/user/devices";
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -664,14 +662,14 @@ function _userDevicesList(options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (
 			statusCode !== 200 &&
 			statusCode !== 400 &&
 			statusCode !== 403 &&
 			statusCode !== 404
 		) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -708,7 +706,7 @@ function _userDevicesList(options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -726,12 +724,12 @@ function _userDevicesList(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -745,18 +743,18 @@ function _userDevicesList(options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -771,18 +769,18 @@ function _userDevicesList(options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -797,18 +795,18 @@ function _userDevicesList(options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError3 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -855,10 +853,10 @@ function _getReleaseUpdateDevicesStatus(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -874,7 +872,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof releaseId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseId cannot be null or undefined and it must be of type string."
+				"releaseId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -883,7 +881,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof resignId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"resignId cannot be null or undefined and it must be of type string."
+				"resignId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -892,7 +890,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -901,7 +899,7 @@ function _getReleaseUpdateDevicesStatus(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -909,34 +907,34 @@ function _getReleaseUpdateDevicesStatus(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/releases/{release_id}/update_devices/{resign_id}";
 	requestUrl = requestUrl.replace(
 		"{release_id}",
-		encodeURIComponent(releaseId)
+		encodeURIComponent(releaseId),
 	);
 	requestUrl = requestUrl.replace(
 		"{resign_id}",
-		encodeURIComponent(resignId)
+		encodeURIComponent(resignId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -949,9 +947,9 @@ function _getReleaseUpdateDevicesStatus(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200 && statusCode !== 400 && statusCode !== 404) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -988,18 +986,18 @@ function _getReleaseUpdateDevicesStatus(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ResignStatus"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1013,18 +1011,18 @@ function _getReleaseUpdateDevicesStatus(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1039,18 +1037,18 @@ function _getReleaseUpdateDevicesStatus(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1097,10 +1095,10 @@ function _getUpdateDevicesStatus(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1116,7 +1114,7 @@ function _getUpdateDevicesStatus(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1125,7 +1123,7 @@ function _getUpdateDevicesStatus(
 			typeof resignId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"resignId cannot be null or undefined and it must be of type string."
+				"resignId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1134,7 +1132,7 @@ function _getUpdateDevicesStatus(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1143,7 +1141,7 @@ function _getUpdateDevicesStatus(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1151,34 +1149,34 @@ function _getUpdateDevicesStatus(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/update_devices/{resign_id}";
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 	requestUrl = requestUrl.replace(
 		"{resign_id}",
-		encodeURIComponent(resignId)
+		encodeURIComponent(resignId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1191,9 +1189,9 @@ function _getUpdateDevicesStatus(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200 && statusCode !== 400 && statusCode !== 404) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1230,18 +1228,18 @@ function _getUpdateDevicesStatus(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ResignStatus"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1255,18 +1253,18 @@ function _getUpdateDevicesStatus(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1281,18 +1279,18 @@ function _getUpdateDevicesStatus(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1342,10 +1340,10 @@ function _listCsvFormat(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1353,11 +1351,11 @@ function _listCsvFormat(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let unprovisionedOnly =
+	const unprovisionedOnly =
 		options && options.unprovisionedOnly !== undefined
 			? options.unprovisionedOnly
 			: false;
-	let udids =
+	const udids =
 		options && options.udids !== undefined ? options.udids : undefined;
 	// Validate
 	try {
@@ -1367,7 +1365,7 @@ function _listCsvFormat(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1394,7 +1392,7 @@ function _listCsvFormat(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1403,7 +1401,7 @@ function _listCsvFormat(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1411,25 +1409,25 @@ function _listCsvFormat(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/devices/download_devices_list";
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	if (unprovisionedOnly !== null && unprovisionedOnly !== undefined) {
 		queryParameters.push(
 			"unprovisioned_only=" +
-				encodeURIComponent(unprovisionedOnly.toString())
+				encodeURIComponent(unprovisionedOnly.toString()),
 		);
 	}
 	if (udids !== null && udids !== undefined) {
@@ -1440,14 +1438,14 @@ function _listCsvFormat(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1462,14 +1460,14 @@ function _listCsvFormat(
 			return callback(err);
 		}
 
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (
 			statusCode !== 200 &&
 			statusCode !== 400 &&
 			statusCode !== 404 &&
 			statusCode !== 500
 		) {
-			let error = new Error(`Unexpected status code: ${statusCode}`);
+			const error = new Error(`Unexpected status code: ${statusCode}`);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1499,7 +1497,7 @@ function _listCsvFormat(
 		}
 
 		// Create Result
-		let result = response;
+		const result = response;
 		return callback(null, result, httpRequest, response);
 	});
 }
@@ -1536,7 +1534,7 @@ function _listCsvFormat(
  */
 function _list(distributionGroupName, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1544,7 +1542,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let releaseId =
+	const releaseId =
 		options && options.releaseId !== undefined
 			? options.releaseId
 			: undefined;
@@ -1556,7 +1554,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1572,7 +1570,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1581,7 +1579,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1589,24 +1587,24 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/devices";
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	if (releaseId !== null && releaseId !== undefined) {
 		queryParameters.push(
-			"release_id=" + encodeURIComponent(releaseId.toString())
+			"release_id=" + encodeURIComponent(releaseId.toString()),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -1614,14 +1612,14 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1634,9 +1632,9 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200 && statusCode !== 400 && statusCode !== 404) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1673,7 +1671,7 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -1691,12 +1689,12 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1710,18 +1708,18 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1736,18 +1734,18 @@ function _list(distributionGroupName, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorDetails"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1816,15 +1814,14 @@ class Devices {
 	 * @reject {Error} - The error object.
 	 */
 	registerUserForDeviceWithHttpOperationResponse(userId, body, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._registerUserForDevice(
+			this._registerUserForDevice(
 				userId,
 				body,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1833,7 +1830,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1891,15 +1888,21 @@ class Devices {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	registerUserForDevice(userId, body, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._registerUserForDevice(
+				userId,
+				body,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._registerUserForDevice(
+				this._registerUserForDevice(
 					userId,
 					body,
 					options,
@@ -1910,16 +1913,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._registerUserForDevice(
-				userId,
-				body,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1940,14 +1936,13 @@ class Devices {
 	 * @reject {Error} - The error object.
 	 */
 	deviceDetailsWithHttpOperationResponse(deviceUdid, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deviceDetails(
+			this._deviceDetails(
 				deviceUdid,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1956,7 +1951,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1993,15 +1988,16 @@ class Devices {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	deviceDetails(deviceUdid, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deviceDetails(deviceUdid, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deviceDetails(
+				this._deviceDetails(
 					deviceUdid,
 					options,
 					(err, result, request, response) => {
@@ -2011,11 +2007,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deviceDetails(deviceUdid, options, optionalCallback);
 		}
 	}
 
@@ -2036,14 +2030,13 @@ class Devices {
 	 * @reject {Error} - The error object.
 	 */
 	removeUserDeviceWithHttpOperationResponse(deviceUdid, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._removeUserDevice(
+			this._removeUserDevice(
 				deviceUdid,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2052,7 +2045,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2090,15 +2083,20 @@ class Devices {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	removeUserDevice(deviceUdid, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._removeUserDevice(
+				deviceUdid,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._removeUserDevice(
+				this._removeUserDevice(
 					deviceUdid,
 					options,
 					(err, result, request, response) => {
@@ -2108,15 +2106,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._removeUserDevice(
-				deviceUdid,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2135,13 +2127,12 @@ class Devices {
 	 * @reject {Error} - The error object.
 	 */
 	userDevicesListWithHttpOperationResponse(options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._userDevicesList(options, (err, result, request, response) => {
-				let httpOperationResponse = new msRest.HttpOperationResponse(
+			this._userDevicesList(options, (err, result, request, response) => {
+				const httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response
+					response,
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -2184,15 +2175,16 @@ class Devices {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	userDevicesList(options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._userDevicesList(options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._userDevicesList(
+				this._userDevicesList(
 					options,
 					(err, result, request, response) => {
 						if (err) {
@@ -2201,11 +2193,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._userDevicesList(options, optionalCallback);
 		}
 	}
 
@@ -2236,19 +2226,18 @@ class Devices {
 		resignId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._getReleaseUpdateDevicesStatus(
+			this._getReleaseUpdateDevicesStatus(
 				releaseId,
 				resignId,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2257,7 +2246,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2305,17 +2294,25 @@ class Devices {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._getReleaseUpdateDevicesStatus(
+				releaseId,
+				resignId,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._getReleaseUpdateDevicesStatus(
+				this._getReleaseUpdateDevicesStatus(
 					releaseId,
 					resignId,
 					ownerName,
@@ -2328,18 +2325,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._getReleaseUpdateDevicesStatus(
-				releaseId,
-				resignId,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2370,19 +2358,18 @@ class Devices {
 		resignId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._getUpdateDevicesStatus(
+			this._getUpdateDevicesStatus(
 				distributionGroupName,
 				resignId,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2391,7 +2378,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2439,17 +2426,25 @@ class Devices {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._getUpdateDevicesStatus(
+				distributionGroupName,
+				resignId,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._getUpdateDevicesStatus(
+				this._getUpdateDevicesStatus(
 					distributionGroupName,
 					resignId,
 					ownerName,
@@ -2462,18 +2457,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._getUpdateDevicesStatus(
-				distributionGroupName,
-				resignId,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2507,18 +2493,17 @@ class Devices {
 		distributionGroupName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listCsvFormat(
+			this._listCsvFormat(
 				distributionGroupName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2527,7 +2512,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2578,17 +2563,24 @@ class Devices {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listCsvFormat(
+				distributionGroupName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listCsvFormat(
+				this._listCsvFormat(
 					distributionGroupName,
 					ownerName,
 					appName,
@@ -2600,17 +2592,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listCsvFormat(
-				distributionGroupName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2642,18 +2626,17 @@ class Devices {
 		distributionGroupName,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._list(
+			this._list(
 				distributionGroupName,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2662,7 +2645,7 @@ class Devices {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2707,15 +2690,22 @@ class Devices {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	list(distributionGroupName, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._list(
+				distributionGroupName,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._list(
+				this._list(
 					distributionGroupName,
 					ownerName,
 					appName,
@@ -2727,17 +2717,9 @@ class Devices {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._list(
-				distributionGroupName,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 }

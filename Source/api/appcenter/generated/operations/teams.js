@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -37,7 +35,7 @@ const WebResource = msRest.WebResource;
  */
 function _removeUser(orgName, teamName, userName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -53,7 +51,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -62,7 +60,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -71,7 +69,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			typeof userName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userName cannot be null or undefined and it must be of type string."
+				"userName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -79,7 +77,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -87,22 +85,22 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 	requestUrl = requestUrl.replace(
 		"{user_name}",
-		encodeURIComponent(userName)
+		encodeURIComponent(userName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -115,9 +113,9 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -140,13 +138,13 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -158,7 +156,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -192,7 +190,7 @@ function _removeUser(orgName, teamName, userName, options, callback) {
  */
 function _getUsers(orgName, teamName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -208,7 +206,7 @@ function _getUsers(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -217,7 +215,7 @@ function _getUsers(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -225,7 +223,7 @@ function _getUsers(orgName, teamName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -233,18 +231,18 @@ function _getUsers(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -257,9 +255,9 @@ function _getUsers(orgName, teamName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -282,13 +280,13 @@ function _getUsers(orgName, teamName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -309,18 +307,18 @@ function _getUsers(orgName, teamName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"TeamUserResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -361,7 +359,7 @@ function _getUsers(orgName, teamName, options, callback) {
  */
 function _addUser(orgName, teamName, userEmail, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -377,7 +375,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -386,7 +384,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -395,7 +393,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -408,7 +406,7 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -416,18 +414,18 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -439,20 +437,20 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 	let requestModel = null;
 	try {
 		if (userEmail1 !== null && userEmail1 !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"UserEmailRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1"
+				"userEmail1",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -462,9 +460,9 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 201) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -487,13 +485,13 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -514,18 +512,18 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"TeamUserResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -574,10 +572,10 @@ function _updatePermissions(
 	appName,
 	permissions,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -593,7 +591,7 @@ function _updatePermissions(
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -602,7 +600,7 @@ function _updatePermissions(
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -611,12 +609,12 @@ function _updatePermissions(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (!Array.isArray(permissions)) {
 			throw new Error(
-				"permissions cannot be null or undefined and it must be of type array."
+				"permissions cannot be null or undefined and it must be of type array.",
 			);
 		}
 		for (let i = 0; i < permissions.length; i++) {
@@ -638,7 +636,7 @@ function _updatePermissions(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -646,19 +644,19 @@ function _updatePermissions(
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "PATCH";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -670,16 +668,16 @@ function _updatePermissions(
 	let requestModel = null;
 	try {
 		if (team !== null && team !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"TeamAppUpdateRequest"
 			]().mapper();
 			requestModel = client.serialize(requestModelMapper, team, "team");
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(team, null, 2)}.`
+				`payload - ${JSON.stringify(team, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -689,9 +687,9 @@ function _updatePermissions(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -714,13 +712,13 @@ function _updatePermissions(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -741,18 +739,18 @@ function _updatePermissions(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AppWithTeamPermissionsResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -792,7 +790,7 @@ function _updatePermissions(
  */
 function _removeApp(orgName, teamName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -808,7 +806,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -817,7 +815,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -826,7 +824,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -834,7 +832,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -842,19 +840,19 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -867,9 +865,9 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -892,13 +890,13 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -910,7 +908,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -947,7 +945,7 @@ function _removeApp(orgName, teamName, appName, options, callback) {
  */
 function _addApp(orgName, teamName, name, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -963,7 +961,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -972,7 +970,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -981,7 +979,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -994,7 +992,7 @@ function _addApp(orgName, teamName, name, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -1002,18 +1000,18 @@ function _addApp(orgName, teamName, name, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1025,16 +1023,16 @@ function _addApp(orgName, teamName, name, options, callback) {
 	let requestModel = null;
 	try {
 		if (app !== null && app !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"AppTeamAddRequest"
 			]().mapper();
 			requestModel = client.serialize(requestModelMapper, app, "app");
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(app, null, 2)}.`
+				`payload - ${JSON.stringify(app, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1044,9 +1042,9 @@ function _addApp(orgName, teamName, name, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 201) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1069,13 +1067,13 @@ function _addApp(orgName, teamName, name, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1096,18 +1094,18 @@ function _addApp(orgName, teamName, name, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"AppWithTeamPermissionsResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1145,7 +1143,7 @@ function _addApp(orgName, teamName, name, options, callback) {
  */
 function _listApps(orgName, teamName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1161,7 +1159,7 @@ function _listApps(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1170,7 +1168,7 @@ function _listApps(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1178,7 +1176,7 @@ function _listApps(orgName, teamName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -1186,18 +1184,18 @@ function _listApps(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1210,9 +1208,9 @@ function _listApps(orgName, teamName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1235,13 +1233,13 @@ function _listApps(orgName, teamName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1262,7 +1260,7 @@ function _listApps(orgName, teamName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -1281,12 +1279,12 @@ function _listApps(orgName, teamName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1325,7 +1323,7 @@ function _listApps(orgName, teamName, options, callback) {
  */
 function _getTeam(orgName, teamName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1341,7 +1339,7 @@ function _getTeam(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1350,7 +1348,7 @@ function _getTeam(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1358,7 +1356,7 @@ function _getTeam(orgName, teamName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -1366,18 +1364,18 @@ function _getTeam(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1390,9 +1388,9 @@ function _getTeam(orgName, teamName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1415,13 +1413,13 @@ function _getTeam(orgName, teamName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1442,18 +1440,18 @@ function _getTeam(orgName, teamName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"TeamResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1491,7 +1489,7 @@ function _getTeam(orgName, teamName, options, callback) {
  */
 function _deleteMethod(orgName, teamName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1507,7 +1505,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1516,7 +1514,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1524,7 +1522,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -1532,18 +1530,18 @@ function _deleteMethod(orgName, teamName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1556,9 +1554,9 @@ function _deleteMethod(orgName, teamName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1581,13 +1579,13 @@ function _deleteMethod(orgName, teamName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1599,7 +1597,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -1639,7 +1637,7 @@ function _deleteMethod(orgName, teamName, options, callback) {
  */
 function _update(orgName, teamName, displayName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1647,8 +1645,9 @@ function _update(orgName, teamName, displayName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let name = options && options.name !== undefined ? options.name : undefined;
-	let description =
+	const name =
+		options && options.name !== undefined ? options.name : undefined;
+	const description =
 		options && options.description !== undefined
 			? options.description
 			: undefined;
@@ -1660,7 +1659,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1669,7 +1668,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 			typeof teamName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"teamName cannot be null or undefined and it must be of type string."
+				"teamName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1678,7 +1677,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 			typeof displayName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"displayName cannot be null or undefined and it must be of type string."
+				"displayName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1711,7 +1710,7 @@ function _update(orgName, teamName, displayName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -1719,18 +1718,18 @@ function _update(orgName, teamName, displayName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
-		encodeURIComponent(teamName)
+		encodeURIComponent(teamName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "PATCH";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1742,16 +1741,16 @@ function _update(orgName, teamName, displayName, options, callback) {
 	let requestModel = null;
 	try {
 		if (team !== null && team !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"TeamRequest"
 			]().mapper();
 			requestModel = client.serialize(requestModelMapper, team, "team");
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(team, null, 2)}.`
+				`payload - ${JSON.stringify(team, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1761,9 +1760,9 @@ function _update(orgName, teamName, displayName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1786,13 +1785,13 @@ function _update(orgName, teamName, displayName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1813,18 +1812,18 @@ function _update(orgName, teamName, displayName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"TeamResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1860,7 +1859,7 @@ function _update(orgName, teamName, displayName, options, callback) {
  */
 function _listAll(orgName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1876,7 +1875,7 @@ function _listAll(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1884,7 +1883,7 @@ function _listAll(orgName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -1892,14 +1891,14 @@ function _listAll(orgName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1912,9 +1911,9 @@ function _listAll(orgName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1937,13 +1936,13 @@ function _listAll(orgName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1964,7 +1963,7 @@ function _listAll(orgName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -1982,12 +1981,12 @@ function _listAll(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2029,7 +2028,7 @@ function _listAll(orgName, options, callback) {
  */
 function _createTeam(orgName, displayName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -2037,8 +2036,9 @@ function _createTeam(orgName, displayName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let name = options && options.name !== undefined ? options.name : undefined;
-	let description =
+	const name =
+		options && options.name !== undefined ? options.name : undefined;
+	const description =
 		options && options.description !== undefined
 			? options.description
 			: undefined;
@@ -2050,7 +2050,7 @@ function _createTeam(orgName, displayName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2059,7 +2059,7 @@ function _createTeam(orgName, displayName, options, callback) {
 			typeof displayName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"displayName cannot be null or undefined and it must be of type string."
+				"displayName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -2092,7 +2092,7 @@ function _createTeam(orgName, displayName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -2100,14 +2100,14 @@ function _createTeam(orgName, displayName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -2119,16 +2119,16 @@ function _createTeam(orgName, displayName, options, callback) {
 	let requestModel = null;
 	try {
 		if (team !== null && team !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"TeamRequest"
 			]().mapper();
 			requestModel = client.serialize(requestModelMapper, team, "team");
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(team, null, 2)}.`
+				`payload - ${JSON.stringify(team, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -2138,9 +2138,9 @@ function _createTeam(orgName, displayName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 201) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -2163,13 +2163,13 @@ function _createTeam(orgName, displayName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -2190,7 +2190,7 @@ function _createTeam(orgName, displayName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -2200,12 +2200,12 @@ function _createTeam(orgName, displayName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -2260,16 +2260,15 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	removeUserWithHttpOperationResponse(orgName, teamName, userName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._removeUser(
+			this._removeUser(
 				orgName,
 				teamName,
 				userName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2278,7 +2277,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2319,15 +2318,22 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	removeUser(orgName, teamName, userName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._removeUser(
+				orgName,
+				teamName,
+				userName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._removeUser(
+				this._removeUser(
 					orgName,
 					teamName,
 					userName,
@@ -2339,17 +2345,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._removeUser(
-				orgName,
-				teamName,
-				userName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2372,15 +2370,14 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	getUsersWithHttpOperationResponse(orgName, teamName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._getUsers(
+			this._getUsers(
 				orgName,
 				teamName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2389,7 +2386,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2429,15 +2426,16 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	getUsers(orgName, teamName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._getUsers(orgName, teamName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._getUsers(
+				this._getUsers(
 					orgName,
 					teamName,
 					options,
@@ -2448,11 +2446,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._getUsers(orgName, teamName, options, optionalCallback);
 		}
 	}
 
@@ -2477,16 +2473,15 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	addUserWithHttpOperationResponse(orgName, teamName, userEmail, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._addUser(
+			this._addUser(
 				orgName,
 				teamName,
 				userEmail,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2495,7 +2490,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2537,15 +2532,22 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	addUser(orgName, teamName, userEmail, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._addUser(
+				orgName,
+				teamName,
+				userEmail,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._addUser(
+				this._addUser(
 					orgName,
 					teamName,
 					userEmail,
@@ -2557,17 +2559,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._addUser(
-				orgName,
-				teamName,
-				userEmail,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2599,19 +2593,18 @@ class Teams {
 		teamName,
 		appName,
 		permissions,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._updatePermissions(
+			this._updatePermissions(
 				orgName,
 				teamName,
 				appName,
 				permissions,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2620,7 +2613,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2671,17 +2664,25 @@ class Teams {
 		appName,
 		permissions,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._updatePermissions(
+				orgName,
+				teamName,
+				appName,
+				permissions,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._updatePermissions(
+				this._updatePermissions(
 					orgName,
 					teamName,
 					appName,
@@ -2694,18 +2695,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._updatePermissions(
-				orgName,
-				teamName,
-				appName,
-				permissions,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2730,16 +2722,15 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	removeAppWithHttpOperationResponse(orgName, teamName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._removeApp(
+			this._removeApp(
 				orgName,
 				teamName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2748,7 +2739,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2789,15 +2780,22 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	removeApp(orgName, teamName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._removeApp(
+				orgName,
+				teamName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._removeApp(
+				this._removeApp(
 					orgName,
 					teamName,
 					appName,
@@ -2809,17 +2807,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._removeApp(
-				orgName,
-				teamName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2844,16 +2834,15 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	addAppWithHttpOperationResponse(orgName, teamName, name, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._addApp(
+			this._addApp(
 				orgName,
 				teamName,
 				name,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2862,7 +2851,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2905,15 +2894,22 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	addApp(orgName, teamName, name, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._addApp(
+				orgName,
+				teamName,
+				name,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._addApp(
+				this._addApp(
 					orgName,
 					teamName,
 					name,
@@ -2925,17 +2921,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._addApp(
-				orgName,
-				teamName,
-				name,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2958,15 +2946,14 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	listAppsWithHttpOperationResponse(orgName, teamName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listApps(
+			this._listApps(
 				orgName,
 				teamName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2975,7 +2962,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3014,15 +3001,16 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listApps(orgName, teamName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listApps(orgName, teamName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listApps(
+				this._listApps(
 					orgName,
 					teamName,
 					options,
@@ -3033,11 +3021,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listApps(orgName, teamName, options, optionalCallback);
 		}
 	}
 
@@ -3060,15 +3046,14 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	getTeamWithHttpOperationResponse(orgName, teamName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._getTeam(
+			this._getTeam(
 				orgName,
 				teamName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -3077,7 +3062,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3117,15 +3102,16 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	getTeam(orgName, teamName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._getTeam(orgName, teamName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._getTeam(
+				this._getTeam(
 					orgName,
 					teamName,
 					options,
@@ -3136,11 +3122,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._getTeam(orgName, teamName, options, optionalCallback);
 		}
 	}
 
@@ -3163,15 +3147,14 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	deleteMethodWithHttpOperationResponse(orgName, teamName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deleteMethod(
+			this._deleteMethod(
 				orgName,
 				teamName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -3180,7 +3163,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3219,15 +3202,21 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	deleteMethod(orgName, teamName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deleteMethod(
+				orgName,
+				teamName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deleteMethod(
+				this._deleteMethod(
 					orgName,
 					teamName,
 					options,
@@ -3238,16 +3227,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deleteMethod(
-				orgName,
-				teamName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -3276,16 +3258,15 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	updateWithHttpOperationResponse(orgName, teamName, displayName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._update(
+			this._update(
 				orgName,
 				teamName,
 				displayName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -3294,7 +3275,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3340,15 +3321,22 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	update(orgName, teamName, displayName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._update(
+				orgName,
+				teamName,
+				displayName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._update(
+				this._update(
 					orgName,
 					teamName,
 					displayName,
@@ -3360,17 +3348,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._update(
-				orgName,
-				teamName,
-				displayName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -3391,14 +3371,13 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	listAllWithHttpOperationResponse(orgName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listAll(
+			this._listAll(
 				orgName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -3407,7 +3386,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3444,15 +3423,16 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listAll(orgName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listAll(orgName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listAll(
+				this._listAll(
 					orgName,
 					options,
 					(err, result, request, response) => {
@@ -3462,11 +3442,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listAll(orgName, options, optionalCallback);
 		}
 	}
 
@@ -3493,15 +3471,14 @@ class Teams {
 	 * @reject {Error} - The error object.
 	 */
 	createTeamWithHttpOperationResponse(orgName, displayName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._createTeam(
+			this._createTeam(
 				orgName,
 				displayName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -3510,7 +3487,7 @@ class Teams {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3553,15 +3530,21 @@ class Teams {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	createTeam(orgName, displayName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._createTeam(
+				orgName,
+				displayName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._createTeam(
+				this._createTeam(
 					orgName,
 					displayName,
 					options,
@@ -3572,16 +3555,9 @@ class Teams {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._createTeam(
-				orgName,
-				displayName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 }

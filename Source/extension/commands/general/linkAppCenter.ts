@@ -1,10 +1,10 @@
 import { Utils } from "../../../helpers/utils/utils";
 import AppCenterLinker from "../../../link/appCenterLinker";
-import { Strings } from "../../resources/strings";
-import { LinkCommand } from "../linkCommand";
-import { VsCodeUI } from "../../ui/vscodeUI";
-import { Constants, AppCenterOS } from "../../resources/constants";
+import { AppCenterOS, Constants } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
+import { Strings } from "../../resources/strings";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { LinkCommand } from "../linkCommand";
 
 export default class LinkAppCenter extends LinkCommand {
 	public async run(): Promise<void> {
@@ -22,27 +22,27 @@ export default class LinkAppCenter extends LinkCommand {
 			false,
 			true,
 			false,
-			Strings.ProvideSecondAppHint
+			Strings.ProvideSecondAppHint,
 		);
 		this.refreshCachedAppsAndRepaintQuickPickIfNeeded(
 			true,
 			false,
 			false,
-			Strings.ProvideFirstAppHint
+			Strings.ProvideFirstAppHint,
 		);
 	}
 
 	protected async linkApps(): Promise<boolean> {
 		const appCenterLinker: AppCenterLinker = new AppCenterLinker(
 			this.logger,
-			this.rootPath
+			this.rootPath,
 		);
 
 		if (
 			!Utils.isReactNativeAppCenterProject(
 				this.logger,
 				this.rootPath,
-				false
+				false,
 			)
 		) {
 			const appCenterInstalled: boolean =
@@ -64,7 +64,7 @@ export default class LinkAppCenter extends LinkCommand {
 		const appCenterConfig = Utils.createAppCenterConfigFrom(
 			appName,
 			this.rootPath,
-			this.logger
+			this.logger,
 		);
 
 		const hasAndroidApps: boolean = this.pickedApps.some((app) => {
@@ -77,14 +77,14 @@ export default class LinkAppCenter extends LinkCommand {
 
 		if (hasiOSApps) {
 			appCenterConfig.deleteConfigPlistValueByKey(
-				Constants.IOSAppSecretKey
+				Constants.IOSAppSecretKey,
 			);
 			appCenterConfig.saveConfigPlist();
 		}
 
 		if (hasAndroidApps) {
 			appCenterConfig.deleteAndroidAppCenterConfigValueByKey(
-				Constants.AndroidAppSecretKey
+				Constants.AndroidAppSecretKey,
 			);
 			appCenterConfig.saveAndroidAppCenterConfig();
 		}

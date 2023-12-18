@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * An object containing information about an iOS provisioning profile.
  *

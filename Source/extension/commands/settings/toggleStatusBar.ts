@@ -1,7 +1,7 @@
 import { SettingsHelper } from "../../../helpers/settingsHelper";
-import { Command } from "../command";
-import { VsCodeUI } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { Command } from "../command";
 
 export default class ToggleStatusBar extends Command {
 	public async runNoClient(): Promise<boolean | void> {

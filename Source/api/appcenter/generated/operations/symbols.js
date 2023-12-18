@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -37,7 +35,7 @@ const WebResource = msRest.WebResource;
  */
 function _getStatus(symbolId, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -53,7 +51,7 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -62,7 +60,7 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -71,7 +69,7 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -79,30 +77,30 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}/status";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -115,14 +113,14 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (
 			statusCode !== 200 &&
 			statusCode !== 403 &&
 			statusCode !== 404 &&
 			statusCode !== 500
 		) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -159,18 +157,18 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"SymbolStatusResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -184,16 +182,18 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -208,16 +208,18 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -232,16 +234,18 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError3 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -282,7 +286,7 @@ function _getStatus(symbolId, ownerName, appName, options, callback) {
  */
 function _getLocation(symbolId, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -298,7 +302,7 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -307,7 +311,7 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -316,7 +320,7 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -324,30 +328,30 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}/location";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -360,14 +364,14 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (
 			statusCode !== 200 &&
 			statusCode !== 403 &&
 			statusCode !== 404 &&
 			statusCode !== 500
 		) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -404,18 +408,18 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"SymbolLocation"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -429,16 +433,18 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -453,16 +459,18 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -477,16 +485,18 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError3 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -527,7 +537,7 @@ function _getLocation(symbolId, ownerName, appName, options, callback) {
  */
 function _ignore(symbolId, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -543,7 +553,7 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -552,7 +562,7 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -561,7 +571,7 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -569,30 +579,30 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}/ignore";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -605,14 +615,14 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (
 			statusCode !== 200 &&
 			statusCode !== 403 &&
 			statusCode !== 404 &&
 			statusCode !== 500
 		) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -649,16 +659,16 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Symbol"]().mapper();
+					const resultMapper = new client.models["Symbol"]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -672,16 +682,18 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -696,16 +708,18 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -720,16 +734,18 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError3 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -770,7 +786,7 @@ function _ignore(symbolId, ownerName, appName, options, callback) {
  */
 function _get(symbolId, ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -786,7 +802,7 @@ function _get(symbolId, ownerName, appName, options, callback) {
 			typeof symbolId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"symbolId cannot be null or undefined and it must be of type string."
+				"symbolId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -795,7 +811,7 @@ function _get(symbolId, ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -804,7 +820,7 @@ function _get(symbolId, ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -812,30 +828,30 @@ function _get(symbolId, ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/symbols/{symbol_id}";
 	requestUrl = requestUrl.replace(
 		"{symbol_id}",
-		encodeURIComponent(symbolId)
+		encodeURIComponent(symbolId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -848,14 +864,14 @@ function _get(symbolId, ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (
 			statusCode !== 200 &&
 			statusCode !== 403 &&
 			statusCode !== 404 &&
 			statusCode !== 500
 		) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -892,16 +908,16 @@ function _get(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Symbol"]().mapper();
+					const resultMapper = new client.models["Symbol"]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -915,16 +931,18 @@ function _get(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -939,16 +957,18 @@ function _get(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -963,16 +983,18 @@ function _get(symbolId, ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError3 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError3 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError3.request =
 					msRest.stripRequest(httpRequest);
@@ -1011,7 +1033,7 @@ function _get(symbolId, ownerName, appName, options, callback) {
  */
 function _list(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1027,7 +1049,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1036,7 +1058,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1044,26 +1066,26 @@ function _list(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/symbols";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1076,9 +1098,9 @@ function _list(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200 && statusCode !== 403 && statusCode !== 500) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1115,7 +1137,7 @@ function _list(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -1133,12 +1155,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1152,16 +1174,18 @@ function _list(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError1 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError1 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError1.request =
 					msRest.stripRequest(httpRequest);
@@ -1176,16 +1200,18 @@ function _list(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError2 = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError2 = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError2.request =
 					msRest.stripRequest(httpRequest);
@@ -1234,16 +1260,15 @@ class Symbols {
 	 * @reject {Error} - The error object.
 	 */
 	getStatusWithHttpOperationResponse(symbolId, ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._getStatus(
+			this._getStatus(
 				symbolId,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1252,7 +1277,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1293,15 +1318,22 @@ class Symbols {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	getStatus(symbolId, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._getStatus(
+				symbolId,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._getStatus(
+				this._getStatus(
 					symbolId,
 					ownerName,
 					appName,
@@ -1313,17 +1345,9 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._getStatus(
-				symbolId,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1351,18 +1375,17 @@ class Symbols {
 		symbolId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._getLocation(
+			this._getLocation(
 				symbolId,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1371,7 +1394,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1412,15 +1435,22 @@ class Symbols {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	getLocation(symbolId, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._getLocation(
+				symbolId,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._getLocation(
+				this._getLocation(
 					symbolId,
 					ownerName,
 					appName,
@@ -1432,17 +1462,9 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._getLocation(
-				symbolId,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1467,16 +1489,15 @@ class Symbols {
 	 * @reject {Error} - The error object.
 	 */
 	ignoreWithHttpOperationResponse(symbolId, ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._ignore(
+			this._ignore(
 				symbolId,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1485,7 +1506,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1526,15 +1547,22 @@ class Symbols {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	ignore(symbolId, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._ignore(
+				symbolId,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._ignore(
+				this._ignore(
 					symbolId,
 					ownerName,
 					appName,
@@ -1546,17 +1574,9 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._ignore(
-				symbolId,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1581,16 +1601,15 @@ class Symbols {
 	 * @reject {Error} - The error object.
 	 */
 	getWithHttpOperationResponse(symbolId, ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._get(
+			this._get(
 				symbolId,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1599,7 +1618,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1640,15 +1659,22 @@ class Symbols {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	get(symbolId, ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._get(
+				symbolId,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._get(
+				this._get(
 					symbolId,
 					ownerName,
 					appName,
@@ -1660,17 +1686,9 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._get(
-				symbolId,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1693,15 +1711,14 @@ class Symbols {
 	 * @reject {Error} - The error object.
 	 */
 	listWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._list(
+			this._list(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1710,7 +1727,7 @@ class Symbols {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1749,15 +1766,16 @@ class Symbols {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	list(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._list(ownerName, appName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._list(
+				this._list(
 					ownerName,
 					appName,
 					options,
@@ -1768,11 +1786,9 @@ class Symbols {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._list(ownerName, appName, options, optionalCallback);
 		}
 	}
 }

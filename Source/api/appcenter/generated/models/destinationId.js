@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * A unique identifier for a destination. A destination can be identified by an
  * ID (guid) or by a name. DestinationId encapsulates both options. A

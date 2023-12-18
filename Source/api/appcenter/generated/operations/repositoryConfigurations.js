@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -38,7 +36,7 @@ const WebResource = msRest.WebResource;
  */
 function _list(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -46,7 +44,7 @@ function _list(ownerName, appName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let includeInactive =
+	const includeInactive =
 		options && options.includeInactive !== undefined
 			? options.includeInactive
 			: undefined;
@@ -65,7 +63,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -74,7 +72,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -82,20 +80,20 @@ function _list(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/repo_config";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
-	let queryParameters = [];
+	const queryParameters = [];
 	if (includeInactive !== null && includeInactive !== undefined) {
 		queryParameters.push(
-			"includeInactive=" + encodeURIComponent(includeInactive.toString())
+			"includeInactive=" + encodeURIComponent(includeInactive.toString()),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -103,14 +101,14 @@ function _list(ownerName, appName, options, callback) {
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -123,9 +121,9 @@ function _list(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -148,13 +146,13 @@ function _list(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ValidationErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -175,7 +173,7 @@ function _list(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -193,12 +191,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -239,7 +237,7 @@ function _list(ownerName, appName, options, callback) {
  */
 function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -255,7 +253,7 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -264,7 +262,7 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -273,7 +271,7 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 			typeof repoUrl.valueOf() !== "string"
 		) {
 			throw new Error(
-				"repoUrl cannot be null or undefined and it must be of type string."
+				"repoUrl cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -286,26 +284,26 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/repo_config";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -317,14 +315,14 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 	let requestModel = null;
 	try {
 		if (repo !== null && repo !== undefined) {
-			let requestModelMapper = new client.models["RepoInfo"]().mapper();
+			const requestModelMapper = new client.models["RepoInfo"]().mapper();
 			requestModel = client.serialize(requestModelMapper, repo, "repo");
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(repo, null, 2)}.`
+				`payload - ${JSON.stringify(repo, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -334,9 +332,9 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -359,13 +357,13 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ValidationErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -386,18 +384,18 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"SuccessResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -436,7 +434,7 @@ function _createOrUpdate(ownerName, appName, repoUrl, options, callback) {
  */
 function _deleteMethod(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -452,7 +450,7 @@ function _deleteMethod(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -461,7 +459,7 @@ function _deleteMethod(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -469,26 +467,26 @@ function _deleteMethod(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/repo_config";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -501,9 +499,9 @@ function _deleteMethod(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -526,13 +524,13 @@ function _deleteMethod(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ValidationErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -553,18 +551,18 @@ function _deleteMethod(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"SuccessResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -611,15 +609,14 @@ class RepositoryConfigurations {
 	 * @reject {Error} - The error object.
 	 */
 	listWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._list(
+			this._list(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -628,7 +625,7 @@ class RepositoryConfigurations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -670,15 +667,16 @@ class RepositoryConfigurations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	list(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._list(ownerName, appName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._list(
+				this._list(
 					ownerName,
 					appName,
 					options,
@@ -689,11 +687,9 @@ class RepositoryConfigurations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._list(ownerName, appName, options, optionalCallback);
 		}
 	}
 
@@ -721,18 +717,17 @@ class RepositoryConfigurations {
 		ownerName,
 		appName,
 		repoUrl,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._createOrUpdate(
+			this._createOrUpdate(
 				ownerName,
 				appName,
 				repoUrl,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -741,7 +736,7 @@ class RepositoryConfigurations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -783,15 +778,22 @@ class RepositoryConfigurations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	createOrUpdate(ownerName, appName, repoUrl, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._createOrUpdate(
+				ownerName,
+				appName,
+				repoUrl,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._createOrUpdate(
+				this._createOrUpdate(
 					ownerName,
 					appName,
 					repoUrl,
@@ -803,17 +805,9 @@ class RepositoryConfigurations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._createOrUpdate(
-				ownerName,
-				appName,
-				repoUrl,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -836,15 +830,14 @@ class RepositoryConfigurations {
 	 * @reject {Error} - The error object.
 	 */
 	deleteMethodWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deleteMethod(
+			this._deleteMethod(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -853,7 +846,7 @@ class RepositoryConfigurations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -893,15 +886,21 @@ class RepositoryConfigurations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	deleteMethod(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deleteMethod(
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deleteMethod(
+				this._deleteMethod(
 					ownerName,
 					appName,
 					options,
@@ -912,16 +911,9 @@ class RepositoryConfigurations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deleteMethod(
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 }

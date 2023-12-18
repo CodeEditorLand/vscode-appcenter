@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -33,7 +31,7 @@ const WebResource = msRest.WebResource;
  */
 function _listForOrg(orgName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -49,7 +47,7 @@ function _listForOrg(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -57,7 +55,7 @@ function _listForOrg(orgName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -65,14 +63,14 @@ function _listForOrg(orgName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -85,9 +83,9 @@ function _listForOrg(orgName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -110,13 +108,13 @@ function _listForOrg(orgName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -137,7 +135,7 @@ function _listForOrg(orgName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -156,12 +154,12 @@ function _listForOrg(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -195,7 +193,7 @@ function _listForOrg(orgName, options, callback) {
  */
 function _listForUser(options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -205,21 +203,21 @@ function _listForUser(options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
-	let requestUrl =
+	const baseUrl = this.client.baseUri;
+	const requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/azure_subscriptions";
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -232,9 +230,9 @@ function _listForUser(options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -257,13 +255,13 @@ function _listForUser(options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -284,7 +282,7 @@ function _listForUser(options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -303,12 +301,12 @@ function _listForUser(options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -352,10 +350,10 @@ function _deleteForApp(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -371,7 +369,7 @@ function _deleteForApp(
 			typeof azureSubscriptionId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"azureSubscriptionId cannot be null or undefined and it must be of type string."
+				"azureSubscriptionId cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -380,7 +378,7 @@ function _deleteForApp(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -389,7 +387,7 @@ function _deleteForApp(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -397,30 +395,30 @@ function _deleteForApp(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/azure_subscriptions/{azure_subscription_id}";
 	requestUrl = requestUrl.replace(
 		"{azure_subscription_id}",
-		encodeURIComponent(azureSubscriptionId)
+		encodeURIComponent(azureSubscriptionId),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -433,9 +431,9 @@ function _deleteForApp(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -458,13 +456,13 @@ function _deleteForApp(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -476,7 +474,7 @@ function _deleteForApp(
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -509,7 +507,7 @@ function _deleteForApp(
  */
 function _listForApp(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -525,7 +523,7 @@ function _listForApp(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -534,7 +532,7 @@ function _listForApp(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -542,26 +540,26 @@ function _listForApp(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/azure_subscriptions";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -574,9 +572,9 @@ function _listForApp(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -599,13 +597,13 @@ function _listForApp(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -626,7 +624,7 @@ function _listForApp(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -645,12 +643,12 @@ function _listForApp(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -690,7 +688,7 @@ function _listForApp(ownerName, appName, options, callback) {
  */
 function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -706,7 +704,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -715,7 +713,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -724,7 +722,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			typeof subscriptionId.valueOf() !== "string"
 		) {
 			throw new Error(
-				"subscriptionId cannot be null or undefined and it must be of type string."
+				"subscriptionId cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -739,26 +737,26 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/azure_subscriptions";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -773,24 +771,24 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			azureSubscriptionToAppData !== null &&
 			azureSubscriptionToAppData !== undefined
 		) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"AzureSubscriptionAddToAppRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				azureSubscriptionToAppData,
-				"azureSubscriptionToAppData"
+				"azureSubscriptionToAppData",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
 				`payload - ${JSON.stringify(
 					azureSubscriptionToAppData,
 					null,
-					2
-				)}.`
+					2,
+				)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -800,9 +798,9 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -825,13 +823,13 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -843,7 +841,7 @@ function _linkForApp(ownerName, appName, subscriptionId, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -882,14 +880,13 @@ class AzureSubscription {
 	 * @reject {Error} - The error object.
 	 */
 	listForOrgWithHttpOperationResponse(orgName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listForOrg(
+			this._listForOrg(
 				orgName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -898,7 +895,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -935,15 +932,16 @@ class AzureSubscription {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listForOrg(orgName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listForOrg(orgName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listForOrg(
+				this._listForOrg(
 					orgName,
 					options,
 					(err, result, request, response) => {
@@ -953,11 +951,9 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listForOrg(orgName, options, optionalCallback);
 		}
 	}
 
@@ -976,13 +972,12 @@ class AzureSubscription {
 	 * @reject {Error} - The error object.
 	 */
 	listForUserWithHttpOperationResponse(options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listForUser(options, (err, result, request, response) => {
-				let httpOperationResponse = new msRest.HttpOperationResponse(
+			this._listForUser(options, (err, result, request, response) => {
+				const httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response
+					response,
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -1025,15 +1020,16 @@ class AzureSubscription {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listForUser(options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listForUser(options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listForUser(options, (err, result, request, response) => {
+				this._listForUser(options, (err, result, request, response) => {
 					if (err) {
 						reject(err);
 					} else {
@@ -1042,8 +1038,6 @@ class AzureSubscription {
 					return;
 				});
 			});
-		} else {
-			return self._listForUser(options, optionalCallback);
 		}
 	}
 
@@ -1072,18 +1066,17 @@ class AzureSubscription {
 		azureSubscriptionId,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deleteForApp(
+			this._deleteForApp(
 				azureSubscriptionId,
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1092,7 +1085,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1138,17 +1131,24 @@ class AzureSubscription {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deleteForApp(
+				azureSubscriptionId,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deleteForApp(
+				this._deleteForApp(
 					azureSubscriptionId,
 					ownerName,
 					appName,
@@ -1160,17 +1160,9 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deleteForApp(
-				azureSubscriptionId,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1193,15 +1185,14 @@ class AzureSubscription {
 	 * @reject {Error} - The error object.
 	 */
 	listForAppWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listForApp(
+			this._listForApp(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1210,7 +1201,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1249,15 +1240,21 @@ class AzureSubscription {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listForApp(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listForApp(
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listForApp(
+				this._listForApp(
 					ownerName,
 					appName,
 					options,
@@ -1268,16 +1265,9 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listForApp(
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1305,18 +1295,17 @@ class AzureSubscription {
 		ownerName,
 		appName,
 		subscriptionId,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._linkForApp(
+			this._linkForApp(
 				ownerName,
 				appName,
 				subscriptionId,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1325,7 +1314,7 @@ class AzureSubscription {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1366,15 +1355,22 @@ class AzureSubscription {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	linkForApp(ownerName, appName, subscriptionId, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._linkForApp(
+				ownerName,
+				appName,
+				subscriptionId,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._linkForApp(
+				this._linkForApp(
 					ownerName,
 					appName,
 					subscriptionId,
@@ -1386,17 +1382,9 @@ class AzureSubscription {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._linkForApp(
-				ownerName,
-				appName,
-				subscriptionId,
-				options,
-				optionalCallback
-			);
 		}
 	}
 }

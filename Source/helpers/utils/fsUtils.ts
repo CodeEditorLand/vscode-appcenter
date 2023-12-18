@@ -43,13 +43,13 @@ export class FSUtils {
 		const dirContent = fs.readdirSync(sourcePath);
 		for (const dir of dirContent) {
 			const fullDir = path.join(sourcePath, dir);
-			if (!fs.lstatSync(fullDir).isDirectory()) {
-				const outputFilePath: string = path.join(destinationPath, dir);
-				fs.writeFileSync(outputFilePath, fs.readFileSync(fullDir));
-			} else {
+			if (fs.lstatSync(fullDir).isDirectory()) {
 				const newDir = path.join(destinationPath, dir);
 				fs.mkdirSync(newDir);
 				this.copyFiles(fullDir, newDir);
+			} else {
+				const outputFilePath: string = path.join(destinationPath, dir);
+				fs.writeFileSync(outputFilePath, fs.readFileSync(fullDir));
 			}
 		}
 	}
@@ -89,7 +89,7 @@ export class FSUtils {
 
 	public static exists(fileName: string): Promise<boolean> {
 		return new Promise((resolve, reject) => {
-			fs.stat(fileName, function (err) {
+			fs.stat(fileName, (err) => {
 				if (err == null) {
 					resolve(true);
 				} else if (err.code === FSUtils.FileDoesNotExist) {
@@ -102,7 +102,7 @@ export class FSUtils {
 	}
 	public static rimraf(
 		path: string,
-		options?: rimraf.Options
+		options?: rimraf.Options,
 	): Promise<void> {
 		return new Promise((resolve, reject) => {
 			if (!options) {

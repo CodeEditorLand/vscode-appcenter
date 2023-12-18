@@ -1,8 +1,8 @@
 import {
+	AppCenterExtensionLogPrefix,
 	ILogger,
 	LogHelper,
 	LogLevel,
-	AppCenterExtensionLogPrefix,
 } from "./logHelper";
 
 export class ConsoleLogger implements ILogger {
@@ -25,13 +25,9 @@ export class ConsoleLogger implements ILogger {
 		this.log(message, LogLevel.Warning);
 	}
 
-	public error(
-		errorMessage: string,
-		error?: Error,
-		logStack: boolean = true
-	) {
+	public error(errorMessage: string, error?: Error, logStack = true) {
 		console.error(
-			ConsoleLogger.getFormattedMessage(errorMessage, LogLevel.Error)
+			ConsoleLogger.getFormattedMessage(errorMessage, LogLevel.Error),
 		);
 
 		// Print the error stack if necessary
@@ -50,7 +46,7 @@ export class ConsoleLogger implements ILogger {
 
 	protected static getFormattedMessage(
 		message: string,
-		level: LogLevel
+		level: LogLevel,
 	): string {
 		return `[${AppCenterExtensionLogPrefix}: ${LogLevel[level]}] ${message}\n`;
 	}

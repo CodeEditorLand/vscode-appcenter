@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * @summary Test Cloud Start Test Run Options
  *

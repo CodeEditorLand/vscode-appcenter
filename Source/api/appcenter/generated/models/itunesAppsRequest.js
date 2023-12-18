@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Apple credentials with username, password or service_connection_id of the
  * stored credentials is needed along with team_identifier.

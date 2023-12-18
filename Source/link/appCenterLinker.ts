@@ -1,17 +1,14 @@
 import { ILogger } from "../extension/log/logHelper";
 import { AppCenterOS } from "../extension/resources/constants";
+import { Messages } from "../extension/resources/messages";
 import { Strings } from "../extension/resources/strings";
+import { VsCodeTerminal } from "../extension/ui/VsCodeTerminal";
+import { IButtonMessageItem, VsCodeUI } from "../extension/ui/vscodeUI";
 import { CurrentApp } from "../helpers/interfaces";
 import { cpUtils } from "../helpers/utils/cpUtils";
-import { IButtonMessageItem, VsCodeUI } from "../extension/ui/vscodeUI";
-import { VsCodeTerminal } from "../extension/ui/VsCodeTerminal";
-import { Messages } from "../extension/resources/messages";
 
 export default class AppCenterLinker {
-	constructor(
-		private logger: ILogger,
-		private rootPath: string
-	) {}
+	constructor(private logger: ILogger, private rootPath: string) {}
 
 	public async installAppcenter(): Promise<boolean> {
 		const installAppCenterCmd: string =
@@ -25,7 +22,7 @@ export default class AppCenterLinker {
 					this.logger,
 					true,
 					this.rootPath,
-					installAppCenterCmd
+					installAppCenterCmd,
 				);
 				return true;
 			} catch (error) {
@@ -49,7 +46,7 @@ export default class AppCenterLinker {
 		const selection: IButtonMessageItem | undefined =
 			await VsCodeUI.ShowInfoMessage(
 				Messages.AppCenterBeforeLinkMessage,
-				...messageItems
+				...messageItems,
 			);
 		if (selection) {
 			terminalHelper.run("react-native link");
@@ -60,9 +57,9 @@ export default class AppCenterLinker {
 			VsCodeUI.ShowInfoMessage(
 				Messages.AppCenterSecretsHintMessage(
 					androidAppSecret,
-					iosAppSecret
+					iosAppSecret,
 				),
-				...messageItems
+				...messageItems,
 			);
 			return true;
 		}

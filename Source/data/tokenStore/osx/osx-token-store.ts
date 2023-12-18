@@ -1,23 +1,23 @@
 // Token store implementation over OSX keychain
 
+import * as childProcess from "child_process";
+import * as stream from "stream";
+import * as es from "event-stream";
 //
 // Access to the OSX keychain - list, add, get password, remove
 //
 import * as _ from "lodash";
 import * as rx from "rx-lite";
-import * as childProcess from "child_process";
-import * as es from "event-stream";
-import * as stream from "stream";
 
 import {
-	TokenStore,
 	TokenEntry,
 	TokenKeyType,
+	TokenStore,
 	TokenValueType,
 } from "../tokenStore";
 import {
-	createOsxSecurityParsingStream,
 	OsxSecurityParsingStream,
+	createOsxSecurityParsingStream,
 } from "./osx-keychain-parser";
 
 const securityPath = "/usr/bin/security";
@@ -33,9 +33,9 @@ export class OsxTokenStore implements TokenStore {
 			const securityStream = securityProcess.stdout
 				.pipe(es.split() as any as stream.Duplex)
 				.pipe(
-					es.mapSync(function (line: string) {
-						return line.replace(/\\134/g, "\\");
-					}) as any as stream.Duplex
+					es.mapSync((line: string) =>
+						line.replace(/\\134/g, "\\"),
+					) as any as stream.Duplex,
 				)
 				.pipe(new OsxSecurityParsingStream());
 
@@ -66,10 +66,7 @@ export class OsxTokenStore implements TokenStore {
 		});
 	}
 
-	public get(
-		key: TokenKeyType,
-		_useOldName: boolean = false
-	): Promise<TokenEntry> {
+	public get(key: TokenKeyType, _useOldName = false): Promise<TokenEntry> {
 		const args = [
 			"find-generic-password",
 			"-a",
@@ -91,7 +88,7 @@ export class OsxTokenStore implements TokenStore {
 						return reject(err);
 					}
 					const match = /^password: (?:0x[0-9A-F]+. )?"(.*)"$/m.exec(
-						stderr
+						stderr,
 					);
 					if (match) {
 						const accessToken = match[1].replace(/\\134/g, "\\");
@@ -101,7 +98,7 @@ export class OsxTokenStore implements TokenStore {
 						// Parse the rest of the information from stdout to get user & token ID
 						const source = es.through();
 						const parsed = source.pipe(
-							createOsxSecurityParsingStream()
+							createOsxSecurityParsingStream(),
 						);
 						parsed.on("data", (data: any) => {
 							//debug(`got data on key lookup: ${inspect(data)}`);
@@ -123,7 +120,7 @@ export class OsxTokenStore implements TokenStore {
 					} else {
 						reject(new Error("Password in incorrect format"));
 					}
-				}
+				},
 			);
 		});
 	}
@@ -150,16 +147,16 @@ export class OsxTokenStore implements TokenStore {
 			childProcess.execFile(
 				securityPath,
 				args,
-				function (err, _stdout, stderr) {
+				(err, _stdout, stderr) => {
 					if (err) {
 						return reject(
 							new Error(
-								"Could not add password to keychain: " + stderr
-							)
+								"Could not add password to keychain: " + stderr,
+							),
 						);
 					}
 					return resolve();
-				}
+				},
 			);
 		});
 	}
@@ -171,17 +168,17 @@ export class OsxTokenStore implements TokenStore {
 			childProcess.execFile(
 				securityPath,
 				args,
-				function (err, _stdout, stderr) {
+				(err, _stdout, stderr) => {
 					if (err) {
 						return reject(
 							new Error(
 								"Could not remove account from keychain, " +
-									stderr
-							)
+									stderr,
+							),
 						);
 					}
 					return resolve();
-				}
+				},
 			);
 		});
 	}

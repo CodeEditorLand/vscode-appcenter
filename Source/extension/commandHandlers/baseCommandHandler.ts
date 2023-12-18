@@ -6,7 +6,7 @@ export default abstract class BaseCommandHandler {
 	constructor(
 		private manager: ExtensionManager,
 		private appCenterAuth: AppCenterAuth,
-		private vstsAuth: VstsAuth
+		private vstsAuth: VstsAuth,
 	) {}
 
 	protected getCommandParams(): CommandParams {

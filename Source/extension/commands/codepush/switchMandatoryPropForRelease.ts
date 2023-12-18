@@ -1,8 +1,8 @@
 import { CommandParams, CurrentApp } from "../../../helpers/interfaces";
 import { AppCenterOS } from "../../resources/constants";
-import { RNCPAppCommand } from "./rncpAppCommand";
-import { VsCodeUI } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { RNCPAppCommand } from "./rncpAppCommand";
 
 export default class SwitchMandatoryPropForRelease extends RNCPAppCommand {
 	constructor(params: CommandParams) {
@@ -36,10 +36,10 @@ export default class SwitchMandatoryPropForRelease extends RNCPAppCommand {
 			app.targetBinaryVersion,
 			app.type,
 			newMandatoryValue,
-			app.appSecret
+			app.appSecret,
 		);
 		VsCodeUI.ShowInfoMessage(
-			Messages.ChangedMandatoryMessage(newMandatoryValue)
+			Messages.ChangedMandatoryMessage(newMandatoryValue),
 		);
 	}
 }

@@ -8,8 +8,6 @@
 /* jshint forin:false */
 /* jshint noempty:false */
 
-"use strict";
-
 exports.Devices = require("./devices");
 exports.OrgInvitations = require("./orgInvitations");
 exports.DistributionGroupInvitations = require("./distributionGroupInvitations");

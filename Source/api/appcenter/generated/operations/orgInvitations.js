@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -34,7 +32,7 @@ const WebResource = msRest.WebResource;
  */
 function _reject(invitationToken, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -50,7 +48,7 @@ function _reject(invitationToken, options, callback) {
 			typeof invitationToken.valueOf() !== "string"
 		) {
 			throw new Error(
-				"invitationToken cannot be null or undefined and it must be of type string."
+				"invitationToken cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -58,25 +56,25 @@ function _reject(invitationToken, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/user/invitations/orgs/{invitation_token}/reject";
 	requestUrl = requestUrl.replace(
 		"{invitation_token}",
-		encodeURIComponent(invitationToken)
+		encodeURIComponent(invitationToken),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -89,9 +87,9 @@ function _reject(invitationToken, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -114,13 +112,13 @@ function _reject(invitationToken, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -132,7 +130,7 @@ function _reject(invitationToken, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -164,7 +162,7 @@ function _reject(invitationToken, options, callback) {
  */
 function _accept(invitationToken, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -180,7 +178,7 @@ function _accept(invitationToken, options, callback) {
 			typeof invitationToken.valueOf() !== "string"
 		) {
 			throw new Error(
-				"invitationToken cannot be null or undefined and it must be of type string."
+				"invitationToken cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -188,25 +186,25 @@ function _accept(invitationToken, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/user/invitations/orgs/{invitation_token}/accept";
 	requestUrl = requestUrl.replace(
 		"{invitation_token}",
-		encodeURIComponent(invitationToken)
+		encodeURIComponent(invitationToken),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -219,9 +217,9 @@ function _accept(invitationToken, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -244,13 +242,13 @@ function _accept(invitationToken, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -262,7 +260,7 @@ function _accept(invitationToken, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -298,7 +296,7 @@ function _accept(invitationToken, options, callback) {
  */
 function _update(orgName, userEmail, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -306,7 +304,8 @@ function _update(orgName, userEmail, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let role = options && options.role !== undefined ? options.role : undefined;
+	const role =
+		options && options.role !== undefined ? options.role : undefined;
 	// Validate
 	try {
 		if (
@@ -315,7 +314,7 @@ function _update(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -324,7 +323,7 @@ function _update(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -344,7 +343,7 @@ function _update(orgName, userEmail, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -352,18 +351,18 @@ function _update(orgName, userEmail, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{user_email}",
-		encodeURIComponent(userEmail)
+		encodeURIComponent(userEmail),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "PATCH";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -375,20 +374,20 @@ function _update(orgName, userEmail, options, callback) {
 	let requestModel = null;
 	try {
 		if (userRole !== null && userRole !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"OrganizationUserPatchRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				userRole,
-				"userRole"
+				"userRole",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userRole, null, 2)}.`
+				`payload - ${JSON.stringify(userRole, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -398,9 +397,9 @@ function _update(orgName, userEmail, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -423,13 +422,13 @@ function _update(orgName, userEmail, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -441,7 +440,7 @@ function _update(orgName, userEmail, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -474,7 +473,7 @@ function _update(orgName, userEmail, options, callback) {
  */
 function _sendNewInvitation(orgName, userEmail, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -490,7 +489,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -499,7 +498,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -512,7 +511,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -520,14 +519,14 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -539,20 +538,20 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 	let requestModel = null;
 	try {
 		if (userEmail1 !== null && userEmail1 !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"UserEmailRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1"
+				"userEmail1",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -562,9 +561,9 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -587,13 +586,13 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -605,7 +604,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -638,7 +637,7 @@ function _sendNewInvitation(orgName, userEmail, options, callback) {
  */
 function _create(orgName, userEmail, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -654,7 +653,7 @@ function _create(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -663,7 +662,7 @@ function _create(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -676,7 +675,7 @@ function _create(orgName, userEmail, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -684,14 +683,14 @@ function _create(orgName, userEmail, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -703,20 +702,20 @@ function _create(orgName, userEmail, options, callback) {
 	let requestModel = null;
 	try {
 		if (userEmail1 !== null && userEmail1 !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"UserEmailRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1"
+				"userEmail1",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -726,9 +725,9 @@ function _create(orgName, userEmail, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -751,13 +750,13 @@ function _create(orgName, userEmail, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -769,7 +768,7 @@ function _create(orgName, userEmail, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -802,7 +801,7 @@ function _create(orgName, userEmail, options, callback) {
  */
 function _deleteMethod(orgName, userEmail, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -818,7 +817,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -827,7 +826,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 			typeof userEmail.valueOf() !== "string"
 		) {
 			throw new Error(
-				"userEmail cannot be null or undefined and it must be of type string."
+				"userEmail cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -840,7 +839,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -848,14 +847,14 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -867,20 +866,20 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 	let requestModel = null;
 	try {
 		if (userEmail1 !== null && userEmail1 !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"UserEmailRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				userEmail1,
-				"userEmail1"
+				"userEmail1",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(userEmail1, null, 2)}.`
+				`payload - ${JSON.stringify(userEmail1, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -890,9 +889,9 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -915,13 +914,13 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -933,7 +932,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -964,7 +963,7 @@ function _deleteMethod(orgName, userEmail, options, callback) {
  */
 function _listPending(orgName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -980,7 +979,7 @@ function _listPending(orgName, options, callback) {
 			typeof orgName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"orgName cannot be null or undefined and it must be of type string."
+				"orgName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -988,7 +987,7 @@ function _listPending(orgName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -996,14 +995,14 @@ function _listPending(orgName, options, callback) {
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1016,9 +1015,9 @@ function _listPending(orgName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1041,13 +1040,13 @@ function _listPending(orgName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1068,7 +1067,7 @@ function _listPending(orgName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -1088,12 +1087,12 @@ function _listPending(orgName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1140,14 +1139,13 @@ class OrgInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	rejectWithHttpOperationResponse(invitationToken, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._reject(
+			this._reject(
 				invitationToken,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1156,7 +1154,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1194,15 +1192,16 @@ class OrgInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	reject(invitationToken, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._reject(invitationToken, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._reject(
+				this._reject(
 					invitationToken,
 					options,
 					(err, result, request, response) => {
@@ -1212,11 +1211,9 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._reject(invitationToken, options, optionalCallback);
 		}
 	}
 
@@ -1238,14 +1235,13 @@ class OrgInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	acceptWithHttpOperationResponse(invitationToken, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._accept(
+			this._accept(
 				invitationToken,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1254,7 +1250,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1292,15 +1288,16 @@ class OrgInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	accept(invitationToken, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._accept(invitationToken, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._accept(
+				this._accept(
 					invitationToken,
 					options,
 					(err, result, request, response) => {
@@ -1310,11 +1307,9 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._accept(invitationToken, options, optionalCallback);
 		}
 	}
 
@@ -1340,15 +1335,14 @@ class OrgInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	updateWithHttpOperationResponse(orgName, userEmail, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._update(
+			this._update(
 				orgName,
 				userEmail,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1357,7 +1351,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1399,15 +1393,16 @@ class OrgInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	update(orgName, userEmail, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._update(orgName, userEmail, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._update(
+				this._update(
 					orgName,
 					userEmail,
 					options,
@@ -1418,11 +1413,9 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._update(orgName, userEmail, options, optionalCallback);
 		}
 	}
 
@@ -1445,15 +1438,14 @@ class OrgInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	sendNewInvitationWithHttpOperationResponse(orgName, userEmail, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._sendNewInvitation(
+			this._sendNewInvitation(
 				orgName,
 				userEmail,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1462,7 +1454,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1501,15 +1493,21 @@ class OrgInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	sendNewInvitation(orgName, userEmail, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._sendNewInvitation(
+				orgName,
+				userEmail,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._sendNewInvitation(
+				this._sendNewInvitation(
 					orgName,
 					userEmail,
 					options,
@@ -1520,16 +1518,9 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._sendNewInvitation(
-				orgName,
-				userEmail,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1552,15 +1543,14 @@ class OrgInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	createWithHttpOperationResponse(orgName, userEmail, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._create(
+			this._create(
 				orgName,
 				userEmail,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1569,7 +1559,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1608,15 +1598,16 @@ class OrgInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	create(orgName, userEmail, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._create(orgName, userEmail, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._create(
+				this._create(
 					orgName,
 					userEmail,
 					options,
@@ -1627,11 +1618,9 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._create(orgName, userEmail, options, optionalCallback);
 		}
 	}
 
@@ -1654,15 +1643,14 @@ class OrgInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	deleteMethodWithHttpOperationResponse(orgName, userEmail, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deleteMethod(
+			this._deleteMethod(
 				orgName,
 				userEmail,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1671,7 +1659,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1710,15 +1698,21 @@ class OrgInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	deleteMethod(orgName, userEmail, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deleteMethod(
+				orgName,
+				userEmail,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deleteMethod(
+				this._deleteMethod(
 					orgName,
 					userEmail,
 					options,
@@ -1729,16 +1723,9 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deleteMethod(
-				orgName,
-				userEmail,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -1759,14 +1746,13 @@ class OrgInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	listPendingWithHttpOperationResponse(orgName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listPending(
+			this._listPending(
 				orgName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1775,7 +1761,7 @@ class OrgInvitations {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -1812,15 +1798,16 @@ class OrgInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	listPending(orgName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listPending(orgName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listPending(
+				this._listPending(
 					orgName,
 					options,
 					(err, result, request, response) => {
@@ -1830,11 +1817,9 @@ class OrgInvitations {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listPending(orgName, options, optionalCallback);
 		}
 	}
 }

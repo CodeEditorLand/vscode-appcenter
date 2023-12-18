@@ -1,8 +1,8 @@
 import { SettingsHelper } from "../../helpers/settingsHelper";
 import * as Settings from "../commands/settings";
-import BaseCommandHandler from "./baseCommandHandler";
-import { VsCodeUI } from "../ui/vscodeUI";
 import { Messages } from "../resources/messages";
+import { VsCodeUI } from "../ui/vscodeUI";
+import BaseCommandHandler from "./baseCommandHandler";
 
 export default class SettingsCommandHandler extends BaseCommandHandler {
 	public async ShowMenu(): Promise<void> {
@@ -31,7 +31,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 
 	public async SwitchVstsAcc(): Promise<void> {
 		await new Settings.SwitchVstsAccount(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).runNoClient();
 	}
 
@@ -41,7 +41,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 			return;
 		}
 		await new Settings.ToggleStatusBar(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).runNoClient();
 	}
 
@@ -51,7 +51,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 			return;
 		}
 		await new Settings.ToggleStatusBar(
-			this.getCommandParams()
+			this.getCommandParams(),
 		).runNoClient();
 	}
 }

@@ -8,18 +8,18 @@ import * as xml2js from "xml2js";
 
 export function getAppVersion(projectRoot?: string): Promise<string> {
 	return new Promise<string>((resolve, reject) => {
-		let configString: string = "";
+		let configString = "";
 		try {
 			projectRoot = projectRoot || process.cwd();
 			configString = fs.readFileSync(
 				path.join(projectRoot, "config.xml"),
-				{ encoding: "utf8" }
+				{ encoding: "utf8" },
 			);
 		} catch (error) {
 			reject(
 				new Error(
-					`Unable to find or read "config.xml" in the CWD. The "release-cordova" command must be executed in a Cordova project folder.`
-				)
+					`Unable to find or read "config.xml" in the CWD. The "release-cordova" command must be executed in a Cordova project folder.`,
+				),
 			);
 		}
 
@@ -27,8 +27,8 @@ export function getAppVersion(projectRoot?: string): Promise<string> {
 			if (err) {
 				reject(
 					new Error(
-						`Unable to parse "config.xml" in the CWD. Ensure that the contents of "config.xml" is valid XML.`
-					)
+						`Unable to parse "config.xml" in the CWD. Ensure that the contents of "config.xml" is valid XML.`,
+					),
 				);
 			}
 
@@ -56,7 +56,7 @@ export function isValidPlatform(platform: string): boolean {
 // Check whether the Cordova or PhoneGap CLIs are
 // installed, and if not, fail early
 export function getCordovaOrPhonegapCLI(): string {
-	let cordovaCLI: string = "cordova";
+	let cordovaCLI = "cordova";
 
 	try {
 		which.sync(cordovaCLI);
@@ -75,7 +75,7 @@ export function makeUpdateContents(os: string): string {
 
 	const projectRoot: string = process.cwd();
 	const platformFolder: string = path.join(projectRoot, "platforms", os);
-	let outputFolder: string = "";
+	let outputFolder = "";
 
 	if (os === "ios") {
 		outputFolder = path.join(platformFolder, "www");
@@ -87,7 +87,7 @@ export function makeUpdateContents(os: string): string {
 			"src",
 			"main",
 			"assets",
-			"www"
+			"www",
 		);
 		if (fs.existsSync(outputFolderVer7)) {
 			outputFolder = outputFolderVer7;

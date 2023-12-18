@@ -2,54 +2,49 @@ import { CurrentApp } from "../../helpers/interfaces";
 
 export class MenuStrings {
 	// #region Menu labels
-	public static BuildTabMenuLabel: string = "Build";
-	public static TestTabMenuLabel: string = "Test";
-	public static DistributeTabMenuLabel: string = "Distribute";
-	public static CrashesTabMenuLabel: string = "Crashes";
-	public static AnalyticsTabMenuLabel: string = "Analytics";
-	public static PushTabMenuLabel: string = "Push";
-	public static DistributeGroupsTabMenuLabel: string = "Groups";
-	public static DistributeStoresTabMenuLabel: string = "Stores";
-	public static DistributeCodePushTabMenuLabel: string = "CodePush";
-	public static DistributeReleasesTabMenuLabel: string = "Releases";
-	public static StartAProjectMenuLabel: string = "Start a new project";
-	public static LoginMenuLabel: string = "Login";
-	public static GetCurrentAppMenuLabel: string = "Get current app info";
-	public static CodePushMenuLabel: string = "CodePush";
-	public static CodePushMenuLabelDescription: string =
+	public static BuildTabMenuLabel = "Build";
+	public static TestTabMenuLabel = "Test";
+	public static DistributeTabMenuLabel = "Distribute";
+	public static CrashesTabMenuLabel = "Crashes";
+	public static AnalyticsTabMenuLabel = "Analytics";
+	public static PushTabMenuLabel = "Push";
+	public static DistributeGroupsTabMenuLabel = "Groups";
+	public static DistributeStoresTabMenuLabel = "Stores";
+	public static DistributeCodePushTabMenuLabel = "CodePush";
+	public static DistributeReleasesTabMenuLabel = "Releases";
+	public static StartAProjectMenuLabel = "Start a new project";
+	public static LoginMenuLabel = "Login";
+	public static GetCurrentAppMenuLabel = "Get current app info";
+	public static CodePushMenuLabel = "CodePush";
+	public static CodePushMenuLabelDescription =
 		"Release a new CodePush update";
-	public static AppCenterPortalMenuLabel: string = "Portal";
-	public static CreateNewAppMenuLabel: string = "Create a new App Center app";
-	public static CreateNewIOSAppMenuLabel: string = "Create an app for iOS";
-	public static CreateNewAndroidAppMenuLabel: string =
-		"Create an app for Android";
-	public static CreateNewAppsForBothMenuLabel: string =
+	public static AppCenterPortalMenuLabel = "Portal";
+	public static CreateNewAppMenuLabel = "Create a new App Center app";
+	public static CreateNewIOSAppMenuLabel = "Create an app for iOS";
+	public static CreateNewAndroidAppMenuLabel = "Create an app for Android";
+	public static CreateNewAppsForBothMenuLabel =
 		"Create apps for both platforms";
-	public static SettingsMenuLabel: string = "Settings";
-	public static SimulateCrashesMenuLabel: string = "Simulate Crashes";
-	public static LinkCodePushMenuLabel: string = "Link CodePush";
-	public static LinkAppCenterMenuLabel: string = "Link App Center";
-	public static InstallSDKMenuLabel: string = "Install SDK";
-	public static SwitchAccountMenuLabel: string = "Switch App Center account";
-	public static LogoutMenuLabel: string = "Logout of App Center";
-	public static VstsLoginToAnotherAccountMenuLabel: string =
-		"Add VSTS account";
-	public static VstsSwitchAccountMenuLabel: string = "Switch VSTS account";
-	public static LoginToAnotherAccountMenuLabel: string =
-		"Add App Center account";
-	public static VstsLogoutMenuLabel: string = "Logout of VSTS";
-	public static HideStatusBarMenuLabel: string = "Hide status bar";
-	public static RunUITestsMenuLabel: string = "Run UI tests";
-	public static RunUITestsAsyncMenuLabel: string =
-		"Run UI tests asynchronously";
-	public static ViewUITestResultOnPortalMenuLabel: string =
-		"View results in portal";
+	public static SettingsMenuLabel = "Settings";
+	public static SimulateCrashesMenuLabel = "Simulate Crashes";
+	public static LinkCodePushMenuLabel = "Link CodePush";
+	public static LinkAppCenterMenuLabel = "Link App Center";
+	public static InstallSDKMenuLabel = "Install SDK";
+	public static SwitchAccountMenuLabel = "Switch App Center account";
+	public static LogoutMenuLabel = "Logout of App Center";
+	public static VstsLoginToAnotherAccountMenuLabel = "Add VSTS account";
+	public static VstsSwitchAccountMenuLabel = "Switch VSTS account";
+	public static LoginToAnotherAccountMenuLabel = "Add App Center account";
+	public static VstsLogoutMenuLabel = "Logout of VSTS";
+	public static HideStatusBarMenuLabel = "Hide status bar";
+	public static RunUITestsMenuLabel = "Run UI tests";
+	public static RunUITestsAsyncMenuLabel = "Run UI tests asynchronously";
+	public static ViewUITestResultOnPortalMenuLabel = "View results in portal";
 	public static setCurrentAppDeploymentMenuLabel(app: CurrentApp): string {
 		return `Change '${app.currentAppDeployments.currentDeploymentName}' to a different deployment`;
 	}
 
 	public static setCurrentAppTargetBinaryVersionMenuLabel(
-		app: CurrentApp
+		app: CurrentApp,
 	): string {
 		const targetBinaryVersionProvided =
 			app.targetBinaryVersion !== undefined && app.targetBinaryVersion;
@@ -85,33 +80,33 @@ export class MenuStrings {
 	// #endregion Menu labels
 
 	// #region Menu Descriptions
-	public static AppCenterPortalMenuDescription: string =
+	public static AppCenterPortalMenuDescription =
 		"Quick navigate your App Center apps";
-	public static SelectCurrentAppMenuDescription: string = "Use Current App";
-	public static StartAProjectMenuDescription: string = "";
-	public static OrganizationMenuDescription: string = "Organization";
-	public static UserMenuDescription: string = "User";
-	public static CurrentAppMenuDescription: string =
+	public static SelectCurrentAppMenuDescription = "Use Current App";
+	public static StartAProjectMenuDescription = "";
+	public static OrganizationMenuDescription = "Organization";
+	public static UserMenuDescription = "User";
+	public static CurrentAppMenuDescription =
 		"Click here to change current app";
-	public static LoginMenuDescription: string = "";
-	public static SettingsMenuDescription: string = "";
-	public static SimulateCrashesMenuDescription: string =
+	public static LoginMenuDescription = "";
+	public static SettingsMenuDescription = "";
+	public static SimulateCrashesMenuDescription =
 		"Send test crash data to your current application in App Center";
-	public static LinkCodePushMenuDescription: string =
+	public static LinkCodePushMenuDescription =
 		"Link CodePush SDK to your application";
-	public static LinkAppCenterMenuDescription: string =
+	public static LinkAppCenterMenuDescription =
 		"Link App Center SDK to your application";
-	public static InstallSDKMenuDescription: string =
+	public static InstallSDKMenuDescription =
 		"Link the App Center or CodePush SDK to your project";
-	public static LoginToAnotherAccountMenuDescription: string =
+	public static LoginToAnotherAccountMenuDescription =
 		"Log in to another App Center account";
-	public static SwitchAccountMenuDescription: string =
+	public static SwitchAccountMenuDescription =
 		"Switch to an App Center account you've previously logged in to";
-	public static VstsLoginToAnotherAccountMenuDescription: string =
+	public static VstsLoginToAnotherAccountMenuDescription =
 		"Log in to another VSTS account";
-	public static VstsSwitchAccountMenuDescription: string =
+	public static VstsSwitchAccountMenuDescription =
 		"Switch to a VSTS account you've previously logged in to";
-	public static HideStatusBarMenuDescription: string =
+	public static HideStatusBarMenuDescription =
 		"Hide status bar from the bottom left corner. You can enable it with 'Show status bar' cmd.";
 	public static OpenTabInBrowserMenuDescription(tabName: string): string {
 		return `Navigate to '${tabName}' options for current app`;

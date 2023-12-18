@@ -1,71 +1,61 @@
 export class LogStrings {
-	public static NodeModulesInstalledMessage: string =
+	public static NodeModulesInstalledMessage =
 		"Dependencies have been successfully installed.";
-	public static PodsInstalledMessage: string =
+	public static PodsInstalledMessage =
 		"Pods have been successfully installed.";
-	public static CodePushInstallMessage: string =
+	public static CodePushInstallMessage =
 		'Make sure you ran "npm install" and that you are inside a React Native CodePush project.';
-	public static AppCenterInstallMessage: string =
+	public static AppCenterInstallMessage =
 		'Make sure you ran "npm install" and that you are inside a React Native App Center project.';
-	public static ReactNativeInstallMessage: string =
+	public static ReactNativeInstallMessage =
 		'Make sure you ran "npm install" and that you are inside a React Native project.';
-	public static FailedToGetVSTSProjectList: string =
+	public static FailedToGetVSTSProjectList =
 		"Failed to get VSTS Project list.";
-	public static FailedToGetVSTSReposList: string =
+	public static FailedToGetVSTSReposList =
 		"Failed to get VSTS Git repositories list.";
-	public static FailedToGetAppCenterProfile: string =
+	public static FailedToGetAppCenterProfile =
 		"Could get profile from App Center.";
-	public static FailedToGetProfileFile: string =
+	public static FailedToGetProfileFile =
 		"Profile not found. Login to the App Center via the Visual Studio Code Extension to create the profile.";
-	public static FailedToGetUserProfile: string = "Couldn't get user profile.";
-	public static FailedToGetUserFromServer: string =
+	public static FailedToGetUserProfile = "Couldn't get user profile.";
+	public static FailedToGetUserFromServer =
 		"Failed to fetch user info from server";
-	public static NoTokenProvided: string = "No token provided on login";
-	public static FailedToGetToken: string =
-		"Failed to get token from profile.";
-	public static CodePushError: string =
+	public static NoTokenProvided = "No token provided on login";
+	public static FailedToGetToken = "Failed to get token from profile.";
+	public static CodePushError =
 		"An error occured on doing Code Push release.";
-	public static FailedToSendCrashes: string =
-		"Failed to send crashes information.";
-	public static ProjectOrOrgNotSet: string = `Sorry, Project name or User/Organization is not set`;
-	public static FailedToClone: string =
-		"Failed to clone into exiting repository";
-	public static RootNotFound: string = "No project root folder found";
-	public static FailedToGetClient: string = "Failed to get App Center client";
-	public static NoUserSpecified: string = "No App Center user specified!";
-	public static GettingUserOrOrg: string =
-		"Getting user/organization items...";
-	public static NoAppsToShow: string =
+	public static FailedToSendCrashes = "Failed to send crashes information.";
+	public static ProjectOrOrgNotSet = `Sorry, Project name or User/Organization is not set`;
+	public static FailedToClone = "Failed to clone into exiting repository";
+	public static RootNotFound = "No project root folder found";
+	public static FailedToGetClient = "Failed to get App Center client";
+	public static NoUserSpecified = "No App Center user specified!";
+	public static GettingUserOrOrg = "Getting user/organization items...";
+	public static NoAppsToShow =
 		"Do not show apps quick pick due to no apps (either in cache or fetched from server).";
-	public static BuildingProject: string =
-		"Building a new App Center project...";
-	public static FailedToGetVSTSProfile: string =
+	public static BuildingProject = "Building a new App Center project...";
+	public static FailedToGetVSTSProfile =
 		"Failed to get VSTS profile for command.";
-	public static FailedToGetVSTSProject: string =
-		"Failed to get VSTS project.";
-	public static FailedToCreateVSTSRepo: string =
-		"Failed to create VSTS git repo.";
-	public static CreatingAppsInAppCenter: string =
+	public static FailedToGetVSTSProject = "Failed to get VSTS project.";
+	public static FailedToCreateVSTSRepo = "Failed to create VSTS git repo.";
+	public static CreatingAppsInAppCenter =
 		"Creating your iOS and Android app in App Center...";
-	public static FailedCreateAppsInAppCenter: string =
+	public static FailedCreateAppsInAppCenter =
 		"Failed to create apps in App Center.";
-	public static FailedToSaveCurrentApp: string = "Failed to save current app";
-	public static ConfiguringAppCenterSDK: string =
-		"Configuring App Center SDKs...";
-	public static FailedToUpdateAppSecret: string =
-		"Failed to update app secret keys!";
-	public static CreatingCodePushDeployments: string =
+	public static FailedToSaveCurrentApp = "Failed to save current app";
+	public static ConfiguringAppCenterSDK = "Configuring App Center SDKs...";
+	public static FailedToUpdateAppSecret = "Failed to update app secret keys!";
+	public static CreatingCodePushDeployments =
 		"Creating CodePush deployments...";
-	public static SettingDeploymentKeys: string =
-		"Setting CodePush deployment keys...";
-	public static FailedToCreateDeploymentKeys: string =
+	public static SettingDeploymentKeys = "Setting CodePush deployment keys...";
+	public static FailedToCreateDeploymentKeys =
 		"Failed to update CodePush deployment keys!";
-	public static InstallingPods: string = "Installing pods for ios...";
-	public static FailedToInstallPods: string = "Failed to run pod update.";
-	public static RunningNpmI: string = "Running npm install...";
-	public static FailedNpmI: string = "Failed to run npm install.";
-	public static SettingAppSecrets: string = "Setting app secrets...";
-	public static PullingSample: string =
+	public static InstallingPods = "Installing pods for ios...";
+	public static FailedToInstallPods = "Failed to run pod update.";
+	public static RunningNpmI = "Running npm install...";
+	public static FailedNpmI = "Failed to run npm install.";
+	public static SettingAppSecrets = "Setting app secrets...";
+	public static PullingSample =
 		"Pull App Center sample app into current directory...";
 
 	public static PushingChangesTo(repoUrl: string): string {
@@ -78,7 +68,7 @@ export class LogStrings {
 	public static DeploymentInfo(
 		name: string,
 		key: string,
-		os: string
+		os: string,
 	): string {
 		return `Deployment name: ${name}, secret: ${key}, OS: ${os}.`;
 	}
@@ -95,14 +85,14 @@ export class LogStrings {
 	}
 	public static DistributionGroupCreated(
 		groupName: string,
-		projectName: string
+		projectName: string,
 	): string {
 		return `"${groupName}" distribution group was created for your project "${projectName}".`;
 	}
 
 	public static ProjectConnected(
 		projectName: string,
-		repoUrl: string
+		repoUrl: string,
 	): string {
 		return `Project "${projectName}" was connected to repositry "${repoUrl}".`;
 	}
@@ -125,7 +115,7 @@ export class LogStrings {
 
 	public static DistributionGroupExists(
 		group: string,
-		appName: string
+		appName: string,
 	): string {
 		return `Distribution group "${group}" in "${appName}" already exists.`;
 	}
@@ -140,7 +130,7 @@ export class LogStrings {
 
 	public static FailedCreateAppUnder(
 		appName: string,
-		orgName?: string
+		orgName?: string,
 	): string {
 		let failed = `An unexpected error occurred trying to create "${appName}"`;
 		failed += orgName ? `under ${orgName}.` : ".";
@@ -181,7 +171,7 @@ export class LogStrings {
 
 	public static MultipleProfiles(
 		userId: string,
-		storageFilePath: string
+		storageFilePath: string,
 	): string {
 		return `There are more than one profile saved with userId ${userId}. Try deleting ${storageFilePath} and log in again.`;
 	}
@@ -216,7 +206,7 @@ export class LogStrings {
 
 	public static SuccessfullyPushedTo(
 		remoteRepoName: string,
-		branch: string
+		branch: string,
 	): string {
 		return `Successfully pushed changes to remote repository: "${remoteRepoName}" branchname: "${branch}"`;
 	}

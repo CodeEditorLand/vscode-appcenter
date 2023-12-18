@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * @summary Test Cloud Hash Upload Status
  *

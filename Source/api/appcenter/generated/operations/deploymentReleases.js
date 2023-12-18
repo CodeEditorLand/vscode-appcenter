@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -58,10 +56,10 @@ function _update(
 	ownerName,
 	appName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -77,7 +75,7 @@ function _update(
 			typeof deploymentName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"deploymentName cannot be null or undefined and it must be of type string."
+				"deploymentName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -86,7 +84,7 @@ function _update(
 			typeof releaseLabel.valueOf() !== "string"
 		) {
 			throw new Error(
-				"releaseLabel cannot be null or undefined and it must be of type string."
+				"releaseLabel cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (release === null || release === undefined) {
@@ -98,7 +96,7 @@ function _update(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -107,7 +105,7 @@ function _update(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -115,34 +113,34 @@ function _update(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/deployments/{deployment_name}/releases/{release_label}";
 	requestUrl = requestUrl.replace(
 		"{deployment_name}",
-		encodeURIComponent(deploymentName)
+		encodeURIComponent(deploymentName),
 	);
 	requestUrl = requestUrl.replace(
 		"{release_label}",
-		encodeURIComponent(releaseLabel)
+		encodeURIComponent(releaseLabel),
 	);
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "PATCH";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -154,20 +152,20 @@ function _update(
 	let requestModel = null;
 	try {
 		if (release !== null && release !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"CodePushReleaseModification"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				release,
-				"release"
+				"release",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(release, null, 2)}.`
+				`payload - ${JSON.stringify(release, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -177,9 +175,9 @@ function _update(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200 && statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -202,11 +200,13 @@ function _update(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models["Failure"]().mapper();
+					const resultMapper = new client.models[
+						"Failure"
+					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -227,18 +227,18 @@ function _update(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"CodePushRelease"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -302,12 +302,11 @@ class DeploymentReleases {
 		release,
 		ownerName,
 		appName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._update(
+			this._update(
 				deploymentName,
 				releaseLabel,
 				release,
@@ -315,7 +314,7 @@ class DeploymentReleases {
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -324,7 +323,7 @@ class DeploymentReleases {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -387,17 +386,26 @@ class DeploymentReleases {
 		ownerName,
 		appName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._update(
+				deploymentName,
+				releaseLabel,
+				release,
+				ownerName,
+				appName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._update(
+				this._update(
 					deploymentName,
 					releaseLabel,
 					release,
@@ -411,19 +419,9 @@ class DeploymentReleases {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._update(
-				deploymentName,
-				releaseLabel,
-				release,
-				ownerName,
-				appName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 }

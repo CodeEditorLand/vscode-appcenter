@@ -1,11 +1,11 @@
 import { AppCenterClient, models } from "../api/appcenter";
 import { ILogger, LogLevel } from "../extension/log/logHelper";
+import { LogStrings } from "../extension/resources/logStrings";
 import { ICodePushReleaseParams } from "../helpers/interfaces";
 import { SettingsHelper } from "../helpers/settingsHelper";
 import { CommandResult, ErrorCodes, failure, success } from "./commandResult";
 import { appCenterCodePushRelease } from "./release-strategy/appcenterCodePushRelease";
 import { legacyCodePushRelease } from "./release-strategy/legacyCodePushRelease";
-import { LogStrings } from "../extension/resources/logStrings";
 
 // Use old service endpoint unless we will fix issue with 1MB payload limitation for new one
 const useLegacyCodePushServer: boolean =
@@ -15,14 +15,14 @@ export default class CodePushRelease {
 	public static exec(
 		client: AppCenterClient,
 		params: ICodePushReleaseParams,
-		logger: ILogger
+		logger: ILogger,
 	): Promise<CommandResult> {
 		return ((): Promise<CodePushRelease | void> => {
 			if (useLegacyCodePushServer) {
 				return legacyCodePushRelease(
 					params,
 					<string>params.token,
-					SettingsHelper.getLegacyCodePushEndpoint()
+					SettingsHelper.getLegacyCodePushEndpoint(),
 				);
 			} else {
 				return appCenterCodePushRelease(client, params);
@@ -47,7 +47,7 @@ export default class CodePushRelease {
 				} else {
 					return failure(
 						ErrorCodes.Exception,
-						LogStrings.CodePushError
+						LogStrings.CodePushError,
 					);
 				}
 			});

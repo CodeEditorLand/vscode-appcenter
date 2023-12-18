@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Apple details for fetching test flight groups from Apple Developer Portal.
  * pass either apple_id or bundle_identifier to get the test flight groups. if

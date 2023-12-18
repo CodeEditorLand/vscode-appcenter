@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -32,7 +30,7 @@ const WebResource = msRest.WebResource;
  */
 function _acceptAll(options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -42,21 +40,21 @@ function _acceptAll(options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
-	let requestUrl =
+	const baseUrl = this.client.baseUri;
+	const requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/user/invitations/distribution_groups/accept";
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -69,9 +67,9 @@ function _acceptAll(options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -94,13 +92,13 @@ function _acceptAll(options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -112,7 +110,7 @@ function _acceptAll(options, callback) {
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -146,13 +144,12 @@ class DistributionGroupInvitations {
 	 * @reject {Error} - The error object.
 	 */
 	acceptAllWithHttpOperationResponse(options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._acceptAll(options, (err, result, request, response) => {
-				let httpOperationResponse = new msRest.HttpOperationResponse(
+			this._acceptAll(options, (err, result, request, response) => {
+				const httpOperationResponse = new msRest.HttpOperationResponse(
 					request,
-					response
+					response,
 				);
 				httpOperationResponse.body = result;
 				if (err) {
@@ -196,15 +193,16 @@ class DistributionGroupInvitations {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	acceptAll(options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._acceptAll(options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._acceptAll(options, (err, result, request, response) => {
+				this._acceptAll(options, (err, result, request, response) => {
 					if (err) {
 						reject(err);
 					} else {
@@ -213,8 +211,6 @@ class DistributionGroupInvitations {
 					return;
 				});
 			});
-		} else {
-			return self._acceptAll(options, optionalCallback);
 		}
 	}
 }

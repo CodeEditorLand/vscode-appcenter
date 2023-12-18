@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * The versioning configuration for artifacts built for this branch
  *

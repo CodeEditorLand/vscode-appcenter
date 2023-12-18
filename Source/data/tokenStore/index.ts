@@ -1,12 +1,12 @@
-import * as os from "os";
 import * as fs from "fs";
+import * as os from "os";
 import * as path from "path";
 import { Constants } from "../../extension/resources/constants";
 import { Utils } from "../../helpers/utils/utils";
 import { createFileTokenStore } from "./fileTokenStore";
+import { createOsxTokenStore } from "./osx/osx-token-store";
 import { TokenStore } from "./tokenStore";
 import { createWinTokenStore } from "./win32/win-token-store";
-import { createOsxTokenStore } from "./osx/osx-token-store";
 
 export * from "./tokenStore";
 
@@ -34,10 +34,10 @@ if (os.platform() === "win32") {
 	store = createOsxTokenStore();
 } else {
 	store = createFileTokenStore(
-		getTokenFilePath(Constants.AppCenterTokenFileName)
+		getTokenFilePath(Constants.AppCenterTokenFileName),
 	);
 }
 export const tokenStore = store;
 export const fileTokenStore = createFileTokenStore(
-	getTokenFilePath(Constants.AppCenterTokenFileName)
+	getTokenFilePath(Constants.AppCenterTokenFileName),
 );

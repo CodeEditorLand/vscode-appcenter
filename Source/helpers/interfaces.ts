@@ -73,7 +73,7 @@ export interface LoginInfo {
 }
 
 // tslint:disable-next-line:no-empty-interface
-export interface AppCenterLoginInfo extends LoginInfo {}
+export type AppCenterLoginInfo = LoginInfo;
 
 export interface VstsLoginInfo extends LoginInfo {
 	tenantName: string;

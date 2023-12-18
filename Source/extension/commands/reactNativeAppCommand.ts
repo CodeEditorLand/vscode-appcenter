@@ -9,18 +9,18 @@ import {
 import { Utils } from "../../helpers/utils/utils";
 import * as Menu from "../menu/menu";
 import { CommandNames, Constants } from "../resources/constants";
-import { Strings } from "../resources/strings";
-import { Command } from "./command";
-import { VsCodeUI } from "../ui/vscodeUI";
-import { Messages } from "../resources/messages";
-import { MenuStrings } from "../resources/menuStrings";
 import { LogStrings } from "../resources/logStrings";
+import { MenuStrings } from "../resources/menuStrings";
+import { Messages } from "../resources/messages";
+import { Strings } from "../resources/strings";
+import { VsCodeUI } from "../ui/vscodeUI";
+import { Command } from "./command";
 
 export class ReactNativeAppCommand extends Command {
-	protected currentAppMenuTarget: string = "MenuCurrentApp";
+	protected currentAppMenuTarget = "MenuCurrentApp";
 	protected static cachedAllApps: models.AppResponse[];
 	protected userAlreadySelectedApp: boolean;
-	protected checkForReact: boolean = true;
+	protected checkForReact = true;
 	protected _params: CommandParams;
 
 	constructor(params: CommandParams) {
@@ -69,7 +69,7 @@ export class ReactNativeAppCommand extends Command {
 	}
 
 	protected async getCurrentApp(
-		refreshDeployments: boolean = false
+		refreshDeployments = false,
 	): Promise<CurrentApp | null> {
 		return await VsCodeUI.showProgress(() => {
 			return this.appCenterProfile.then(
@@ -80,13 +80,13 @@ export class ReactNativeAppCommand extends Command {
 								const result: models.Deployment[] =
 									await this.client.codePushDeployments.list(
 										profile.currentApp.ownerName,
-										profile.currentApp.appName
+										profile.currentApp.appName,
 									);
 								if (result) {
 									profile.currentApp.currentAppDeployments.codePushDeployments =
 										[];
 									profile.currentApp.currentAppDeployments.codePushDeployments.push(
-										...result
+										...result,
 									);
 
 									profile.currentApp.currentAppDeployments.currentDeploymentName =
@@ -96,7 +96,7 @@ export class ReactNativeAppCommand extends Command {
 												.codePushDeployments,
 											profile.currentApp
 												.currentAppDeployments
-												.currentDeploymentName
+												.currentDeploymentName,
 										);
 								}
 							} catch (err) {}
@@ -104,27 +104,27 @@ export class ReactNativeAppCommand extends Command {
 						return profile.currentApp;
 					}
 					return null;
-				}
+				},
 			);
 		});
 	}
 
 	protected async handleShowCurrentAppQuickPickSelection(
 		_target: QuickPickAppItem,
-		_rnApps: models.AppResponse[]
+		_rnApps: models.AppResponse[],
 	) {
 		throw Error(
-			"handleShowCurrentAppQuickPickSelection not implemented in base class"
+			"handleShowCurrentAppQuickPickSelection not implemented in base class",
 		);
 	}
 
 	protected async showAppsQuickPick(
 		apps: models.AppResponse[],
-		includeAllApps: boolean = false,
-		includeSelectCurrent: boolean = false,
-		includeCreateNew: boolean = true,
+		includeAllApps = false,
+		includeSelectCurrent = false,
+		includeCreateNew = true,
 		prompt: string = Strings.ProvideCurrentAppHint,
-		force: boolean = false
+		force = false,
 	) {
 		if (!apps) {
 			this.logger.debug(LogStrings.NoAppsToShow);
@@ -135,7 +135,7 @@ export class ReactNativeAppCommand extends Command {
 			ReactNativeAppCommand.cachedAllApps = apps;
 		}
 		const options: QuickPickAppItem[] = Menu.getQuickPickItemsForAppsList(
-			includeAllApps ? apps : rnApps
+			includeAllApps ? apps : rnApps,
 		);
 		if (
 			includeCreateNew &&
@@ -163,7 +163,7 @@ export class ReactNativeAppCommand extends Command {
 		if (!this.userAlreadySelectedApp || force) {
 			const selected: QuickPickAppItem = await VsCodeUI.showQuickPick(
 				options,
-				prompt
+				prompt,
 			);
 			this.userAlreadySelectedApp = true;
 			if (!selected) {
@@ -178,15 +178,16 @@ export class ReactNativeAppCommand extends Command {
 			return [];
 		}
 		return apps.filter(
-			(app) => app.platform === Constants.AppCenterReactNativePlatformName
+			(app) =>
+				app.platform === Constants.AppCenterReactNativePlatformName,
 		);
 	}
 
 	protected refreshCachedAppsAndRepaintQuickPickIfNeeded(
-		includeSelectCurrent: boolean = false,
-		includeCreateNew: boolean = true,
-		includeAllApps: boolean = true,
-		prompt: string = Strings.ProvideCurrentAppHint
+		includeSelectCurrent = false,
+		includeCreateNew = true,
+		includeAllApps = true,
+		prompt: string = Strings.ProvideCurrentAppHint,
 	) {
 		VsCodeUI.showProgress(async (progress) => {
 			progress.report({ message: Messages.GetAppsListProgressMessage });
@@ -203,7 +204,7 @@ export class ReactNativeAppCommand extends Command {
 					rnApps,
 					includeAllApps
 						? ReactNativeAppCommand.cachedAllApps
-						: this.getRnApps(ReactNativeAppCommand.cachedAllApps)
+						: this.getRnApps(ReactNativeAppCommand.cachedAllApps),
 				)
 			) {
 				this.showAppsQuickPick(
@@ -211,7 +212,7 @@ export class ReactNativeAppCommand extends Command {
 					includeAllApps,
 					includeSelectCurrent,
 					includeCreateNew,
-					prompt
+					prompt,
 				);
 			}
 		}).catch((e) => {
@@ -222,7 +223,7 @@ export class ReactNativeAppCommand extends Command {
 
 	private cachedAppsItemsDiffer(
 		appsList: models.AppResponse[],
-		cachedApps: models.AppResponse[]
+		cachedApps: models.AppResponse[],
 	): boolean {
 		if (!cachedApps || !appsList) {
 			return true;
@@ -231,7 +232,7 @@ export class ReactNativeAppCommand extends Command {
 			return true;
 		}
 
-		let differs: boolean = false;
+		let differs = false;
 		cachedApps.every((cachedItem) => {
 			const matches = appsList.filter((item) => {
 				return this.compareAppsItems(cachedItem, item);
@@ -248,7 +249,7 @@ export class ReactNativeAppCommand extends Command {
 
 	private compareAppsItems(
 		cachedItem: models.AppResponse,
-		item: models.AppResponse
+		item: models.AppResponse,
 	): boolean {
 		const hashOfTheCachedObject = Md5.hashStr(JSON.stringify(cachedItem));
 		const hashOfTheIncomingObject = Md5.hashStr(JSON.stringify(item));

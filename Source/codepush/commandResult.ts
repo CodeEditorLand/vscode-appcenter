@@ -22,7 +22,7 @@ export function success(res: any): CommandResult {
 // Used when there's a failure otherwise
 export function failure(
 	errorCode: number,
-	errorMessage: string
+	errorMessage: string,
 ): CommandResult {
 	return {
 		succeeded: false,
@@ -34,15 +34,15 @@ export function failure(
 export enum ErrorCodes {
 	Succeeded = 0,
 	// Command given contained illegal characters/names
-	IllegalCommand,
+	IllegalCommand = 1,
 	// Command was legal, but not found
-	NoSuchCommand,
+	NoSuchCommand = 2,
 	// Unhandled exception occurred
-	Exception,
+	Exception = 3,
 	// A parameter is invalid
-	InvalidParameter,
+	InvalidParameter = 4,
 	// Command requires logged in user
-	NotLoggedIn,
+	NotLoggedIn = 5,
 	// The requested resource was not found
-	NotFound,
+	NotFound = 6,
 }

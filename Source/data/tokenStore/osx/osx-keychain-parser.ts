@@ -2,8 +2,8 @@
 // Parser for the output of the security(1) command line.
 //
 
-import * as es from "event-stream";
 import * as stream from "stream";
+import * as es from "event-stream";
 
 //
 // Regular expressions that match the various fields in the input
@@ -42,7 +42,7 @@ export class OsxSecurityParsingStream extends stream.Transform {
 	public _transform(
 		chunk: any,
 		_encoding: string,
-		callback: { (err?: Error): void }
+		callback: { (err?: Error): void },
 	): void {
 		const line = chunk.toString();
 

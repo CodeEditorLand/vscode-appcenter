@@ -4,16 +4,16 @@
 //
 
 import * as childProcess from "child_process";
-import { Observable, Observer } from "rx-lite";
+import * as path from "path";
 import * as stream from "stream";
 import * as es from "event-stream";
-import * as path from "path";
+import { Observable, Observer } from "rx-lite";
 import * as parser from "./win-credstore-parser";
 
 import {
-	TokenStore,
 	TokenEntry,
 	TokenKeyType,
+	TokenStore,
 	TokenValueType,
 } from "../tokenStore";
 
@@ -91,8 +91,8 @@ export class WinTokenStore implements TokenStore {
 					.pipe(parser.createParsingStream())
 					.pipe(
 						es.mapSync(
-							prefixer.removePrefixFromCred.bind(prefixer)
-						) as any as Duplex
+							prefixer.removePrefixFromCred.bind(prefixer),
+						) as any as Duplex,
 					);
 
 				credStream.on("data", (cred: any) => {
@@ -103,7 +103,7 @@ export class WinTokenStore implements TokenStore {
 				});
 
 				credStream.on("error", (err: Error) => observer.onError(err));
-			}
+			},
 		);
 	}
 
@@ -113,10 +113,7 @@ export class WinTokenStore implements TokenStore {
 	 * @param {tokenKeyType} key target name for credential
 	 * @return {Promise<TokenEntry>} Returned credential or null if not found.
 	 */
-	public get(
-		key: TokenKeyType,
-		useOldName: boolean = false
-	): Promise<TokenEntry> {
+	public get(key: TokenKeyType, useOldName = false): Promise<TokenEntry> {
 		const prefixer = new Prefixer(useOldName);
 		const args = ["-s", "-t", prefixer.ensurePrefix(key)];
 
@@ -130,13 +127,13 @@ export class WinTokenStore implements TokenStore {
 				.pipe(parser.createParsingStream())
 				.pipe(
 					es.mapSync(
-						prefixer.removePrefixFromCred.bind(prefixer)
-					) as any as Duplex
+						prefixer.removePrefixFromCred.bind(prefixer),
+					) as any as Duplex,
 				)
 				.on("data", (credential: any) => {
 					result = credential;
 					result.targetName = prefixer.removePrefix(
-						result.targetName
+						result.targetName,
 					);
 				});
 
@@ -154,9 +151,9 @@ export class WinTokenStore implements TokenStore {
 				return reject(
 					new Error(
 						`Getting credential failed, exit code ${code}: ${errors.join(
-							", "
-						)}`
-					)
+							", ",
+						)}`,
+					),
 				);
 			});
 		});
@@ -184,7 +181,7 @@ export class WinTokenStore implements TokenStore {
 
 		//debug(`Saving token with args ${inspect(args)}`);
 		return new Promise<void>((resolve, reject) => {
-			childProcess.execFile(credExePath, args, function (err) {
+			childProcess.execFile(credExePath, args, (err) => {
 				if (err) {
 					//debug(`Token store failed, ${inspect(err)}`);
 					return reject(err);
@@ -214,7 +211,7 @@ export class WinTokenStore implements TokenStore {
 
 		// debug(`Deleting token with args ${inspect(args)}`);
 		return new Promise<void>((resolve, reject) => {
-			childProcess.execFile(credExePath, args, function (err) {
+			childProcess.execFile(credExePath, args, (err) => {
 				if (err) {
 					return reject(err);
 				}

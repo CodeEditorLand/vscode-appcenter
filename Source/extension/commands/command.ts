@@ -16,9 +16,9 @@ import { Utils } from "../../helpers/utils/utils";
 import { ExtensionManager } from "../extensionManager";
 import { ILogger } from "../log/logHelper";
 import { AppCenterOS } from "../resources/constants";
-import { VsCodeUI } from "../ui/vscodeUI";
-import { Messages } from "../resources/messages";
 import { LogStrings } from "../resources/logStrings";
+import { Messages } from "../resources/messages";
+import { VsCodeUI } from "../ui/vscodeUI";
 
 export class Command {
 	protected clientFactory: AppCenterClientFactory;
@@ -50,7 +50,7 @@ export class Command {
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
 			VsCodeUI.ShowWarningMessage(
-				Messages.NoProjectRootFolderFoundWarning
+				Messages.NoProjectRootFolderFoundWarning,
 			);
 			return Promise.resolve(false);
 		}
@@ -63,15 +63,12 @@ export class Command {
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
 			VsCodeUI.ShowWarningMessage(
-				Messages.NoProjectRootFolderFoundWarning
+				Messages.NoProjectRootFolderFoundWarning,
 			);
 			return Promise.resolve(false);
 		}
 		const profile: AppCenterProfile | null = await this.appCenterProfile;
-		if (!profile) {
-			VsCodeUI.ShowWarningMessage(Messages.UserIsNotLoggedInWarning);
-			return Promise.resolve(false);
-		} else {
+		if (profile) {
 			const clientOrNull: AppCenterClient | null =
 				this.resolveAppCenterClient(profile);
 			if (clientOrNull) {
@@ -81,17 +78,20 @@ export class Command {
 				return Promise.resolve(false);
 			}
 			return Promise.resolve(true);
+		} else {
+			VsCodeUI.ShowWarningMessage(Messages.UserIsNotLoggedInWarning);
+			return Promise.resolve(false);
 		}
 	}
 
 	private resolveAppCenterClient(
-		profile: AppCenterProfile
+		profile: AppCenterProfile,
 	): AppCenterClient | null {
 		if (!this.client) {
 			if (profile) {
 				return this.clientFactory.fromProfile(
 					profile,
-					SettingsHelper.getAppCenterAPIEndpoint()
+					SettingsHelper.getAppCenterAPIEndpoint(),
 				);
 			} else {
 				this.logger.error(LogStrings.NoUserSpecified);
@@ -108,7 +108,7 @@ export class Command {
 		targetBinaryVersion: string,
 		type: string,
 		isMandatory: boolean,
-		appSecret: string
+		appSecret: string,
 	): Promise<CurrentApp | null> {
 		const currentApp = Utils.toCurrentApp(
 			currentAppName,
@@ -117,7 +117,7 @@ export class Command {
 			targetBinaryVersion,
 			type,
 			isMandatory,
-			appSecret
+			appSecret,
 		);
 		if (!currentApp) {
 			VsCodeUI.ShowWarningMessage(Messages.InvalidCurrentAppNameWarning);

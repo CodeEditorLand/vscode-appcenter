@@ -1,23 +1,23 @@
 import { tokenStore } from "../data/tokenStore";
 import { fileTokenStore } from "../data/tokenStore";
 import { ILogger } from "../extension/log/logHelper";
-import { LoginInfo, Profile, ProfileStorage } from "../helpers/interfaces";
 import { LogStrings } from "../extension/resources/logStrings";
+import { LoginInfo, Profile, ProfileStorage } from "../helpers/interfaces";
 
 export default abstract class Auth<T extends Profile> {
 	public constructor(
 		protected profileStorage: ProfileStorage<T>,
-		protected logger: ILogger
+		protected logger: ILogger,
 	) {}
 
 	protected abstract async getUserInfo(credentials: LoginInfo): Promise<T>;
 
 	public get activeProfile(): Promise<T | null> {
 		const activeProfile: T = this.profileStorage.activeProfile;
-		if (!activeProfile) {
-			return this.tryFixProfileStorage();
-		} else {
+		if (activeProfile) {
 			return Promise.resolve(activeProfile);
+		} else {
+			return this.tryFixProfileStorage();
 		}
 	}
 

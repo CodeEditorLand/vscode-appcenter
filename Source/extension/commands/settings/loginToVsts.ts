@@ -2,11 +2,11 @@ import { VSTSProvider } from "../../../api/vsts/vstsProvider";
 import Auth from "../../../auth/auth";
 import { VstsLoginInfo, VstsProfile } from "../../../helpers/interfaces";
 import { AuthProvider } from "../../resources/constants";
-import { Strings } from "../../resources/strings";
-import { Command } from "../command";
-import { VsCodeUI } from "../../ui/vscodeUI";
-import { Messages } from "../../resources/messages";
 import { LogStrings } from "../../resources/logStrings";
+import { Messages } from "../../resources/messages";
+import { Strings } from "../../resources/strings";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { Command } from "../command";
 
 export default class LoginToVsts extends Command {
 	public async runNoClient(): Promise<boolean | void> {
@@ -48,7 +48,7 @@ export default class LoginToVsts extends Command {
 			if (!profile) {
 				this.logger.error(LogStrings.FailedToGetUserFromServer);
 				VsCodeUI.ShowErrorMessage(
-					Messages.FailedToExecuteLoginMsg(AuthProvider.Vsts)
+					Messages.FailedToExecuteLoginMsg(AuthProvider.Vsts),
 				);
 				return false;
 			}
@@ -64,20 +64,20 @@ export default class LoginToVsts extends Command {
 					accessToken: accessToken,
 					userName: userName,
 				},
-				this.logger
+				this.logger,
 			);
 			const isValid: boolean = await vsts.TestVstsConnection();
-			if (!isValid) {
-				VsCodeUI.ShowWarningMessage(Messages.VstsCredsNotValidWarning);
-				this.vstsAuth.doLogout(profile.userId);
-				return false;
-			} else {
+			if (isValid) {
 				VsCodeUI.ShowInfoMessage(
 					Messages.YouAreLoggedInMessage(
 						AuthProvider.Vsts,
-						profile.displayName
-					)
+						profile.displayName,
+					),
 				);
+			} else {
+				VsCodeUI.ShowWarningMessage(Messages.VstsCredsNotValidWarning);
+				this.vstsAuth.doLogout(profile.userId);
+				return false;
 			}
 			return true;
 		} catch (e) {

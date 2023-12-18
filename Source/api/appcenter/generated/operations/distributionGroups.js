@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 const msRest = require("ms-rest");
 const WebResource = msRest.WebResource;
 
@@ -43,10 +41,10 @@ function _resendInvite(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -54,7 +52,7 @@ function _resendInvite(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let userEmails =
+	const userEmails =
 		options && options.userEmails !== undefined
 			? options.userEmails
 			: undefined;
@@ -66,7 +64,7 @@ function _resendInvite(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -75,7 +73,7 @@ function _resendInvite(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -84,7 +82,7 @@ function _resendInvite(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(userEmails)) {
@@ -108,30 +106,30 @@ function _resendInvite(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/resend_invite";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -143,20 +141,20 @@ function _resendInvite(
 	let requestModel = null;
 	try {
 		if (members !== null && members !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"DistributionGroupUserRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				members,
-				"members"
+				"members",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(members, null, 2)}.`
+				`payload - ${JSON.stringify(members, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -166,9 +164,9 @@ function _resendInvite(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -191,13 +189,13 @@ function _resendInvite(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -209,7 +207,7 @@ function _resendInvite(
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -249,10 +247,10 @@ function _removeUser(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -260,7 +258,7 @@ function _removeUser(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let userEmails =
+	const userEmails =
 		options && options.userEmails !== undefined
 			? options.userEmails
 			: undefined;
@@ -272,7 +270,7 @@ function _removeUser(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -281,7 +279,7 @@ function _removeUser(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -290,7 +288,7 @@ function _removeUser(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(userEmails)) {
@@ -314,30 +312,30 @@ function _removeUser(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members/bulk_delete";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -349,20 +347,20 @@ function _removeUser(
 	let requestModel = null;
 	try {
 		if (members !== null && members !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"DistributionGroupUserRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				members,
-				"members"
+				"members",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(members, null, 2)}.`
+				`payload - ${JSON.stringify(members, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -372,9 +370,9 @@ function _removeUser(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -397,13 +395,13 @@ function _removeUser(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -424,7 +422,7 @@ function _removeUser(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -444,12 +442,12 @@ function _removeUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -495,10 +493,10 @@ function _listUsers(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -506,7 +504,7 @@ function _listUsers(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let excludePendingInvitations =
+	const excludePendingInvitations =
 		options && options.excludePendingInvitations !== undefined
 			? options.excludePendingInvitations
 			: undefined;
@@ -518,7 +516,7 @@ function _listUsers(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -527,7 +525,7 @@ function _listUsers(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -536,7 +534,7 @@ function _listUsers(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -545,7 +543,7 @@ function _listUsers(
 			typeof excludePendingInvitations !== "boolean"
 		) {
 			throw new Error(
-				"excludePendingInvitations must be of type boolean."
+				"excludePendingInvitations must be of type boolean.",
 			);
 		}
 	} catch (error) {
@@ -553,28 +551,28 @@ function _listUsers(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
-	let queryParameters = [];
+	const queryParameters = [];
 	if (
 		excludePendingInvitations !== null &&
 		excludePendingInvitations !== undefined
 	) {
 		queryParameters.push(
 			"exclude_pending_invitations=" +
-				encodeURIComponent(excludePendingInvitations.toString())
+				encodeURIComponent(excludePendingInvitations.toString()),
 		);
 	}
 	if (queryParameters.length > 0) {
@@ -582,14 +580,14 @@ function _listUsers(
 	}
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -602,9 +600,9 @@ function _listUsers(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -627,13 +625,13 @@ function _listUsers(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -654,7 +652,7 @@ function _listUsers(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -674,12 +672,12 @@ function _listUsers(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -724,10 +722,10 @@ function _addUser(
 	appName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -735,7 +733,7 @@ function _addUser(
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let userEmails =
+	const userEmails =
 		options && options.userEmails !== undefined
 			? options.userEmails
 			: undefined;
@@ -747,7 +745,7 @@ function _addUser(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -756,7 +754,7 @@ function _addUser(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -765,7 +763,7 @@ function _addUser(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (Array.isArray(userEmails)) {
@@ -789,30 +787,30 @@ function _addUser(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -824,20 +822,20 @@ function _addUser(
 	let requestModel = null;
 	try {
 		if (members !== null && members !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"DistributionGroupUserRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				members,
-				"members"
+				"members",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(members, null, 2)}.`
+				`payload - ${JSON.stringify(members, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -847,9 +845,9 @@ function _addUser(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -872,13 +870,13 @@ function _addUser(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -899,7 +897,7 @@ function _addUser(
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -919,12 +917,12 @@ function _addUser(
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -966,7 +964,7 @@ function _addUser(
  */
 function _get(ownerName, appName, distributionGroupName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -982,7 +980,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -991,7 +989,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1000,7 +998,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1008,30 +1006,30 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1044,9 +1042,9 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1069,13 +1067,13 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1096,18 +1094,18 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"DistributionGroupResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1153,7 +1151,7 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
  */
 function _update(ownerName, appName, distributionGroupName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1161,8 +1159,9 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 	if (!callback) {
 		throw new Error("callback cannot be null.");
 	}
-	let name = options && options.name !== undefined ? options.name : undefined;
-	let isPublic =
+	const name =
+		options && options.name !== undefined ? options.name : undefined;
+	const isPublic =
 		options && options.isPublic !== undefined
 			? options.isPublic
 			: undefined;
@@ -1174,7 +1173,7 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1183,7 +1182,7 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1192,7 +1191,7 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1225,30 +1224,30 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "PATCH";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1260,20 +1259,20 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 	let requestModel = null;
 	try {
 		if (distributionGroup !== null && distributionGroup !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"DistributionGroupPatchRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				distributionGroup,
-				"distributionGroup"
+				"distributionGroup",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`
+				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1283,9 +1282,9 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1308,13 +1307,13 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1335,18 +1334,18 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"DistributionGroupResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1389,10 +1388,10 @@ function _deleteMethod(
 	ownerName,
 	distributionGroupName,
 	options,
-	callback
+	callback,
 ) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1408,7 +1407,7 @@ function _deleteMethod(
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1417,7 +1416,7 @@ function _deleteMethod(
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1426,7 +1425,7 @@ function _deleteMethod(
 			typeof distributionGroupName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"distributionGroupName cannot be null or undefined and it must be of type string."
+				"distributionGroupName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1434,7 +1433,7 @@ function _deleteMethod(
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
@@ -1442,22 +1441,22 @@ function _deleteMethod(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace(
 		"{distribution_group_name}",
-		encodeURIComponent(distributionGroupName)
+		encodeURIComponent(distributionGroupName),
 	);
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "DELETE";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1470,9 +1469,9 @@ function _deleteMethod(
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 204) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1495,13 +1494,13 @@ function _deleteMethod(
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1513,7 +1512,7 @@ function _deleteMethod(
 			return callback(error);
 		}
 		// Create Result
-		let result = null;
+		const result = null;
 		if (responseBody === "") responseBody = null;
 
 		return callback(null, result, httpRequest, response);
@@ -1546,7 +1545,7 @@ function _deleteMethod(
  */
 function _list(ownerName, appName, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1562,7 +1561,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1571,7 +1570,7 @@ function _list(ownerName, appName, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1579,26 +1578,26 @@ function _list(ownerName, appName, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "GET";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1611,9 +1610,9 @@ function _list(ownerName, appName, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 200) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1636,13 +1635,13 @@ function _list(ownerName, appName, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1663,7 +1662,7 @@ function _list(ownerName, appName, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = {
+					const resultMapper = {
 						required: false,
 						serializedName: "parsedResponse",
 						type: {
@@ -1682,12 +1681,12 @@ function _list(ownerName, appName, options, callback) {
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1729,7 +1728,7 @@ function _list(ownerName, appName, options, callback) {
  */
 function _create(ownerName, appName, name, options, callback) {
 	/* jshint validthis: true */
-	let client = this.client;
+	const client = this.client;
 	if (!callback && typeof options === "function") {
 		callback = options;
 		options = null;
@@ -1745,7 +1744,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof ownerName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"ownerName cannot be null or undefined and it must be of type string."
+				"ownerName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1754,7 +1753,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof appName.valueOf() !== "string"
 		) {
 			throw new Error(
-				"appName cannot be null or undefined and it must be of type string."
+				"appName cannot be null or undefined and it must be of type string.",
 			);
 		}
 		if (
@@ -1763,7 +1762,7 @@ function _create(ownerName, appName, name, options, callback) {
 			typeof name.valueOf() !== "string"
 		) {
 			throw new Error(
-				"name cannot be null or undefined and it must be of type string."
+				"name cannot be null or undefined and it must be of type string.",
 			);
 		}
 	} catch (error) {
@@ -1776,26 +1775,26 @@ function _create(ownerName, appName, name, options, callback) {
 	}
 
 	// Construct URL
-	let baseUrl = this.client.baseUri;
+	const baseUrl = this.client.baseUri;
 	let requestUrl =
 		baseUrl +
 		(baseUrl.endsWith("/") ? "" : "/") +
 		"v0.1/apps/{owner_name}/{app_name}/distribution_groups";
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
-		encodeURIComponent(ownerName)
+		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 
 	// Create HTTP transport objects
-	let httpRequest = new WebResource();
+	const httpRequest = new WebResource();
 	httpRequest.method = "POST";
 	httpRequest.url = requestUrl;
 	httpRequest.headers = {};
 	// Set Headers
 	httpRequest.headers["Content-Type"] = "application/json; charset=utf-8";
 	if (options) {
-		for (let headerName in options["customHeaders"]) {
+		for (const headerName in options["customHeaders"]) {
 			if (options["customHeaders"].hasOwnProperty(headerName)) {
 				httpRequest.headers[headerName] =
 					options["customHeaders"][headerName];
@@ -1807,20 +1806,20 @@ function _create(ownerName, appName, name, options, callback) {
 	let requestModel = null;
 	try {
 		if (distributionGroup !== null && distributionGroup !== undefined) {
-			let requestModelMapper = new client.models[
+			const requestModelMapper = new client.models[
 				"DistributionGroupRequest"
 			]().mapper();
 			requestModel = client.serialize(
 				requestModelMapper,
 				distributionGroup,
-				"distributionGroup"
+				"distributionGroup",
 			);
 			requestContent = JSON.stringify(requestModel);
 		}
 	} catch (error) {
-		let serializationError = new Error(
+		const serializationError = new Error(
 			`Error "${error.message}" occurred in serializing the ` +
-				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`
+				`payload - ${JSON.stringify(distributionGroup, null, 2)}.`,
 		);
 		return callback(serializationError);
 	}
@@ -1830,9 +1829,9 @@ function _create(ownerName, appName, name, options, callback) {
 		if (err) {
 			return callback(err);
 		}
-		let statusCode = response.statusCode;
+		const statusCode = response.statusCode;
 		if (statusCode !== 201) {
-			let error = new Error(responseBody);
+			const error = new Error(responseBody);
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
@@ -1855,13 +1854,13 @@ function _create(ownerName, appName, name, options, callback) {
 					parsedErrorResponse !== null &&
 					parsedErrorResponse !== undefined
 				) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"ErrorResponse"
 					]().mapper();
 					error.body = client.deserialize(
 						resultMapper,
 						parsedErrorResponse,
-						"error.body"
+						"error.body",
 					);
 				}
 			} catch (defaultError) {
@@ -1882,18 +1881,18 @@ function _create(ownerName, appName, name, options, callback) {
 				parsedResponse = JSON.parse(responseBody);
 				result = JSON.parse(responseBody);
 				if (parsedResponse !== null && parsedResponse !== undefined) {
-					let resultMapper = new client.models[
+					const resultMapper = new client.models[
 						"DistributionGroupResponse"
 					]().mapper();
 					result = client.deserialize(
 						resultMapper,
 						parsedResponse,
-						"result"
+						"result",
 					);
 				}
 			} catch (error) {
-				let deserializationError = new Error(
-					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`
+				const deserializationError = new Error(
+					`Error ${error} occurred in deserializing the responseBody - ${responseBody}`,
 				);
 				deserializationError.request = msRest.stripRequest(httpRequest);
 				deserializationError.response = msRest.stripResponse(response);
@@ -1951,18 +1950,17 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._resendInvite(
+			this._resendInvite(
 				ownerName,
 				appName,
 				distributionGroupName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -1971,7 +1969,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2019,17 +2017,24 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._resendInvite(
+				ownerName,
+				appName,
+				distributionGroupName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._resendInvite(
+				this._resendInvite(
 					ownerName,
 					appName,
 					distributionGroupName,
@@ -2041,17 +2046,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._resendInvite(
-				ownerName,
-				appName,
-				distributionGroupName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2081,18 +2078,17 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._removeUser(
+			this._removeUser(
 				ownerName,
 				appName,
 				distributionGroupName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2101,7 +2097,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2148,17 +2144,24 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._removeUser(
+				ownerName,
+				appName,
+				distributionGroupName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._removeUser(
+				this._removeUser(
 					ownerName,
 					appName,
 					distributionGroupName,
@@ -2170,17 +2173,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._removeUser(
-				ownerName,
-				appName,
-				distributionGroupName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2211,18 +2206,17 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._listUsers(
+			this._listUsers(
 				ownerName,
 				appName,
 				distributionGroupName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2231,7 +2225,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2279,17 +2273,24 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._listUsers(
+				ownerName,
+				appName,
+				distributionGroupName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._listUsers(
+				this._listUsers(
 					ownerName,
 					appName,
 					distributionGroupName,
@@ -2301,17 +2302,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._listUsers(
-				ownerName,
-				appName,
-				distributionGroupName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2341,18 +2334,17 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._addUser(
+			this._addUser(
 				ownerName,
 				appName,
 				distributionGroupName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2361,7 +2353,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2408,17 +2400,24 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._addUser(
+				ownerName,
+				appName,
+				distributionGroupName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._addUser(
+				this._addUser(
 					ownerName,
 					appName,
 					distributionGroupName,
@@ -2430,17 +2429,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._addUser(
-				ownerName,
-				appName,
-				distributionGroupName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2468,18 +2459,17 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._get(
+			this._get(
 				ownerName,
 				appName,
 				distributionGroupName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2488,7 +2478,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2531,15 +2521,22 @@ class DistributionGroups {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	get(ownerName, appName, distributionGroupName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._get(
+				ownerName,
+				appName,
+				distributionGroupName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._get(
+				this._get(
 					ownerName,
 					appName,
 					distributionGroupName,
@@ -2551,17 +2548,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._get(
-				ownerName,
-				appName,
-				distributionGroupName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2593,18 +2582,17 @@ class DistributionGroups {
 		ownerName,
 		appName,
 		distributionGroupName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._update(
+			this._update(
 				ownerName,
 				appName,
 				distributionGroupName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2613,7 +2601,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2664,17 +2652,24 @@ class DistributionGroups {
 		appName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._update(
+				ownerName,
+				appName,
+				distributionGroupName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._update(
+				this._update(
 					ownerName,
 					appName,
 					distributionGroupName,
@@ -2686,17 +2681,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._update(
-				ownerName,
-				appName,
-				distributionGroupName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2724,18 +2711,17 @@ class DistributionGroups {
 		appName,
 		ownerName,
 		distributionGroupName,
-		options
+		options,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._deleteMethod(
+			this._deleteMethod(
 				appName,
 				ownerName,
 				distributionGroupName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2744,7 +2730,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2789,17 +2775,24 @@ class DistributionGroups {
 		ownerName,
 		distributionGroupName,
 		options,
-		optionalCallback
+		optionalCallback,
 	) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._deleteMethod(
+				appName,
+				ownerName,
+				distributionGroupName,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._deleteMethod(
+				this._deleteMethod(
 					appName,
 					ownerName,
 					distributionGroupName,
@@ -2811,17 +2804,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._deleteMethod(
-				appName,
-				ownerName,
-				distributionGroupName,
-				options,
-				optionalCallback
-			);
 		}
 	}
 
@@ -2844,15 +2829,14 @@ class DistributionGroups {
 	 * @reject {Error} - The error object.
 	 */
 	listWithHttpOperationResponse(ownerName, appName, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._list(
+			this._list(
 				ownerName,
 				appName,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2861,7 +2845,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -2900,15 +2884,16 @@ class DistributionGroups {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	list(ownerName, appName, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._list(ownerName, appName, options, optionalCallback);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._list(
+				this._list(
 					ownerName,
 					appName,
 					options,
@@ -2919,11 +2904,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._list(ownerName, appName, options, optionalCallback);
 		}
 	}
 
@@ -2948,16 +2931,15 @@ class DistributionGroups {
 	 * @reject {Error} - The error object.
 	 */
 	createWithHttpOperationResponse(ownerName, appName, name, options) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		return new Promise((resolve, reject) => {
-			self._create(
+			this._create(
 				ownerName,
 				appName,
 				name,
 				options,
 				(err, result, request, response) => {
-					let httpOperationResponse =
+					const httpOperationResponse =
 						new msRest.HttpOperationResponse(request, response);
 					httpOperationResponse.body = result;
 					if (err) {
@@ -2966,7 +2948,7 @@ class DistributionGroups {
 						resolve(httpOperationResponse);
 					}
 					return;
-				}
+				},
 			);
 		});
 	}
@@ -3009,15 +2991,22 @@ class DistributionGroups {
 	 *                      {stream} [response] - The HTTP Response stream if an error did not occur.
 	 */
 	create(ownerName, appName, name, options, optionalCallback) {
-		let client = this.client;
-		let self = this;
+		const client = this.client;
 		if (!optionalCallback && typeof options === "function") {
 			optionalCallback = options;
 			options = null;
 		}
-		if (!optionalCallback) {
+		if (optionalCallback) {
+			return this._create(
+				ownerName,
+				appName,
+				name,
+				options,
+				optionalCallback,
+			);
+		} else {
 			return new Promise((resolve, reject) => {
-				self._create(
+				this._create(
 					ownerName,
 					appName,
 					name,
@@ -3029,17 +3018,9 @@ class DistributionGroups {
 							resolve(result);
 						}
 						return;
-					}
+					},
 				);
 			});
-		} else {
-			return self._create(
-				ownerName,
-				appName,
-				name,
-				options,
-				optionalCallback
-			);
 		}
 	}
 }

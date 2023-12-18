@@ -4,10 +4,10 @@ import {
 	ProfileQuickPickItem,
 } from "../../../helpers/interfaces";
 import { AuthProvider } from "../../resources/constants";
-import { Strings } from "../../resources/strings";
-import { Command } from "../command";
-import { VsCodeUI } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
+import { Strings } from "../../resources/strings";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { Command } from "../command";
 
 export default class Logout extends Command {
 	constructor(params: CommandParams) {
@@ -44,7 +44,7 @@ export default class Logout extends Command {
 		try {
 			const selected: ProfileQuickPickItem = await VsCodeUI.showQuickPick(
 				menuOptions,
-				Strings.SelectProfileTitleHint
+				Strings.SelectProfileTitleHint,
 			);
 			if (!selected) {
 				// User cancel selection
@@ -62,11 +62,11 @@ export default class Logout extends Command {
 			VsCodeUI.ShowInfoMessage(
 				Messages.UserLoggedOutMessage(
 					AuthProvider.AppCenter,
-					profile.userName
-				)
+					profile.userName,
+				),
 			);
 			await this.manager.setupAppCenterStatusBar(
-				await this.appCenterAuth.activeProfile
+				await this.appCenterAuth.activeProfile,
 			);
 			return true;
 		} catch (e) {

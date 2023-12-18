@@ -1,48 +1,44 @@
 export class Constants {
-	public static ExtensionName: string = "App Center";
-	public static ExtensionCommandPrefix: string = "appcenter";
-	public static DefaultAPIEndPoint: string = "https://api.appcenter.ms";
-	public static AppCenterPortalURL: string = "https://appcenter.ms";
-	public static DefaultLegacyCodePushService: string =
+	public static ExtensionName = "App Center";
+	public static ExtensionCommandPrefix = "appcenter";
+	public static DefaultAPIEndPoint = "https://api.appcenter.ms";
+	public static AppCenterPortalURL = "https://appcenter.ms";
+	public static DefaultLegacyCodePushService =
 		"https://codepush-management.azurewebsites.net/";
-	public static DefaultDistributionGroupTestersName: string = "Beta Testers";
-	public static DefaultBranchName: string = "master";
-	public static DefaultLoginEndPoint: string =
-		"https://appcenter.ms/cli-login";
-	public static ProdCrashesEndPoint: string =
-		"https://in.mobile.azure.com/logs";
-	public static IntCrashesEndPoint: string =
+	public static DefaultDistributionGroupTestersName = "Beta Testers";
+	public static DefaultBranchName = "master";
+	public static DefaultLoginEndPoint = "https://appcenter.ms/cli-login";
+	public static ProdCrashesEndPoint = "https://in.mobile.azure.com/logs";
+	public static IntCrashesEndPoint =
 		"https://in-integration.dev.avalanch.es/logs";
-	public static StagingCrashesEndPoint: string =
+	public static StagingCrashesEndPoint =
 		"https://in-staging-south-centralus.staging.avalanch.es/logs";
-	public static CodePushStagingDeploymentName: string = "Staging";
-	public static iOSAppSuffix: string = "-ios";
-	public static AndroidAppSuffix: string = "-android";
-	public static AppCenterDefaultTargetBinaryVersion: string = "";
-	public static AppCenterDefaultIsMandatoryParam: boolean = false;
-	public static IOSAppSecretKey: string = "AppSecret";
-	public static AndroidAppSecretKey: string = "app_secret";
-	public static IOSCodePushDeploymentKey: string = "CodePushDeploymentKey";
-	public static AndroidCodePushDeploymentKey: string =
+	public static CodePushStagingDeploymentName = "Staging";
+	public static iOSAppSuffix = "-ios";
+	public static AndroidAppSuffix = "-android";
+	public static AppCenterDefaultTargetBinaryVersion = "";
+	public static AppCenterDefaultIsMandatoryParam = false;
+	public static IOSAppSecretKey = "AppSecret";
+	public static AndroidAppSecretKey = "app_secret";
+	public static IOSCodePushDeploymentKey = "CodePushDeploymentKey";
+	public static AndroidCodePushDeploymentKey =
 		"reactNativeCodePush_androidDeploymentKey";
-	public static AppCenterSampleGitRemoteName: string =
-		"appcenter-sample-repo";
-	public static AppCenterSampleGitRemoteDefaultBranchName: string = "master";
+	public static AppCenterSampleGitRemoteName = "appcenter-sample-repo";
+	public static AppCenterSampleGitRemoteDefaultBranchName = "master";
 	public static AppCenterSampleAppName = "AppCenterSample";
-	public static GitDefaultRemoteName: string = "origin";
-	public static ProfileDir: string = ".vscode-appcenter";
-	public static AppCenterProfileFileName: string =
-		"VSCodeAppCenterProfile.json";
-	public static VstsProfileFileName: string = "VSCodeVstsProfile.json";
-	public static TokenDir: string = ".vscode-appcenter";
+	public static GitDefaultRemoteName = "origin";
+	public static ProfileDir = ".vscode-appcenter";
+	public static AppCenterProfileFileName = "VSCodeAppCenterProfile.json";
+	public static VstsProfileFileName = "VSCodeVstsProfile.json";
+	public static TokenDir = ".vscode-appcenter";
 	public static AppCenterTokenFileName = "VSCodeAppCenterTokens.json";
 	public static TelemetrySource = "appcenter-vscode-extension";
 
 	// IMPORTANT: this two items below should stay in sync in terms of xcode projectOrWorkspacePath/scheme values
 	// We should decide how we should handle this (e.g. create manually within App Center site)
-	public static AppCenterDemoAppRepository: string =
+	public static AppCenterDemoAppRepository =
 		"https://github.com/Microsoft/appcenter-sampleapp-react-native.git";
-	public static defaultBuildConfigJSON: string = `{
+	public static defaultBuildConfigJSON = `{
         "branch": {
             "name": "master"
         },
@@ -77,7 +73,7 @@ export class Constants {
         }
     }`;
 
-	public static AppCenterReactNativePlatformName: string = "React-Native";
+	public static AppCenterReactNativePlatformName = "React-Native";
 }
 // tslint:disable:max-classes-per-file
 export class CommandNames {
@@ -95,27 +91,27 @@ export class CommandNames {
 		CommandNames.CommandPrefix + "setCurrentApp";
 	public static SimulateCrashes: string =
 		CommandNames.CommandPrefix + "simulateCrashes";
-	public static InstallSDK: string = `${CommandNames.CommandPrefix}installSDK`;
-	public static CreateNewApp: string = `${CommandNames.CommandPrefix}createNewApp`;
+	public static InstallSDK = `${CommandNames.CommandPrefix}installSDK`;
+	public static CreateNewApp = `${CommandNames.CommandPrefix}createNewApp`;
 
 	public static Settings = class {
-		public static ShowMenu: string = `${CommandNames.CommandPrefix}settings.showMenu`;
-		public static LoginToAnotherAccount: string = `${CommandNames.CommandPrefix}settings.loginToAnotherAccount`;
-		public static SwitchAccount: string = `${CommandNames.CommandPrefix}settings.switchAccount`;
-		public static Logout: string = `${CommandNames.CommandPrefix}settings.logout`;
+		public static ShowMenu = `${CommandNames.CommandPrefix}settings.showMenu`;
+		public static LoginToAnotherAccount = `${CommandNames.CommandPrefix}settings.loginToAnotherAccount`;
+		public static SwitchAccount = `${CommandNames.CommandPrefix}settings.switchAccount`;
+		public static Logout = `${CommandNames.CommandPrefix}settings.logout`;
 
-		public static LoginVsts: string = `${CommandNames.CommandPrefix}settings.vsts.login`;
-		public static SwitchAccountVsts: string = `${CommandNames.CommandPrefix}settings.vsts.switchAccount`;
-		public static LogoutVsts: string = `${CommandNames.CommandPrefix}settings.vsts.logout`;
-		public static ShowStatusBar: string = `${CommandNames.CommandPrefix}settings.showStatusBar`;
-		public static HideStatusBar: string = `${CommandNames.CommandPrefix}settings.hideStatusBar`;
+		public static LoginVsts = `${CommandNames.CommandPrefix}settings.vsts.login`;
+		public static SwitchAccountVsts = `${CommandNames.CommandPrefix}settings.vsts.switchAccount`;
+		public static LogoutVsts = `${CommandNames.CommandPrefix}settings.vsts.logout`;
+		public static ShowStatusBar = `${CommandNames.CommandPrefix}settings.showStatusBar`;
+		public static HideStatusBar = `${CommandNames.CommandPrefix}settings.hideStatusBar`;
 	};
 
 	public static CreateApp = class {
-		public static CommandName: string = `${CommandNames.CommandPrefix}appcenter.createNewApp`;
-		public static Android: string = `${CommandNames.CommandPrefix}appcenter.createNewApp.android`;
-		public static IOS: string = `${CommandNames.CommandPrefix}appcenter.createNewApp.ios`;
-		public static Both: string = `${CommandNames.CommandPrefix}appcenter.createNewApp.both`;
+		public static CommandName = `${CommandNames.CommandPrefix}appcenter.createNewApp`;
+		public static Android = `${CommandNames.CommandPrefix}appcenter.createNewApp.android`;
+		public static IOS = `${CommandNames.CommandPrefix}appcenter.createNewApp.ios`;
+		public static Both = `${CommandNames.CommandPrefix}appcenter.createNewApp.both`;
 	};
 
 	public static CodePush = class {
@@ -128,7 +124,7 @@ export class CommandNames {
 			"codePush.switchMandatoryPropForRelease";
 		public static SetTargetBinaryVersion: string =
 			CommandNames.CommandPrefix + "codePush.setTargetBinaryVersion";
-		public static LinkCodePush: string = `${CommandNames.CommandPrefix}codePush.linkCodePush`;
+		public static LinkCodePush = `${CommandNames.CommandPrefix}codePush.linkCodePush`;
 	};
 
 	public static Test = class {

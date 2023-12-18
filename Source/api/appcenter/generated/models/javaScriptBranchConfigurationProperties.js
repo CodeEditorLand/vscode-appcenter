@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Build configuration when React Native, or other JavaScript tech, is part of
  * the build steps

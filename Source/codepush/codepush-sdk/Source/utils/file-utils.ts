@@ -2,9 +2,9 @@
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
 import * as fs from "fs";
-import * as _ from "lodash";
 import * as os from "os";
 import * as path from "path";
+import * as _ from "lodash";
 import * as rimraf from "rimraf";
 import * as temp from "temp";
 // tslint:disable-next-line:no-var-requires
@@ -38,7 +38,7 @@ export function copyFileToTmpDir(filePath: string): string {
 
 		const outputFilePath: string = path.join(
 			outputFolderPath,
-			path.basename(filePath)
+			path.basename(filePath),
 		);
 		fs.writeFileSync(outputFilePath, fs.readFileSync(filePath));
 
@@ -48,14 +48,14 @@ export function copyFileToTmpDir(filePath: string): string {
 }
 
 export function generateRandomFilename(length: number): string {
-	let filename: string = "";
+	let filename = "";
 	const validChar: string =
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
 	for (let i = 0; i < length; i++) {
 		// tslint:disable-next-line:insecure-random
 		filename += validChar.charAt(
-			Math.floor(Math.random() * validChar.length)
+			Math.floor(Math.random() * validChar.length),
 		);
 	}
 
@@ -110,11 +110,11 @@ export function readFile(filename: string, encoding: string): Promise<string>;
 // tslint:disable-next-line:unified-signatures
 export function readFile(
 	filename: string,
-	options: { flag?: string }
+	options: { flag?: string },
 ): Promise<Buffer>;
 export function readFile(
 	filename: string,
-	options?: string | { encoding: string; flag?: string }
+	options?: string | { encoding: string; flag?: string },
 ): Promise<string>;
 export async function readFile(...args: any[]): Promise<any> {
 	return (await callFs(fs.readFile, ...args))[0];
@@ -122,17 +122,14 @@ export async function readFile(...args: any[]): Promise<any> {
 
 export async function access(
 	path: string | Buffer,
-	mode: number
+	mode: number,
 ): Promise<void> {
 	return callFs(fs.access, path, mode).then(() => {
 		noop();
 	});
 }
 
-export function rmDir(
-	source: string,
-	recursive: boolean = true
-): Promise<void> {
+export function rmDir(source: string, recursive = true): Promise<void> {
 	if (recursive) {
 		return new Promise<void>((resolve, reject) => {
 			rimraf(source, (err) => {
@@ -169,7 +166,7 @@ function callTemp<TResult>(
 						resolve(result);
 					}
 				},
-			])
+			]),
 		);
 	});
 }
@@ -189,7 +186,7 @@ function callFs(
 						resolve(args);
 					}
 				},
-			])
+			]),
 		);
 	});
 }

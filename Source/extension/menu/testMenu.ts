@@ -1,17 +1,14 @@
 import {
 	CommandParams,
-	MenuQuickPickItem,
 	CurrentApp,
+	MenuQuickPickItem,
 } from "../../helpers/interfaces";
 import * as Test from "../commands/test";
 import { CommandNames } from "../resources/constants";
 import { Menu, MenuItems } from "./menu";
 
 export class TestMenu extends Menu {
-	constructor(
-		params: CommandParams,
-		private _app: CurrentApp = null
-	) {
+	constructor(params: CommandParams, private _app: CurrentApp = null) {
 		super(params);
 	}
 
@@ -33,7 +30,7 @@ export class TestMenu extends Menu {
 			case CommandNames.Test.RunUITestsAsync:
 				const runUiTestsAsync = new Test.RunUITests(
 					this._params,
-					this._app
+					this._app,
 				);
 				runUiTestsAsync.runAsynchronously = true;
 				runUiTestsAsync.run();

@@ -1,21 +1,18 @@
 import AppCenterAppCreator from "../../../createApp/appCenterAppCreator";
 import {
-	Deployment,
 	CommandParams,
 	CurrentApp,
+	Deployment,
 } from "../../../helpers/interfaces";
 import { Utils } from "../../../helpers/utils/utils";
 import CodePushLinker from "../../../link/codePushLinker";
-import { Strings } from "../../resources/strings";
-import { LinkCommand } from "../linkCommand";
-import { VsCodeUI } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
+import { Strings } from "../../resources/strings";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { LinkCommand } from "../linkCommand";
 
 export default class LinkCodePush extends LinkCommand {
-	public constructor(
-		params: CommandParams,
-		private _app: CurrentApp = null
-	) {
+	public constructor(params: CommandParams, private _app: CurrentApp = null) {
 		super(params);
 	}
 
@@ -31,23 +28,21 @@ export default class LinkCodePush extends LinkCommand {
 		if (this._app) {
 			this.pickedApps.push(this._app);
 			this.linkApps();
+		} else if (this.CachedAllApps) {
+			this.showAppsQuickPick(
+				this.CachedAllApps,
+				false,
+				true,
+				false,
+				Strings.ProvideSecondAppHint,
+			);
 		} else {
-			if (this.CachedAllApps) {
-				this.showAppsQuickPick(
-					this.CachedAllApps,
-					false,
-					true,
-					false,
-					Strings.ProvideSecondAppHint
-				);
-			} else {
-				this.refreshCachedAppsAndRepaintQuickPickIfNeeded(
-					true,
-					false,
-					false,
-					Strings.ProvideFirstAppHint
-				);
-			}
+			this.refreshCachedAppsAndRepaintQuickPickIfNeeded(
+				true,
+				false,
+				false,
+				Strings.ProvideFirstAppHint,
+			);
 		}
 	}
 
@@ -57,14 +52,14 @@ export default class LinkCodePush extends LinkCommand {
 		const codePushLinker: CodePushLinker = new CodePushLinker(
 			appCenterAppCreator,
 			this.logger,
-			this.rootPath
+			this.rootPath,
 		);
 
 		if (
 			!Utils.isReactNativeCodePushProject(
 				this.logger,
 				this.rootPath,
-				false
+				false,
 			)
 		) {
 			const codePushInstalled: boolean =
@@ -79,7 +74,7 @@ export default class LinkCodePush extends LinkCommand {
 
 		deployments = await codePushLinker.createCodePushDeployments(
 			this.pickedApps,
-			this.pickedApps[0].ownerName
+			this.pickedApps[0].ownerName,
 		);
 
 		if (deployments.length < 1) {

@@ -1,6 +1,6 @@
 import * as fs from "fs";
-import * as mkdirp from "mkdirp";
 import * as path from "path";
+import * as mkdirp from "mkdirp";
 import { ILogger } from "../extension/log/logHelper";
 import { LogStrings } from "../extension/resources/logStrings";
 // tslint:disable-next-line:no-var-requires
@@ -19,7 +19,7 @@ export default class AppCenterConfig {
 		private mainPlistPath: string,
 		private pathToAndroidConfig: string,
 		private pathToAndroidStringResources: string,
-		private logger: ILogger
+		private logger: ILogger,
 	) {
 		try {
 			this.logger.debug(LogStrings.ReadContents(configPlistPath));
@@ -29,7 +29,7 @@ export default class AppCenterConfig {
 			this.logger.error(
 				`${LogStrings.CouldNotRead("AppCenter-Config.plist")} ${
 					e.message
-				}`
+				}`,
 			);
 			this.parsedInfoConfigPlist = plist.parse(plist.build({}));
 		}
@@ -40,7 +40,7 @@ export default class AppCenterConfig {
 			this.parsedInfoMainPlist = plist.parse(plistContents);
 		} catch (e) {
 			this.logger.error(
-				`${LogStrings.CouldNotRead("Info.plist")} ${e.message}`
+				`${LogStrings.CouldNotRead("Info.plist")} ${e.message}`,
 			);
 			this.parsedInfoMainPlist = plist.parse(plist.build({}));
 		}
@@ -50,20 +50,20 @@ export default class AppCenterConfig {
 			this.androidAppCenterConfig = {};
 			const fileContent: string | Buffer = fs.readFileSync(
 				pathToAndroidConfig,
-				"utf-8"
+				"utf-8",
 			);
 			this.androidAppCenterConfig = JSON.parse(fileContent);
 		} catch (e) {
 			this.logger.error(
 				`${LogStrings.CouldNotRead("appcenter-config.json")} ${
 					e.message
-				}`
+				}`,
 			);
 		}
 
 		try {
 			this.logger.debug(
-				LogStrings.ReadContents(pathToAndroidStringResources)
+				LogStrings.ReadContents(pathToAndroidStringResources),
 			);
 			const data = fs.readFileSync(pathToAndroidStringResources, {
 				encoding: "utf8",
@@ -72,13 +72,13 @@ export default class AppCenterConfig {
 			this.androidStringResources = xml;
 		} catch (e) {
 			this.logger.error(
-				`${LogStrings.CouldNotRead("strings.xml")} ${e.message}`
+				`${LogStrings.CouldNotRead("strings.xml")} ${e.message}`,
 			);
 		}
 	}
 
 	public setAndroidStringResourcesDeploymentKey(
-		codePushDeploymentKey: string
+		codePushDeploymentKey: string,
 	) {
 		this.androidStringResources.child(0).setValue(codePushDeploymentKey);
 	}
@@ -90,14 +90,14 @@ export default class AppCenterConfig {
 			fs.writeFileSync(this.pathToAndroidStringResources, xml);
 		} catch (e) {
 			this.logger.error(
-				LogStrings.CouldNotSave(this.pathToAndroidStringResources)
+				LogStrings.CouldNotSave(this.pathToAndroidStringResources),
 			);
 			return false;
 		}
 		this.logger.debug(
 			LogStrings.SavedCodePushDeploymentKey(
-				this.pathToAndroidStringResources
-			)
+				this.pathToAndroidStringResources,
+			),
 		);
 		return true;
 	}
@@ -143,7 +143,7 @@ export default class AppCenterConfig {
 			return false;
 		}
 		this.logger.debug(
-			LogStrings.SavedCodePushDeploymentKey(this.mainPlistPath)
+			LogStrings.SavedCodePushDeploymentKey(this.mainPlistPath),
 		);
 		return true;
 	}
@@ -165,13 +165,13 @@ export default class AppCenterConfig {
 			mkdirp.sync(path.dirname(this.pathToAndroidConfig));
 		} catch (e) {
 			this.logger.error(
-				LogStrings.CouldNotSave(this.pathToAndroidConfig)
+				LogStrings.CouldNotSave(this.pathToAndroidConfig),
 			);
 			return false;
 		}
 		fs.writeFileSync(
 			this.pathToAndroidConfig,
-			JSON.stringify(this.androidAppCenterConfig, null, 4)
+			JSON.stringify(this.androidAppCenterConfig, null, 4),
 		);
 		this.logger.debug(LogStrings.SavedAppSecret(this.pathToAndroidConfig));
 		return true;

@@ -16,7 +16,7 @@ export class CodePushMenu extends Menu {
 	constructor(
 		private currentApp: CurrentApp,
 		params: CommandParams,
-		private notCurrentApp: boolean = false
+		private notCurrentApp = false,
 	) {
 		super(params);
 	}
@@ -41,10 +41,10 @@ export class CodePushMenu extends Menu {
 				menuItems.push(MenuItems.ReleaseReact(this.currentApp));
 				if (!this.notCurrentApp) {
 					menuItems.push(
-						MenuItems.SetCurrentDeployment(this.currentApp)
+						MenuItems.SetCurrentDeployment(this.currentApp),
 					);
 					menuItems.push(
-						MenuItems.SetTargetBinaryVersion(this.currentApp)
+						MenuItems.SetTargetBinaryVersion(this.currentApp),
 					);
 					menuItems.push(MenuItems.SwitchMandatory(this.currentApp));
 				}
@@ -81,8 +81,8 @@ export class CodePushMenu extends Menu {
 						this.currentApp.ownerName,
 						this.currentApp.appName,
 						AppCenterDistributionTabs.CodePush,
-						this.currentApp.type !== "user"
-					)
+						this.currentApp.type !== "user",
+					),
 				);
 				break;
 

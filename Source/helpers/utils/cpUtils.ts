@@ -11,16 +11,16 @@ export class SpawnError extends Error {
 export namespace cpUtils {
 	export async function executeCommand(
 		logger: ILogger | undefined,
-		logErrorsOnly: boolean = false,
+		logErrorsOnly = false,
 		workingDirectory: string | undefined,
 		command: string,
 		inputValues: ReactNativeLinkInputValue[] = [],
-		exposeArgs: boolean = true,
+		exposeArgs = true,
 		environment: any = {},
 		...args: string[]
 	): Promise<string> {
-		let cmdOutput: string = "";
-		let cmdOutputIncludingStderr: string = "";
+		let cmdOutput = "";
+		let cmdOutputIncludingStderr = "";
 		workingDirectory = workingDirectory || os.tmpdir();
 		const formattedArgs: string = exposeArgs ? args.join(" ") : "";
 		await new Promise(
@@ -33,12 +33,12 @@ export namespace cpUtils {
 				const childProc: cp.ChildProcess = cp.spawn(
 					command,
 					args,
-					options
+					options,
 				);
 
 				if (logger && !logErrorsOnly) {
 					logger.info(
-						`runningCommand', 'Running command: "${command} ${formattedArgs}"...`
+						`runningCommand', 'Running command: "${command} ${formattedArgs}"...`,
 					);
 				}
 
@@ -52,14 +52,14 @@ export namespace cpUtils {
 					}
 					if (inputValues.length > 0) {
 						let sentResponse: boolean;
-						const lines = data.split("\n").filter(function (line) {
-							return line.length > 0;
-						});
+						const lines = data
+							.split("\n")
+							.filter((line) => line.length > 0);
 						for (const line of lines) {
 							const filtered = inputValues.filter(
 								(inputValue) => {
 									return line.indexOf(inputValue.label) > 0;
-								}
+								},
 							);
 							if (filtered.length > 0 && !filtered[0].sent) {
 								sentResponse = true;
@@ -101,13 +101,13 @@ export namespace cpUtils {
 					} else {
 						if (logger && !logErrorsOnly) {
 							logger.info(
-								`finishedRunningCommand', 'Finished running command: "${command} ${formattedArgs}".`
+								`finishedRunningCommand', 'Finished running command: "${command} ${formattedArgs}".`,
 							);
 						}
 						resolve();
 					}
 				});
-			}
+			},
 		);
 
 		return cmdOutput;

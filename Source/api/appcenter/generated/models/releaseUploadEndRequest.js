@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * A request containing information pertaining to complete a release upload
  * process

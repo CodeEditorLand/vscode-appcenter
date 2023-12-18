@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * A response from API containing information for a Auto Provisioning Config.
  *

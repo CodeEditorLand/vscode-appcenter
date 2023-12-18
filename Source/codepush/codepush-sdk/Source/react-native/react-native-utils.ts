@@ -1,10 +1,10 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
-import chalk from "chalk";
 import * as fs from "fs";
-import * as mkdirp from "mkdirp";
 import * as path from "path";
+import chalk from "chalk";
+import * as mkdirp from "mkdirp";
 import * as xml2js from "xml2js";
 // tslint:disable-next-line:no-var-requires
 const plist = require("plist");
@@ -14,11 +14,11 @@ const g2js = require("gradle-to-js/lib/parser");
 const properties = require("properties");
 // tslint:disable-next-line:no-var-requires
 const childProcess = require("child_process");
+import { SettingsHelper } from "../../../../helpers/settingsHelper";
 import * as fileUtils from "../utils/file-utils";
 import { isValidVersion } from "../utils/validation-utils";
-import { SettingsHelper } from "../../../../helpers/settingsHelper";
 
-export let spawn = childProcess.spawn;
+export const spawn = childProcess.spawn;
 
 export interface VersionSearchParams {
 	os: string; // ios or android
@@ -29,7 +29,7 @@ export interface VersionSearchParams {
 
 export async function getAndroidAppVersion(
 	projectRoot?: string,
-	gradleFile?: string
+	gradleFile?: string,
 ): Promise<string> {
 	projectRoot = projectRoot || process.cwd();
 
@@ -51,7 +51,7 @@ export async function getAndroidAppVersion(
 		.parseFile(buildGradlePath)
 		.catch(() => {
 			throw new Error(
-				`Unable to parse the "${buildGradlePath}" file. Please ensure it is a well-formed Gradle file.`
+				`Unable to parse the "${buildGradlePath}" file. Please ensure it is a well-formed Gradle file.`,
 			);
 		})
 		.then((buildGradle: any) => {
@@ -80,13 +80,13 @@ export async function getAndroidAppVersion(
 				versionName = buildGradle.android.defaultConfig.versionName;
 			} else {
 				throw new Error(
-					`The "${buildGradlePath}" file doesn"t specify a value for the "android.defaultConfig.versionName" property.`
+					`The "${buildGradlePath}" file doesn"t specify a value for the "android.defaultConfig.versionName" property.`,
 				);
 			}
 
 			if (typeof versionName !== "string") {
 				throw new Error(
-					`The "android.defaultConfig.versionName" property value in "${buildGradlePath}" is not a valid string. If this is expected, consider using the --target-binary-version option to specify the value manually.`
+					`The "android.defaultConfig.versionName" property value in "${buildGradlePath}" is not a valid string. If this is expected, consider using the --target-binary-version option to specify the value manually.`,
 				);
 			}
 
@@ -96,7 +96,7 @@ export async function getAndroidAppVersion(
 				// The versionName property is a valid semver string,
 				// so we can safely use that and move on.
 				console.log(
-					`Using the target binary version value "${appVersion}" from "${buildGradlePath}".\n`
+					`Using the target binary version value "${appVersion}" from "${buildGradlePath}".\n`,
 				);
 				return appVersion;
 			}
@@ -110,7 +110,7 @@ export async function getAndroidAppVersion(
 					projectRoot || "",
 					"android",
 					"app",
-					propertiesFileName
+					propertiesFileName,
 				),
 				path.join(projectRoot || "", "android", propertiesFileName),
 			];
@@ -132,7 +132,7 @@ export async function getAndroidAppVersion(
 						}
 					} catch (e) {
 						throw new Error(
-							`Unable to parse "${propertiesFile}". Please ensure it is a well-formed properties file.`
+							`Unable to parse "${propertiesFile}". Please ensure it is a well-formed properties file.`,
 						);
 					}
 				}
@@ -140,18 +140,18 @@ export async function getAndroidAppVersion(
 
 			if (!appVersion) {
 				throw new Error(
-					`No property named "${propertyName}" exists in the "${propertiesFile}" file.`
+					`No property named "${propertyName}" exists in the "${propertiesFile}" file.`,
 				);
 			}
 
 			if (!isValidVersion(appVersion)) {
 				throw new Error(
-					`The "${propertyName}" property in the "${propertiesFile}" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).`
+					`The "${propertyName}" property in the "${propertiesFile}" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).`,
 				);
 			}
 
 			console.log(
-				`Using the target binary version value "${appVersion}" from the "${propertyName}" key in the "${propertiesFile}" file.\n`
+				`Using the target binary version value "${appVersion}" from the "${propertyName}" key in the "${propertiesFile}" file.\n`,
 			);
 			return appVersion.toString();
 		});
@@ -160,11 +160,11 @@ export async function getAndroidAppVersion(
 export async function getiOSAppVersion(
 	projectRoot?: string,
 	plistFilePrefix?: string,
-	plistFile?: string
+	plistFile?: string,
 ): Promise<string> {
 	projectRoot = projectRoot || process.cwd();
 	const projectPackageJson: any = require(
-		path.join(projectRoot, "package.json")
+		path.join(projectRoot, "package.json"),
 	);
 	const projectName: string = projectPackageJson.name;
 
@@ -176,7 +176,7 @@ export async function getiOSAppVersion(
 		// need to attempt to "resolve" it within the well-known locations.
 		if (!fileUtils.fileExists(resolvedPlistFile)) {
 			throw new Error(
-				`The specified plist file doesn"t exist. Please check that the provided path is correct.`
+				`The specified plist file doesn"t exist. Please check that the provided path is correct.`,
 			);
 		}
 	} else {
@@ -200,8 +200,8 @@ export async function getiOSAppVersion(
 		if (!resolvedPlistFile) {
 			throw new Error(
 				`Unable to find either of the following plist files in order to infer your app"s binary version: "${knownLocations.join(
-					'", "'
-				)}". If your plist has a different name, or is located in a different directory, consider using either the "--plist-file" or "--plist-file-prefix" parameters to help inform the CLI how to find it.`
+					'", "',
+				)}". If your plist has a different name, or is located in a different directory, consider using either the "--plist-file" or "--plist-file-prefix" parameters to help inform the CLI how to find it.`,
 			);
 		}
 	}
@@ -213,34 +213,34 @@ export async function getiOSAppVersion(
 		parsedPlist = plist.parse(plistContents);
 	} catch (e) {
 		throw new Error(
-			`Unable to parse "${resolvedPlistFile}". Please ensure it is a well-formed plist file.`
+			`Unable to parse "${resolvedPlistFile}". Please ensure it is a well-formed plist file.`,
 		);
 	}
 
 	if (parsedPlist && parsedPlist.CFBundleShortVersionString) {
 		if (isValidVersion(parsedPlist.CFBundleShortVersionString)) {
 			console.log(
-				`Using the target binary version value "${parsedPlist.CFBundleShortVersionString}" from "${resolvedPlistFile}".\n`
+				`Using the target binary version value "${parsedPlist.CFBundleShortVersionString}" from "${resolvedPlistFile}".\n`,
 			);
 			return Promise.resolve(parsedPlist.CFBundleShortVersionString);
 		} else {
 			throw new Error(
-				`The "CFBundleShortVersionString" key in the "${resolvedPlistFile}" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).`
+				`The "CFBundleShortVersionString" key in the "${resolvedPlistFile}" file needs to specify a valid semver string, containing both a major and minor version (e.g. 1.3.2, 1.1).`,
 			);
 		}
 	} else {
 		throw new Error(
-			`The "CFBundleShortVersionString" key doesn"t exist within the "${resolvedPlistFile}" file.`
+			`The "CFBundleShortVersionString" key doesn"t exist within the "${resolvedPlistFile}" file.`,
 		);
 	}
 }
 
 export async function getWindowsAppVersion(
-	projectRoot?: string
+	projectRoot?: string,
 ): Promise<string> {
 	projectRoot = projectRoot || process.cwd();
 	const projectPackageJson: any = require(
-		path.join(projectRoot, "package.json")
+		path.join(projectRoot, "package.json"),
 	);
 	const projectName: string = projectPackageJson.name;
 
@@ -253,19 +253,19 @@ export async function getWindowsAppVersion(
 		appxManifestContainingFolder = path.join(
 			projectRoot,
 			"windows",
-			projectName
+			projectName,
 		);
 		appxManifestContents = fs
 			.readFileSync(
-				path.join(appxManifestContainingFolder, appxManifestFileName)
+				path.join(appxManifestContainingFolder, appxManifestFileName),
 			)
 			.toString();
 	} catch (err) {
 		throw new Error(
 			`Unable to find or read "${appxManifestFileName}" in the "${path.join(
 				"windows",
-				projectName
-			)}" folder.`
+				projectName,
+			)}" folder.`,
 		);
 	}
 	return new Promise<string>((resolve, reject) => {
@@ -277,9 +277,9 @@ export async function getWindowsAppVersion(
 						new Error(
 							`Unable to parse the "${path.join(
 								appxManifestContainingFolder,
-								appxManifestFileName
-							)}" file, it could be malformed.`
-						)
+								appxManifestFileName,
+							)}" file, it could be malformed.`,
+						),
 					);
 					return;
 				}
@@ -289,7 +289,7 @@ export async function getWindowsAppVersion(
 							"$"
 						].Version.match(/^\d+\.\d+\.\d+/)[0];
 					console.log(
-						`Using the target binary version value "${appVersion}" from the "Identity" key in the "${appxManifestFileName}" file.\n`
+						`Using the target binary version value "${appVersion}" from the "Identity" key in the "${appxManifestFileName}" file.\n`,
 					);
 					return resolve(appVersion);
 				} catch (e) {
@@ -297,13 +297,13 @@ export async function getWindowsAppVersion(
 						new Error(
 							`Unable to parse the package version from the "${path.join(
 								appxManifestContainingFolder,
-								appxManifestFileName
-							)}" file.`
-						)
+								appxManifestFileName,
+							)}" file.`,
+						),
 					);
 					return;
 				}
-			}
+			},
 		);
 	});
 }
@@ -315,7 +315,7 @@ export function runReactNativeBundleCommand(
 	entryFile: string,
 	outputFolder: string,
 	platform: string,
-	sourcemapOutput: string | undefined
+	sourcemapOutput: string | undefined,
 ): Promise<void> {
 	const reactNativeBundleArgs: string[] = [];
 	const envNodeArgs: string | undefined = process.env.CODE_PUSH_NODE_ARGS;
@@ -323,7 +323,7 @@ export function runReactNativeBundleCommand(
 	if (typeof envNodeArgs !== "undefined") {
 		Array.prototype.push.apply(
 			reactNativeBundleArgs,
-			envNodeArgs.trim().split(/\s+/)
+			envNodeArgs.trim().split(/\s+/),
 		);
 	}
 
@@ -333,7 +333,7 @@ export function runReactNativeBundleCommand(
 			"node_modules",
 			"react-native",
 			"local-cli",
-			"cli.js"
+			"cli.js",
 		),
 		"bundle",
 		"--assets-dest",
@@ -371,8 +371,8 @@ export function runReactNativeBundleCommand(
 			if (exitCode) {
 				reject(
 					new Error(
-						`"react-native bundle" command exited with code ${exitCode}.`
-					)
+						`"react-native bundle" command exited with code ${exitCode}.`,
+					),
 				);
 			}
 
@@ -399,12 +399,12 @@ export function isValidPlatform(platform: string): boolean {
 export function isReactNativeProject(): boolean {
 	try {
 		const projectPackageJson: any = require(
-			path.join(process.cwd(), "package.json")
+			path.join(process.cwd(), "package.json"),
 		);
 		const projectName: string = projectPackageJson.name;
 		if (!projectName) {
 			throw new Error(
-				`The "package.json" file in the CWD does not have the "name" field set.`
+				`The "package.json" file in the CWD does not have the "name" field set.`,
 			);
 		}
 
@@ -415,7 +415,7 @@ export function isReactNativeProject(): boolean {
 		);
 	} catch (error) {
 		throw new Error(
-			`Unable to find or read "package.json" in the CWD. The "release-react" command must be executed in a React Native project folder.`
+			`Unable to find or read "package.json" in the CWD. The "release-react" command must be executed in a React Native project folder.`,
 		);
 	}
 }
@@ -432,7 +432,7 @@ export function getDefaultBundleName(os: string): string {
 
 export function getDefautEntryFilePath(
 	os: string,
-	projectDir?: string
+	projectDir?: string,
 ): string {
 	if (!isValidOS(os)) {
 		throw new Error(`Platform must be either "ios" or "android".`);
@@ -450,7 +450,7 @@ export function getDefautEntryFilePath(
 
 	if (fileUtils.fileDoesNotExistOrIsDirectory(entryFilePath)) {
 		throw new Error(
-			`Entry file "${entryFileName}" or "index.js" does not exist.`
+			`Entry file "${entryFileName}" or "index.js" does not exist.`,
 		);
 	}
 
@@ -468,7 +468,7 @@ export class BundleConfig {
 }
 
 export async function makeUpdateContents(
-	bundleConfig: BundleConfig
+	bundleConfig: BundleConfig,
 ): Promise<string> {
 	if (!isValidOS(bundleConfig.os)) {
 		throw new Error(`Platform must be either "ios" or "android".`);
@@ -494,14 +494,14 @@ export async function makeUpdateContents(
 	if (!bundleConfig.entryFilePath) {
 		bundleConfig.entryFilePath = getDefautEntryFilePath(
 			bundleConfig.os,
-			bundleConfig.projectRootPath
+			bundleConfig.projectRootPath,
 		);
 	}
 
 	if (bundleConfig.outputDir) {
 		bundleConfig.sourcemapOutput = path.join(
 			updateContentsPath,
-			bundleConfig.bundleName + ".map"
+			bundleConfig.bundleName + ".map",
 		);
 	}
 
@@ -516,7 +516,7 @@ export async function makeUpdateContents(
 		bundleConfig.entryFilePath,
 		updateContentsPath,
 		bundleConfig.os,
-		bundleConfig.sourcemapOutput
+		bundleConfig.sourcemapOutput,
 	);
 
 	return updateContentsPath;

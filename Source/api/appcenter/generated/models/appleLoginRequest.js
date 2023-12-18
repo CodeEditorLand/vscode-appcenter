@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Apple credentials needed to log into the Apple Developer Portal
  *

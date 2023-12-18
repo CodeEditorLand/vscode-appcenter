@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * The url that can be navigated to in order to start the device registration
  * process.

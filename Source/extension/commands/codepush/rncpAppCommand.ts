@@ -1,11 +1,11 @@
 import { CurrentApp } from "../../../helpers/interfaces";
 import { Utils } from "../../../helpers/utils/utils";
-import { ReactNativeAppCommand } from "../reactNativeAppCommand";
-import { VsCodeUI } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { ReactNativeAppCommand } from "../reactNativeAppCommand";
 
 export class RNCPAppCommand extends ReactNativeAppCommand {
-	protected checkForCodePush: boolean = true;
+	protected checkForCodePush = true;
 
 	public async runNoClient(): Promise<boolean | void> {
 		if (!(await super.runNoClient())) {
@@ -16,7 +16,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 			!Utils.isReactNativeCodePushProject(
 				this.logger,
 				this.rootPath,
-				true
+				true,
 			)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotCodePushProjectWarning);
@@ -34,7 +34,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 			!Utils.isReactNativeCodePushProject(
 				this.logger,
 				this.rootPath,
-				true
+				true,
 			)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotCodePushProjectWarning);

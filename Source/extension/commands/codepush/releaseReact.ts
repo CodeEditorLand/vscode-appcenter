@@ -1,5 +1,5 @@
-import Auth from "../../../auth/auth";
 import * as path from "path";
+import Auth from "../../../auth/auth";
 import { codePushRelease } from "../../../codepush";
 import {
 	fileUtils,
@@ -13,20 +13,17 @@ import {
 	CurrentApp,
 	ICodePushReleaseParams,
 } from "../../../helpers/interfaces";
-import { LogLevel } from "../../log/logHelper";
-import { Constants } from "../../resources/constants";
-import { RNCPAppCommand } from "./rncpAppCommand";
-import { VsCodeUI } from "../../ui/vscodeUI";
-import { LogStrings } from "../../resources/logStrings";
-import { Messages } from "../../resources/messages";
 import { SettingsHelper } from "../../../helpers/settingsHelper";
 import { FSUtils } from "../../../helpers/utils/fsUtils";
+import { LogLevel } from "../../log/logHelper";
+import { Constants } from "../../resources/constants";
+import { LogStrings } from "../../resources/logStrings";
+import { Messages } from "../../resources/messages";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { RNCPAppCommand } from "./rncpAppCommand";
 
 export default class ReleaseReact extends RNCPAppCommand {
-	constructor(
-		params: CommandParams,
-		private _app: CurrentApp = null
-	) {
+	constructor(params: CommandParams, private _app: CurrentApp = null) {
 		super(params);
 	}
 
@@ -48,7 +45,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 						await this.getCurrentApp(true);
 					if (!currentApp) {
 						VsCodeUI.ShowWarningMessage(
-							Messages.NoCurrentAppSetWarning
+							Messages.NoCurrentAppSetWarning,
 						);
 						return void 0;
 					}
@@ -80,22 +77,22 @@ export default class ReleaseReact extends RNCPAppCommand {
 					switch (this._app.os.toLowerCase()) {
 						case "android":
 							appVersion = await reactNative.getAndroidAppVersion(
-								this.rootPath
+								this.rootPath,
 							);
 							break;
 						case "ios":
 							appVersion = await reactNative.getiOSAppVersion(
-								this.rootPath
+								this.rootPath,
 							);
 							break;
 						case "windows":
 							appVersion = await reactNative.getWindowsAppVersion(
-								this.rootPath
+								this.rootPath,
 							);
 							break;
 						default: {
 							VsCodeUI.ShowWarningMessage(
-								Messages.UnsupportedOSWarning
+								Messages.UnsupportedOSWarning,
 							);
 							return void 0;
 						}
@@ -124,16 +121,16 @@ export default class ReleaseReact extends RNCPAppCommand {
 				if (codePushReleaseMixinPath) {
 					progress.report({
 						message: Messages.MakingMixinProgressMessage(
-							codePushReleaseMixinPath
+							codePushReleaseMixinPath,
 						),
 					});
 					codePushReleaseMixinPath = path.join(
 						this.rootPath,
-						codePushReleaseMixinPath
+						codePushReleaseMixinPath,
 					);
 					FSUtils.copyFiles(
 						codePushReleaseMixinPath,
-						updateContentsDirectory
+						updateContentsDirectory,
 					);
 				}
 
@@ -142,14 +139,14 @@ export default class ReleaseReact extends RNCPAppCommand {
 				});
 				this.logger.log(
 					LogStrings.CodePushUpdatedContentsDir(
-						updateContentsDirectory
+						updateContentsDirectory,
 					),
-					LogLevel.Debug
+					LogLevel.Debug,
 				);
 				codePushRelaseParams.updatedContentZipPath =
 					await updateContents.zip(
 						updateContentsDirectory,
-						updateContentsDirectory
+						updateContentsDirectory,
 					);
 				if (!codePushRelaseParams.updatedContentZipPath) {
 					return void 0;
@@ -164,7 +161,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 				const response: any = await codePushRelease.exec(
 					this.client,
 					codePushRelaseParams,
-					this.logger
+					this.logger,
 				);
 				if (!response) {
 					return void 0;
@@ -173,8 +170,8 @@ export default class ReleaseReact extends RNCPAppCommand {
 					VsCodeUI.ShowInfoMessage(
 						Messages.ReleaseMadeMessage(
 							codePushRelaseParams.deploymentName,
-							codePushRelaseParams.app.appName
-						)
+							codePushRelaseParams.app.appName,
+						),
 					);
 					return response.result;
 				} else {
@@ -183,11 +180,11 @@ export default class ReleaseReact extends RNCPAppCommand {
 			} catch (error) {
 				if (error && error.message) {
 					VsCodeUI.ShowErrorMessage(
-						`${Messages.FailedToMakeCodePushRelease} ${error.message}`
+						`${Messages.FailedToMakeCodePushRelease} ${error.message}`,
 					);
 				} else {
 					VsCodeUI.ShowErrorMessage(
-						Messages.FailedToMakeCodePushRelease
+						Messages.FailedToMakeCodePushRelease,
 					);
 				}
 			} finally {

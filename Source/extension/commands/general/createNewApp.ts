@@ -6,17 +6,17 @@ import {
 	QuickPickAppItem,
 } from "../../../helpers/interfaces";
 import { Utils } from "../../../helpers/utils/utils";
-import { Strings } from "../../resources/strings";
-import { CreateAppCommand } from "../createAppCommand";
-import { CommandNames } from "../../resources/constants";
 import * as Menu from "../../menu/menu";
-import { VsCodeUI, IButtonMessageItem } from "../../ui/vscodeUI";
+import { CommandNames } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
+import { Strings } from "../../resources/strings";
+import { IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
+import { CreateAppCommand } from "../createAppCommand";
 
 export enum CreateNewAppOption {
-	Android,
-	IOS,
-	Both,
+	Android = 0,
+	IOS = 1,
+	Both = 2,
 }
 
 export default class CreateNewApp extends CreateAppCommand {
@@ -41,7 +41,7 @@ export default class CreateNewApp extends CreateAppCommand {
 
 		const appNameFromPackage = Utils.parseJsonFile(
 			this.rootPath + "/package.json",
-			""
+			"",
 		).name;
 
 		let projectName: string | null = null;
@@ -52,7 +52,7 @@ export default class CreateNewApp extends CreateAppCommand {
 			projectName = await this.getProjectName(
 				option,
 				appNameFromPackage,
-				false
+				false,
 			); // Just creating an AppCenter app here - no need to treat it like a new project.
 		}
 		// Length is 0 if user cancelled prompt.
@@ -70,7 +70,7 @@ export default class CreateNewApp extends CreateAppCommand {
 			this.userOrOrg,
 			"",
 			this.client,
-			this.logger
+			this.logger,
 		);
 		await appCenterAppBuilder.createApps(option);
 		const createdApps: CreatedAppFromAppCenter[] =
@@ -100,7 +100,7 @@ export default class CreateNewApp extends CreateAppCommand {
 
 		const selected: QuickPickAppItem = await VsCodeUI.showQuickPick(
 			appCenterPortalTabOptions,
-			Strings.CreateAppHint
+			Strings.CreateAppHint,
 		);
 
 		if (!selected) {
@@ -132,7 +132,7 @@ export default class CreateNewApp extends CreateAppCommand {
 		const appUrl = AppCenterUrlBuilder.GetAppCenterAppLink(
 			this.userOrOrg.name,
 			apps[0].appName,
-			this.userOrOrg.isOrganization
+			this.userOrOrg.isOrganization,
 		);
 		messageItems.push({
 			title: Strings.AppCreatedBtnLabel,
@@ -140,7 +140,7 @@ export default class CreateNewApp extends CreateAppCommand {
 		});
 		VsCodeUI.ShowInfoMessage(
 			Messages.AppCreatedMessage(apps[0].appName, true),
-			...messageItems
+			...messageItems,
 		);
 	}
 }

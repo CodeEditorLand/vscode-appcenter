@@ -1,10 +1,10 @@
 import { validRange } from "semver";
 import { CommandParams, CurrentApp } from "../../../helpers/interfaces";
 import { AppCenterOS, Constants } from "../../resources/constants";
-import { Strings } from "../../resources/strings";
-import { RNCPAppCommand } from "./rncpAppCommand";
-import { VsCodeUI } from "../../ui/vscodeUI";
 import { Messages } from "../../resources/messages";
+import { Strings } from "../../resources/strings";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { RNCPAppCommand } from "./rncpAppCommand";
 
 export default class SetTargetBinaryVersion extends RNCPAppCommand {
 	constructor(params: CommandParams) {
@@ -25,7 +25,7 @@ export default class SetTargetBinaryVersion extends RNCPAppCommand {
 			return void 0;
 		}
 		const appVersion: string = await VsCodeUI.showInput(
-			Strings.PleaseProvideTargetBinaryVersionHint
+			Strings.PleaseProvideTargetBinaryVersionHint,
 		);
 		if (!appVersion) {
 			// if user press esc do nothing then
@@ -51,13 +51,13 @@ export default class SetTargetBinaryVersion extends RNCPAppCommand {
 			appVersion,
 			app.type,
 			app.isMandatory,
-			app.appSecret
+			app.appSecret,
 		);
 		if (!currentApp) {
 			return;
 		}
 		VsCodeUI.ShowInfoMessage(
-			Messages.ChangedTargetBinaryVersionMessage(appVersion)
+			Messages.ChangedTargetBinaryVersionMessage(appVersion),
 		);
 	}
 }

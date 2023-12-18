@@ -1,27 +1,27 @@
 import AppCenterAppCreator from "../createApp/appCenterAppCreator";
 import { ILogger } from "../extension/log/logHelper";
 import { AppCenterOS } from "../extension/resources/constants";
+import { Messages } from "../extension/resources/messages";
+import { VsCodeUI } from "../extension/ui/vscodeUI";
 import {
 	Deployment,
 	LinkableApp,
 	ReactNativeLinkInputValue,
 } from "../helpers/interfaces";
 import { cpUtils } from "../helpers/utils/cpUtils";
-import { VsCodeUI } from "../extension/ui/vscodeUI";
-import { Messages } from "../extension/resources/messages";
 
 export default class CodePushLinker {
-	private useRNPM: boolean = false;
+	private useRNPM = false;
 
 	constructor(
 		private appCenterAppCreator: AppCenterAppCreator,
 		private logger: ILogger,
-		private rootPath: string
+		private rootPath: string,
 	) {}
 
 	public async createCodePushDeployments(
 		apps: LinkableApp[],
-		ownerName: string
+		ownerName: string,
 	): Promise<Deployment[] | null> {
 		if (!apps || apps.length === 0) {
 			return null;
@@ -36,7 +36,7 @@ export default class CodePushLinker {
 				const deployment: Deployment =
 					await this.appCenterAppCreator.createCodePushDeployment(
 						app.appName,
-						ownerName
+						ownerName,
 					);
 				if (!deployment) {
 					continue;
@@ -60,7 +60,7 @@ export default class CodePushLinker {
 					this.logger,
 					true,
 					this.rootPath,
-					installCodePushCmd
+					installCodePushCmd,
 				);
 				const isLowerThan027: boolean =
 					await this.isReactNativeLowerThan027(this.rootPath);
@@ -70,7 +70,7 @@ export default class CodePushLinker {
 							this.logger,
 							true,
 							this.rootPath,
-							installRNPMCmd
+							installRNPMCmd,
 						);
 					} catch (error) {
 						this.logger.error(`Failed to run ${installRNPMCmd}`);
@@ -87,31 +87,30 @@ export default class CodePushLinker {
 	}
 
 	private async isReactNativeLowerThan027(
-		rootPath: string
+		rootPath: string,
 	): Promise<boolean> {
 		const version = await cpUtils.executeCommand(
 			this.logger,
 			true,
 			rootPath,
-			"npm view react-native version"
+			"npm view react-native version",
 		);
 		const versionNumber: number = Number.parseFloat(version);
 		return versionNumber < 0.27;
 	}
 
 	public async linkCodePush(deployments: Deployment[]): Promise<boolean> {
-		const self = this;
 		const cmd = this.useRNPM ? "rnpm" : "react-native";
 		const iosStagingDeploymentKey = this.findDeploymentKeyFor(
 			AppCenterOS.iOS,
-			deployments
+			deployments,
 		);
 		const androidStagingDeploymentKey = this.findDeploymentKeyFor(
 			AppCenterOS.Android,
-			deployments
+			deployments,
 		);
 		if (!iosStagingDeploymentKey && !androidStagingDeploymentKey) {
-			self.logger.error("Deployment keys are missing.");
+			this.logger.error("Deployment keys are missing.");
 			return Promise.resolve(false);
 		}
 		return await VsCodeUI.showProgress(async (progress) => {
@@ -134,7 +133,7 @@ export default class CodePushLinker {
 					true,
 					this.rootPath,
 					`${cmd} link react-native-code-push`,
-					inputValues
+					inputValues,
 				);
 				return true;
 			} catch (err) {
@@ -146,12 +145,12 @@ export default class CodePushLinker {
 
 	private findDeploymentKeyFor(
 		os: AppCenterOS,
-		deployments: Deployment[]
+		deployments: Deployment[],
 	): string {
 		const filteredDeployments: Deployment[] = deployments.filter(
 			(deployment) => {
 				return deployment.os.toLowerCase() === os.toLowerCase();
-			}
+			},
 		);
 		if (filteredDeployments.length === 0) {
 			return "";

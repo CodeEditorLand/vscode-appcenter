@@ -2,8 +2,8 @@
 // Filter to add command telemetry headers for requests.
 //
 
-import { WebResource } from "ms-rest";
 import { Readable, Writable } from "stream";
+import { WebResource } from "ms-rest";
 import { Constants } from "../../extension/resources/constants";
 
 // tslint:disable:no-var-requires
@@ -24,10 +24,10 @@ export function telemetryFilter(): {
 				resource.headers["diagnostic-context"] = sessionId;
 				const nextStream = next(resource, callback);
 				(resource.pipeInput(input, nextStream) as any as Readable).pipe(
-					output
+					output,
 				);
 				input.resume();
-			}
+			},
 		);
 	};
 }

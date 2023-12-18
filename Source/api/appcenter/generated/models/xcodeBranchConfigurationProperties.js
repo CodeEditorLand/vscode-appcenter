@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Build configuration when Xcode is part of the build steps
  *

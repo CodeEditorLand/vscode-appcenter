@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * Object returned in response to getting a bug tracker issue related to a
  * crash group id

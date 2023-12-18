@@ -13,18 +13,16 @@ var srcPath = "src";
 var testPath = "test";
 var integrationTestPath = "integrationTest";
 
-var sources = [srcPath, testPath, integrationTestPath].map(function (tsFolder) {
-	return tsFolder + "/**/*.ts";
-});
+var sources = [srcPath, testPath, integrationTestPath].map(
+	(tsFolder) => tsFolder + "/**/*.ts",
+);
 
 var lintSources = [srcPath, testPath, integrationTestPath].map(
-	function (tsFolder) {
-		return tsFolder + "/**/*.ts";
-	}
+	(tsFolder) => tsFolder + "/**/*.ts",
 );
 lintSources = lintSources.concat(["!src/api/appcenter/generated/**"]);
 
-gulp.task("tslint", function () {
+gulp.task("tslint", () => {
 	var program = libtslint.Linter.createProgram("./tsconfig.json");
 	return gulp
 		.src(lintSources, { base: "." })
@@ -32,12 +30,12 @@ gulp.task("tslint", function () {
 			tslint({
 				formatter: "verbose",
 				program: program,
-			})
+			}),
 		)
 		.pipe(tslint.report());
 });
 
-gulp.task("clean", function () {
+gulp.task("clean", () => {
 	var pathsToDelete = [
 		"src/**/*.js",
 		"!src/api/appcenter/generated/**/*.js",
@@ -52,7 +50,7 @@ gulp.task("clean", function () {
 	return del(pathsToDelete, { force: true });
 });
 
-gulp.task("build", function (callback) {
+gulp.task("build", (callback) => {
 	var tsProject = ts.createProject("tsconfig.json");
 	// var isProd = false; // TODO: determine
 	// var preprocessorContext = isProd ? { PROD: true } : { DEBUG: true };
@@ -62,7 +60,7 @@ gulp.task("build", function (callback) {
 			// .pipe(preprocess({ context: preprocessorContext })) //To set environment variables in-line
 			.pipe(sourcemaps.init())
 			.pipe(tsProject())
-			.on("error", function (e) {
+			.on("error", (e) => {
 				if (callback) {
 					callback(e);
 					callback = null;
@@ -72,17 +70,13 @@ gulp.task("build", function (callback) {
 				sourcemaps.write(".", {
 					includeContent: false,
 					sourceRoot: ".",
-				})
+				}),
 			)
-			.pipe(
-				gulp.dest(function (file) {
-					return file.cwd;
-				})
-			)
+			.pipe(gulp.dest((file) => file.cwd))
 	);
 });
 
-gulp.task("test", function (callback) {
+gulp.task("test", (callback) => {
 	var tsProject = ts.createProject("tsconfig.json");
 	tsProject.config.files = glob.sync("./test/**/*.ts");
 
@@ -101,13 +95,13 @@ gulp.task("test", function (callback) {
 
 	gulp.src(testFiles)
 		.pipe(mocha(globalMochaSettings))
-		.once("error", function (err) {
+		.once("error", (err) => {
 			if (callback) {
 				callback(err);
 				callback = null;
 			}
 		})
-		.once("end", function () {
+		.once("end", () => {
 			if (callback) {
 				callback();
 				callback = null;
@@ -115,10 +109,10 @@ gulp.task("test", function (callback) {
 		});
 });
 
-gulp.task("debug", function (callback) {
+gulp.task("debug", (callback) => {
 	runSequence("clean", "build", callback);
 });
 
-gulp.task("default", function (callback) {
+gulp.task("default", (callback) => {
 	runSequence("clean", "build", "tslint", "test", callback);
 });

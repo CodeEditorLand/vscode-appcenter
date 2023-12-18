@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * A response containing information pertaining to starting a symbol upload
  * process

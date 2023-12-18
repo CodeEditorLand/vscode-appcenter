@@ -4,8 +4,6 @@
  * regenerated.
  */
 
-"use strict";
-
 /**
  * An object containing a UUID for an architecture for an iOS app.
  *
