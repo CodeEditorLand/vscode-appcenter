@@ -11,15 +11,6 @@ const models = require("./index");
  */
 class Branch {
 	/**
-	 * Create a Branch.
-	 * @member {string} name The branch name
-	 * @member {object} commit
-	 * @member {string} [commit.sha] The commit SHA
-	 * @member {string} [commit.url] The URL to the commit
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Branch
 	 *
 	 * @returns {object} metadata of Branch

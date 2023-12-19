@@ -12,12 +12,6 @@ const models = require("./index");
  */
 class AlertWebhookListResult {
 	/**
-	 * Create a AlertWebhookListResult.
-	 * @member {array} values
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertWebhookListResult
 	 *
 	 * @returns {object} metadata of AlertWebhookListResult

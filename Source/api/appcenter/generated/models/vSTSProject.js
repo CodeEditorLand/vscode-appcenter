@@ -10,17 +10,6 @@
  */
 class VSTSProject {
 	/**
-	 * Create a VSTSProject.
-	 * @member {string} [id] Project id
-	 * @member {string} [name] Project name
-	 * @member {string} [description] Project description
-	 * @member {string} [url] Project URL
-	 * @member {string} [state] Project state
-	 * @member {string} [visibility] Project visibility
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of VSTSProject
 	 *
 	 * @returns {object} metadata of VSTSProject

@@ -10,15 +10,6 @@
  */
 class Place {
 	/**
-	 * Create a Place.
-	 * @member {string} [code] the place code
-	 * @member {number} [count] the count of the this place
-	 * @member {number} [previousCount] the count of previous time range of the
-	 * place
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Place
 	 *
 	 * @returns {object} metadata of Place

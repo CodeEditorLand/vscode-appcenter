@@ -11,18 +11,6 @@ const models = require("./index");
  */
 class XcodeSchemeContainer {
 	/**
-	 * Create a XcodeSchemeContainer.
-	 * @member {string} path Path to project
-	 * @member {array} sharedSchemes Project schemes
-	 * @member {string} [podfilePath] Path to CocoaPods file, if present
-	 * @member {object} [cartfilePath] Path to Carthage file, if present
-	 * @member {string} [xcodeProjectSha] repo object Id of the pbxproject
-	 * @member {string} [workspaceProjectPaths] Related projects paths for
-	 * xcworkspace
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XcodeSchemeContainer
 	 *
 	 * @returns {object} metadata of XcodeSchemeContainer

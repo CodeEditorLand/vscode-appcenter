@@ -9,12 +9,6 @@
  */
 class UserSettingRequest {
 	/**
-	 * Create a UserSettingRequest.
-	 * @member {string} value The setting value
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserSettingRequest
 	 *
 	 * @returns {object} metadata of UserSettingRequest

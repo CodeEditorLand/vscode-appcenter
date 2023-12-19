@@ -13,13 +13,6 @@ const models = require("./index");
  */
 class EventResponseResult extends models["AlertOperationResult"] {
 	/**
-	 * Create a EventResponseResult.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of EventResponseResult
 	 *
 	 * @returns {object} metadata of EventResponseResult

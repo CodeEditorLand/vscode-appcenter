@@ -9,19 +9,6 @@
  */
 class CrashAttachment {
 	/**
-	 * Create a CrashAttachment.
-	 * @member {string} appId
-	 * @member {string} attachmentId
-	 * @member {string} crashId
-	 * @member {string} blobLocation
-	 * @member {string} contentType
-	 * @member {string} fileName
-	 * @member {date} createdTime
-	 * @member {number} size
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashAttachment
 	 *
 	 * @returns {object} metadata of CrashAttachment

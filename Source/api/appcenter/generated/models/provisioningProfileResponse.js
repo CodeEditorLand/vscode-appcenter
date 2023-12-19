@@ -12,21 +12,6 @@ const models = require("./index");
  */
 class ProvisioningProfileResponse {
 	/**
-	 * Create a ProvisioningProfileResponse.
-	 * @member {string} provisioningProfileType Possible values include: 'adhoc',
-	 * 'enterprise', 'other'
-	 * @member {array} [udids]
-	 * @member {string} [provisioningProfileName] The name of the provisioning
-	 * profile.
-	 * @member {string} [teamIdentifier] The team identifier.
-	 * @member {string} [provisioningBundleId] The bundle identifier associated
-	 * with the profile.
-	 * @member {array} [appexProfiles] Array of provisioning profiles for any app
-	 * extensions
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ProvisioningProfileResponse
 	 *
 	 * @returns {object} metadata of ProvisioningProfileResponse

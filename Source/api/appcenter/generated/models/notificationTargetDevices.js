@@ -14,14 +14,6 @@ const models = require("./index");
  */
 class NotificationTargetDevices extends models["NotificationTarget"] {
 	/**
-	 * Create a NotificationTargetDevices.
-	 * @member {array} devices List of target devices.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationTargetDevices
 	 *
 	 * @returns {object} metadata of NotificationTargetDevices

@@ -11,16 +11,6 @@ const models = require("./index");
  */
 class CrashesOverallItem {
 	/**
-	 * Create a CrashesOverallItem.
-	 * @member {string} [crashGroupId]
-	 * @member {string} [appVersion]
-	 * @member {object} [overall]
-	 * @member {number} [overall.crashCount]
-	 * @member {number} [overall.deviceCount]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashesOverallItem
 	 *
 	 * @returns {object} metadata of CrashesOverallItem

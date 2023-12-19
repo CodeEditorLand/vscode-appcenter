@@ -9,14 +9,6 @@
  */
 class IntuneSecretDetails {
 	/**
-	 * Create a IntuneSecretDetails.
-	 * @member {string} [idToken] the id token of user
-	 * @member {string} [refreshToken] the refresh token for user
-	 * @member {string} [refreshTokenExpiry] the expiry of refresh token
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneSecretDetails
 	 *
 	 * @returns {object} metadata of IntuneSecretDetails

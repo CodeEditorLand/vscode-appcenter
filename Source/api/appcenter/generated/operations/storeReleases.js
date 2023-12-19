@@ -98,10 +98,9 @@ function _getRealTimeStatusByReleaseId(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}/realtimestatus";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}/realtimestatus`;
 	requestUrl = requestUrl.replace(
 		"{store_name}",
 		encodeURIComponent(storeName),
@@ -143,14 +142,17 @@ function _getRealTimeStatusByReleaseId(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -181,7 +183,9 @@ function _getRealTimeStatusByReleaseId(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -303,10 +307,9 @@ function _getPublishError(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}/publish_error_details";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}/publish_error_details`;
 	requestUrl = requestUrl.replace(
 		"{store_name}",
 		encodeURIComponent(storeName),
@@ -348,14 +351,17 @@ function _getPublishError(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -386,7 +392,9 @@ function _getPublishError(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -499,10 +507,9 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}`;
 	requestUrl = requestUrl.replace(
 		"{store_name}",
 		encodeURIComponent(storeName),
@@ -544,14 +551,17 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -582,7 +592,9 @@ function _get(storeName, releaseId, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -706,10 +718,9 @@ function _deleteMethod(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases/{release_id}`;
 	requestUrl = requestUrl.replace(
 		"{store_name}",
 		encodeURIComponent(storeName),
@@ -751,14 +762,17 @@ function _deleteMethod(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -789,7 +803,9 @@ function _deleteMethod(
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -866,10 +882,9 @@ function _list(storeName, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/releases`;
 	requestUrl = requestUrl.replace(
 		"{store_name}",
 		encodeURIComponent(storeName),
@@ -907,14 +922,17 @@ function _list(storeName, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -945,7 +963,9 @@ function _list(storeName, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1060,10 +1080,9 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/latest_release";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_stores/{store_name}/latest_release`;
 	requestUrl = requestUrl.replace(
 		"{store_name}",
 		encodeURIComponent(storeName),
@@ -1101,14 +1120,17 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1139,7 +1161,9 @@ function _getLatest(storeName, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;

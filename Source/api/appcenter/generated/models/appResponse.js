@@ -12,35 +12,6 @@ const models = require("./index");
  */
 class AppResponse extends models["BasicAppResponse"] {
 	/**
-	 * Create a AppResponse.
-	 * @member {string} appSecret A unique and secret key used to identify the
-	 * app in communication with the ingestion endpoint for crash reporting and
-	 * analytics
-	 * @member {object} [azureSubscription]
-	 * @member {string} [azureSubscription.subscriptionId] The azure subscription
-	 * id
-	 * @member {string} [azureSubscription.tenantId] The tenant id of the azure
-	 * subscription belongs to
-	 * @member {string} [azureSubscription.subscriptionName] The name of the
-	 * azure subscription
-	 * @member {boolean} [azureSubscription.isBilling] If the subscription is
-	 * used for billing
-	 * @member {boolean} [azureSubscription.isBillable] If the subscription can
-	 * be used for billing
-	 * @member {string} platform The platform of the app. Possible values
-	 * include: 'Java', 'Objective-C-Swift', 'UWP', 'Cordova', 'React-Native',
-	 * 'Unity', 'Xamarin', 'Unknown'
-	 * @member {string} origin The creation origin of this app. Possible values
-	 * include: 'appcenter', 'hockeyapp', 'codepush'
-	 * @member {string} [createdAt] The created date of this app
-	 * @member {string} [updatedAt] The last updated date of this app
-	 * @member {array} [memberPermissions] The permissions of the calling user
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of AppResponse
 	 *
 	 * @returns {object} metadata of AppResponse

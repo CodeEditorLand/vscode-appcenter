@@ -10,18 +10,6 @@
  */
 class TesterAppWithReleaseResponseOwner {
 	/**
-	 * Create a TesterAppWithReleaseResponseOwner.
-	 * @member {string} [id] The unique id (UUID) of the owner
-	 * @member {string} [avatarUrl] The avatar URL of the owner
-	 * @member {string} [displayName] The owner's display name
-	 * @member {string} [email] The owner's email address
-	 * @member {string} [name] The unique name that used to identify the owner
-	 * @member {string} [type] The owner type. Can either be 'org' or 'user'.
-	 * Possible values include: 'org', 'user'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TesterAppWithReleaseResponseOwner
 	 *
 	 * @returns {object} metadata of TesterAppWithReleaseResponseOwner

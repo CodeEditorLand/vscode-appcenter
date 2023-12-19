@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class LogFlowDateTimeProperty extends models["LogFlowCustomProperty"] {
 	/**
-	 * Create a LogFlowDateTimeProperty.
-	 * @member {date} value Date time property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogFlowDateTimeProperty
 	 *
 	 * @returns {object} metadata of LogFlowDateTimeProperty

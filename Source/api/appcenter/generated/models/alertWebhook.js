@@ -10,16 +10,6 @@
  */
 class AlertWebhook {
 	/**
-	 * Create a AlertWebhook.
-	 * @member {string} [id] The unique id (UUID) of the webhook
-	 * @member {string} name display name of the webhook
-	 * @member {string} url target url of the webhook
-	 * @member {boolean} [enabled] Allows eanble/disable webhook
-	 * @member {array} eventTypes Event types enabled for webhook
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertWebhook
 	 *
 	 * @returns {object} metadata of AlertWebhook

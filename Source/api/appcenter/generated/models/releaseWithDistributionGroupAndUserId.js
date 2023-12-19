@@ -14,15 +14,6 @@ class ReleaseWithDistributionGroupAndUserId extends models[
 	"ReleaseWithDistributionGroup"
 ] {
 	/**
-	 * Create a ReleaseWithDistributionGroupAndUserId.
-	 * @member {uuid} [userId] Unique user Id.  Will generate a new user Id if
-	 * not provided.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ReleaseWithDistributionGroupAndUserId
 	 *
 	 * @returns {object} metadata of ReleaseWithDistributionGroupAndUserId

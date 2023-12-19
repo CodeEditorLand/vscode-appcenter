@@ -13,11 +13,9 @@ export class FSUtils {
 		let dirContent: string[] | null = null;
 		dirContent = fs.readdirSync(dirName);
 		const ignoredItems = [".vscode"];
-		const filteredDir =
-			dirContent &&
-			dirContent.filter((item: string) => {
-				return ignoredItems.indexOf(item) === -1;
-			});
+		const filteredDir = dirContent?.filter((item: string) => {
+			return ignoredItems.indexOf(item) === -1;
+		});
 		const dirExistAndEmpty = filteredDir && filteredDir.length === 0;
 		return dirExistAndEmpty;
 	}
@@ -27,17 +25,15 @@ export class FSUtils {
 		dirContent = fs.readdirSync(dirName);
 
 		const ignoredItems = [".vscode", ".git"];
-		const filteredDir =
-			dirContent &&
-			dirContent.filter((item: string) => {
-				return ignoredItems.indexOf(item) === -1;
-			});
+		const filteredDir = dirContent?.filter((item: string) => {
+			return ignoredItems.indexOf(item) === -1;
+		});
 		const dirExistAndEmpty = filteredDir && filteredDir.length === 0;
 		return dirExistAndEmpty;
 	}
 
 	public static copyFiles(sourcePath: string, destinationPath: string) {
-		if (!fs.existsSync(sourcePath) || !fs.existsSync(destinationPath)) {
+		if (!(fs.existsSync(sourcePath) && fs.existsSync(destinationPath))) {
 			return;
 		}
 		const dirContent = fs.readdirSync(sourcePath);
@@ -46,7 +42,7 @@ export class FSUtils {
 			if (fs.lstatSync(fullDir).isDirectory()) {
 				const newDir = path.join(destinationPath, dir);
 				fs.mkdirSync(newDir);
-				this.copyFiles(fullDir, newDir);
+				FSUtils.copyFiles(fullDir, newDir);
 			} else {
 				const outputFilePath: string = path.join(destinationPath, dir);
 				fs.writeFileSync(outputFilePath, fs.readFileSync(fullDir));

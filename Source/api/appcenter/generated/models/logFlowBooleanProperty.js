@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class LogFlowBooleanProperty extends models["LogFlowCustomProperty"] {
 	/**
-	 * Create a LogFlowBooleanProperty.
-	 * @member {boolean} value Boolean property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogFlowBooleanProperty
 	 *
 	 * @returns {object} metadata of LogFlowBooleanProperty

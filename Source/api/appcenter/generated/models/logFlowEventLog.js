@@ -13,16 +13,6 @@ const models = require("./index");
  */
 class LogFlowEventLog extends models["LogFlowLogWithProperties"] {
 	/**
-	 * Create a LogFlowEventLog.
-	 * @member {uuid} sessionId Session ID.
-	 * @member {uuid} id Unique identifier for this event.
-	 * @member {string} name Name of the event.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogFlowEventLog
 	 *
 	 * @returns {object} metadata of LogFlowEventLog

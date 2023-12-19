@@ -45,8 +45,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 
 	protected hasCodePushDeployments(currentApp: CurrentApp): boolean {
 		return (
-			currentApp.currentAppDeployments &&
-			currentApp.currentAppDeployments.codePushDeployments &&
+			currentApp.currentAppDeployments?.codePushDeployments &&
 			currentApp.currentAppDeployments.codePushDeployments.length > 0
 		);
 	}

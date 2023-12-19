@@ -10,12 +10,6 @@
  */
 class UserSettingResponse {
 	/**
-	 * Create a UserSettingResponse.
-	 * @member {string} [marketingOptIn] The marketing opt-in setting
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserSettingResponse
 	 *
 	 * @returns {object} metadata of UserSettingResponse

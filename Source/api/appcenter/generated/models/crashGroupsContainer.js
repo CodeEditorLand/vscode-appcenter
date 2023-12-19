@@ -11,15 +11,6 @@ const models = require("./index");
  */
 class CrashGroupsContainer {
 	/**
-	 * Create a CrashGroupsContainer.
-	 * @member {boolean} limitedResultSet
-	 * @member {string} [continuationToken] Cassandra request continuation token.
-	 * The token is used for pagination.
-	 * @member {array} crashGroups
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupsContainer
 	 *
 	 * @returns {object} metadata of CrashGroupsContainer

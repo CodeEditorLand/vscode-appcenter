@@ -11,14 +11,6 @@ const models = require("./index");
  */
 class EventCountPerDevice {
 	/**
-	 * Create a EventCountPerDevice.
-	 * @member {number} [avgCountPerDevice]
-	 * @member {number} [previousAvgCountPerDevice]
-	 * @member {array} [countPerDevice]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventCountPerDevice
 	 *
 	 * @returns {object} metadata of EventCountPerDevice

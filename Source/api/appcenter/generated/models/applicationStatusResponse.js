@@ -10,14 +10,6 @@
  */
 class ApplicationStatusResponse {
 	/**
-	 * Create a ApplicationStatusResponse.
-	 * @member {string} versionType The type of version being returned
-	 * (production/edit/test flight).
-	 * @member {string} [version] The version of the application
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ApplicationStatusResponse
 	 *
 	 * @returns {object} metadata of ApplicationStatusResponse

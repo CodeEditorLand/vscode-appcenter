@@ -10,12 +10,6 @@
  */
 class SymbolUploadLocation {
 	/**
-	 * Create a SymbolUploadLocation.
-	 * @member {string} uri
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SymbolUploadLocation
 	 *
 	 * @returns {object} metadata of SymbolUploadLocation

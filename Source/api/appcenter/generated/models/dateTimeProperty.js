@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class DateTimeProperty extends models["CustomProperty"] {
 	/**
-	 * Create a DateTimeProperty.
-	 * @member {date} value Date time property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of DateTimeProperty
 	 *
 	 * @returns {object} metadata of DateTimeProperty

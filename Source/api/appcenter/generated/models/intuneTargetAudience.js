@@ -9,12 +9,6 @@
  */
 class IntuneTargetAudience {
 	/**
-	 * Create a IntuneTargetAudience.
-	 * @member {string} [name] display name for the target audience/group
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneTargetAudience
 	 *
 	 * @returns {object} metadata of IntuneTargetAudience

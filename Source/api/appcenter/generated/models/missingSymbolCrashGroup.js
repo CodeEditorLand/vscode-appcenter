@@ -12,20 +12,6 @@ const models = require("./index");
  */
 class MissingSymbolCrashGroup {
 	/**
-	 * Create a MissingSymbolCrashGroup.
-	 * @member {string} symbolGroupId id of the symbol group
-	 * @member {number} [crashCount] number of crashes that belong to this group
-	 * @member {string} appId application id
-	 * @member {string} appVer application version
-	 * @member {string} appBuild application build
-	 * @member {date} lastModified last update date for the group
-	 * @member {array} missingSymbols list of missing symbols
-	 * @member {string} status group status. Possible values include: 'active',
-	 * 'pending', 'closed'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of MissingSymbolCrashGroup
 	 *
 	 * @returns {object} metadata of MissingSymbolCrashGroup

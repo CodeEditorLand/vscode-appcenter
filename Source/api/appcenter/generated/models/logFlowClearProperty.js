@@ -13,13 +13,6 @@ const models = require("./index");
  */
 class LogFlowClearProperty extends models["LogFlowCustomProperty"] {
 	/**
-	 * Create a LogFlowClearProperty.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogFlowClearProperty
 	 *
 	 * @returns {object} metadata of LogFlowClearProperty

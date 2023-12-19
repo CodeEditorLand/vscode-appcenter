@@ -12,12 +12,6 @@ const models = require("./index");
  */
 class BugTrackerIssuesResult {
 	/**
-	 * Create a BugTrackerIssuesResult.
-	 * @member {array} [issues]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BugTrackerIssuesResult
 	 *
 	 * @returns {object} metadata of BugTrackerIssuesResult

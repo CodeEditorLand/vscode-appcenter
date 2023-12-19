@@ -10,12 +10,6 @@
  */
 class IntuneAppsRequest {
 	/**
-	 * Create a IntuneAppsRequest.
-	 * @member {string} [createdMonth] PartitionKey year-month
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneAppsRequest
 	 *
 	 * @returns {object} metadata of IntuneAppsRequest

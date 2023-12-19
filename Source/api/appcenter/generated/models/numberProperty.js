@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class NumberProperty extends models["CustomProperty"] {
 	/**
-	 * Create a NumberProperty.
-	 * @member {number} value Number property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NumberProperty
 	 *
 	 * @returns {object} metadata of NumberProperty

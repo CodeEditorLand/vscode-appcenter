@@ -107,10 +107,9 @@ function _resendInvite(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/resend_invite";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/resend_invite`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -170,14 +169,17 @@ function _resendInvite(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -208,7 +210,9 @@ function _resendInvite(
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -313,10 +317,9 @@ function _removeUser(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members/bulk_delete";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members/bulk_delete`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -376,14 +379,17 @@ function _removeUser(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -414,7 +420,9 @@ function _removeUser(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -552,10 +560,9 @@ function _listUsers(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -571,12 +578,13 @@ function _listUsers(
 		excludePendingInvitations !== undefined
 	) {
 		queryParameters.push(
-			"exclude_pending_invitations=" +
-				encodeURIComponent(excludePendingInvitations.toString()),
+			`exclude_pending_invitations=${encodeURIComponent(
+				excludePendingInvitations.toString(),
+			)}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -606,14 +614,17 @@ function _listUsers(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -644,7 +655,9 @@ function _listUsers(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -788,10 +801,9 @@ function _addUser(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}/members`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -851,14 +863,17 @@ function _addUser(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -889,7 +904,9 @@ function _addUser(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1007,10 +1024,9 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1048,14 +1064,17 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1086,7 +1105,9 @@ function _get(ownerName, appName, distributionGroupName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1225,10 +1246,9 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1288,14 +1308,17 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1326,7 +1349,9 @@ function _update(ownerName, appName, distributionGroupName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1434,10 +1459,9 @@ function _deleteMethod(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups/{distribution_group_name}`;
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
@@ -1475,14 +1499,17 @@ function _deleteMethod(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1513,7 +1540,9 @@ function _deleteMethod(
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -1579,10 +1608,9 @@ function _list(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1616,14 +1644,17 @@ function _list(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1654,7 +1685,9 @@ function _list(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1776,10 +1809,9 @@ function _create(ownerName, appName, name, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/distribution_groups";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/distribution_groups`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1835,14 +1867,17 @@ function _create(ownerName, appName, name, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1873,7 +1908,9 @@ function _create(ownerName, appName, name, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 201) {
 			let parsedResponse = null;

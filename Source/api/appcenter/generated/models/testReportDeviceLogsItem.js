@@ -9,15 +9,6 @@
  */
 class TestReportDeviceLogsItem {
 	/**
-	 * Create a TestReportDeviceLogsItem.
-	 * @member {string} [deviceSnapshotId]
-	 * @member {string} [deviceLog]
-	 * @member {string} [testLog]
-	 * @member {string} [appiumLog]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestReportDeviceLogsItem
 	 *
 	 * @returns {object} metadata of TestReportDeviceLogsItem

@@ -11,14 +11,6 @@ const models = require("./index");
  */
 class Events {
 	/**
-	 * Create a Events.
-	 * @member {array} [events]
-	 * @member {number} [total] the total count of events
-	 * @member {number} [totalDevices] the active device over this period
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Events
 	 *
 	 * @returns {object} metadata of Events

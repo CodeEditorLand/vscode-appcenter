@@ -67,10 +67,9 @@ function _listXcodeVersions(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/xcode_versions";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/xcode_versions`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -104,14 +103,17 @@ function _listXcodeVersions(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -142,7 +144,9 @@ function _listXcodeVersions(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -245,10 +249,9 @@ function _listXamarinSDKBundles(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/xamarin_sdk_bundles";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/xamarin_sdk_bundles`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -282,14 +285,17 @@ function _listXamarinSDKBundles(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -320,7 +326,9 @@ function _listXamarinSDKBundles(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -423,10 +431,9 @@ function _listMonoVersions(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/mono_versions";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/mono_versions`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -460,14 +467,17 @@ function _listMonoVersions(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -498,7 +508,9 @@ function _listMonoVersions(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -620,10 +632,9 @@ function _getLog(buildId, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/builds/{build_id}/logs";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/builds/{build_id}/logs`;
 	requestUrl = requestUrl.replace(
 		"{build_id}",
 		encodeURIComponent(buildId.toString()),
@@ -661,14 +672,17 @@ function _getLog(buildId, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -686,7 +700,9 @@ function _getLog(buildId, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -815,10 +831,9 @@ function _getDownloadUri(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/builds/{build_id}/downloads/{download_type}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/builds/{build_id}/downloads/{download_type}`;
 	requestUrl = requestUrl.replace(
 		"{build_id}",
 		encodeURIComponent(buildId.toString()),
@@ -860,14 +875,17 @@ function _getDownloadUri(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -885,7 +903,9 @@ function _getDownloadUri(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1036,10 +1056,9 @@ function _distribute(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/builds/{build_id}/distribute";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/builds/{build_id}/distribute`;
 	requestUrl = requestUrl.replace(
 		"{build_id}",
 		encodeURIComponent(buildId.toString()),
@@ -1099,14 +1118,17 @@ function _distribute(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1124,7 +1146,9 @@ function _distribute(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1234,10 +1258,9 @@ function _get(buildId, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/builds/{build_id}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/builds/{build_id}`;
 	requestUrl = requestUrl.replace(
 		"{build_id}",
 		encodeURIComponent(buildId.toString()),
@@ -1275,14 +1298,17 @@ function _get(buildId, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1300,7 +1326,9 @@ function _get(buildId, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1425,10 +1453,9 @@ function _update(buildId, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/builds/{build_id}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/builds/{build_id}`;
 	requestUrl = requestUrl.replace(
 		"{build_id}",
 		encodeURIComponent(buildId.toString()),
@@ -1488,14 +1515,17 @@ function _update(buildId, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1513,7 +1543,9 @@ function _update(buildId, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1603,10 +1635,9 @@ function _getStatusByAppId(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/build_service_status";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/build_service_status`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1640,14 +1671,17 @@ function _getStatusByAppId(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1665,7 +1699,9 @@ function _getStatusByAppId(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1801,10 +1837,9 @@ function _listToolsetProjects(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/branches/{branch}/toolset_projects";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/branches/{branch}/toolset_projects`;
 	requestUrl = requestUrl.replace("{branch}", encodeURIComponent(branch));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
@@ -1812,10 +1847,10 @@ function _listToolsetProjects(
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
-	queryParameters.push("os=" + encodeURIComponent(os));
-	queryParameters.push("platform=" + encodeURIComponent(platform));
+	queryParameters.push(`os=${encodeURIComponent(os)}`);
+	queryParameters.push(`platform=${encodeURIComponent(platform)}`);
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -1845,14 +1880,17 @@ function _listToolsetProjects(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1870,7 +1908,9 @@ function _listToolsetProjects(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1972,10 +2012,9 @@ function _listByBranch(branch, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/branches/{branch}/builds";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/branches/{branch}/builds`;
 	requestUrl = requestUrl.replace("{branch}", encodeURIComponent(branch));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
@@ -2010,14 +2049,17 @@ function _listByBranch(branch, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2035,7 +2077,9 @@ function _listByBranch(branch, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -2184,10 +2228,9 @@ function _create(branch, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/branches/{branch}/builds";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/branches/{branch}/builds`;
 	requestUrl = requestUrl.replace("{branch}", encodeURIComponent(branch));
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
@@ -2244,14 +2287,17 @@ function _create(branch, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2269,7 +2315,9 @@ function _create(branch, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -2358,10 +2406,9 @@ function _listBranches(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/branches";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/branches`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -2395,14 +2442,17 @@ function _listBranches(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2433,7 +2483,9 @@ function _listBranches(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;

@@ -15,16 +15,6 @@ class AlertingGithubBugtrackerSettings extends models[
 	"AlertingBugtrackerSettings"
 ] {
 	/**
-	 * Create a AlertingGithubBugtrackerSettings.
-	 * @member {number} githubRepoId
-	 * @member {string} githubRepoName
-	 * @member {string} [githubLabel]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of AlertingGithubBugtrackerSettings
 	 *
 	 * @returns {object} metadata of AlertingGithubBugtrackerSettings

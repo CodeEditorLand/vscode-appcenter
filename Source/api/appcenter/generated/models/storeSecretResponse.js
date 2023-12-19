@@ -10,16 +10,6 @@
  */
 class StoreSecretResponse {
 	/**
-	 * Create a StoreSecretResponse.
-	 * @member {string} [id] Store id
-	 * @member {string} [name] Store Name
-	 * @member {string} [type] Store Type
-	 * @member {string} [secret] Secret Json
-	 * @member {string} [tenantId] Tenant Id for Intune
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StoreSecretResponse
 	 *
 	 * @returns {object} metadata of StoreSecretResponse

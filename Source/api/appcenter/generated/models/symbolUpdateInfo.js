@@ -10,15 +10,6 @@
  */
 class SymbolUpdateInfo {
 	/**
-	 * Create a SymbolUpdateInfo.
-	 * @member {string} symbolId UUID of the symbol
-	 * @member {string} appId application id
-	 * @member {string} status symbol upload status. Possible values include:
-	 * 'missing', 'ignored', 'available'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SymbolUpdateInfo
 	 *
 	 * @returns {object} metadata of SymbolUpdateInfo

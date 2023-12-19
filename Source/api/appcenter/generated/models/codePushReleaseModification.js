@@ -12,13 +12,6 @@ const models = require("./index");
  */
 class CodePushReleaseModification extends models["CodePushReleaseInfo"] {
 	/**
-	 * Create a CodePushReleaseModification.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of CodePushReleaseModification
 	 *
 	 * @returns {object} metadata of CodePushReleaseModification

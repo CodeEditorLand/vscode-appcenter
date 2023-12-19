@@ -12,13 +12,6 @@
  */
 class TestCloudErrorDetails {
 	/**
-	 * Create a TestCloudErrorDetails.
-	 * @member {string} status Status of the operation
-	 * @member {string} message Human-readable message that describes the error
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestCloudErrorDetails
 	 *
 	 * @returns {object} metadata of TestCloudErrorDetails

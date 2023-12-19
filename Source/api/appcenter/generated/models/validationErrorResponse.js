@@ -9,14 +9,6 @@
  */
 class ValidationErrorResponse {
 	/**
-	 * Create a ValidationErrorResponse.
-	 * @member {string} id
-	 * @member {string} code
-	 * @member {string} message
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ValidationErrorResponse
 	 *
 	 * @returns {object} metadata of ValidationErrorResponse

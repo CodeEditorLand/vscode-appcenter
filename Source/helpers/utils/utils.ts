@@ -33,16 +33,10 @@ export class Utils {
 		} else if (name.endsWith("-android")) {
 			hint = " (android)";
 		}
-		return (
-			name.substr(
-				0,
-				hint.length
-					? ELLIPSIZE_LENGTH_WITH_HINT
-					: ELLIPSIZE_LENGTH_WO_HINT,
-			) +
-			"..." +
-			hint
-		);
+		return `${name.substr(
+			0,
+			hint.length ? ELLIPSIZE_LENGTH_WITH_HINT : ELLIPSIZE_LENGTH_WO_HINT,
+		)}...${hint}`;
 	}
 
 	public static Delay<T>(millis: number, value?: T): Promise<T> {
@@ -55,12 +49,14 @@ export class Utils {
 	public static OpenUrl(url: string): void {
 		switch (process.platform) {
 			case "win32":
-			case "darwin":
+			case "darwin": {
 				open(url);
 				break;
-			default:
+			}
+			default: {
 				opener(url);
 				break;
+			}
 		}
 	}
 

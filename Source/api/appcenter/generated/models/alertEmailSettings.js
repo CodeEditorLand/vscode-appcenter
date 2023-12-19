@@ -12,12 +12,6 @@ const models = require("./index");
  */
 class AlertEmailSettings {
 	/**
-	 * Create a AlertEmailSettings.
-	 * @member {array} settings The settings the user has for the app
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertEmailSettings
 	 *
 	 * @returns {object} metadata of AlertEmailSettings

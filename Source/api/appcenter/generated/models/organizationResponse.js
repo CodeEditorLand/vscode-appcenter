@@ -9,18 +9,6 @@
  */
 class OrganizationResponse {
 	/**
-	 * Create a OrganizationResponse.
-	 * @member {string} id The internal unique id (UUID) of the organization.
-	 * @member {string} displayName The display name of the organization
-	 * @member {string} name The slug name of the organization
-	 * @member {string} origin The creation origin of this organization. Possible
-	 * values include: 'appcenter', 'hockeyapp'
-	 * @member {string} createdAt The creation date of this organization
-	 * @member {string} updatedAt The date the organization was last updated at
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of OrganizationResponse
 	 *
 	 * @returns {object} metadata of OrganizationResponse

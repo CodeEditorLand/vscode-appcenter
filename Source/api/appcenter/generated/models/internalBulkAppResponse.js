@@ -9,13 +9,6 @@
  */
 class InternalBulkAppResponse {
 	/**
-	 * Create a InternalBulkAppResponse.
-	 * @member {string} [appName] The name of the app
-	 * @member {string} [ownerDisplayName] The display name of the owner
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of InternalBulkAppResponse
 	 *
 	 * @returns {object} metadata of InternalBulkAppResponse

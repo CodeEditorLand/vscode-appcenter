@@ -9,14 +9,6 @@
  */
 class AnalyticsReleasesParameter {
 	/**
-	 * Create a AnalyticsReleasesParameter.
-	 * @member {number} releaseId release id
-	 * @member {string} distributionGroupId distribution group id
-	 * @member {uuid} userId user id
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AnalyticsReleasesParameter
 	 *
 	 * @returns {object} metadata of AnalyticsReleasesParameter

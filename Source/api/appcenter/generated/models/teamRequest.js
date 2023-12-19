@@ -9,14 +9,6 @@
  */
 class TeamRequest {
 	/**
-	 * Create a TeamRequest.
-	 * @member {string} displayName The display name of the team
-	 * @member {string} [name] The name of the team
-	 * @member {string} [description] The description of the team
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TeamRequest
 	 *
 	 * @returns {object} metadata of TeamRequest

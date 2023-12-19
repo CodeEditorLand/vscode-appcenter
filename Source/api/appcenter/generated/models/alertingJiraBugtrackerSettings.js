@@ -15,15 +15,6 @@ class AlertingJiraBugtrackerSettings extends models[
 	"AlertingBugtrackerSettings"
 ] {
 	/**
-	 * Create a AlertingJiraBugtrackerSettings.
-	 * @member {number} jiraProjectId
-	 * @member {string} jiraProjectName
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of AlertingJiraBugtrackerSettings
 	 *
 	 * @returns {object} metadata of AlertingJiraBugtrackerSettings

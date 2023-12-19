@@ -9,17 +9,6 @@
  */
 class BuildServiceStatus {
 	/**
-	 * Create a BuildServiceStatus.
-	 * @member {string} [status]
-	 * @member {string} [service]
-	 * @member {string} [message]
-	 * @member {string} [url]
-	 * @member {number} [validUntil]
-	 * @member {string} [os]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BuildServiceStatus
 	 *
 	 * @returns {object} metadata of BuildServiceStatus

@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class DeleteReleasesContainer {
 	/**
-	 * Create a DeleteReleasesContainer.
-	 * @member {array} releases
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeleteReleasesContainer
 	 *
 	 * @returns {object} metadata of DeleteReleasesContainer

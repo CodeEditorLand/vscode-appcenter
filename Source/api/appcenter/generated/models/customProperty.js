@@ -9,13 +9,6 @@
  */
 class CustomProperty {
 	/**
-	 * Create a CustomProperty.
-	 * @member {string} name
-	 * @member {string} type Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CustomProperty
 	 *
 	 * @returns {object} metadata of CustomProperty

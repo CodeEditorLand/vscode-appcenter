@@ -10,13 +10,6 @@
  */
 class DeviceCpu {
 	/**
-	 * Create a DeviceCpu.
-	 * @member {string} [frequency]
-	 * @member {string} [core]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceCpu
 	 *
 	 * @returns {object} metadata of DeviceCpu

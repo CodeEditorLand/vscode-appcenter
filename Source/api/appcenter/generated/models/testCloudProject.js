@@ -11,16 +11,6 @@ const models = require("./index");
  */
 class TestCloudProject {
 	/**
-	 * Create a TestCloudProject.
-	 * @member {string} path The path to the TestCloud project
-	 * @member {string} frameworkType Possible values include: 'Appium',
-	 * 'Calabash', 'Espresso', 'UITest', 'Generated'
-	 * @member {object} [frameworkProperties]
-	 * @member {array} [frameworkProperties.configurations]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestCloudProject
 	 *
 	 * @returns {object} metadata of TestCloudProject

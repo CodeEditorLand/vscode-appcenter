@@ -10,13 +10,6 @@
  */
 class SourceRepository {
 	/**
-	 * Create a SourceRepository.
-	 * @member {string} [name] The repository name
-	 * @member {object} [cloneUrl] URL used to clone the repository
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SourceRepository
 	 *
 	 * @returns {object} metadata of SourceRepository

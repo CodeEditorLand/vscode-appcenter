@@ -9,12 +9,6 @@
  */
 class UserEmailRequest {
 	/**
-	 * Create a UserEmailRequest.
-	 * @member {string} userEmail The user's email address'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserEmailRequest
 	 *
 	 * @returns {object} metadata of UserEmailRequest

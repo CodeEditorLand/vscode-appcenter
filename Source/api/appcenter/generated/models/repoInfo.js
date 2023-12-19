@@ -9,12 +9,6 @@
  */
 class RepoInfo {
 	/**
-	 * Create a RepoInfo.
-	 * @member {string} repoUrl The repository url
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of RepoInfo
 	 *
 	 * @returns {object} metadata of RepoInfo

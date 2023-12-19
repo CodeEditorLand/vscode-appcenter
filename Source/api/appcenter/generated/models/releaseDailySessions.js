@@ -11,14 +11,6 @@ const models = require("./index");
  */
 class ReleaseDailySessions {
 	/**
-	 * Create a ReleaseDailySessions.
-	 * @member {number} [totalSessionCounts]
-	 * @member {number} [avgSessionsPerDay]
-	 * @member {array} [sessions] Sessions per day
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleaseDailySessions
 	 *
 	 * @returns {object} metadata of ReleaseDailySessions

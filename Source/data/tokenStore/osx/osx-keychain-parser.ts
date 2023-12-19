@@ -15,7 +15,7 @@ const rootFieldRe = /^([^: \t]+):(?: (?:"([^"]+)")|(.*))?$/;
 // Attribute values, this gets a little more complicated
 // tslint:disable-next-line:no-regex-spaces
 const attrRe =
-	/^    (?:(0x[0-9a-fA-F]+) |"([a-z]{4})")<[^>]+>=(?:(<NULL>)|"([^"]+)"|(0x[0-9a-fA-F]+)(?:  "([^"]+)")|(.*)?)/;
+	/^ {4}(?:(0x[0-9a-fA-F]+) |"([a-z]{4})")<[^>]+>=(?:(<NULL>)|"([^"]+)"|(0x[0-9a-fA-F]+)(?: {2}"([^"]+)")|(.*)?)/;
 
 //
 // Stream based parser for the OSX security(1) program output.

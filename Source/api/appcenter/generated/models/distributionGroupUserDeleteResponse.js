@@ -9,15 +9,6 @@
  */
 class DistributionGroupUserDeleteResponse {
 	/**
-	 * Create a DistributionGroupUserDeleteResponse.
-	 * @member {string} [code] The code of the result
-	 * @member {number} [message] The message of the result
-	 * @member {number} status The status code of the result
-	 * @member {string} [userEmail] The email of the user
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DistributionGroupUserDeleteResponse
 	 *
 	 * @returns {object} metadata of DistributionGroupUserDeleteResponse

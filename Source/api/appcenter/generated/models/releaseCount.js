@@ -9,15 +9,6 @@
  */
 class ReleaseCount {
 	/**
-	 * Create a ReleaseCount.
-	 * @member {string} releaseId
-	 * @member {string} [distributionGroup] Distribution group queried.
-	 * @member {number} uniqueCount Count of unique downloads against user id.
-	 * @member {number} totalCount Total count of downloads.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleaseCount
 	 *
 	 * @returns {object} metadata of ReleaseCount

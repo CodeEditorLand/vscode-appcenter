@@ -10,13 +10,6 @@
  */
 class BuildAgentQueueResponse {
 	/**
-	 * Create a BuildAgentQueueResponse.
-	 * @member {string} [buildDefinition] Name of the build definition
-	 * @member {string} [name] Name of the queue
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BuildAgentQueueResponse
 	 *
 	 * @returns {object} metadata of BuildAgentQueueResponse

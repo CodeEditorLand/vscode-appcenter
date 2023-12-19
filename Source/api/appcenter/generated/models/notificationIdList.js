@@ -10,12 +10,6 @@
  */
 class NotificationIdList {
 	/**
-	 * Create a NotificationIdList.
-	 * @member {array} values List of notification Ids.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationIdList
 	 *
 	 * @returns {object} metadata of NotificationIdList

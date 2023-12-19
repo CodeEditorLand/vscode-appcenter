@@ -10,15 +10,6 @@
  */
 class AppleTestFlightGroupsResponse {
 	/**
-	 * Create a AppleTestFlightGroupsResponse.
-	 * @member {string} [id] id of the group.
-	 * @member {number} [providerId] provider id of the group.
-	 * @member {number} [appleId] apple id of the group.
-	 * @member {string} [name] name of the group.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppleTestFlightGroupsResponse
 	 *
 	 * @returns {object} metadata of AppleTestFlightGroupsResponse

@@ -15,15 +15,6 @@ class NotificationConfigWindowsResult extends models[
 	"NotificationConfigResult"
 ] {
 	/**
-	 * Create a NotificationConfigWindowsResult.
-	 * @member {string} packageSid Package security identifier (SID).
-	 * @member {string} [secretKey] windows push configuration secret key.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationConfigWindowsResult
 	 *
 	 * @returns {object} metadata of NotificationConfigWindowsResult

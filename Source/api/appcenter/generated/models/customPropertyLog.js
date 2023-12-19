@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class CustomPropertyLog extends models["Log"] {
 	/**
-	 * Create a CustomPropertyLog.
-	 * @member {array} [properties] Custom property changes.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of CustomPropertyLog
 	 *
 	 * @returns {object} metadata of CustomPropertyLog

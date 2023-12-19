@@ -1,4 +1,4 @@
-import { CommandParams, CurrentApp } from "../../../helpers/interfaces";
+import { CurrentApp } from "../../../helpers/interfaces";
 import { AppCenterOS } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
@@ -6,10 +6,6 @@ import { CustomQuickPickItem, VsCodeUI } from "../../ui/vscodeUI";
 import { RNCPAppCommand } from "./rncpAppCommand";
 
 export default class SetCurrentDeployment extends RNCPAppCommand {
-	constructor(params: CommandParams) {
-		super(params);
-	}
-
 	public async run(): Promise<boolean | void> {
 		if (!(await super.run())) {
 			return;

@@ -10,15 +10,6 @@
  */
 class AllItunesAppsResponse {
 	/**
-	 * Create a AllItunesAppsResponse.
-	 * @member {string} [appleId] apple id for app team id.
-	 * @member {string} [bundleId] bundle identifier of app
-	 * @member {string} [name] App Name
-	 * @member {string} [iconUrl] url for the app icon from app store
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AllItunesAppsResponse
 	 *
 	 * @returns {object} metadata of AllItunesAppsResponse

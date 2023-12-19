@@ -11,17 +11,6 @@
  */
 class ItunesAppsRequest {
 	/**
-	 * Create a ItunesAppsRequest.
-	 * @member {string} [username] The username for the Apple Developer account.
-	 * @member {string} [password] The password for the Apple Developer account.
-	 * @member {string} [serviceConnectionId] The service_connection_id of the
-	 * stored Apple credentials instead of username, password.
-	 * @member {string} [teamIdentifier] Identifier of the team to use when
-	 * logged in.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ItunesAppsRequest
 	 *
 	 * @returns {object} metadata of ItunesAppsRequest

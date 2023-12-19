@@ -9,21 +9,6 @@
  */
 class AppFeatures {
 	/**
-	 * Create a AppFeatures.
-	 * @member {boolean} [crashgroupModifyStatus] App supports modification of
-	 * crashgroup status
-	 * @member {boolean} [crashgroupModifyAnnotation] App supports modification
-	 * of crashgroup annotation
-	 * @member {boolean} [search] App supports search API
-	 * @member {boolean} [crashgroupAnalyticsCrashfreeusers] App supports the
-	 * 'crash free user' metric
-	 * @member {boolean} [crashgroupAnalyticsImpactedusers] App supports the
-	 * 'impacted users' metric
-	 * @member {boolean} [crashDownloadRaw] App supports download of raw crashes
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppFeatures
 	 *
 	 * @returns {object} metadata of AppFeatures

@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class JavaScriptToolset {
 	/**
-	 * Create a JavaScriptToolset.
-	 * @member {array} packageJsonPaths Paths for detected package.json files
-	 * @member {array} [javascriptSolutions] The React Native solutions detected
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of JavaScriptToolset
 	 *
 	 * @returns {object} metadata of JavaScriptToolset

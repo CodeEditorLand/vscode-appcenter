@@ -42,7 +42,7 @@ export default class FsProfileStorage<T extends Profile>
 		} catch (e) {
 			this.logger.info(
 				LogStrings.FailedToParseStorage(this.storageFilePath) +
-					(e && e.message) || "",
+					e?.message || "",
 			);
 			FSUtils.removeFile(this.storageFilePath);
 			return;
@@ -101,7 +101,7 @@ export default class FsProfileStorage<T extends Profile>
 		} catch (e) {
 			this.logger.info(
 				LogStrings.FailedToWriteProfiles(this.storageFilePath) +
-					(e && e.message) || "",
+					e?.message || "",
 			);
 			return;
 		}

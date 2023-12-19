@@ -10,15 +10,6 @@
  */
 class BuildConcurrencyResponse {
 	/**
-	 * Create a BuildConcurrencyResponse.
-	 * @member {number} [quantity] The number of pipelines set by the billing
-	 * plan
-	 * @member {number} [committedQuantity] The number of pipelines committed,
-	 * which can be equal or greater than the number from the billing plan
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BuildConcurrencyResponse
 	 *
 	 * @returns {object} metadata of BuildConcurrencyResponse

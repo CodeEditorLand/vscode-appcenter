@@ -9,14 +9,6 @@
  */
 class Language {
 	/**
-	 * Create a Language.
-	 * @member {string} [languageName] language's name
-	 * @member {number} [count] count current of language
-	 * @member {number} [previousCount] count of previous lanugage
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Language
 	 *
 	 * @returns {object} metadata of Language

@@ -9,13 +9,6 @@
  */
 class UploadedSymbolInfo {
 	/**
-	 * Create a UploadedSymbolInfo.
-	 * @member {string} symbolId The symbol id of the symbol binary
-	 * @member {string} platform The platform the symbol is associated with
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UploadedSymbolInfo
 	 *
 	 * @returns {object} metadata of UploadedSymbolInfo

@@ -78,10 +78,9 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}/users/{user_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}/users/{user_name}`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -119,14 +118,17 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -157,7 +159,9 @@ function _removeUser(orgName, teamName, userName, options, callback) {
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -224,10 +228,9 @@ function _getUsers(orgName, teamName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}/users";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}/users`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -261,14 +264,17 @@ function _getUsers(orgName, teamName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -299,7 +305,9 @@ function _getUsers(orgName, teamName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -407,10 +415,9 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}/users";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}/users`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -466,14 +473,17 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -504,7 +514,9 @@ function _addUser(orgName, teamName, userEmail, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 201) {
 			let parsedResponse = null;
@@ -637,10 +649,9 @@ function _updatePermissions(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}/apps/{app_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}/apps/{app_name}`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -693,14 +704,17 @@ function _updatePermissions(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -731,7 +745,9 @@ function _updatePermissions(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -833,10 +849,9 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}/apps/{app_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}/apps/{app_name}`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -871,14 +886,17 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -909,7 +927,9 @@ function _removeApp(orgName, teamName, appName, options, callback) {
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -993,10 +1013,9 @@ function _addApp(orgName, teamName, name, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}/apps";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}/apps`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -1048,14 +1067,17 @@ function _addApp(orgName, teamName, name, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1086,7 +1108,9 @@ function _addApp(orgName, teamName, name, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 201) {
 			let parsedResponse = null;
@@ -1177,10 +1201,9 @@ function _listApps(orgName, teamName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}/apps";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}/apps`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -1214,14 +1237,17 @@ function _listApps(orgName, teamName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1252,7 +1278,9 @@ function _listApps(orgName, teamName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1357,10 +1385,9 @@ function _getTeam(orgName, teamName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -1394,14 +1421,17 @@ function _getTeam(orgName, teamName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1432,7 +1462,9 @@ function _getTeam(orgName, teamName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1523,10 +1555,9 @@ function _deleteMethod(orgName, teamName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -1560,14 +1591,17 @@ function _deleteMethod(orgName, teamName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1598,7 +1632,9 @@ function _deleteMethod(orgName, teamName, options, callback) {
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -1711,10 +1747,9 @@ function _update(orgName, teamName, displayName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams/{team_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams/{team_name}`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 	requestUrl = requestUrl.replace(
 		"{team_name}",
@@ -1766,14 +1801,17 @@ function _update(orgName, teamName, displayName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1804,7 +1842,9 @@ function _update(orgName, teamName, displayName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1884,10 +1924,9 @@ function _listAll(orgName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
@@ -1917,14 +1956,17 @@ function _listAll(orgName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1955,7 +1997,9 @@ function _listAll(orgName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -2093,10 +2137,9 @@ function _createTeam(orgName, displayName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/orgs/{org_name}/teams";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/orgs/{org_name}/teams`;
 	requestUrl = requestUrl.replace("{org_name}", encodeURIComponent(orgName));
 
 	// Create HTTP transport objects
@@ -2144,14 +2187,17 @@ function _createTeam(orgName, displayName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2182,7 +2228,9 @@ function _createTeam(orgName, displayName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 201) {
 			let parsedResponse = null;

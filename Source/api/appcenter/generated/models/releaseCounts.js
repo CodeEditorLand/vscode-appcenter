@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class ReleaseCounts {
 	/**
-	 * Create a ReleaseCounts.
-	 * @member {number} [total]
-	 * @member {array} counts
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleaseCounts
 	 *
 	 * @returns {object} metadata of ReleaseCounts

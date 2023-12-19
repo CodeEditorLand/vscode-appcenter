@@ -9,14 +9,6 @@
  */
 class CommitDetailsCommitAuthor {
 	/**
-	 * Create a CommitDetailsCommitAuthor.
-	 * @member {string} [date] Date and time of the commit
-	 * @member {string} [name] Author name
-	 * @member {string} [email] Author's email
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CommitDetailsCommitAuthor
 	 *
 	 * @returns {object} metadata of CommitDetailsCommitAuthor

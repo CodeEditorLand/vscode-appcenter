@@ -10,12 +10,6 @@
  */
 class NotificationSendSucceededResult {
 	/**
-	 * Create a NotificationSendSucceededResult.
-	 * @member {string} notificationId The unique notification identifier.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationSendSucceededResult
 	 *
 	 * @returns {object} metadata of NotificationSendSucceededResult

@@ -83,19 +83,18 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/commits/batch";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/commits/batch`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
-	queryParameters.push("hashes=" + encodeURIComponent(hashes.join(",")));
+	queryParameters.push(`hashes=${encodeURIComponent(hashes.join(","))}`);
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -125,14 +124,17 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -150,7 +152,9 @@ function _listByShaList(hashes, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;

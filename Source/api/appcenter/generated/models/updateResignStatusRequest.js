@@ -10,16 +10,6 @@
  */
 class UpdateResignStatusRequest {
 	/**
-	 * Create a UpdateResignStatusRequest.
-	 * @member {string} status The updated status for the resigning request.
-	 * @member {string} [errorCode] Error code if an error occured in the
-	 * resigning operation.
-	 * @member {string} [errorMessage] Error message if an error occured in the
-	 * resigning operation.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UpdateResignStatusRequest
 	 *
 	 * @returns {object} metadata of UpdateResignStatusRequest

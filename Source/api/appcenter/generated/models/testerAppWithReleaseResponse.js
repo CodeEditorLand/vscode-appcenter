@@ -11,32 +11,6 @@ const models = require("./index");
  */
 class TesterAppWithReleaseResponse {
 	/**
-	 * Create a TesterAppWithReleaseResponse.
-	 * @member {string} [id] The unique ID (UUID) of the app
-	 * @member {object} [release]
-	 * @member {number} [release.size] The release's size in bytes.
-	 * @member {string} [release.installUrl] The href required to install a
-	 * release on a mobile device. On iOS devices will be prefixed with
-	 * `itms-services://?action=download-manifest&url=`
-	 * @member {string} [release.releaseNotes] The release's release notes.
-	 * @member {string} [name] The app's name.
-	 * @member {string} [displayName] The app's display name.
-	 * @member {string} [description] The description of the app
-	 * @member {string} [iconUrl] A URL to the app's icon.
-	 * @member {string} [os] The app's os.
-	 * @member {object} [owner] The information about the app's owner
-	 * @member {string} [owner.id] The unique id (UUID) of the owner
-	 * @member {string} [owner.avatarUrl] The avatar URL of the owner
-	 * @member {string} [owner.displayName] The owner's display name
-	 * @member {string} [owner.email] The owner's email address
-	 * @member {string} [owner.name] The unique name that used to identify the
-	 * owner
-	 * @member {string} [owner.type] The owner type. Can either be 'org' or
-	 * 'user'. Possible values include: 'org', 'user'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TesterAppWithReleaseResponse
 	 *
 	 * @returns {object} metadata of TesterAppWithReleaseResponse

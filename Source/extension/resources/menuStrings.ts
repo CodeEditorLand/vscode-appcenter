@@ -66,7 +66,7 @@ export class MenuStrings {
 		if (app) {
 			return `Switch ${app.appName} (${app.os})`;
 		} else {
-			return `Set current app`;
+			return "Set current app";
 		}
 	}
 
@@ -74,7 +74,7 @@ export class MenuStrings {
 		if (app) {
 			return `Release '${app.appName}' to '${app.currentAppDeployments.currentDeploymentName}' deployment`;
 		} else {
-			return `Release react (please specify current app first)`;
+			return "Release react (please specify current app first)";
 		}
 	}
 	// #endregion Menu labels

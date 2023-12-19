@@ -9,13 +9,6 @@
  */
 class DeviceConfigurationImage {
 	/**
-	 * Create a DeviceConfigurationImage.
-	 * @member {string} [full]
-	 * @member {string} [thumb]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceConfigurationImage
 	 *
 	 * @returns {object} metadata of DeviceConfigurationImage

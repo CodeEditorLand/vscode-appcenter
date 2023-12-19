@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class CrashGroupOperatingSystems {
 	/**
-	 * Create a CrashGroupOperatingSystems.
-	 * @member {number} [crashCount]
-	 * @member {array} [operatingSystems]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupOperatingSystems
 	 *
 	 * @returns {object} metadata of CrashGroupOperatingSystems

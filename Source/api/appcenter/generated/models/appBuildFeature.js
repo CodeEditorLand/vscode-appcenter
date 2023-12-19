@@ -10,13 +10,6 @@
  */
 class AppBuildFeature {
 	/**
-	 * Create a AppBuildFeature.
-	 * @member {string} [name]
-	 * @member {boolean} [value]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppBuildFeature
 	 *
 	 * @returns {object} metadata of AppBuildFeature

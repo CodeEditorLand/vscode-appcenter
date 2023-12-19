@@ -10,13 +10,6 @@
  */
 class ItunesTeamsResponse {
 	/**
-	 * Create a ItunesTeamsResponse.
-	 * @member {string} [teamId] Itunes team id.
-	 * @member {string} [teamName] Itunes Team Name
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ItunesTeamsResponse
 	 *
 	 * @returns {object} metadata of ItunesTeamsResponse

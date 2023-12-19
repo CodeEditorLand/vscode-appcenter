@@ -12,14 +12,6 @@ const models = require("./index");
  */
 class NotificationsListResult {
 	/**
-	 * Create a NotificationsListResult.
-	 * @member {array} values
-	 * @member {number} [total] the total count of notifications
-	 * @member {string} [nextLink]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationsListResult
 	 *
 	 * @returns {object} metadata of NotificationsListResult

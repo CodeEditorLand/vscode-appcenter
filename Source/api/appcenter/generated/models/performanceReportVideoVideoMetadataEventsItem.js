@@ -9,15 +9,6 @@
  */
 class PerformanceReportVideoVideoMetadataEventsItem {
 	/**
-	 * Create a PerformanceReportVideoVideoMetadataEventsItem.
-	 * @member {string} [id]
-	 * @member {number} [millis]
-	 * @member {string} [name]
-	 * @member {string} [type]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of PerformanceReportVideoVideoMetadataEventsItem
 	 *
 	 * @returns {object} metadata of PerformanceReportVideoVideoMetadataEventsItem

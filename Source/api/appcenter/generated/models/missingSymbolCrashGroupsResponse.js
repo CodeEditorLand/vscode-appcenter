@@ -12,14 +12,6 @@ const models = require("./index");
  */
 class MissingSymbolCrashGroupsResponse {
 	/**
-	 * Create a MissingSymbolCrashGroupsResponse.
-	 * @member {number} totalCrashCount total number of cashes for all the groups
-	 * @member {array} groups list of crash groups formed by missing symbols
-	 * combination
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of MissingSymbolCrashGroupsResponse
 	 *
 	 * @returns {object} metadata of MissingSymbolCrashGroupsResponse

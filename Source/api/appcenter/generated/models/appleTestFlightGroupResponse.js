@@ -10,18 +10,6 @@
  */
 class AppleTestFlightGroupResponse {
 	/**
-	 * Create a AppleTestFlightGroupResponse.
-	 * @member {string} [id] id of the group.
-	 * @member {number} [providerId] provider id of the group.
-	 * @member {number} [appAdamId] apple id of the group.
-	 * @member {string} [name] name of the group.
-	 * @member {boolean} [active] true if group is in active state.
-	 * @member {boolean} [isInternalGroup] true if the group is an internal
-	 * group.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppleTestFlightGroupResponse
 	 *
 	 * @returns {object} metadata of AppleTestFlightGroupResponse

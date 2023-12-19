@@ -13,15 +13,6 @@ const models = require("./index");
  */
 class StartServiceLog extends models["Log"] {
 	/**
-	 * Create a StartServiceLog.
-	 * @member {array} [services] The list of services of the AppvCenter Start API
-	 * call.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of StartServiceLog
 	 *
 	 * @returns {object} metadata of StartServiceLog

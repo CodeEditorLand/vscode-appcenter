@@ -11,18 +11,6 @@ const models = require("./index");
  */
 class StepReportDeviceScreenshotsItemScreenshot {
 	/**
-	 * Create a StepReportDeviceScreenshotsItemScreenshot.
-	 * @member {object} urls
-	 * @member {string} [urls.original]
-	 * @member {string} [urls.small]
-	 * @member {string} [urls.medium]
-	 * @member {string} [urls.large]
-	 * @member {number} rotation
-	 * @member {boolean} landscape
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StepReportDeviceScreenshotsItemScreenshot
 	 *
 	 * @returns {object} metadata of StepReportDeviceScreenshotsItemScreenshot

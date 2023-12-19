@@ -9,21 +9,6 @@
  */
 class AppGroupResponse {
 	/**
-	 * Create a AppGroupResponse.
-	 * @member {string} id The unique ID (UUID) of the app
-	 * @member {string} groupId The unique ID (UUID) of the group that the app
-	 * belongs to
-	 * @member {string} [displayName] The display name of the app
-	 * @member {string} name The name of the app used in URLs
-	 * @member {string} os The OS the app will be running on. Possible values
-	 * include: 'Android', 'iOS', 'macOS', 'Tizen', 'tvOS', 'Windows', 'Custom'
-	 * @member {string} platform The platform of the app. Possible values
-	 * include: 'Java', 'Objective-C-Swift', 'UWP', 'Cordova', 'React-Native',
-	 * 'Unity', 'Xamarin', 'Unknown'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppGroupResponse
 	 *
 	 * @returns {object} metadata of AppGroupResponse

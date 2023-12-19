@@ -9,13 +9,6 @@
  */
 class AcquisitionStatusSuccessResponse {
 	/**
-	 * Create a AcquisitionStatusSuccessResponse.
-	 * @member {string} code The code indicating the status
-	 * @member {string} message The message indicating the status
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AcquisitionStatusSuccessResponse
 	 *
 	 * @returns {object} metadata of AcquisitionStatusSuccessResponse

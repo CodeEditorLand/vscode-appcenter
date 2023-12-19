@@ -9,15 +9,6 @@
  */
 class FeatureResponse {
 	/**
-	 * Create a FeatureResponse.
-	 * @member {string} [description] The description of the feature
-	 * @member {string} displayName The friendly name of the feature
-	 * @member {string} name The unique name of the feature
-	 * @member {number} state The state (unset, enabled, disabled) of the feature
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FeatureResponse
 	 *
 	 * @returns {object} metadata of FeatureResponse

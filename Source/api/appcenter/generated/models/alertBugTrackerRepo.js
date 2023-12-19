@@ -12,20 +12,6 @@ const models = require("./index");
  */
 class AlertBugTrackerRepo {
 	/**
-	 * Create a AlertBugTrackerRepo.
-	 * @member {string} name
-	 * @member {string} url
-	 * @member {string} id
-	 * @member {string} [description]
-	 * @member {boolean} [privateProperty]
-	 * @member {object} [owner]
-	 * @member {string} [owner.name]
-	 * @member {string} [owner.id]
-	 * @member {string} [owner.login]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertBugTrackerRepo
 	 *
 	 * @returns {object} metadata of AlertBugTrackerRepo

@@ -10,19 +10,6 @@
  */
 class BillingPlan {
 	/**
-	 * Create a BillingPlan.
-	 * @member {string} [id] The Billing Plan ID
-	 * @member {string} [version] Version of the Billing Plan schema
-	 * @member {number} [priceBucket] Price bucket of the billing plan. Free
-	 * plans start with 0, paid plans have higher price buckets
-	 * @member {string} [service] Name of the service that the plan applies to.
-	 * Possible values include: 'Build', 'Push', 'Test'
-	 * @member {object} [limits]
-	 * @member {object} [attributes]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BillingPlan
 	 *
 	 * @returns {object} metadata of BillingPlan

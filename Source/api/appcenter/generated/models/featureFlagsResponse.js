@@ -9,12 +9,6 @@
  */
 class FeatureFlagsResponse {
 	/**
-	 * Create a FeatureFlagsResponse.
-	 * @member {array} featureFlags
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FeatureFlagsResponse
 	 *
 	 * @returns {object} metadata of FeatureFlagsResponse

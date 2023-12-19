@@ -14,16 +14,6 @@ class UserProfileResponseManagement extends models[
 	"UserProfileResponseInternal"
 ] {
 	/**
-	 * Create a UserProfileResponseManagement.
-	 * @member {string} [updatedAt] The date when the app was last updated
-	 * @member {boolean} [verified] A boolean flag that indicates if the user is
-	 * already verified
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of UserProfileResponseManagement
 	 *
 	 * @returns {object} metadata of UserProfileResponseManagement

@@ -9,12 +9,6 @@
  */
 class Release {
 	/**
-	 * Create a Release.
-	 * @member {string} release Release Id.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Release
 	 *
 	 * @returns {object} metadata of Release

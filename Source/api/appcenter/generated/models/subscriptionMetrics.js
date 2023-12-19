@@ -9,14 +9,6 @@
  */
 class SubscriptionMetrics {
 	/**
-	 * Create a SubscriptionMetrics.
-	 * @member {string} name The name of the subsciption (prefixed with the topic
-	 * name)
-	 * @member {number} messageCount The number of messages in the subscription
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SubscriptionMetrics
 	 *
 	 * @returns {object} metadata of SubscriptionMetrics

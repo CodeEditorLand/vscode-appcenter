@@ -12,16 +12,6 @@ const models = require("./index");
  */
 class HandledErrorDetails extends models["HandledError"] {
 	/**
-	 * Create a HandledErrorDetails.
-	 * @member {string} [name]
-	 * @member {array} [reasonFrames]
-	 * @member {object} [properties]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of HandledErrorDetails
 	 *
 	 * @returns {object} metadata of HandledErrorDetails

@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class AnalyticsModels {
 	/**
-	 * Create a AnalyticsModels.
-	 * @member {number} [total]
-	 * @member {array} [modelsProperty]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AnalyticsModels
 	 *
 	 * @returns {object} metadata of AnalyticsModels

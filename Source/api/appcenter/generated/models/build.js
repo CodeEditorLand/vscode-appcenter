@@ -9,22 +9,6 @@
  */
 class Build {
 	/**
-	 * Create a Build.
-	 * @member {number} id The build ID
-	 * @member {string} buildNumber The build number
-	 * @member {string} queueTime The time the build was queued
-	 * @member {string} [startTime] The time the build was started
-	 * @member {string} [finishTime] The time the build was finished
-	 * @member {string} [lastChangedDate] The time the build status was last
-	 * changed
-	 * @member {string} status The build status
-	 * @member {string} result The build result
-	 * @member {string} sourceBranch The source branch name
-	 * @member {string} sourceVersion The source SHA
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Build
 	 *
 	 * @returns {object} metadata of Build

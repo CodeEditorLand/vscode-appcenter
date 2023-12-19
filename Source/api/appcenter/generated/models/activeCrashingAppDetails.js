@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class ActiveCrashingAppDetails {
 	/**
-	 * Create a ActiveCrashingAppDetails.
-	 * @member {string} [nextLink]
-	 * @member {array} [appsWithCrashes] details of the apps with crashes
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ActiveCrashingAppDetails
 	 *
 	 * @returns {object} metadata of ActiveCrashingAppDetails

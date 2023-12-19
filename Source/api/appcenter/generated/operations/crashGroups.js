@@ -93,10 +93,9 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}/stacktrace";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}/stacktrace`;
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
 		encodeURIComponent(crashGroupId),
@@ -109,11 +108,11 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 	const queryParameters = [];
 	if (groupingOnly !== null && groupingOnly !== undefined) {
 		queryParameters.push(
-			"grouping_only=" + encodeURIComponent(groupingOnly.toString()),
+			`grouping_only=${encodeURIComponent(groupingOnly.toString())}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -143,14 +142,17 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -181,7 +183,9 @@ function _getStacktrace(crashGroupId, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -284,10 +288,9 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}`;
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
 		encodeURIComponent(crashGroupId),
@@ -325,14 +328,17 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -363,7 +369,9 @@ function _get(crashGroupId, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -499,10 +507,9 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/crash_groups/{crash_group_id}`;
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
 		encodeURIComponent(crashGroupId),
@@ -558,14 +565,17 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -596,7 +606,9 @@ function _update(crashGroupId, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -730,7 +742,7 @@ function _list(ownerName, appName, options, callback) {
 			!(
 				lastOccurrenceFrom instanceof Date ||
 				(typeof lastOccurrenceFrom.valueOf() === "string" &&
-					!isNaN(Date.parse(lastOccurrenceFrom)))
+					!Number.isNaN(Date.parse(lastOccurrenceFrom)))
 			)
 		) {
 			throw new Error("lastOccurrenceFrom must be of type date.");
@@ -740,7 +752,7 @@ function _list(ownerName, appName, options, callback) {
 			!(
 				lastOccurrenceTo instanceof Date ||
 				(typeof lastOccurrenceTo.valueOf() === "string" &&
-					!isNaN(Date.parse(lastOccurrenceTo)))
+					!Number.isNaN(Date.parse(lastOccurrenceTo)))
 			)
 		) {
 			throw new Error("lastOccurrenceTo must be of type date.");
@@ -811,10 +823,9 @@ function _list(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/crash_groups";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/crash_groups`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -823,40 +834,42 @@ function _list(ownerName, appName, options, callback) {
 	const queryParameters = [];
 	if (lastOccurrenceFrom !== null && lastOccurrenceFrom !== undefined) {
 		queryParameters.push(
-			"last_occurrence_from=" +
-				encodeURIComponent(client.serializeObject(lastOccurrenceFrom)),
+			`last_occurrence_from=${encodeURIComponent(
+				client.serializeObject(lastOccurrenceFrom),
+			)}`,
 		);
 	}
 	if (lastOccurrenceTo !== null && lastOccurrenceTo !== undefined) {
 		queryParameters.push(
-			"last_occurrence_to=" +
-				encodeURIComponent(client.serializeObject(lastOccurrenceTo)),
+			`last_occurrence_to=${encodeURIComponent(
+				client.serializeObject(lastOccurrenceTo),
+			)}`,
 		);
 	}
 	if (appVersion !== null && appVersion !== undefined) {
-		queryParameters.push("app_version=" + encodeURIComponent(appVersion));
+		queryParameters.push(`app_version=${encodeURIComponent(appVersion)}`);
 	}
 	if (groupType !== null && groupType !== undefined) {
-		queryParameters.push("group_type=" + encodeURIComponent(groupType));
+		queryParameters.push(`group_type=${encodeURIComponent(groupType)}`);
 	}
 	if (groupStatus !== null && groupStatus !== undefined) {
-		queryParameters.push("group_status=" + encodeURIComponent(groupStatus));
+		queryParameters.push(`group_status=${encodeURIComponent(groupStatus)}`);
 	}
 	if (groupTextSearch !== null && groupTextSearch !== undefined) {
 		queryParameters.push(
-			"group_text_search=" + encodeURIComponent(groupTextSearch),
+			`group_text_search=${encodeURIComponent(groupTextSearch)}`,
 		);
 	}
 	if (orderby !== null && orderby !== undefined) {
-		queryParameters.push("$orderby=" + encodeURIComponent(orderby));
+		queryParameters.push(`$orderby=${encodeURIComponent(orderby)}`);
 	}
 	if (continuationToken !== null && continuationToken !== undefined) {
 		queryParameters.push(
-			"continuation_token=" + encodeURIComponent(continuationToken),
+			`continuation_token=${encodeURIComponent(continuationToken)}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -886,14 +899,17 @@ function _list(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -924,7 +940,9 @@ function _list(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;

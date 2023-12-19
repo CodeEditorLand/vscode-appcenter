@@ -12,19 +12,6 @@ const models = require("./index");
  */
 class NotificationDefinition {
 	/**
-	 * Create a NotificationDefinition.
-	 * @member {object} [notificationTarget]
-	 * @member {string} [notificationTarget.type] Polymorphic Discriminator
-	 * @member {object} notificationContent
-	 * @member {string} [notificationContent.name] Notification name
-	 * @member {string} [notificationContent.title] Notification title
-	 * @member {string} [notificationContent.body] Notification body
-	 * @member {object} [notificationContent.customData] Notification custom
-	 * data(priority, expiration, etc.)
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationDefinition
 	 *
 	 * @returns {object} metadata of NotificationDefinition

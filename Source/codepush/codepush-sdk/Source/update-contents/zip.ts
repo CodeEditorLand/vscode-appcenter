@@ -31,8 +31,7 @@ export default function zip(
 				});
 			}
 		} catch (error) {
-			error.message =
-				error.message +
+			error.message +=
 				" Make sure you have added the platform you are making a release to.`.";
 			reject(error);
 		}
@@ -59,7 +58,7 @@ export default function zip(
 
 		const packagePath: string = path.join(
 			outputDir,
-			fileUtils.generateRandomFilename(15) + ".zip",
+			`${fileUtils.generateRandomFilename(15)}.zip`,
 		);
 		const zipFile = new yazl.ZipFile();
 		const writeStream: fs.WriteStream = fs.createWriteStream(packagePath);

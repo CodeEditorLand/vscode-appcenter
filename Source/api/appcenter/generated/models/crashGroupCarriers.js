@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class CrashGroupCarriers {
 	/**
-	 * Create a CrashGroupCarriers.
-	 * @member {number} [crashCount]
-	 * @member {array} [carriers]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupCarriers
 	 *
 	 * @returns {object} metadata of CrashGroupCarriers

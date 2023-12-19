@@ -11,17 +11,6 @@ const models = require("./index");
  */
 class LogFlowGenericLogContainer {
 	/**
-	 * Create a LogFlowGenericLogContainer.
-	 * @member {boolean} [exceededMaxLimit] indicates if the number of available
-	 * logs are more than the max allowed return limit(100).
-	 * @member {date} [lastReceivedLogTimestamp] the timestamp of the last log
-	 * received. This value can be used as the start time parameter in the
-	 * consecutive API call.
-	 * @member {array} logs the list of logs
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of LogFlowGenericLogContainer
 	 *
 	 * @returns {object} metadata of LogFlowGenericLogContainer

@@ -9,15 +9,6 @@
  */
 class TeamResponse {
 	/**
-	 * Create a TeamResponse.
-	 * @member {string} id The internal unique id (UUID) of the team.
-	 * @member {string} name The name of the team
-	 * @member {string} displayName The display name of the team
-	 * @member {string} [description] The description of the team
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TeamResponse
 	 *
 	 * @returns {object} metadata of TeamResponse

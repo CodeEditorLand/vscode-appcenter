@@ -9,15 +9,6 @@
  */
 class PatchReleaseRequest {
 	/**
-	 * Create a PatchReleaseRequest.
-	 * @member {string} [status] updated status of release
-	 * @member {string} [destPublishId] Destination Publish Id
-	 * @member {string} [errorDetails] failure error details from store
-	 * @member {string} [errorContextId] contextId for failed error message
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of PatchReleaseRequest
 	 *
 	 * @returns {object} metadata of PatchReleaseRequest

@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class ErrorFreeDevicePercentages {
 	/**
-	 * Create a ErrorFreeDevicePercentages.
-	 * @member {number} [averagePercentage] Average percentage
-	 * @member {array} [dailyPercentages] The error-free percentage per day.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorFreeDevicePercentages
 	 *
 	 * @returns {object} metadata of ErrorFreeDevicePercentages

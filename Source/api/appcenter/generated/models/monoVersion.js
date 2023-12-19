@@ -10,13 +10,6 @@
  */
 class MonoVersion {
 	/**
-	 * Create a MonoVersion.
-	 * @member {string} [name] The version name
-	 * @member {boolean} [current] If the Mono is latest stable
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of MonoVersion
 	 *
 	 * @returns {object} metadata of MonoVersion

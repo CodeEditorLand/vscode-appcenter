@@ -12,13 +12,6 @@
  */
 class DeviceSetUpdate {
 	/**
-	 * Create a DeviceSetUpdate.
-	 * @member {array} devices List of device IDs
-	 * @member {string} name The name of the device set
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceSetUpdate
 	 *
 	 * @returns {object} metadata of DeviceSetUpdate

@@ -10,13 +10,6 @@
  */
 class ToolsetProject {
 	/**
-	 * Create a ToolsetProject.
-	 * @member {string} [name]
-	 * @member {string} [path]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ToolsetProject
 	 *
 	 * @returns {object} metadata of ToolsetProject

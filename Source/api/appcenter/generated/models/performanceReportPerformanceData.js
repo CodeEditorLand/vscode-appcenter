@@ -11,16 +11,6 @@ const models = require("./index");
  */
 class PerformanceReportPerformanceData {
 	/**
-	 * Create a PerformanceReportPerformanceData.
-	 * @member {array} steps
-	 * @member {number} elapsedSecsEnd
-	 * @member {number} elapsedSecsStart
-	 * @member {number} elapsedSecs
-	 * @member {string} id
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of PerformanceReportPerformanceData
 	 *
 	 * @returns {object} metadata of PerformanceReportPerformanceData

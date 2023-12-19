@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class ErrorGroups {
 	/**
-	 * Create a ErrorGroups.
-	 * @member {string} [nextLink]
-	 * @member {array} [errorGroups]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorGroups
 	 *
 	 * @returns {object} metadata of ErrorGroups

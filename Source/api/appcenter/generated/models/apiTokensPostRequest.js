@@ -9,21 +9,6 @@
  */
 class ApiTokensPostRequest {
 	/**
-	 * Create a ApiTokensPostRequest.
-	 * @member {string} [description] The description of the token
-	 * @member {string} [encryptedToken] An encrypted value of the token.
-	 * @member {array} [scope] The scope for this token. An array of supported
-	 * roles.
-	 * @member {string} [tokenHash] The hashed value of api token
-	 * @member {string} [tokenType] The token's type. public:managed by the user;
-	 * in_app_update:special token for in-app update scenario; buid:dedicated for
-	 * CI usage for now; session:for CLI session management; tester_app: used for
-	 * tester mobile app; default is "public".'. Possible values include:
-	 * 'public', 'in_app_update', 'build', 'session', 'tester_app'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ApiTokensPostRequest
 	 *
 	 * @returns {object} metadata of ApiTokensPostRequest

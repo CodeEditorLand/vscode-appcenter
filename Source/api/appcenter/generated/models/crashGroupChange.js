@@ -9,13 +9,6 @@
  */
 class CrashGroupChange {
 	/**
-	 * Create a CrashGroupChange.
-	 * @member {object} [status]
-	 * @member {string} [annotation]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupChange
 	 *
 	 * @returns {object} metadata of CrashGroupChange

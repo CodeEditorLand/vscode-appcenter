@@ -9,21 +9,6 @@
  */
 class Event {
 	/**
-	 * Create a Event.
-	 * @member {string} [id]
-	 * @member {string} [name]
-	 * @member {number} [deviceCount]
-	 * @member {number} [previousDeviceCount] the device count of previous time
-	 * range of the event
-	 * @member {number} [count]
-	 * @member {number} [previousCount] the event count of previous time range of
-	 * the event
-	 * @member {number} [countPerDevice]
-	 * @member {number} [countPerSession]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Event
 	 *
 	 * @returns {object} metadata of Event

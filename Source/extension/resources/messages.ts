@@ -2,7 +2,8 @@ import { AuthProvider } from "./constants";
 
 export class Messages {
 	// #region Progress labels
-	public static CreatingAppStatusBarProgressMessage = `Creating a new App Center app...`;
+	public static CreatingAppStatusBarProgressMessage =
+		"Creating a new App Center app...";
 	public static SimulateCrashesProgressMessage =
 		"Generating crash data for you...";
 	public static CreatingDistributionStatusBarProgressMessage =
@@ -224,12 +225,18 @@ The current app is '${currentAppName}'.`;
 	// #region Error messages
 	public static FailedToMakeCodePushRelease =
 		"An error occured on doing Code Push release.";
-	public static FailedToCreateAppInAppCenter = `An error occurred while creating the new App Center app.`;
-	public static FailedToGetVSTSProjects = `An error while trying to retrieve your VSTS projects.`;
-	public static FailedToCreateVSTSGitrepository = `An error occurred while creating your new VSTS repository.`;
-	public static FailedToCreateDeployments = `Failed to create deployments for the app. Check out the output window for more details.`;
-	public static FailedToLinkCodePush = `Failed to link CodePush to the application. Check out the Output window for more details.`;
-	public static FailedToLinkAppCenter = `Failed to link App Center to the application. Check out the Output window for more details.`;
+	public static FailedToCreateAppInAppCenter =
+		"An error occurred while creating the new App Center app.";
+	public static FailedToGetVSTSProjects =
+		"An error while trying to retrieve your VSTS projects.";
+	public static FailedToCreateVSTSGitrepository =
+		"An error occurred while creating your new VSTS repository.";
+	public static FailedToCreateDeployments =
+		"Failed to create deployments for the app. Check out the output window for more details.";
+	public static FailedToLinkCodePush =
+		"Failed to link CodePush to the application. Check out the Output window for more details.";
+	public static FailedToLinkAppCenter =
+		"Failed to link App Center to the application. Check out the Output window for more details.";
 	public static FailedToConnectRepoToBuildService =
 		"Failed to connect the repository to the build service. Check out the Output window for more details.";
 	public static FailedToConfigureBranchAndStartNewBuild =

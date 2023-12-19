@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class TestCloudToolset {
 	/**
-	 * Create a TestCloudToolset.
-	 * @member {array} projects The TestCloud projects detected
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestCloudToolset
 	 *
 	 * @returns {object} metadata of TestCloudToolset

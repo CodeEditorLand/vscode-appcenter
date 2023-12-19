@@ -12,24 +12,6 @@ const models = require("./index");
  */
 class Stacktrace {
 	/**
-	 * Create a Stacktrace.
-	 * @member {string} [title]
-	 * @member {string} [reason]
-	 * @member {array} [threads]
-	 * @member {object} [exception]
-	 * @member {string} [exception.reason] Reason of the exception
-	 * @member {string} [exception.type] Type of the exception
-	 * (NSSomethingException, NullPointerException)
-	 * @member {array} [exception.frames] frames of the excetpion
-	 * @member {boolean} [exception.relevant] relevant exception (crashed)
-	 * @member {array} [exception.innerExceptions]
-	 * @member {string} [exception.platform] SDK/Platform this thread is beeing
-	 * generated from. Possible values include: 'ios', 'android', 'xamarin',
-	 * 'react-native', 'ndk', 'unity', 'other'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Stacktrace
 	 *
 	 * @returns {object} metadata of Stacktrace

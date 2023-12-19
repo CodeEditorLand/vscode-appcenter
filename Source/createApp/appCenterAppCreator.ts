@@ -166,7 +166,7 @@ export default class AppCenterAppCreator {
 			} else {
 				this.logger.error(
 					`${LogStrings.FailedCreateAppUnder(appName, orgName)} ${
-						(err && err.message) || ""
+						err?.message || ""
 					}`,
 				);
 			}
@@ -197,7 +197,7 @@ export default class AppCenterAppCreator {
 			} else {
 				this.logger.error(
 					`${LogStrings.FailedCreateAppUnder(appName)} ${
-						(err && err.message) || ""
+						err?.message || ""
 					}`,
 				);
 			}
@@ -231,14 +231,14 @@ export default class AppCenterAppCreator {
 				} catch (err) {
 					this.logger.error(
 						`${LogStrings.ErrorCreatingDeploymentsFor(appName)} ${
-							(err && err.message) || ""
+							err?.message || ""
 						}`,
 					);
 				}
 			} else {
 				this.logger.error(
 					`${LogStrings.ErrorCreatingDeploymentsFor(appName)} ${
-						(err && err.message) || ""
+						err?.message || ""
 					}`,
 				);
 			}

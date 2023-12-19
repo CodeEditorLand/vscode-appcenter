@@ -11,15 +11,6 @@ const models = require("./index");
  */
 class EventDeviceCount {
 	/**
-	 * Create a EventDeviceCount.
-	 * @member {number} [totalDevices]
-	 * @member {number} [totalDevicesWithEvent]
-	 * @member {number} [previousTotalDevicesWithEvent]
-	 * @member {array} [devicesCount]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventDeviceCount
 	 *
 	 * @returns {object} metadata of EventDeviceCount

@@ -9,15 +9,6 @@
  */
 class Version {
 	/**
-	 * Create a Version.
-	 * @member {string} [version] version
-	 * @member {number} [count] version count
-	 * @member {number} [previousCount] the count of previous time range of the
-	 * version
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Version
 	 *
 	 * @returns {object} metadata of Version

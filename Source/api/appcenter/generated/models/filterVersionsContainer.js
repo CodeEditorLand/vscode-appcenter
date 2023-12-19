@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class FilterVersionsContainer {
 	/**
-	 * Create a FilterVersionsContainer.
-	 * @member {array} [versions]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FilterVersionsContainer
 	 *
 	 * @returns {object} metadata of FilterVersionsContainer

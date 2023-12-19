@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class CrashGroupLanguages {
 	/**
-	 * Create a CrashGroupLanguages.
-	 * @member {number} [crashCount]
-	 * @member {array} [languages]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupLanguages
 	 *
 	 * @returns {object} metadata of CrashGroupLanguages

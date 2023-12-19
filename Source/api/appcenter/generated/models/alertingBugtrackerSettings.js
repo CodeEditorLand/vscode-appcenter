@@ -10,14 +10,6 @@
  */
 class AlertingBugtrackerSettings {
 	/**
-	 * Create a AlertingBugtrackerSettings.
-	 * @member {string} [callbackUrl]
-	 * @member {string} ownerName
-	 * @member {string} type Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertingBugtrackerSettings
 	 *
 	 * @returns {object} metadata of AlertingBugtrackerSettings

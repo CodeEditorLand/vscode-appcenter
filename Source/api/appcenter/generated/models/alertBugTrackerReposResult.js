@@ -12,14 +12,6 @@ const models = require("./index");
  */
 class AlertBugTrackerReposResult {
 	/**
-	 * Create a AlertBugTrackerReposResult.
-	 * @member {string} [repoType] Possible values include: 'github', 'vsts',
-	 * 'jira'
-	 * @member {array} repositories
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertBugTrackerReposResult
 	 *
 	 * @returns {object} metadata of AlertBugTrackerReposResult

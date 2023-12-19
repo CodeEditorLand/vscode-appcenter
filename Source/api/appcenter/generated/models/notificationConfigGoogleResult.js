@@ -15,14 +15,6 @@ class NotificationConfigGoogleResult extends models[
 	"NotificationConfigResult"
 ] {
 	/**
-	 * Create a NotificationConfigGoogleResult.
-	 * @member {string} googleApiKey GCM API key.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationConfigGoogleResult
 	 *
 	 * @returns {object} metadata of NotificationConfigGoogleResult

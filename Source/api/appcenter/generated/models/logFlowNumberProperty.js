@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class LogFlowNumberProperty extends models["LogFlowCustomProperty"] {
 	/**
-	 * Create a LogFlowNumberProperty.
-	 * @member {number} value Number property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogFlowNumberProperty
 	 *
 	 * @returns {object} metadata of LogFlowNumberProperty

@@ -9,12 +9,6 @@
  */
 class DeploymentModification {
 	/**
-	 * Create a DeploymentModification.
-	 * @member {string} name
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeploymentModification
 	 *
 	 * @returns {object} metadata of DeploymentModification

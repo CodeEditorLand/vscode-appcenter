@@ -10,17 +10,6 @@
  */
 class AudienceSummary {
 	/**
-	 * Create a AudienceSummary.
-	 * @member {string} [name] Audience name.
-	 * @member {string} [description] Audience description.
-	 * @member {number} [estimatedCount] Estimated audience size.
-	 * @member {string} [definition] Audience definition in OData format.
-	 * @member {string} [state] Audience state. Possible values include:
-	 * 'Calculating', 'Ready', 'Disabled'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AudienceSummary
 	 *
 	 * @returns {object} metadata of AudienceSummary

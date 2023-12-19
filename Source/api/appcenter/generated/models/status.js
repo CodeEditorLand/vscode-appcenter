@@ -9,12 +9,6 @@
  */
 class Status {
 	/**
-	 * Create a Status.
-	 * @member {string} status
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Status
 	 *
 	 * @returns {object} metadata of Status

@@ -11,19 +11,6 @@ const models = require("./index");
  */
 class PerformanceReportPerformanceDataStepsItem {
 	/**
-	 * Create a PerformanceReportPerformanceDataStepsItem.
-	 * @member {number} [avgCpu]
-	 * @member {number} [avgMem]
-	 * @member {array} [samples]
-	 * @member {number} [elapsedSecsEnd]
-	 * @member {number} [elapsedSecsStart]
-	 * @member {number} [elapsedSecs]
-	 * @member {string} [name]
-	 * @member {string} [id]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of PerformanceReportPerformanceDataStepsItem
 	 *
 	 * @returns {object} metadata of PerformanceReportPerformanceDataStepsItem

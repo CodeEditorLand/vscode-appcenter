@@ -9,12 +9,6 @@
  */
 class SuccessResponse {
 	/**
-	 * Create a SuccessResponse.
-	 * @member {string} message
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SuccessResponse
 	 *
 	 * @returns {object} metadata of SuccessResponse

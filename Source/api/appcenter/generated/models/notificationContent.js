@@ -10,16 +10,6 @@
  */
 class NotificationContent {
 	/**
-	 * Create a NotificationContent.
-	 * @member {string} name Notification name
-	 * @member {string} [title] Notification title
-	 * @member {string} body Notification body
-	 * @member {object} [customData] Notification custom data(priority,
-	 * expiration, etc.)
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationContent
 	 *
 	 * @returns {object} metadata of NotificationContent

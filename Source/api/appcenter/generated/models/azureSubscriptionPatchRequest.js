@@ -9,12 +9,6 @@
  */
 class AzureSubscriptionPatchRequest {
 	/**
-	 * Create a AzureSubscriptionPatchRequest.
-	 * @member {boolean} isBilling If the subscription is used for billing
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AzureSubscriptionPatchRequest
 	 *
 	 * @returns {object} metadata of AzureSubscriptionPatchRequest

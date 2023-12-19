@@ -9,14 +9,6 @@
  */
 class LogTraceDefinition {
 	/**
-	 * Create a LogTraceDefinition.
-	 * @member {string} appSecret
-	 * @member {string} [installId]
-	 * @member {date} [expiration]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of LogTraceDefinition
 	 *
 	 * @returns {object} metadata of LogTraceDefinition

@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class AndroidProject {
 	/**
-	 * Create a AndroidProject.
-	 * @member {array} androidModules Android Gradle modules
-	 * @member {string} [gradleWrapperPath] The path of the Gradle wrapper
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AndroidProject
 	 *
 	 * @returns {object} metadata of AndroidProject

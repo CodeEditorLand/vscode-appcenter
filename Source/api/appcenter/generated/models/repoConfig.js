@@ -9,16 +9,6 @@
  */
 class RepoConfig {
 	/**
-	 * Create a RepoConfig.
-	 * @member {string} type Type of repository
-	 * @member {string} state State of the configuration. Possible values
-	 * include: 'unauthorized', 'inactive', 'active'
-	 * @member {string} [repoUrl] URL of the repository
-	 * @member {string} [id] Repository identifier
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of RepoConfig
 	 *
 	 * @returns {object} metadata of RepoConfig

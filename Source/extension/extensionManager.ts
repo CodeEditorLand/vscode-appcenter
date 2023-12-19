@@ -6,7 +6,6 @@ import { AppCenterProfile, Profile } from "../helpers/interfaces";
 import { SettingsHelper } from "../helpers/settingsHelper";
 import { Utils } from "../helpers/utils/utils";
 import * as CommandHandlers from "./commandHandlers";
-import { ConsoleLogger } from "./log/consoleLogger";
 import { ILogger } from "./log/logHelper";
 import { AuthProvider, CommandNames } from "./resources/constants";
 import { Messages } from "./resources/messages";
@@ -79,7 +78,7 @@ export class ExtensionManager implements Disposable {
 
 	public async Initialize(
 		projectRootPath: string | undefined,
-		logger: ILogger = new ConsoleLogger(),
+		logger: ILogger,
 		appCenterAuth: AppCenterAuth,
 		vstsAuth: VstsAuth,
 	): Promise<void> {
@@ -101,7 +100,7 @@ export class ExtensionManager implements Disposable {
 
 	public async checkCurrentApps(appCenterAuth: AppCenterAuth) {
 		const profile: AppCenterProfile = await appCenterAuth.activeProfile;
-		if (profile && profile.currentApp) {
+		if (profile?.currentApp) {
 			await this.checkAppExists(profile, appCenterAuth);
 		}
 	}
@@ -122,17 +121,16 @@ export class ExtensionManager implements Disposable {
 			);
 		} catch (e) {
 			if (e.statusCode === 404) {
-				delete profile.currentApp;
+				profile.currentApp = undefined;
 				await appCenterAuth.updateProfile(profile);
 			}
 		}
 	}
 
 	public setupAppCenterStatusBar(profile: Profile | null): Promise<void> {
-		if (profile && profile.userName) {
+		if (profile?.userName) {
 			const currentAppName =
-				profile.currentApp &&
-				profile.currentApp.appName &&
+				profile.currentApp?.appName &&
 				Utils.isReactNativeProject(
 					this._logger,
 					this.projectRootPath,

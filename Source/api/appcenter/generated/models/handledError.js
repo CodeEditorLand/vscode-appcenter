@@ -9,18 +9,6 @@
  */
 class HandledError {
 	/**
-	 * Create a HandledError.
-	 * @member {string} [errorId]
-	 * @member {date} [timestamp]
-	 * @member {string} [deviceName]
-	 * @member {string} [osVersion]
-	 * @member {string} [osType]
-	 * @member {string} [country]
-	 * @member {string} [language]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of HandledError
 	 *
 	 * @returns {object} metadata of HandledError

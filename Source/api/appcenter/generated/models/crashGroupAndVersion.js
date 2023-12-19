@@ -9,13 +9,6 @@
  */
 class CrashGroupAndVersion {
 	/**
-	 * Create a CrashGroupAndVersion.
-	 * @member {string} [crashGroupId]
-	 * @member {string} [appVersion]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupAndVersion
 	 *
 	 * @returns {object} metadata of CrashGroupAndVersion

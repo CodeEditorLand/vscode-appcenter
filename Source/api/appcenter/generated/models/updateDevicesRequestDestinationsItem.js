@@ -9,12 +9,6 @@
  */
 class UpdateDevicesRequestDestinationsItem {
 	/**
-	 * Create a UpdateDevicesRequestDestinationsItem.
-	 * @member {string} [name]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UpdateDevicesRequestDestinationsItem
 	 *
 	 * @returns {object} metadata of UpdateDevicesRequestDestinationsItem

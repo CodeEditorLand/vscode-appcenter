@@ -10,18 +10,6 @@
  */
 class AndroidBranchConfigurationProperties {
 	/**
-	 * Create a AndroidBranchConfigurationProperties.
-	 * @member {string} [gradleWrapperPath] Path to the Gradle wrapper script
-	 * @member {string} module The Gradle module to build
-	 * @member {string} variant The Android build variant to build
-	 * @member {boolean} [runTests] Whether to run unit tests during the build
-	 * (default). Default value: true .
-	 * @member {boolean} [runLint] Whether to run lint checks during the build
-	 * (default). Default value: true .
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AndroidBranchConfigurationProperties
 	 *
 	 * @returns {object} metadata of AndroidBranchConfigurationProperties

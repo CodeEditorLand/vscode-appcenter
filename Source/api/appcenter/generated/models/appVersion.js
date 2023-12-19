@@ -9,16 +9,6 @@
  */
 class AppVersion {
 	/**
-	 * Create a AppVersion.
-	 * @member {string} appVersionId
-	 * @member {string} appId
-	 * @member {string} displayName
-	 * @member {string} appVersion
-	 * @member {string} [buildNumber]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppVersion
 	 *
 	 * @returns {object} metadata of AppVersion

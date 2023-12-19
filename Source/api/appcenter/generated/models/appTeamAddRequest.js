@@ -9,12 +9,6 @@
  */
 class AppTeamAddRequest {
 	/**
-	 * Create a AppTeamAddRequest.
-	 * @member {string} name The name of the app to be added to the team
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppTeamAddRequest
 	 *
 	 * @returns {object} metadata of AppTeamAddRequest

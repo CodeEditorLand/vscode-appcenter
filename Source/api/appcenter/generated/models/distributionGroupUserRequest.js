@@ -9,12 +9,6 @@
  */
 class DistributionGroupUserRequest {
 	/**
-	 * Create a DistributionGroupUserRequest.
-	 * @member {array} [userEmails] The list of emails of the users
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DistributionGroupUserRequest
 	 *
 	 * @returns {object} metadata of DistributionGroupUserRequest

@@ -11,27 +11,6 @@ const models = require("./index");
  */
 class Deployment {
 	/**
-	 * Create a Deployment.
-	 * @member {string} [key]
-	 * @member {string} name
-	 * @member {object} [latestRelease]
-	 * @member {string} [latestRelease.label]
-	 * @member {string} [latestRelease.packageHash]
-	 * @member {string} [latestRelease.blobUrl]
-	 * @member {object} [latestRelease.diffPackageMap]
-	 * @member {string} [latestRelease.originalDeployment] Set on 'Promote'
-	 * @member {string} [latestRelease.originalLabel] Set on 'Promote' and
-	 * 'Rollback'
-	 * @member {string} [latestRelease.releasedBy]
-	 * @member {string} [latestRelease.releaseMethod] The release method is
-	 * unknown if unspecified. Possible values include: 'Upload', 'Promote',
-	 * 'Rollback'
-	 * @member {number} [latestRelease.size]
-	 * @member {number} [latestRelease.uploadTime]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Deployment
 	 *
 	 * @returns {object} metadata of Deployment

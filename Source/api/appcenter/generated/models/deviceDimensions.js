@@ -10,14 +10,6 @@
  */
 class DeviceDimensions {
 	/**
-	 * Create a DeviceDimensions.
-	 * @member {object} [depth]
-	 * @member {object} [height]
-	 * @member {object} [width]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceDimensions
 	 *
 	 * @returns {object} metadata of DeviceDimensions

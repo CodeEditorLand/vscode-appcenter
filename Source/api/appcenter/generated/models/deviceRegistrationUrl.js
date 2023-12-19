@@ -11,13 +11,6 @@
  */
 class DeviceRegistrationUrl {
 	/**
-	 * Create a DeviceRegistrationUrl.
-	 * @member {string} registrationUrl The url that can be navigated to in order
-	 * to start the device registration process.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceRegistrationUrl
 	 *
 	 * @returns {object} metadata of DeviceRegistrationUrl

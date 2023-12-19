@@ -12,7 +12,7 @@ export class AuthFactory {
 		logger: ILogger,
 	): Promise<AppCenterAuth | VstsAuth> {
 		switch (authType) {
-			case AuthProvider.Vsts:
+			case AuthProvider.Vsts: {
 				const vstsProfileStorage: FsProfileStorage<VstsProfile> =
 					new FsProfileStorage(
 						Utils.getVstsProfileFileName(),
@@ -22,7 +22,8 @@ export class AuthFactory {
 				vstsAuth = new VstsAuth(vstsProfileStorage, logger);
 				await vstsAuth.initialize();
 				return vstsAuth;
-			case AuthProvider.AppCenter:
+			}
+			case AuthProvider.AppCenter: {
 				const appcenterProfileStorage: FsProfileStorage<AppCenterProfile> =
 					new FsProfileStorage(
 						Utils.getAppCenterProfileFileName(),
@@ -35,6 +36,7 @@ export class AuthFactory {
 				);
 				await appCenterAuth.initialize();
 				return appCenterAuth;
+			}
 			default:
 				throw new Error("Unknown auth type");
 		}

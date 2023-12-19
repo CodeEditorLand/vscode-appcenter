@@ -10,14 +10,6 @@
  */
 class XamarinSDKBundle {
 	/**
-	 * Create a XamarinSDKBundle.
-	 * @member {string} [monoVersion] The Mono version
-	 * @member {string} [sdkBundle] The Xamarin SDK version
-	 * @member {boolean} [current] If the SDK is latest stable
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XamarinSDKBundle
 	 *
 	 * @returns {object} metadata of XamarinSDKBundle

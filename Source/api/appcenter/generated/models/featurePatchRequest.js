@@ -9,14 +9,6 @@
  */
 class FeaturePatchRequest {
 	/**
-	 * Create a FeaturePatchRequest.
-	 * @member {string} [description] The friendly name of the feature
-	 * @member {string} [displayName] The full (friendly) name of the feature.
-	 * @member {number} [state] The state of the feature
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FeaturePatchRequest
 	 *
 	 * @returns {object} metadata of FeaturePatchRequest

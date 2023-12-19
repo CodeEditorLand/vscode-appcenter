@@ -2,7 +2,7 @@ import { LogStrings } from "../extension/resources/logStrings";
 
 export class ConfigurationReader {
 	public static readString(value: any): string {
-		if (this.isString(value)) {
+		if (ConfigurationReader.isString(value)) {
 			return value;
 		} else {
 			throw new Error(LogStrings.ConfigurationFailedToParse(value));
@@ -10,7 +10,7 @@ export class ConfigurationReader {
 	}
 
 	public static readBoolean(value: any): boolean {
-		if (this.isBoolean(value)) {
+		if (ConfigurationReader.isBoolean(value)) {
 			return value;
 		} else if (value === "true" || value === "false") {
 			return value === "true";
@@ -20,7 +20,7 @@ export class ConfigurationReader {
 	}
 
 	public static readArray(value: any): any[] {
-		if (this.isArray(value)) {
+		if (ConfigurationReader.isArray(value)) {
 			return value;
 		} else {
 			throw new Error(LogStrings.ConfigurationFailedToParse(value));
@@ -28,7 +28,7 @@ export class ConfigurationReader {
 	}
 
 	public static readObject(value: any): Object {
-		if (this.isObject(value)) {
+		if (ConfigurationReader.isObject(value)) {
 			return value;
 		} else {
 			throw new Error(LogStrings.ConfigurationFailedToParse(value));
@@ -37,9 +37,9 @@ export class ConfigurationReader {
 
 	/* We try to read an integer. It can be either an integer, or a string that can be parsed as an integer */
 	public static readInt(value: any): number {
-		if (this.isInt(value)) {
+		if (ConfigurationReader.isInt(value)) {
 			return value;
-		} else if (this.isString(value)) {
+		} else if (ConfigurationReader.isString(value)) {
 			return parseInt(value, 10);
 		} else {
 			throw new Error(LogStrings.ConfigurationFailedToParse(value));
@@ -53,7 +53,7 @@ export class ConfigurationReader {
 		value: any,
 		defaultValue: number,
 	): number {
-		return value ? this.readInt(value) : defaultValue;
+		return value ? ConfigurationReader.readInt(value) : defaultValue;
 	}
 
 	public static readIntWithDefaultAsync(
@@ -61,7 +61,10 @@ export class ConfigurationReader {
 		defaultValuePromise: Promise<number>,
 	): Promise<number> {
 		return defaultValuePromise.then((defaultValue) => {
-			return this.readIntWithDefaultSync(value, defaultValue);
+			return ConfigurationReader.readIntWithDefaultSync(
+				value,
+				defaultValue,
+			);
 		});
 	}
 
@@ -82,7 +85,7 @@ export class ConfigurationReader {
 	}
 
 	private static isInt(value: any): boolean {
-		return this.isNumber(value) && value % 1 === 0;
+		return ConfigurationReader.isNumber(value) && value % 1 === 0;
 	}
 
 	private static isNumber(value: any): boolean {

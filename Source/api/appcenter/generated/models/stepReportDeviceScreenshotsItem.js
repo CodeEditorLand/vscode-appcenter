@@ -11,27 +11,6 @@ const models = require("./index");
  */
 class StepReportDeviceScreenshotsItem {
 	/**
-	 * Create a StepReportDeviceScreenshotsItem.
-	 * @member {string} [id]
-	 * @member {string} [deviceSnapshotId]
-	 * @member {array} [stacktrace]
-	 * @member {array} [crashData]
-	 * @member {string} [status]
-	 * @member {string} [title]
-	 * @member {object} [screenshot]
-	 * @member {object} [screenshot.urls]
-	 * @member {string} [screenshot.urls.original]
-	 * @member {string} [screenshot.urls.small]
-	 * @member {string} [screenshot.urls.medium]
-	 * @member {string} [screenshot.urls.large]
-	 * @member {number} [screenshot.rotation]
-	 * @member {boolean} [screenshot.landscape]
-	 * @member {string} [logFile]
-	 * @member {string} [appiumLogFile]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StepReportDeviceScreenshotsItem
 	 *
 	 * @returns {object} metadata of StepReportDeviceScreenshotsItem

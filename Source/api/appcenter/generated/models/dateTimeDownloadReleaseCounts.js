@@ -11,14 +11,6 @@ const models = require("./index");
  */
 class DateTimeDownloadReleaseCounts {
 	/**
-	 * Create a DateTimeDownloadReleaseCounts.
-	 * @member {number} [total]
-	 * @member {number} [unique]
-	 * @member {array} [counts] Release Counts per day
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DateTimeDownloadReleaseCounts
 	 *
 	 * @returns {object} metadata of DateTimeDownloadReleaseCounts

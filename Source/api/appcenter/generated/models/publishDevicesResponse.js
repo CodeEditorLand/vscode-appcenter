@@ -10,15 +10,6 @@
  */
 class PublishDevicesResponse {
 	/**
-	 * Create a PublishDevicesResponse.
-	 * @member {string} [profileFileName] The file name for the provisioning
-	 * profile.
-	 * @member {string} profilesZipBase64 The updated provisioning profiles zip
-	 * base64 encoded.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of PublishDevicesResponse
 	 *
 	 * @returns {object} metadata of PublishDevicesResponse

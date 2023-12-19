@@ -12,22 +12,6 @@ const models = require("./index");
  */
 class ParkedCrash {
 	/**
-	 * Create a ParkedCrash.
-	 * @member {string} appId application id
-	 * @member {string} appVer application version
-	 * @member {string} appBuild application build
-	 * @member {array} missingSymbols list of missing symbols
-	 * @member {string} crashId id of the crash
-	 * @member {string} sdkPlatform platform of the sdk that sent crash
-	 * @member {string} [sdkWrapper] name of the sdk wrapper that sent crash
-	 * @member {object} location crash location
-	 * @member {string} [location.account] azure account
-	 * @member {string} [location.container] blob container
-	 * @member {string} [location.blob] blob name
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ParkedCrash
 	 *
 	 * @returns {object} metadata of ParkedCrash

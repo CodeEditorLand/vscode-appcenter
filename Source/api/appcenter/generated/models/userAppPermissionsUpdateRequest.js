@@ -9,12 +9,6 @@
  */
 class UserAppPermissionsUpdateRequest {
 	/**
-	 * Create a UserAppPermissionsUpdateRequest.
-	 * @member {array} permissions The permissions the user has for the app
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserAppPermissionsUpdateRequest
 	 *
 	 * @returns {object} metadata of UserAppPermissionsUpdateRequest

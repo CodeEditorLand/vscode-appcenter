@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class ServiceBusStatusResponse {
 	/**
-	 * Create a ServiceBusStatusResponse.
-	 * @member {string} status
-	 * @member {array} [subscriptions]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ServiceBusStatusResponse
 	 *
 	 * @returns {object} metadata of ServiceBusStatusResponse

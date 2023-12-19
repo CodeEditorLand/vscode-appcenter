@@ -9,16 +9,6 @@
  */
 class DistributionGroupResponse {
 	/**
-	 * Create a DistributionGroupResponse.
-	 * @member {string} id The unique ID of the distribution group
-	 * @member {string} name The name of the distribution group used in URLs
-	 * @member {string} origin The creation origin of this distribution group.
-	 * Possible values include: 'appcenter', 'hockeyapp'
-	 * @member {boolean} isPublic Whether the distribution group is public
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DistributionGroupResponse
 	 *
 	 * @returns {object} metadata of DistributionGroupResponse

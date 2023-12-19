@@ -13,18 +13,6 @@ const models = require("./index");
  */
 class AlertUserEmailSettingsResult extends models["AlertOperationResult"] {
 	/**
-	 * Create a AlertUserEmailSettingsResult.
-	 * @member {string} eTag The ETag of the entity
-	 * @member {boolean} enabled Allows to forcefully disable emails on app or
-	 * user level
-	 * @member {string} userId The unique id (UUID) of the user
-	 * @member {array} settings The settings the user has for the app
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of AlertUserEmailSettingsResult
 	 *
 	 * @returns {object} metadata of AlertUserEmailSettingsResult

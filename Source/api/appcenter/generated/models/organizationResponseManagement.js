@@ -14,15 +14,6 @@ class OrganizationResponseManagement extends models[
 	"OrganizationResponseInternal"
 ] {
 	/**
-	 * Create a OrganizationResponseManagement.
-	 * @member {string} [email] The organization email, if the app was synced
-	 * from HockeyApp
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of OrganizationResponseManagement
 	 *
 	 * @returns {object} metadata of OrganizationResponseManagement

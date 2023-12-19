@@ -10,12 +10,6 @@
  */
 class UserProfileResponseInternalSettings {
 	/**
-	 * Create a UserProfileResponseInternalSettings.
-	 * @member {string} [marketingOptIn] The marketing opt-in setting
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserProfileResponseInternalSettings
 	 *
 	 * @returns {object} metadata of UserProfileResponseInternalSettings

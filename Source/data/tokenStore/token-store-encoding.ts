@@ -14,12 +14,14 @@ export function escape(s: string): string {
 	// tslint:disable-next-line:underscore-consistent-invocation
 	_.each(s, (ch) => {
 		switch (ch) {
-			case ":":
+			case ":": {
 				result += "\\:";
 				break;
-			case "\\":
+			}
+			case "\\": {
 				result += "\\\\";
 				break;
+			}
 			default:
 				result += ch;
 		}
@@ -86,11 +88,11 @@ function partToKeyValue(part: string): string[] {
 			_array: string[],
 		): string[] => {
 			if (accumulator[1] !== null && endsWith(accumulator[1], "\\")) {
-				accumulator[1] += ":" + value;
+				accumulator[1] += `:${value}`;
 			} else if (accumulator[0] === null) {
 				accumulator[0] = value;
 			} else if (endsWith(accumulator[0], "\\")) {
-				accumulator[0] += ":" + value;
+				accumulator[0] += `:${value}`;
 			} else {
 				accumulator[1] = value;
 			}

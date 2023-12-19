@@ -12,15 +12,6 @@ const models = require("./index");
  */
 class TesterAppResponse extends models["BasicAppResponse"] {
 	/**
-	 * Create a TesterAppResponse.
-	 * @member {array} distributionGroups The IDs of the distribution groups the
-	 * current user is member of.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of TesterAppResponse
 	 *
 	 * @returns {object} metadata of TesterAppResponse

@@ -10,15 +10,6 @@
  */
 class EventPropertyValue {
 	/**
-	 * Create a EventPropertyValue.
-	 * @member {string} [name] The event property value name
-	 * @member {number} [count] The count of the the event property value
-	 * @member {number} [previousCount] The count of previous time range of the
-	 * event property value
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventPropertyValue
 	 *
 	 * @returns {object} metadata of EventPropertyValue

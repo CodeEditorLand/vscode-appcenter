@@ -9,13 +9,6 @@
  */
 class AppResponseInternalRepositoriesItem {
 	/**
-	 * Create a AppResponseInternalRepositoriesItem.
-	 * @member {string} [repoProvider]
-	 * @member {string} [repoUrl]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppResponseInternalRepositoriesItem
 	 *
 	 * @returns {object} metadata of AppResponseInternalRepositoriesItem

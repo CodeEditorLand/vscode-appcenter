@@ -10,12 +10,6 @@
  */
 class SymbolLocation {
 	/**
-	 * Create a SymbolLocation.
-	 * @member {string} uri
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SymbolLocation
 	 *
 	 * @returns {object} metadata of SymbolLocation

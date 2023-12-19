@@ -9,13 +9,6 @@
  */
 class CrashOverall {
 	/**
-	 * Create a CrashOverall.
-	 * @member {number} [crashCount]
-	 * @member {number} [deviceCount]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashOverall
 	 *
 	 * @returns {object} metadata of CrashOverall

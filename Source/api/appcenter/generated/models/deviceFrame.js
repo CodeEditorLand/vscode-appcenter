@@ -11,21 +11,6 @@ const models = require("./index");
  */
 class DeviceFrame {
 	/**
-	 * Create a DeviceFrame.
-	 * @member {object} [grid]
-	 * @member {number} [grid.width]
-	 * @member {number} [grid.height]
-	 * @member {string} [grid.frameUrl]
-	 * @member {array} [grid.screen]
-	 * @member {object} [full]
-	 * @member {number} [full.width]
-	 * @member {number} [full.height]
-	 * @member {string} [full.frameUrl]
-	 * @member {array} [full.screen]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceFrame
 	 *
 	 * @returns {object} metadata of DeviceFrame

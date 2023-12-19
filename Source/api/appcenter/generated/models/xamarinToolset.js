@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class XamarinToolset {
 	/**
-	 * Create a XamarinToolset.
-	 * @member {array} xamarinSolutions Xamarin solutions for the toolset
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XamarinToolset
 	 *
 	 * @returns {object} metadata of XamarinToolset

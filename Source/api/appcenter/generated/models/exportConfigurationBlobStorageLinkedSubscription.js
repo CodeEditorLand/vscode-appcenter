@@ -15,15 +15,6 @@ class ExportConfigurationBlobStorageLinkedSubscription extends models[
 	"ExportConfiguration"
 ] {
 	/**
-	 * Create a ExportConfigurationBlobStorageLinkedSubscription.
-	 * @member {string} subscriptionId Id of customer subscription linked in App
-	 * Center
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ExportConfigurationBlobStorageLinkedSubscription
 	 *
 	 * @returns {object} metadata of ExportConfigurationBlobStorageLinkedSubscription

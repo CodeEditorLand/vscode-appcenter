@@ -10,12 +10,6 @@
  */
 class CrashAttachmentLocation {
 	/**
-	 * Create a CrashAttachmentLocation.
-	 * @member {string} uri
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashAttachmentLocation
 	 *
 	 * @returns {object} metadata of CrashAttachmentLocation

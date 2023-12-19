@@ -131,10 +131,6 @@ export default class LegacyCodePushServiceClient {
 		error: Error | null,
 		response: request.RequestResponse,
 	): string {
-		return response && response.body
-			? response.body
-			: error
-			  ? error.message
-			  : "";
+		return response?.body ? response.body : error ? error.message : "";
 	}
 }

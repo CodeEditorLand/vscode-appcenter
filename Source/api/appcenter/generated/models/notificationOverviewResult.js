@@ -12,22 +12,6 @@ const models = require("./index");
  */
 class NotificationOverviewResult {
 	/**
-	 * Create a NotificationOverviewResult.
-	 * @member {string} notificationId Notification id.
-	 * @member {string} [name] Notification name
-	 * @member {object} [notificationTarget]
-	 * @member {string} [notificationTarget.type] Polymorphic Discriminator
-	 * @member {date} [sendTime] Notification send time
-	 * @member {number} [pnsSendFailure] Number of the notifications failed to
-	 * send to the push provider.
-	 * @member {number} [pnsSendSuccess] Number of the notifications successfully
-	 * sent to push the provider.
-	 * @member {string} state State of the notification. Possible values include:
-	 * 'Cancelled', 'Completed', 'Enqueued', 'Processing', 'Unknown'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationOverviewResult
 	 *
 	 * @returns {object} metadata of NotificationOverviewResult

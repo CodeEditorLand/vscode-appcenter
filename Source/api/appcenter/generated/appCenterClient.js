@@ -31,7 +31,9 @@ class AppCenterClient extends ServiceClient {
 			throw new Error("'credentials' cannot be null.");
 		}
 
-		if (!options) options = {};
+		if (!options) {
+			options = {};
+		}
 
 		super(credentials, options);
 

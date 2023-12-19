@@ -11,49 +11,6 @@ const models = require("./index");
  */
 class Crash {
 	/**
-	 * Create a Crash.
-	 * @member {object} [details]
-	 * @member {string} [details.carrierCountry] Carrier country code (for mobile
-	 * devices).
-	 * @member {string} [details.carrierName] Carrier name (for mobile devices).
-	 * @member {string} [details.locale] Language code (example: en_US).
-	 * @member {string} [details.osBuild] OS build code (example: LMY47X).
-	 * @member {boolean} [details.rooted] Whether the device where the crash
-	 * occurred is rooted or jailbroken
-	 * @member {string} [details.screenSize] Screen size of the device in pixels
-	 * (example: 640x480).
-	 * @member {date} [details.appStartTimestamp] Application launch timestamp
-	 * (example: 1985-04-12T23:20:50.52Z).
-	 * @member {string} crashId
-	 * @member {string} [displayId]
-	 * @member {date} timestamp
-	 * @member {string} version
-	 * @member {string} build
-	 * @member {string} device
-	 * @member {string} [deviceName]
-	 * @member {string} osVersion
-	 * @member {string} [osType]
-	 * @member {object} [stacktrace]
-	 * @member {string} [stacktrace.title]
-	 * @member {string} [stacktrace.reason]
-	 * @member {array} [stacktrace.threads]
-	 * @member {object} [stacktrace.exception]
-	 * @member {string} [stacktrace.exception.reason] Reason of the exception
-	 * @member {string} [stacktrace.exception.type] Type of the exception
-	 * (NSSomethingException, NullPointerException)
-	 * @member {array} [stacktrace.exception.frames] frames of the excetpion
-	 * @member {boolean} [stacktrace.exception.relevant] relevant exception
-	 * (crashed)
-	 * @member {array} [stacktrace.exception.innerExceptions]
-	 * @member {string} [stacktrace.exception.platform] SDK/Platform this thread
-	 * is beeing generated from. Possible values include: 'ios', 'android',
-	 * 'xamarin', 'react-native', 'ndk', 'unity', 'other'
-	 * @member {string} userName
-	 * @member {string} [userEmail]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Crash
 	 *
 	 * @returns {object} metadata of Crash

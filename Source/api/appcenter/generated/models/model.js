@@ -9,14 +9,6 @@
  */
 class Model {
 	/**
-	 * Create a Model.
-	 * @member {string} [modelName] model's name
-	 * @member {number} [count] count current of model
-	 * @member {number} [previousCount] count of previous model
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Model
 	 *
 	 * @returns {object} metadata of Model

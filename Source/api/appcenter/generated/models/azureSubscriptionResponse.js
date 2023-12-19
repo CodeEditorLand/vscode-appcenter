@@ -9,17 +9,6 @@
  */
 class AzureSubscriptionResponse {
 	/**
-	 * Create a AzureSubscriptionResponse.
-	 * @member {string} subscriptionId The azure subscription id
-	 * @member {string} tenantId The tenant id of the azure subscription belongs
-	 * to
-	 * @member {string} subscriptionName The name of the azure subscription
-	 * @member {boolean} [isBilling] If the subscription is used for billing
-	 * @member {boolean} [isBillable] If the subscription can be used for billing
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AzureSubscriptionResponse
 	 *
 	 * @returns {object} metadata of AzureSubscriptionResponse

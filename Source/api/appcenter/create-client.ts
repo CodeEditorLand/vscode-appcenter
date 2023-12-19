@@ -114,8 +114,8 @@ export async function handleHttpError(
 	error: any,
 	check404: boolean,
 	messageDefault: string,
-	message404 = `404 Error received from api`,
-	message401 = `401 Error received from api`,
+	message404 = "404 Error received from api",
+	message401 = "401 Error received from api",
 ): Promise<void> {
 	if (check404 && error.statusCode === 404) {
 		throw failure(ErrorCodes.InvalidParameter, message404);

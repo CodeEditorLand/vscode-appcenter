@@ -9,14 +9,6 @@
  */
 class JavaScriptSolution {
 	/**
-	 * Create a JavaScriptSolution.
-	 * @member {string} packageJsonPath The path to the detected package.json
-	 * @member {string} [reactNativeVersion] Version of React Native from
-	 * package.json files
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of JavaScriptSolution
 	 *
 	 * @returns {object} metadata of JavaScriptSolution

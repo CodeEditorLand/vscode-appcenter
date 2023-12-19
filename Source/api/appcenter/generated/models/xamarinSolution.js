@@ -9,14 +9,6 @@
  */
 class XamarinSolution {
 	/**
-	 * Create a XamarinSolution.
-	 * @member {string} path Path to solution
-	 * @member {array} configurations Solution configurations
-	 * @member {string} [defaultConfiguration] Solution default configuration
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XamarinSolution
 	 *
 	 * @returns {object} metadata of XamarinSolution

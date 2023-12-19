@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class CrashGroupModels {
 	/**
-	 * Create a CrashGroupModels.
-	 * @member {number} [crashCount]
-	 * @member {array} [modelsProperty]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupModels
 	 *
 	 * @returns {object} metadata of CrashGroupModels

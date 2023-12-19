@@ -9,14 +9,6 @@
  */
 class OrganizationPatchRequest {
 	/**
-	 * Create a OrganizationPatchRequest.
-	 * @member {string} [displayName] The full (friendly) name of the
-	 * organization.
-	 * @member {string} [name] The name of the organization used in URLs
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of OrganizationPatchRequest
 	 *
 	 * @returns {object} metadata of OrganizationPatchRequest

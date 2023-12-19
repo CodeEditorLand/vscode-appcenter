@@ -1,8 +1,4 @@
-import {
-	CommandParams,
-	Profile,
-	ProfileQuickPickItem,
-} from "../../../helpers/interfaces";
+import { Profile, ProfileQuickPickItem } from "../../../helpers/interfaces";
 import { AuthProvider } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
@@ -10,10 +6,6 @@ import { VsCodeUI } from "../../ui/vscodeUI";
 import { Command } from "../command";
 
 export default class Logout extends Command {
-	constructor(params: CommandParams) {
-		super(params);
-	}
-
 	public async runNoClient(): Promise<boolean | void> {
 		if (!(await super.runNoClient())) {
 			return false;

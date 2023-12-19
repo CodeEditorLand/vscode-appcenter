@@ -13,33 +13,6 @@ const models = require("./index");
  */
 class UpdateDevicesRequest {
 	/**
-	 * Create a UpdateDevicesRequest.
-	 * @member {number} [releaseId] When provided, will update the provided
-	 * release with the new set of devices. By default the latest release of the
-	 * distribution group is used when this property is omitted.
-	 * @member {string} [username] The username for the Apple Developer account
-	 * to publish the devices to.
-	 * @member {string} [password] The password for the Apple Developer account
-	 * to publish the devices to.
-	 * @member {string} [accountServiceConnectionId] The service_connection_id of
-	 * the stored Apple credentials instead of username, password.
-	 * @member {string} [p12Base64] The certificate to use for resigning the
-	 * application with the updated provisioning profiles.
-	 * @member {string} [p12ServiceConnectionId] The service_connection_id of the
-	 * stored Apple certificate instead of p12_base64 value.
-	 * @member {string} [p12Password] The password certificate if one is needed.
-	 * @member {boolean} [publishAllDevices] When set to true, all unprovisioned
-	 * devices will be published to the Apple Developer account.  When false,
-	 * only the provided devices will be published to the Apple Developer
-	 * account.
-	 * @member {array} [devices] Array of device UDID's to be published to the
-	 * Apple Developer account.
-	 * @member {array} [destinations] Array of distribution groups that the
-	 * devices should be provisioned from.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UpdateDevicesRequest
 	 *
 	 * @returns {object} metadata of UpdateDevicesRequest

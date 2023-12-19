@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class IntuneGroups {
 	/**
-	 * Create a IntuneGroups.
-	 * @member {string} [odatacontext] context
-	 * @member {array} [value] categories for intune app
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneGroups
 	 *
 	 * @returns {object} metadata of IntuneGroups

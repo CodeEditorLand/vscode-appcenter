@@ -10,26 +10,6 @@
  */
 class StackFrame {
 	/**
-	 * Create a StackFrame.
-	 * @member {string} [address] address of the frame
-	 * @member {string} [className] name of the class
-	 * @member {string} [method] name of the method
-	 * @member {boolean} [classMethod] is a class method
-	 * @member {string} [file] name of the file
-	 * @member {number} [line] line number
-	 * @member {boolean} appCode this line isn't from any framework
-	 * @member {string} [frameworkName] Name of the framework
-	 * @member {string} codeRaw Raw frame string
-	 * @member {string} codeFormatted Formatted frame string
-	 * @member {string} [language] programming language of the frame. Possible
-	 * values include: 'JavaScript', 'CSharp', 'Objective-C', 'Objective-Cpp',
-	 * 'Cpp', 'C', 'Swift', 'Java', 'Unknown'
-	 * @member {boolean} [relevant] frame should be shown always
-	 * @member {string} [methodParams] parameters of the frames method
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StackFrame
 	 *
 	 * @returns {object} metadata of StackFrame

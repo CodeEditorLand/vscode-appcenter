@@ -9,12 +9,6 @@
  */
 class BuildAgentQueue {
 	/**
-	 * Create a BuildAgentQueue.
-	 * @member {string} queue
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BuildAgentQueue
 	 *
 	 * @returns {object} metadata of BuildAgentQueue

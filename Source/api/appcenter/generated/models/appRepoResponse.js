@@ -9,19 +9,6 @@
  */
 class AppRepoResponse {
 	/**
-	 * Create a AppRepoResponse.
-	 * @member {string} id The unique id (UUID) of the repository integration
-	 * @member {string} appId The unique id (UUID) of the app that this
-	 * repository integration belongs to
-	 * @member {string} repoUrl The absolute URL of the repository
-	 * @member {string} [repoProvider] The provider of the repository. Possible
-	 * values include: 'github', 'bitbucket', 'vsts'
-	 * @member {string} userId The unique id (UUID) of the user who configured
-	 * the repository
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppRepoResponse
 	 *
 	 * @returns {object} metadata of AppRepoResponse

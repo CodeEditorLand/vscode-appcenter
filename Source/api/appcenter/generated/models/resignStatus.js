@@ -10,16 +10,6 @@
  */
 class ResignStatus {
 	/**
-	 * Create a ResignStatus.
-	 * @member {string} status The status of the resign
-	 * @member {string} [errorCode] Error code for any error that occured during
-	 * the resigning operation.
-	 * @member {string} [errorMessage] Error message for any error that occured
-	 * during the resigning operation.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ResignStatus
 	 *
 	 * @returns {object} metadata of ResignStatus

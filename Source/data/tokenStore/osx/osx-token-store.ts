@@ -151,7 +151,7 @@ export class OsxTokenStore implements TokenStore {
 					if (err) {
 						return reject(
 							new Error(
-								"Could not add password to keychain: " + stderr,
+								`Could not add password to keychain: ${stderr}`,
 							),
 						);
 					}
@@ -172,8 +172,7 @@ export class OsxTokenStore implements TokenStore {
 					if (err) {
 						return reject(
 							new Error(
-								"Could not remove account from keychain, " +
-									stderr,
+								`Could not remove account from keychain, ${stderr}`,
 							),
 						);
 					}

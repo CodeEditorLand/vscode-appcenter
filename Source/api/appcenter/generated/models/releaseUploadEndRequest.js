@@ -11,13 +11,6 @@
  */
 class ReleaseUploadEndRequest {
 	/**
-	 * Create a ReleaseUploadEndRequest.
-	 * @member {string} status The desired operation for the upload. Possible
-	 * values include: 'committed', 'aborted'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleaseUploadEndRequest
 	 *
 	 * @returns {object} metadata of ReleaseUploadEndRequest

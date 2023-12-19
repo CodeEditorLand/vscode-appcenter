@@ -11,12 +11,6 @@
  */
 class ReleaseCreateResponse {
 	/**
-	 * Create a ReleaseCreateResponse.
-	 * @member {number} releaseDistinctId The distinct ID of the release.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleaseCreateResponse
 	 *
 	 * @returns {object} metadata of ReleaseCreateResponse

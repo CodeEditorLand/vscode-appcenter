@@ -11,17 +11,6 @@ const models = require("./index");
  */
 class TestReportFeaturesItem {
 	/**
-	 * Create a TestReportFeaturesItem.
-	 * @member {string} [name]
-	 * @member {array} [tests]
-	 * @member {number} [failed]
-	 * @member {number} [skipped]
-	 * @member {number} [peakMemory]
-	 * @member {number} [peakDuration]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestReportFeaturesItem
 	 *
 	 * @returns {object} metadata of TestReportFeaturesItem

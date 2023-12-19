@@ -109,7 +109,7 @@ export default class CodePushLinker {
 			AppCenterOS.Android,
 			deployments,
 		);
-		if (!iosStagingDeploymentKey && !androidStagingDeploymentKey) {
+		if (!(iosStagingDeploymentKey || androidStagingDeploymentKey)) {
 			this.logger.error("Deployment keys are missing.");
 			return Promise.resolve(false);
 		}

@@ -44,7 +44,7 @@ export class AppCenterPortalMenu extends Menu {
 		menuItem: MenuQuickPickItem,
 	): Promise<void> {
 		switch (menuItem.command) {
-			case AppCenterBeacons.Build:
+			case AppCenterBeacons.Build: {
 				Utils.OpenUrl(
 					AppCenterUrlBuilder.GetAppCenterLinkByBeacon(
 						this.app.ownerName,
@@ -54,7 +54,8 @@ export class AppCenterPortalMenu extends Menu {
 					),
 				);
 				break;
-			case AppCenterBeacons.Distribute:
+			}
+			case AppCenterBeacons.Distribute: {
 				const selected: MenuQuickPickItem =
 					await VsCodeUI.showQuickPick(
 						this.getAppCenterDistributeTabMenuItems(),
@@ -63,7 +64,7 @@ export class AppCenterPortalMenu extends Menu {
 					return;
 				}
 				switch (selected.command) {
-					case AppCenterDistributionTabs.Groups:
+					case AppCenterDistributionTabs.Groups: {
 						Utils.OpenUrl(
 							AppCenterUrlBuilder.GetAppCenterDistributeTabLinkByTabName(
 								this.app.ownerName,
@@ -73,7 +74,8 @@ export class AppCenterPortalMenu extends Menu {
 							),
 						);
 						break;
-					case AppCenterDistributionTabs.Stores:
+					}
+					case AppCenterDistributionTabs.Stores: {
 						Utils.OpenUrl(
 							AppCenterUrlBuilder.GetAppCenterDistributeTabLinkByTabName(
 								this.app.ownerName,
@@ -83,7 +85,8 @@ export class AppCenterPortalMenu extends Menu {
 							),
 						);
 						break;
-					case AppCenterDistributionTabs.Releases:
+					}
+					case AppCenterDistributionTabs.Releases: {
 						Utils.OpenUrl(
 							AppCenterUrlBuilder.GetAppCenterDistributeTabLinkByTabName(
 								this.app.ownerName,
@@ -93,11 +96,13 @@ export class AppCenterPortalMenu extends Menu {
 							),
 						);
 						break;
+					}
 					default:
 						break;
 				}
 				break;
-			case AppCenterBeacons.Crashes:
+			}
+			case AppCenterBeacons.Crashes: {
 				const selectedCrash: MenuQuickPickItem =
 					await VsCodeUI.showQuickPick(
 						this.getAppCenterCrashesTabMenuItems(),
@@ -106,7 +111,7 @@ export class AppCenterPortalMenu extends Menu {
 					return;
 				}
 				switch (selectedCrash.command) {
-					case AppCenterBeacons.Crashes:
+					case AppCenterBeacons.Crashes: {
 						Utils.OpenUrl(
 							AppCenterUrlBuilder.GetAppCenterLinkByBeacon(
 								this.app.ownerName,
@@ -116,13 +121,15 @@ export class AppCenterPortalMenu extends Menu {
 							),
 						);
 						break;
+					}
 					case AppCenterCrashesTabs.Simulate:
 						new SimulateCrashes(this._params, this.app).run();
 					default:
 						break;
 				}
 				break;
-			case AppCenterBeacons.Analytics:
+			}
+			case AppCenterBeacons.Analytics: {
 				Utils.OpenUrl(
 					AppCenterUrlBuilder.GetAppCenterLinkByBeacon(
 						this.app.ownerName,
@@ -132,12 +139,15 @@ export class AppCenterPortalMenu extends Menu {
 					),
 				);
 				break;
-			case AppCenterBeacons.CodePush:
+			}
+			case AppCenterBeacons.CodePush: {
 				new CodePush.ShowMenu(this._params, this.app).run();
 				break;
-			case AppCenterBeacons.Test:
+			}
+			case AppCenterBeacons.Test: {
 				new Test.ShowMenu(this._params, this.app).runNoClient();
 				break;
+			}
 			default:
 				break;
 		}

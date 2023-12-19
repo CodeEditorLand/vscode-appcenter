@@ -12,14 +12,6 @@ const models = require("./index");
  */
 class LogWithProperties extends models["Log"] {
 	/**
-	 * Create a LogWithProperties.
-	 * @member {object} [properties] Additional key/value pair parameters.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogWithProperties
 	 *
 	 * @returns {object} metadata of LogWithProperties

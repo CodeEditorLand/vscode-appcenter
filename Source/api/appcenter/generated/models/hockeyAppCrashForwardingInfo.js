@@ -9,12 +9,6 @@
  */
 class HockeyAppCrashForwardingInfo {
 	/**
-	 * Create a HockeyAppCrashForwardingInfo.
-	 * @member {boolean} forwardingEnabled
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of HockeyAppCrashForwardingInfo
 	 *
 	 * @returns {object} metadata of HockeyAppCrashForwardingInfo

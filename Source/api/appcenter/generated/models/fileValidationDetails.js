@@ -10,13 +10,6 @@
  */
 class FileValidationDetails {
 	/**
-	 * Create a FileValidationDetails.
-	 * @member {string} p12password
-	 * @member {string} [certificateUploadId]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FileValidationDetails
 	 *
 	 * @returns {object} metadata of FileValidationDetails

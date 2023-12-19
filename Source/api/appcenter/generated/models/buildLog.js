@@ -9,12 +9,6 @@
  */
 class BuildLog {
 	/**
-	 * Create a BuildLog.
-	 * @member {array} [value]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BuildLog
 	 *
 	 * @returns {object} metadata of BuildLog

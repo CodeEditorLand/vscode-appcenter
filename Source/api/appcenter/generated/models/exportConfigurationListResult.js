@@ -12,14 +12,6 @@ const models = require("./index");
  */
 class ExportConfigurationListResult {
 	/**
-	 * Create a ExportConfigurationListResult.
-	 * @member {array} values
-	 * @member {number} [total] the total count of exports
-	 * @member {string} [nextLink]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ExportConfigurationListResult
 	 *
 	 * @returns {object} metadata of ExportConfigurationListResult

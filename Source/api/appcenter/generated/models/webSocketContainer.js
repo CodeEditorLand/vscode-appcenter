@@ -10,12 +10,6 @@
  */
 class WebSocketContainer {
 	/**
-	 * Create a WebSocketContainer.
-	 * @member {string} url WebSocket URL
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of WebSocketContainer
 	 *
 	 * @returns {object} metadata of WebSocketContainer

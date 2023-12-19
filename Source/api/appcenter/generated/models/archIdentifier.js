@@ -10,14 +10,6 @@
  */
 class ArchIdentifier {
 	/**
-	 * Create a ArchIdentifier.
-	 * @member {string} architecture The architecture that the UUID belongs to,
-	 * i.e. armv7 or arm64.
-	 * @member {uuid} uuid The unique identifier.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ArchIdentifier
 	 *
 	 * @returns {object} metadata of ArchIdentifier

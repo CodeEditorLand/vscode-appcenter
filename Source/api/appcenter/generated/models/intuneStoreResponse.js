@@ -11,18 +11,6 @@ const models = require("./index");
  */
 class IntuneStoreResponse {
 	/**
-	 * Create a IntuneStoreResponse.
-	 * @member {object} [targetAudience]
-	 * @member {string} [targetAudience.name] display name for the target
-	 * audience/group
-	 * @member {string} [targetAudience.id] ID for the target audience/group.
-	 * @member {object} [appCategory]
-	 * @member {string} [appCategory.name] display name for the app category
-	 * @member {string} [appCategory.id] ID for the category.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneStoreResponse
 	 *
 	 * @returns {object} metadata of IntuneStoreResponse

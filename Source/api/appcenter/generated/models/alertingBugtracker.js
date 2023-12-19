@@ -12,23 +12,6 @@ const models = require("./index");
  */
 class AlertingBugtracker {
 	/**
-	 * Create a AlertingBugtracker.
-	 * @member {string} [type] type of bugtracker. Possible values include:
-	 * 'github', 'vsts', 'jira'
-	 * @member {string} [state] bugtracker state. Possible values include:
-	 * 'enabled', 'disabled', 'unauthorized'
-	 * @member {string} [tokenId] ID of OAuth token
-	 * @member {array} [eventTypes] Event types enabled for bugtracker
-	 * @member {number} [crashCountThreshold] Threshold for the number of crashes
-	 * at which to create a bug
-	 * @member {object} [settings]
-	 * @member {string} [settings.callbackUrl]
-	 * @member {string} [settings.ownerName]
-	 * @member {string} [settings.type] Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertingBugtracker
 	 *
 	 * @returns {object} metadata of AlertingBugtracker

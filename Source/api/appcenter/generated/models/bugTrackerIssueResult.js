@@ -11,19 +11,6 @@
  */
 class BugTrackerIssueResult {
 	/**
-	 * Create a BugTrackerIssueResult.
-	 * @member {string} [id]
-	 * @member {string} [url]
-	 * @member {string} [title]
-	 * @member {string} [bugTrackerType] Possible values include: 'github',
-	 * 'vsts', 'jira'
-	 * @member {string} [repoName]
-	 * @member {string} [mobileCenterId]
-	 * @member {string} [eventType]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BugTrackerIssueResult
 	 *
 	 * @returns {object} metadata of BugTrackerIssueResult

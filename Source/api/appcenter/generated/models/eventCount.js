@@ -11,14 +11,6 @@ const models = require("./index");
  */
 class EventCount {
 	/**
-	 * Create a EventCount.
-	 * @member {number} [totalCount]
-	 * @member {number} [previousTotalCount]
-	 * @member {array} [count]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventCount
 	 *
 	 * @returns {object} metadata of EventCount

@@ -17,7 +17,7 @@ export class AppCenterUrlBuilder {
 		beaconName: AppCenterBeacons,
 		isOrg: boolean,
 	): string {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${ownerName}/apps/${appName}/${beaconName}/`;
 	}
@@ -28,7 +28,7 @@ export class AppCenterUrlBuilder {
 		tabName: AppCenterDistributionTabs,
 		isOrg: boolean,
 	): string {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${ownerName}/apps/${appName}/distribute/${tabName}/`;
 	}
@@ -38,7 +38,7 @@ export class AppCenterUrlBuilder {
 		appName: string,
 		isOrg: boolean,
 	): string {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${ownerName}/apps/${appName}/`;
 	}
@@ -49,7 +49,7 @@ export class AppCenterUrlBuilder {
 		branchName: string,
 		isOrg: boolean,
 	): string {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${appOwner}/apps/${appName}/build/branches/${branchName}/setup`;
 	}
@@ -59,7 +59,7 @@ export class AppCenterUrlBuilder {
 		appName: string,
 		isOrg: boolean,
 	): string {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${appOwner}/apps/${appName}/build/connect`;
 	}
@@ -69,7 +69,7 @@ export class AppCenterUrlBuilder {
 		appName: string,
 		isOrg: boolean,
 	): string {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${appOwner}/apps/${appName}/crashes/`;
 	}
@@ -81,7 +81,7 @@ export class AppCenterUrlBuilder {
 		buildId: string,
 		isOrg: boolean,
 	): string {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${appOwner}/apps/${appName}/build/branches/${branchName}/builds/${buildId}`;
 	}
@@ -106,7 +106,7 @@ export class AppCenterUrlBuilder {
 		appName: string,
 		isOrg: boolean,
 	) {
-		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${this.ownerPrefix(
+		return `${SettingsHelper.getAppCenterPortalEndpoint()}/${AppCenterUrlBuilder.ownerPrefix(
 			isOrg,
 		)}/${appOwner}/apps/${appName}/test/runs`;
 	}

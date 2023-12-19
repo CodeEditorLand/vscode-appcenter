@@ -10,12 +10,6 @@
  */
 class AudienceDevicePropertiesListResult {
 	/**
-	 * Create a AudienceDevicePropertiesListResult.
-	 * @member {object} values List of device properties.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AudienceDevicePropertiesListResult
 	 *
 	 * @returns {object} metadata of AudienceDevicePropertiesListResult

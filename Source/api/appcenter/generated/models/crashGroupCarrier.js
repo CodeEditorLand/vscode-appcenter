@@ -9,13 +9,6 @@
  */
 class CrashGroupCarrier {
 	/**
-	 * Create a CrashGroupCarrier.
-	 * @member {string} [carrierName] carrier name
-	 * @member {number} [crashCount] crash count of carrier
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupCarrier
 	 *
 	 * @returns {object} metadata of CrashGroupCarrier

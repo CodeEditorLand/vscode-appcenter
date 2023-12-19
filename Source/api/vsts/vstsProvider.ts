@@ -45,9 +45,7 @@ export class VSTSProvider {
 			return <VSTSProject[]>response.value;
 		} catch (e) {
 			this.logger.error(
-				`${LogStrings.FailedToGetVSTSProjectList}. ${
-					(e && e.message) || ""
-				}`,
+				`${LogStrings.FailedToGetVSTSProjectList}. ${e?.message || ""}`,
 			);
 			return null;
 		}
@@ -74,9 +72,7 @@ export class VSTSProvider {
 			return <VSTSGitRepository>response;
 		} catch (e) {
 			this.logger.error(
-				`${LogStrings.FailedToGetVSTSReposList} ${
-					(e && e.message) || ""
-				}`,
+				`${LogStrings.FailedToGetVSTSReposList} ${e?.message || ""}`,
 			);
 			return null;
 		}
@@ -93,9 +89,7 @@ export class VSTSProvider {
 			return <VSTSGitRepository[]>response.value;
 		} catch (e) {
 			this.logger.error(
-				`${LogStrings.FailedToGetVSTSReposList} ${
-					(e && e.message) || ""
-				}`,
+				`${LogStrings.FailedToGetVSTSReposList} ${e?.message || ""}`,
 			);
 			return null;
 		}

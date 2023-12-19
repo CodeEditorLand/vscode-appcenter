@@ -9,15 +9,6 @@
  */
 class ErrorDetails {
 	/**
-	 * Create a ErrorDetails.
-	 * @member {string} code Possible values include: 'BadRequest', 'Conflict',
-	 * 'NotAcceptable', 'NotFound', 'InternalServerError', 'Unauthorized',
-	 * 'TooManyRequests'
-	 * @member {string} message
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorDetails
 	 *
 	 * @returns {object} metadata of ErrorDetails

@@ -9,13 +9,6 @@
  */
 class ErrorGroupState {
 	/**
-	 * Create a ErrorGroupState.
-	 * @member {string} state Possible values include: 'open', 'closed',
-	 * 'ignored'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorGroupState
 	 *
 	 * @returns {object} metadata of ErrorGroupState

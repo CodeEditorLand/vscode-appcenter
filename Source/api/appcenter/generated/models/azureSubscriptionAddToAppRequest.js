@@ -9,12 +9,6 @@
  */
 class AzureSubscriptionAddToAppRequest {
 	/**
-	 * Create a AzureSubscriptionAddToAppRequest.
-	 * @member {string} subscriptionId The azure subscription id
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AzureSubscriptionAddToAppRequest
 	 *
 	 * @returns {object} metadata of AzureSubscriptionAddToAppRequest

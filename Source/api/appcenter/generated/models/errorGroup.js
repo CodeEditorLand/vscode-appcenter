@@ -12,24 +12,6 @@ const models = require("./index");
  */
 class ErrorGroup extends models["ErrorGroupState"] {
 	/**
-	 * Create a ErrorGroup.
-	 * @member {string} errorGroupId
-	 * @member {string} appVersion
-	 * @member {number} count
-	 * @member {number} deviceCount
-	 * @member {date} firstOccurrence
-	 * @member {date} lastOccurrence
-	 * @member {string} [exceptionType]
-	 * @member {string} [exceptionMessage]
-	 * @member {string} [exceptionFile]
-	 * @member {string} [exceptionLine]
-	 * @member {array} [reasonFrames]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ErrorGroup
 	 *
 	 * @returns {object} metadata of ErrorGroup

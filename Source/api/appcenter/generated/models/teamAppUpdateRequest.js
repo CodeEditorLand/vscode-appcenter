@@ -9,13 +9,6 @@
  */
 class TeamAppUpdateRequest {
 	/**
-	 * Create a TeamAppUpdateRequest.
-	 * @member {array} permissions The permissions all members of the team have
-	 * on the app
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TeamAppUpdateRequest
 	 *
 	 * @returns {object} metadata of TeamAppUpdateRequest

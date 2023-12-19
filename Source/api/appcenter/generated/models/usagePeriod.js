@@ -10,15 +10,6 @@
  */
 class UsagePeriod {
 	/**
-	 * Create a UsagePeriod.
-	 * @member {string} [startTime] Inclusive start time of the usage period
-	 * @member {string} [endTime] Exclusive end time of the usage period.
-	 * @member {object} [byAccount]
-	 * @member {object} [byApp]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UsagePeriod
 	 *
 	 * @returns {object} metadata of UsagePeriod

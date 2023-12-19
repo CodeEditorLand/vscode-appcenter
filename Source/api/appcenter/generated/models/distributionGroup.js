@@ -12,15 +12,6 @@ const models = require("./index");
  */
 class DistributionGroup extends models["DestinationId"] {
 	/**
-	 * Create a DistributionGroup.
-	 * @member {boolean} [isLatest] Is the containing release the latest one in
-	 * this distribution group.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of DistributionGroup
 	 *
 	 * @returns {object} metadata of DistributionGroup

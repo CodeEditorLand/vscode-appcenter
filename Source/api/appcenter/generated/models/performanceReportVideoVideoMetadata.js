@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class PerformanceReportVideoVideoMetadata {
 	/**
-	 * Create a PerformanceReportVideoVideoMetadata.
-	 * @member {array} [events]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of PerformanceReportVideoVideoMetadata
 	 *
 	 * @returns {object} metadata of PerformanceReportVideoVideoMetadata

@@ -9,13 +9,6 @@
  */
 class ErrorGroupOperatingSystem {
 	/**
-	 * Create a ErrorGroupOperatingSystem.
-	 * @member {string} [operatingSystemName] OS name
-	 * @member {number} [errorCount] count of OS
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorGroupOperatingSystem
 	 *
 	 * @returns {object} metadata of ErrorGroupOperatingSystem

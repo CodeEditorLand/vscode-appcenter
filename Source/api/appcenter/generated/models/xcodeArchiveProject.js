@@ -9,14 +9,6 @@
  */
 class XcodeArchiveProject {
 	/**
-	 * Create a XcodeArchiveProject.
-	 * @member {string} archiveTargetId The Id of the target to archive
-	 * @member {string} projectName The project to archive container name
-	 * @member {string} [projectPath] Full path of the target project
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XcodeArchiveProject
 	 *
 	 * @returns {object} metadata of XcodeArchiveProject

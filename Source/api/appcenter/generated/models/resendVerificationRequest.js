@@ -9,12 +9,6 @@
  */
 class ResendVerificationRequest {
 	/**
-	 * Create a ResendVerificationRequest.
-	 * @member {string} name The email or name of the user to resend verification
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ResendVerificationRequest
 	 *
 	 * @returns {object} metadata of ResendVerificationRequest

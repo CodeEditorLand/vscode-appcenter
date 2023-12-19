@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class XcodeToolset {
 	/**
-	 * Create a XcodeToolset.
-	 * @member {array} xcodeSchemeContainers The Xcode scheme containers
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XcodeToolset
 	 *
 	 * @returns {object} metadata of XcodeToolset

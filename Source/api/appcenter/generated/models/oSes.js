@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class OSes {
 	/**
-	 * Create a OSes.
-	 * @member {number} [total]
-	 * @member {array} [oses]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of OSes
 	 *
 	 * @returns {object} metadata of OSes

@@ -5,7 +5,6 @@ import AppCenterAppBuilder from "../../../createApp/appCenterAppBuilder";
 import AppCenterAppCreator from "../../../createApp/appCenterAppCreator";
 import AppCenterConfig from "../../../data/appCenterConfig";
 import {
-	CommandParams,
 	CreatedAppFromAppCenter,
 	Deployment,
 	QuickPickAppItem,
@@ -31,9 +30,6 @@ const GitUrlParse = require("git-url-parse");
 
 export default class Start extends CreateAppCommand {
 	private repositoryURL: string;
-	constructor(params: CommandParams) {
-		super(params);
-	}
 
 	public async run(): Promise<void> {
 		super.run();
@@ -76,7 +72,7 @@ export default class Start extends CreateAppCommand {
 				}).runNoClient();
 			}
 			vstsProfile = await this.vstsAuth.activeProfile;
-			if (!vstsProfile || !loggedIn) {
+			if (!(vstsProfile && loggedIn)) {
 				this.logger.error(LogStrings.FailedToGetVSTSProfile);
 				return;
 			}
@@ -312,7 +308,7 @@ export default class Start extends CreateAppCommand {
 		}
 		this.logger.debug(LogStrings.SettingAppSecrets);
 		apps.forEach((app: CreatedAppFromAppCenter) => {
-			if (!app || !app.appSecret) {
+			if (!app?.appSecret) {
 				return saved;
 			}
 
@@ -350,7 +346,7 @@ export default class Start extends CreateAppCommand {
 		}
 		this.logger.info(LogStrings.SettingDeploymentKeys);
 		deployments.forEach(async (deployment: Deployment) => {
-			if (!deployment || !deployment.os || !deployment.key) {
+			if (!(deployment?.os && deployment.key)) {
 				return saved;
 			}
 			this.logger.debug(
@@ -399,7 +395,7 @@ export default class Start extends CreateAppCommand {
 			const repositoryURL: string = await VsCodeUI.showInput(
 				Strings.PleaseEnterNewRepositoryUrlHint,
 			);
-			if (!repositoryURL || !Validators.ValidGitName(repositoryURL)) {
+			if (!(repositoryURL && Validators.ValidGitName(repositoryURL))) {
 				return false;
 			}
 			this.repositoryURL = GitUrlParse(repositoryURL.trim()).toString(

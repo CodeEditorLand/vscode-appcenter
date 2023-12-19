@@ -9,14 +9,6 @@
  */
 class TestReportFeaturesItemTestsItemRunsItemStepsItemStepExecutionsItem {
 	/**
-	 * Create a TestReportFeaturesItemTestsItemRunsItemStepsItemStepExecutionsItem.
-	 * @member {string} [deviceSnapshotId]
-	 * @member {string} [status]
-	 * @member {number} [timestamp]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestReportFeaturesItemTestsItemRunsItemStepsItemStepExecutionsItem
 	 *
 	 * @returns {object} metadata of TestReportFeaturesItemTestsItemRunsItemStepsItemStepExecutionsItem

@@ -34,7 +34,7 @@ export class PackageManifest {
 	public computePackageHash(): string {
 		let entries: string[] = [];
 		this._map.forEach((hash: string, name: string): void => {
-			entries.push(name + ":" + hash);
+			entries.push(`${name}:${hash}`);
 		});
 
 		// Make sure this list is alphabetically ordered so that other clients
@@ -78,9 +78,9 @@ export class PackageManifest {
 		return (
 			_.startsWith(relativeFilePath, __MACOSX) ||
 			relativeFilePath === DS_STORE ||
-			_.endsWith(relativeFilePath, "/" + DS_STORE) ||
+			_.endsWith(relativeFilePath, `/${DS_STORE}`) ||
 			relativeFilePath === CODEPUSH_METADATA ||
-			_.endsWith(relativeFilePath, "/" + CODEPUSH_METADATA)
+			_.endsWith(relativeFilePath, `/${CODEPUSH_METADATA}`)
 		);
 	}
 }

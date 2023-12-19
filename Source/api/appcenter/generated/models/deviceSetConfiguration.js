@@ -11,21 +11,6 @@ const models = require("./index");
  */
 class DeviceSetConfiguration {
 	/**
-	 * Create a DeviceSetConfiguration.
-	 * @member {uuid} [id] The unique id of the device configuration
-	 * @member {object} [image]
-	 * @member {string} [image.thumb]
-	 * @member {object} [model]
-	 * @member {string} [model.name]
-	 * @member {string} [model.manufacturer]
-	 * @member {string} [model.releaseDate]
-	 * @member {string} [model.formFactor]
-	 * @member {string} [os]
-	 * @member {string} [osName]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceSetConfiguration
 	 *
 	 * @returns {object} metadata of DeviceSetConfiguration

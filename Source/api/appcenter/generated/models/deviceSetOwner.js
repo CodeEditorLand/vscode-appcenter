@@ -12,15 +12,6 @@
  */
 class DeviceSetOwner {
 	/**
-	 * Create a DeviceSetOwner.
-	 * @member {string} type Type of account
-	 * @member {string} id Account ID
-	 * @member {string} [displayName] Display name of the account
-	 * @member {string} name Name of the account
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceSetOwner
 	 *
 	 * @returns {object} metadata of DeviceSetOwner

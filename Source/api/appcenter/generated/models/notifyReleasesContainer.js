@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class NotifyReleasesContainer {
 	/**
-	 * Create a NotifyReleasesContainer.
-	 * @member {array} releases
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotifyReleasesContainer
 	 *
 	 * @returns {object} metadata of NotifyReleasesContainer

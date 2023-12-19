@@ -10,13 +10,6 @@
  */
 class NotificationFailureOutcomeCount {
 	/**
-	 * Create a NotificationFailureOutcomeCount.
-	 * @member {string} [failureReason] The reason of the notification failure
-	 * @member {number} [count] count of this type of failure
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationFailureOutcomeCount
 	 *
 	 * @returns {object} metadata of NotificationFailureOutcomeCount

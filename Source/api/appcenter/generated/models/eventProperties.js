@@ -10,12 +10,6 @@
  */
 class EventProperties {
 	/**
-	 * Create a EventProperties.
-	 * @member {array} [eventProperties]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventProperties
 	 *
 	 * @returns {object} metadata of EventProperties

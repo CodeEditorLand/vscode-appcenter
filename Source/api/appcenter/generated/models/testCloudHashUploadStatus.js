@@ -12,16 +12,6 @@
  */
 class TestCloudHashUploadStatus {
 	/**
-	 * Create a TestCloudHashUploadStatus.
-	 * @member {number} statusCode HTTP status code that represent result of
-	 * upload
-	 * @member {string} [location] URI that should be used to make POST request
-	 * if file with given hash doesn't exist. This is set when status_code is
-	 * equal to 412
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestCloudHashUploadStatus
 	 *
 	 * @returns {object} metadata of TestCloudHashUploadStatus

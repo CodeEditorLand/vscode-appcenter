@@ -10,12 +10,6 @@
  */
 class AudienceBlobResult {
 	/**
-	 * Create a AudienceBlobResult.
-	 * @member {string} [url] Location of the audience blob.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AudienceBlobResult
 	 *
 	 * @returns {object} metadata of AudienceBlobResult

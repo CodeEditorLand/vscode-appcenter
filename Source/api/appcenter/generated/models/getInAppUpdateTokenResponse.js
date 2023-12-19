@@ -9,13 +9,6 @@
  */
 class GetInAppUpdateTokenResponse {
 	/**
-	 * Create a GetInAppUpdateTokenResponse.
-	 * @member {string} apiToken The api token generated will not be accessible
-	 * again
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of GetInAppUpdateTokenResponse
 	 *
 	 * @returns {object} metadata of GetInAppUpdateTokenResponse

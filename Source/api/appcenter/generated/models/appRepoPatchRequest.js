@@ -9,12 +9,6 @@
  */
 class AppRepoPatchRequest {
 	/**
-	 * Create a AppRepoPatchRequest.
-	 * @member {string} [repoUrl] The absolute URL of the repository
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppRepoPatchRequest
 	 *
 	 * @returns {object} metadata of AppRepoPatchRequest

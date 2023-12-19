@@ -10,12 +10,6 @@
  */
 class NotificationConfigResult {
 	/**
-	 * Create a NotificationConfigResult.
-	 * @member {string} type Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationConfigResult
 	 *
 	 * @returns {object} metadata of NotificationConfigResult

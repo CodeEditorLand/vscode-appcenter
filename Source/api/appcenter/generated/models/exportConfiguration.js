@@ -10,14 +10,6 @@
  */
 class ExportConfiguration {
 	/**
-	 * Create a ExportConfiguration.
-	 * @member {string} [resourceName] The resource name on azure
-	 * @member {string} [resourceGroup] The resource group name on azure
-	 * @member {string} type Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ExportConfiguration
 	 *
 	 * @returns {object} metadata of ExportConfiguration

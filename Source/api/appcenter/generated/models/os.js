@@ -9,14 +9,6 @@
  */
 class OS {
 	/**
-	 * Create a OS.
-	 * @member {string} [osName] OS name
-	 * @member {number} [count] count current of OS
-	 * @member {number} [previousCount] count of previous OS
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of OS
 	 *
 	 * @returns {object} metadata of OS

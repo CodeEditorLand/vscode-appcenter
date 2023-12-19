@@ -216,12 +216,12 @@ export class CreateAppCommand extends Command {
 			{
 				label: apps[0].appName,
 				description: "",
-				target: `0`,
+				target: "0",
 			},
 			{
 				label: apps[1].appName,
 				description: "",
-				target: `1`,
+				target: "1",
 			},
 		];
 		const selected: QuickPickAppItem = await VsCodeUI.showQuickPick(

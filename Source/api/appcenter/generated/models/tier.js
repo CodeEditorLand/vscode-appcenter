@@ -10,12 +10,6 @@
  */
 class Tier {
 	/**
-	 * Create a Tier.
-	 * @member {string} [name] The name of the tier
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Tier
 	 *
 	 * @returns {object} metadata of Tier

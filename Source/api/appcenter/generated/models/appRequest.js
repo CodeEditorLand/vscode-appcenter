@@ -9,20 +9,6 @@
  */
 class AppRequest {
 	/**
-	 * Create a AppRequest.
-	 * @member {string} [description] A short text describing the app
-	 * @member {string} displayName The descriptive name of the app. This can
-	 * contain any characters
-	 * @member {string} [name] The name of the app used in URLs
-	 * @member {string} os The OS the app will be running on. Possible values
-	 * include: 'Android', 'iOS', 'macOS', 'Tizen', 'tvOS', 'Windows'
-	 * @member {string} platform The platform of the app. Possible values
-	 * include: 'Java', 'Objective-C-Swift', 'UWP', 'Cordova', 'React-Native',
-	 * 'Xamarin'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppRequest
 	 *
 	 * @returns {object} metadata of AppRequest

@@ -25,7 +25,8 @@ export class LogStrings {
 	public static CodePushError =
 		"An error occured on doing Code Push release.";
 	public static FailedToSendCrashes = "Failed to send crashes information.";
-	public static ProjectOrOrgNotSet = `Sorry, Project name or User/Organization is not set`;
+	public static ProjectOrOrgNotSet =
+		"Sorry, Project name or User/Organization is not set";
 	public static FailedToClone = "Failed to clone into exiting repository";
 	public static RootNotFound = "No project root folder found";
 	public static FailedToGetClient = "Failed to get App Center client";

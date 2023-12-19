@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class CrashCounts {
 	/**
-	 * Create a CrashCounts.
-	 * @member {number} [count] total crash count
-	 * @member {array} [crashes] the total crash count for day
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashCounts
 	 *
 	 * @returns {object} metadata of CrashCounts

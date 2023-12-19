@@ -9,15 +9,6 @@
  */
 class DeviceFrameDefinition {
 	/**
-	 * Create a DeviceFrameDefinition.
-	 * @member {number} [width]
-	 * @member {number} [height]
-	 * @member {string} [frameUrl]
-	 * @member {array} [screen]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceFrameDefinition
 	 *
 	 * @returns {object} metadata of DeviceFrameDefinition

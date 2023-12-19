@@ -10,19 +10,6 @@
  */
 class NewCrashGroupAlertingEventCrashGroupProperties {
 	/**
-	 * Create a NewCrashGroupAlertingEventCrashGroupProperties.
-	 * @member {string} id
-	 * @member {string} name
-	 * @member {string} reason
-	 * @member {string} url
-	 * @member {string} appDisplayName
-	 * @member {string} appPlatform
-	 * @member {string} appVersion
-	 * @member {array} stackTrace
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NewCrashGroupAlertingEventCrashGroupProperties
 	 *
 	 * @returns {object} metadata of NewCrashGroupAlertingEventCrashGroupProperties

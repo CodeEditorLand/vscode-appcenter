@@ -10,14 +10,6 @@
  */
 class CrashLocation {
 	/**
-	 * Create a CrashLocation.
-	 * @member {string} account azure account
-	 * @member {string} container blob container
-	 * @member {string} blob blob name
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashLocation
 	 *
 	 * @returns {object} metadata of CrashLocation

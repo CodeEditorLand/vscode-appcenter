@@ -11,15 +11,6 @@
  */
 class AvailabilityOfDevicesRequest {
 	/**
-	 * Create a AvailabilityOfDevicesRequest.
-	 * @member {string} [username] The username for the Apple Developer account.
-	 * @member {string} [password] The password for the Apple Developer account.
-	 * @member {string} [serviceConnectionId] The service_connection_id of the
-	 * stored Apple credentials instad of username, password.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AvailabilityOfDevicesRequest
 	 *
 	 * @returns {object} metadata of AvailabilityOfDevicesRequest

@@ -11,14 +11,6 @@ const models = require("./index");
  */
 class EventCountPerSession {
 	/**
-	 * Create a EventCountPerSession.
-	 * @member {number} [avgCountPerSession]
-	 * @member {number} [previousAvgCountPerSession]
-	 * @member {array} [countPerSession]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventCountPerSession
 	 *
 	 * @returns {object} metadata of EventCountPerSession

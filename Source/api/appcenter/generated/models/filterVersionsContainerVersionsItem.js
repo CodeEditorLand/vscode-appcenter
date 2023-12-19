@@ -9,13 +9,6 @@
  */
 class FilterVersionsContainerVersionsItem {
 	/**
-	 * Create a FilterVersionsContainerVersionsItem.
-	 * @member {string} version App version
-	 * @member {string} build App build number
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FilterVersionsContainerVersionsItem
 	 *
 	 * @returns {object} metadata of FilterVersionsContainerVersionsItem

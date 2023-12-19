@@ -13,18 +13,6 @@ const models = require("./index");
  */
 class Audience extends models["AudienceSummary"] {
 	/**
-	 * Create a Audience.
-	 * @member {boolean} [enabled] Default value: true .
-	 * @member {object} [customProperties] Custom properties used in the
-	 * definition.
-	 * @member {number} [estimatedTotalCount] Estimated total audience size.
-	 * @member {date} [timestamp] Date the audience was last refreshed.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of Audience
 	 *
 	 * @returns {object} metadata of Audience

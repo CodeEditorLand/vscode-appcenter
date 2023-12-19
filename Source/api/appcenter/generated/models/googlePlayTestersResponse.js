@@ -10,15 +10,6 @@
  */
 class GooglePlayTestersResponse {
 	/**
-	 * Create a GooglePlayTestersResponse.
-	 * @member {string} [tester] email id of Google Groups or URL of the Google+
-	 * Communities
-	 * @member {string} [type] type of testers i.e Google Groups or Google+
-	 * Communities. Possible values include: 'Google Group', 'Google+ Community'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of GooglePlayTestersResponse
 	 *
 	 * @returns {object} metadata of GooglePlayTestersResponse

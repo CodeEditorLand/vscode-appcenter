@@ -10,12 +10,6 @@
  */
 class AppleLoginResponse {
 	/**
-	 * Create a AppleLoginResponse.
-	 * @member {boolean} [successful] True when login was successful.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppleLoginResponse
 	 *
 	 * @returns {object} metadata of AppleLoginResponse

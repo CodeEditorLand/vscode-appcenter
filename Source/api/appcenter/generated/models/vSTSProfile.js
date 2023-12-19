@@ -10,15 +10,6 @@
  */
 class VSTSProfile {
 	/**
-	 * Create a VSTSProfile.
-	 * @member {string} [id] Profile id
-	 * @member {string} [displayName] Profile display name
-	 * @member {string} [publicAlias] Profile alias
-	 * @member {string} [emailAddress] Profile email
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of VSTSProfile
 	 *
 	 * @returns {object} metadata of VSTSProfile

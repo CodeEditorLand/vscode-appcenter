@@ -9,14 +9,6 @@
  */
 class IntuneCategoryValue {
 	/**
-	 * Create a IntuneCategoryValue.
-	 * @member {string} [id] the id of the category
-	 * @member {string} [displayName] the display name for the category
-	 * @member {string} [lastModifiedDateTime] modified date for category
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneCategoryValue
 	 *
 	 * @returns {object} metadata of IntuneCategoryValue

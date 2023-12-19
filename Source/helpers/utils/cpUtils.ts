@@ -11,7 +11,7 @@ export class SpawnError extends Error {
 export namespace cpUtils {
 	export async function executeCommand(
 		logger: ILogger | undefined,
-		logErrorsOnly = false,
+		logErrorsOnly,
 		workingDirectory: string | undefined,
 		command: string,
 		inputValues: ReactNativeLinkInputValue[] = [],
@@ -63,7 +63,7 @@ export namespace cpUtils {
 							);
 							if (filtered.length > 0 && !filtered[0].sent) {
 								sentResponse = true;
-								childProc.stdin.write(filtered[0].input + "\n");
+								childProc.stdin.write(`${filtered[0].input}\n`);
 								inputValues[
 									inputValues.indexOf(filtered[0])
 								].sent = true;

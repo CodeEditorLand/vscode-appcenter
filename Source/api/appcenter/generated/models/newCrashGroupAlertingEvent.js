@@ -13,22 +13,6 @@ const models = require("./index");
  */
 class NewCrashGroupAlertingEvent extends models["AlertingEvent"] {
 	/**
-	 * Create a NewCrashGroupAlertingEvent.
-	 * @member {object} [crashGroupProperties] Properties of new crash group
-	 * @member {string} [crashGroupProperties.id]
-	 * @member {string} [crashGroupProperties.name]
-	 * @member {string} [crashGroupProperties.reason]
-	 * @member {string} [crashGroupProperties.url]
-	 * @member {string} [crashGroupProperties.appDisplayName]
-	 * @member {string} [crashGroupProperties.appPlatform]
-	 * @member {string} [crashGroupProperties.appVersion]
-	 * @member {array} [crashGroupProperties.stackTrace]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NewCrashGroupAlertingEvent
 	 *
 	 * @returns {object} metadata of NewCrashGroupAlertingEvent

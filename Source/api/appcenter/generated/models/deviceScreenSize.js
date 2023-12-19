@@ -10,13 +10,6 @@
  */
 class DeviceScreenSize {
 	/**
-	 * Create a DeviceScreenSize.
-	 * @member {string} [cm]
-	 * @member {string} [inProperty]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceScreenSize
 	 *
 	 * @returns {object} metadata of DeviceScreenSize

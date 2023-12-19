@@ -13,13 +13,6 @@ const models = require("./index");
  */
 class ClearProperty extends models["CustomProperty"] {
 	/**
-	 * Create a ClearProperty.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ClearProperty
 	 *
 	 * @returns {object} metadata of ClearProperty

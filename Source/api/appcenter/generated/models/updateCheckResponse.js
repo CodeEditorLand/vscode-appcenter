@@ -12,20 +12,6 @@ const models = require("./index");
  */
 class UpdateCheckResponse extends models["CodePushReleaseInfo"] {
 	/**
-	 * Create a UpdateCheckResponse.
-	 * @member {string} [downloadUrl]
-	 * @member {boolean} isAvailable
-	 * @member {number} [packageSize]
-	 * @member {boolean} [shouldRunBinaryVersion]
-	 * @member {boolean} [updateAppVersion]
-	 * @member {string} [packageHash]
-	 * @member {string} [label]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of UpdateCheckResponse
 	 *
 	 * @returns {object} metadata of UpdateCheckResponse

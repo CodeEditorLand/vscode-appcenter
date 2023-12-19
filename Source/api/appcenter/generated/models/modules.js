@@ -9,12 +9,6 @@
  */
 class Modules {
 	/**
-	 * Create a Modules.
-	 * @member {object} [modules]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Modules
 	 *
 	 * @returns {object} metadata of Modules

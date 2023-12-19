@@ -12,17 +12,6 @@
  */
 class TestRunSummary {
 	/**
-	 * Create a TestRunSummary.
-	 * @member {string} [date] Date of the test run.
-	 * @member {string} [statusDescription] Human-readable status of the test
-	 * run.
-	 * @member {number} [failed] Number of failed tests
-	 * @member {number} [passed] Number of passed tests
-	 * @member {boolean} [completed] Tells whether the test run has completed
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestRunSummary
 	 *
 	 * @returns {object} metadata of TestRunSummary

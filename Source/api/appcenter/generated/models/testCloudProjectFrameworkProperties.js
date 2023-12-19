@@ -9,12 +9,6 @@
  */
 class TestCloudProjectFrameworkProperties {
 	/**
-	 * Create a TestCloudProjectFrameworkProperties.
-	 * @member {array} [configurations]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestCloudProjectFrameworkProperties
 	 *
 	 * @returns {object} metadata of TestCloudProjectFrameworkProperties

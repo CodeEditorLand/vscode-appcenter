@@ -61,22 +61,15 @@ export async function getAndroidAppVersion(
 			// when "build.gradle" file contains several "android" nodes.
 			// In this case "buildGradle.android" prop represents array instead of object
 			// due to parsing issue in "g2js.parseFile" method.
-			if (buildGradle.android instanceof Array) {
+			if (Array.isArray(buildGradle.android)) {
 				for (let i = 0; i < buildGradle.android.length; i++) {
 					const gradlePart = buildGradle.android[i];
-					if (
-						gradlePart.defaultConfig &&
-						gradlePart.defaultConfig.versionName
-					) {
+					if (gradlePart.defaultConfig?.versionName) {
 						versionName = gradlePart.defaultConfig.versionName;
 						break;
 					}
 				}
-			} else if (
-				buildGradle.android &&
-				buildGradle.android.defaultConfig &&
-				buildGradle.android.defaultConfig.versionName
-			) {
+			} else if (buildGradle.android?.defaultConfig?.versionName) {
 				versionName = buildGradle.android.defaultConfig.versionName;
 			} else {
 				throw new Error(
@@ -217,7 +210,7 @@ export async function getiOSAppVersion(
 		);
 	}
 
-	if (parsedPlist && parsedPlist.CFBundleShortVersionString) {
+	if (parsedPlist?.CFBundleShortVersionString) {
 		if (isValidVersion(parsedPlist.CFBundleShortVersionString)) {
 			console.log(
 				`Using the target binary version value "${parsedPlist.CFBundleShortVersionString}" from "${resolvedPlistFile}".\n`,
@@ -410,8 +403,7 @@ export function isReactNativeProject(): boolean {
 
 		return (
 			projectPackageJson.dependencies["react-native"] ||
-			(projectPackageJson.devDependencies &&
-				projectPackageJson.devDependencies["react-native"])
+			projectPackageJson.devDependencies?.["react-native"]
 		);
 	} catch (error) {
 		throw new Error(
@@ -501,7 +493,7 @@ export async function makeUpdateContents(
 	if (bundleConfig.outputDir) {
 		bundleConfig.sourcemapOutput = path.join(
 			updateContentsPath,
-			bundleConfig.bundleName + ".map",
+			`${bundleConfig.bundleName}.map`,
 		);
 	}
 

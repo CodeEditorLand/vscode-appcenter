@@ -77,20 +77,15 @@ export class Constants {
 }
 // tslint:disable:max-classes-per-file
 export class CommandNames {
-	public static CommandPrefix: string =
-		Constants.ExtensionCommandPrefix + ".";
-	public static AppCenterPortal: string =
-		CommandNames.CommandPrefix + "showPortalMenu";
-	public static WhoAmI: string = CommandNames.CommandPrefix + "whoAmI";
-	public static Login: string = CommandNames.CommandPrefix + "login";
-	public static ShowMenu: string = CommandNames.CommandPrefix + "menu";
-	public static Start: string = CommandNames.CommandPrefix + "start";
-	public static GetCurrentApp: string =
-		CommandNames.CommandPrefix + "getCurrentApp";
-	public static SetCurrentApp: string =
-		CommandNames.CommandPrefix + "setCurrentApp";
-	public static SimulateCrashes: string =
-		CommandNames.CommandPrefix + "simulateCrashes";
+	public static CommandPrefix = `${Constants.ExtensionCommandPrefix}.`;
+	public static AppCenterPortal = `${CommandNames.CommandPrefix}showPortalMenu`;
+	public static WhoAmI = `${CommandNames.CommandPrefix}whoAmI`;
+	public static Login = `${CommandNames.CommandPrefix}login`;
+	public static ShowMenu = `${CommandNames.CommandPrefix}menu`;
+	public static Start = `${CommandNames.CommandPrefix}start`;
+	public static GetCurrentApp = `${CommandNames.CommandPrefix}getCurrentApp`;
+	public static SetCurrentApp = `${CommandNames.CommandPrefix}setCurrentApp`;
+	public static SimulateCrashes = `${CommandNames.CommandPrefix}simulateCrashes`;
 	public static InstallSDK = `${CommandNames.CommandPrefix}installSDK`;
 	public static CreateNewApp = `${CommandNames.CommandPrefix}createNewApp`;
 
@@ -115,27 +110,18 @@ export class CommandNames {
 	};
 
 	public static CodePush = class {
-		public static SetCurrentDeployment: string =
-			CommandNames.CommandPrefix + "codePush.setCurrentDeployment";
-		public static ReleaseReact: string =
-			CommandNames.CommandPrefix + "codePush.releaseReact";
-		public static SwitchMandatoryPropForRelease: string =
-			CommandNames.CommandPrefix +
-			"codePush.switchMandatoryPropForRelease";
-		public static SetTargetBinaryVersion: string =
-			CommandNames.CommandPrefix + "codePush.setTargetBinaryVersion";
+		public static SetCurrentDeployment = `${CommandNames.CommandPrefix}codePush.setCurrentDeployment`;
+		public static ReleaseReact = `${CommandNames.CommandPrefix}codePush.releaseReact`;
+		public static SwitchMandatoryPropForRelease = `${CommandNames.CommandPrefix}codePush.switchMandatoryPropForRelease`;
+		public static SetTargetBinaryVersion = `${CommandNames.CommandPrefix}codePush.setTargetBinaryVersion`;
 		public static LinkCodePush = `${CommandNames.CommandPrefix}codePush.linkCodePush`;
 	};
 
 	public static Test = class {
-		public static ShowMenu: string =
-			CommandNames.CommandPrefix + "test.showMenu";
-		public static RunUITests: string =
-			CommandNames.CommandPrefix + "test.runUITests";
-		public static RunUITestsAsync: string =
-			CommandNames.CommandPrefix + "test.runUITestsAsync";
-		public static ViewResults: string =
-			CommandNames.CommandPrefix + "test.viewResults";
+		public static ShowMenu = `${CommandNames.CommandPrefix}test.showMenu`;
+		public static RunUITests = `${CommandNames.CommandPrefix}test.runUITests`;
+		public static RunUITestsAsync = `${CommandNames.CommandPrefix}test.runUITestsAsync`;
+		public static ViewResults = `${CommandNames.CommandPrefix}test.viewResults`;
 	};
 }
 

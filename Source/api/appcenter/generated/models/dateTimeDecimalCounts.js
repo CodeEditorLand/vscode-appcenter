@@ -9,13 +9,6 @@
  */
 class DateTimeDecimalCounts {
 	/**
-	 * Create a DateTimeDecimalCounts.
-	 * @member {string} [datetime] the ISO 8601 datetime
-	 * @member {number} [count] decimal count of the object
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DateTimeDecimalCounts
 	 *
 	 * @returns {object} metadata of DateTimeDecimalCounts

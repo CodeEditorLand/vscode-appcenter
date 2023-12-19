@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class CrashFreeDevicePercentages {
 	/**
-	 * Create a CrashFreeDevicePercentages.
-	 * @member {number} [averagePercentage] Average percentage
-	 * @member {array} [dailyPercentages] The crash-free percentage per day.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashFreeDevicePercentages
 	 *
 	 * @returns {object} metadata of CrashFreeDevicePercentages

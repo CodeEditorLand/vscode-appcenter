@@ -22,12 +22,13 @@ export class TestMenu extends Menu {
 
 	protected handleMenuSelection(menuItem: MenuQuickPickItem): Promise<void> {
 		switch (menuItem.command) {
-			case CommandNames.Test.RunUITests:
+			case CommandNames.Test.RunUITests: {
 				const runUiTests = new Test.RunUITests(this._params, this._app);
 				runUiTests.runAsynchronously = false;
 				runUiTests.run();
 				break;
-			case CommandNames.Test.RunUITestsAsync:
+			}
+			case CommandNames.Test.RunUITestsAsync: {
 				const runUiTestsAsync = new Test.RunUITests(
 					this._params,
 					this._app,
@@ -35,13 +36,16 @@ export class TestMenu extends Menu {
 				runUiTestsAsync.runAsynchronously = true;
 				runUiTestsAsync.run();
 				break;
-			case CommandNames.Test.ViewResults:
+			}
+			case CommandNames.Test.ViewResults: {
 				new Test.ViewResults(this._params, this._app).runNoClient();
 				break;
-			default:
+			}
+			default: {
 				// Ideally shouldn't be there :)
 				this.logger.error("Unknown AppCenter menu command");
 				break;
+			}
 		}
 		return void 0;
 	}

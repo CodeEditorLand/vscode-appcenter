@@ -10,15 +10,6 @@
  */
 class SymbolStatusResponse {
 	/**
-	 * Create a SymbolStatusResponse.
-	 * @member {string} symbolId The unique id for this symbol (uuid)
-	 * @member {string} appId The application that this symbol belongs to
-	 * @member {string} status Whether the symbol is ignored. Possible values
-	 * include: 'available', 'ignored', 'missing'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SymbolStatusResponse
 	 *
 	 * @returns {object} metadata of SymbolStatusResponse

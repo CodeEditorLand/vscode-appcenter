@@ -11,16 +11,6 @@ const models = require("./index");
  */
 class ActiveDeviceCounts {
 	/**
-	 * Create a ActiveDeviceCounts.
-	 * @member {array} [daily] the active device count for each interval
-	 * @member {array} [weekly] the active device count for each interval with a
-	 * week's retention
-	 * @member {array} [monthly] the active device count for each interval with a
-	 * month's retention
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ActiveDeviceCounts
 	 *
 	 * @returns {object} metadata of ActiveDeviceCounts

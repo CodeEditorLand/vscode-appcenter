@@ -11,13 +11,6 @@
  */
 class SymbolUploadEndRequest {
 	/**
-	 * Create a SymbolUploadEndRequest.
-	 * @member {string} status The desired operation for the symbol upload.
-	 * Possible values include: 'committed', 'aborted'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SymbolUploadEndRequest
 	 *
 	 * @returns {object} metadata of SymbolUploadEndRequest

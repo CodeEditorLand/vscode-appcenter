@@ -9,13 +9,6 @@
  */
 class CrashGroupModel {
 	/**
-	 * Create a CrashGroupModel.
-	 * @member {string} [modelName] model's name
-	 * @member {number} [crashCount] count of model
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupModel
 	 *
 	 * @returns {object} metadata of CrashGroupModel

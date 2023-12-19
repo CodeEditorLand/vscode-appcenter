@@ -12,46 +12,6 @@ const models = require("./index");
  */
 class ExternalStoreRequest {
 	/**
-	 * Create a ExternalStoreRequest.
-	 * @member {string} [type] store Type. Possible values include: 'googleplay',
-	 * 'intune', 'windows', 'apple'
-	 * @member {string} [name] name of the store. In case of googleplay, windows
-	 * and Apple store this is fixed to Production.
-	 * @member {string} [track] track of the store. Can be production, alpha &
-	 * beta for googleplay. Can be production, testflight-internal &
-	 * testflight-external for Apple Store. Can be production for Windows Store.
-	 * Possible values include: 'production', 'alpha', 'beta',
-	 * 'testflight-internal', 'testflight-external'
-	 * @member {object} [intuneDetails]
-	 * @member {object} [intuneDetails.secretJson]
-	 * @member {string} [intuneDetails.secretJson.idToken] the id token of user
-	 * @member {string} [intuneDetails.secretJson.refreshToken] the refresh token
-	 * for user
-	 * @member {string} [intuneDetails.secretJson.refreshTokenExpiry] the expiry
-	 * of refresh token
-	 * @member {object} [intuneDetails.targetAudience]
-	 * @member {string} [intuneDetails.targetAudience.name] display name for the
-	 * target audience/group
-	 * @member {object} [intuneDetails.appCategory]
-	 * @member {string} [intuneDetails.appCategory.name] display name for the app
-	 * category
-	 * @member {string} [intuneDetails.tenantId] tenant id of the intune store
-	 * @member {object} [windowsDetails]
-	 * @member {object} [windowsDetails.secretJson]
-	 * @member {string} [windowsDetails.secretJson.idToken] the id token of user
-	 * @member {string} [windowsDetails.secretJson.refreshToken] the refresh
-	 * token for user
-	 * @member {string} [windowsDetails.secretJson.refreshTokenExpiry] the expiry
-	 * of refresh token
-	 * @member {string} [windowsDetails.tenantId] tenant id the user account
-	 * belongs to
-	 * @member {string} [serviceConnectionId] Id for the shared service
-	 * connection. In case of Apple AppStore, this connection will be used to
-	 * create and connect to the Apple AppStore in Mobile Center.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ExternalStoreRequest
 	 *
 	 * @returns {object} metadata of ExternalStoreRequest

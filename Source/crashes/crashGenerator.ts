@@ -27,8 +27,8 @@ export class CrashGenerator {
 
 		const crashLog: CrashLogSchema = require("./log.json");
 
-		delete crashLog.appId;
-		delete crashLog.installId;
+		crashLog.appId = undefined;
+		crashLog.installId = undefined;
 		crashLog.type = "managedError";
 		crashLog.sid = sessionId;
 		crashLog.id = crashId;
@@ -73,7 +73,7 @@ export class CrashGenerator {
 			return response;
 		} catch (e) {
 			this.logger.error(
-				LogStrings.FailedToSendCrashes + (e && e.message) || "",
+				LogStrings.FailedToSendCrashes + e?.message || "",
 			);
 			throw new Error(e);
 		}

@@ -17,7 +17,7 @@ export class GitUtils {
 				undefined,
 				true,
 				workingDirectory,
-				this.gitCommand,
+				GitUtils.gitCommand,
 				[],
 				true,
 				{},
@@ -148,7 +148,7 @@ export class GitUtils {
 		try {
 			const gitrepo = git(workingDirectory);
 			await gitrepo.add("./*");
-			await gitrepo.commit(this.gitFirstCommitName);
+			await gitrepo.commit(GitUtils.gitFirstCommitName);
 			await gitrepo.push(remoteRepoName, branch);
 			logger.debug(
 				LogStrings.SuccessfullyPushedTo(remoteRepoName, branch),
@@ -189,7 +189,7 @@ export class GitUtils {
 		try {
 			const gitrepo = git(workingDirectory);
 			await gitrepo.add("./*");
-			await gitrepo.commit(this.gitFirstCommitName);
+			await gitrepo.commit(GitUtils.gitFirstCommitName);
 			await gitrepo.removeRemote(Constants.GitDefaultRemoteName);
 			await gitrepo.addRemote(Constants.GitDefaultRemoteName);
 			await gitrepo.push(Constants.GitDefaultRemoteName, branch);

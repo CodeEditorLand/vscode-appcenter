@@ -9,13 +9,6 @@
  */
 class CrashGroupOperatingSystem {
 	/**
-	 * Create a CrashGroupOperatingSystem.
-	 * @member {string} [operatingSystemName] OS name
-	 * @member {number} [crashCount] count of OS
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupOperatingSystem
 	 *
 	 * @returns {object} metadata of CrashGroupOperatingSystem

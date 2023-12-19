@@ -15,19 +15,6 @@ class AlertingVstsBugtrackerSettings extends models[
 	"AlertingBugtrackerSettings"
 ] {
 	/**
-	 * Create a AlertingVstsBugtrackerSettings.
-	 * @member {string} vstsProjectId
-	 * @member {string} vstsProjectUri
-	 * @member {string} [vstsProjectName]
-	 * @member {string} [vstsAccountName]
-	 * @member {string} [vstsAreaPath]
-	 * @member {object} [vstsDefaultPayload]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of AlertingVstsBugtrackerSettings
 	 *
 	 * @returns {object} metadata of AlertingVstsBugtrackerSettings

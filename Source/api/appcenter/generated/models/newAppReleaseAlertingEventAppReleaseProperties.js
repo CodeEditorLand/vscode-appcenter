@@ -10,29 +10,6 @@
  */
 class NewAppReleaseAlertingEventAppReleaseProperties {
 	/**
-	 * Create a NewAppReleaseAlertingEventAppReleaseProperties.
-	 * @member {string} appName
-	 * @member {string} appDisplayName
-	 * @member {string} releaseId
-	 * @member {string} platform
-	 * @member {string} uploadedAt Date and time in ISO 8601 format
-	 * @member {string} [fingerprint]
-	 * @member {string} [releaseNotes]
-	 * @member {string} version
-	 * @member {string} shortVersion
-	 * @member {string} [minOs]
-	 * @member {boolean} [mandatoryUpdate]
-	 * @member {number} size
-	 * @member {string} [provisioningProfileName]
-	 * @member {string} [provisioningProfileType]
-	 * @member {string} bundleIdentifier
-	 * @member {string} installLink
-	 * @member {string} [iconLink]
-	 * @member {string} [distributionGroupId]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NewAppReleaseAlertingEventAppReleaseProperties
 	 *
 	 * @returns {object} metadata of NewAppReleaseAlertingEventAppReleaseProperties

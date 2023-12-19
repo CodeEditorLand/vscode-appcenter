@@ -12,13 +12,6 @@ const models = require("./index");
  */
 class EventPropertyValues {
 	/**
-	 * Create a EventPropertyValues.
-	 * @member {number} [total] The total property value counts
-	 * @member {array} [values] The event property values
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventPropertyValues
 	 *
 	 * @returns {object} metadata of EventPropertyValues

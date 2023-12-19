@@ -10,16 +10,6 @@
  */
 class MissingSymbol {
 	/**
-	 * Create a MissingSymbol.
-	 * @member {string} symbolId symbol id
-	 * @member {string} name symbol name
-	 * @member {string} [platform] symbol plarform
-	 * @member {string} status symbol status. Possible values include: 'missing',
-	 * 'ignored', 'available'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of MissingSymbol
 	 *
 	 * @returns {object} metadata of MissingSymbol

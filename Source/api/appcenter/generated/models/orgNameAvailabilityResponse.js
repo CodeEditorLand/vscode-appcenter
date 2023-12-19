@@ -9,14 +9,6 @@
  */
 class OrgNameAvailabilityResponse {
 	/**
-	 * Create a OrgNameAvailabilityResponse.
-	 * @member {boolean} available The availability status of the requested org
-	 * name
-	 * @member {string} name The generated org name
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of OrgNameAvailabilityResponse
 	 *
 	 * @returns {object} metadata of OrgNameAvailabilityResponse

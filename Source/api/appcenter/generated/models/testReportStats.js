@@ -9,25 +9,6 @@
  */
 class TestReportStats {
 	/**
-	 * Create a TestReportStats.
-	 * @member {number} os
-	 * @member {number} devices
-	 * @member {number} filesize
-	 * @member {number} totalDeviceMinutes
-	 * @member {number} devicesNotRunned
-	 * @member {number} failed
-	 * @member {number} skipped
-	 * @member {number} passed
-	 * @member {number} total
-	 * @member {number} devicesFinished
-	 * @member {number} devicesFailed
-	 * @member {number} devicesSkipped
-	 * @member {number} stepCount
-	 * @member {object} [artifacts]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestReportStats
 	 *
 	 * @returns {object} metadata of TestReportStats

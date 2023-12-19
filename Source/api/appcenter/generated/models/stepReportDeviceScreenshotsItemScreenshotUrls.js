@@ -9,15 +9,6 @@
  */
 class StepReportDeviceScreenshotsItemScreenshotUrls {
 	/**
-	 * Create a StepReportDeviceScreenshotsItemScreenshotUrls.
-	 * @member {string} original
-	 * @member {string} small
-	 * @member {string} medium
-	 * @member {string} large
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StepReportDeviceScreenshotsItemScreenshotUrls
 	 *
 	 * @returns {object} metadata of StepReportDeviceScreenshotsItemScreenshotUrls

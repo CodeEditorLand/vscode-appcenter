@@ -9,18 +9,6 @@
  */
 class CodePushStatusMetricMetadata {
 	/**
-	 * Create a CodePushStatusMetricMetadata.
-	 * @member {string} deploymentKey
-	 * @member {string} [label]
-	 * @member {string} [appVersion]
-	 * @member {string} [previousDeploymentKey]
-	 * @member {string} [previousLabelOrAppVersion]
-	 * @member {string} [status]
-	 * @member {string} [clientUniqueId]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CodePushStatusMetricMetadata
 	 *
 	 * @returns {object} metadata of CodePushStatusMetricMetadata

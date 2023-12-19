@@ -60,50 +60,61 @@ export class GeneralMenu extends Menu {
 
 	protected handleMenuSelection(menuItem: MenuQuickPickItem): Promise<void> {
 		switch (menuItem.command) {
-			case AppCenterBeacons.CodePush:
+			case AppCenterBeacons.CodePush: {
 				new CodePush.ShowMenu(this._params).run();
 				break;
+			}
 
-			case AppCenterBeacons.Test:
+			case AppCenterBeacons.Test: {
 				new Test.ShowMenu(this._params).runNoClient();
 				break;
+			}
 
-			case AppCenterCrashesTabs.Simulate:
+			case AppCenterCrashesTabs.Simulate: {
 				new General.SimulateCrashes(this._params).run();
 				break;
+			}
 
-			case CommandNames.AppCenterPortal:
+			case CommandNames.AppCenterPortal: {
 				new General.AppCenterPortal(this._params).run();
 				break;
+			}
 
-			case CommandNames.Start:
+			case CommandNames.Start: {
 				new General.Start(this._params).run();
 				break;
+			}
 
-			case CommandNames.Login:
+			case CommandNames.Login: {
 				new General.Login(this._params).run();
 				break;
+			}
 
-			case CommandNames.SetCurrentApp:
+			case CommandNames.SetCurrentApp: {
 				new General.SetCurrentApp(this._params).run();
 				break;
+			}
 
-			case CommandNames.GetCurrentApp:
+			case CommandNames.GetCurrentApp: {
 				new General.GetCurrentApp(this._params).runNoClient();
 				break;
+			}
 
-			case CommandNames.Settings.ShowMenu:
+			case CommandNames.Settings.ShowMenu: {
 				new Settings.ShowMenu(this._params).run();
 				break;
+			}
 
-			case CommandNames.InstallSDK:
+			case CommandNames.InstallSDK: {
 				new General.LinkAppCenter(this._params).run();
 				break;
+			}
 
-			default:
+			default: {
 				// Ideally shouldn't be there :)
 				this.logger.error("Unknown App Center menu command");
 				break;
+			}
 		}
 		return void 0;
 	}

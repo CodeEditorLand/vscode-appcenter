@@ -9,18 +9,6 @@
  */
 class UserInfo {
 	/**
-	 * Create a UserInfo.
-	 * @member {string} [odatacontext] context
-	 * @member {string} [id] the display name for the category
-	 * @member {string} [displayName] the display name for the category
-	 * @member {string} [givenName] the display name for the category
-	 * @member {string} [jobTitle] the display name for the category
-	 * @member {string} [mail] the display name for the category
-	 * @member {string} [userPrincipalName] modified date for category
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserInfo
 	 *
 	 * @returns {object} metadata of UserInfo

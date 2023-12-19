@@ -11,16 +11,6 @@ const models = require("./index");
  */
 class SessionDurationsDistribution {
 	/**
-	 * Create a SessionDurationsDistribution.
-	 * @member {array} [distribution] the count of sessions in these buckets
-	 * @member {string} [previousAverageDuration] the previous average session
-	 * duration for previous time range
-	 * @member {string} [averageDuration] the average session duration for
-	 * current time range
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SessionDurationsDistribution
 	 *
 	 * @returns {object} metadata of SessionDurationsDistribution

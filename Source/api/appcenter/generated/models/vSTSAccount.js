@@ -12,22 +12,6 @@ const models = require("./index");
  */
 class VSTSAccount {
 	/**
-	 * Create a VSTSAccount.
-	 * @member {string} [accountId] Account id
-	 * @member {string} [accountUri] Account uri
-	 * @member {string} [accountName] Account name
-	 * @member {string} [accountType] Account type
-	 * @member {string} [accountStatus] Account status
-	 * @member {object} [user]
-	 * @member {string} [user.id] Profile id
-	 * @member {string} [user.displayName] Profile display name
-	 * @member {string} [user.publicAlias] Profile alias
-	 * @member {string} [user.emailAddress] Profile email
-	 * @member {array} [projects] Account projects
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of VSTSAccount
 	 *
 	 * @returns {object} metadata of VSTSAccount

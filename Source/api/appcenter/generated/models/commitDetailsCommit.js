@@ -11,16 +11,6 @@ const models = require("./index");
  */
 class CommitDetailsCommit {
 	/**
-	 * Create a CommitDetailsCommit.
-	 * @member {string} [message] Commit message
-	 * @member {object} [author]
-	 * @member {string} [author.date] Date and time of the commit
-	 * @member {string} [author.name] Author name
-	 * @member {string} [author.email] Author's email
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CommitDetailsCommit
 	 *
 	 * @returns {object} metadata of CommitDetailsCommit

@@ -9,12 +9,6 @@
  */
 class CodePushReleaseLabel {
 	/**
-	 * Create a CodePushReleaseLabel.
-	 * @member {string} [label]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CodePushReleaseLabel
 	 *
 	 * @returns {object} metadata of CodePushReleaseLabel

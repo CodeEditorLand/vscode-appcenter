@@ -9,16 +9,6 @@
  */
 class CodePushReleaseInfo {
 	/**
-	 * Create a CodePushReleaseInfo.
-	 * @member {string} [targetBinaryRange]
-	 * @member {string} [description]
-	 * @member {boolean} [isDisabled]
-	 * @member {boolean} [isMandatory]
-	 * @member {number} [rollout]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CodePushReleaseInfo
 	 *
 	 * @returns {object} metadata of CodePushReleaseInfo

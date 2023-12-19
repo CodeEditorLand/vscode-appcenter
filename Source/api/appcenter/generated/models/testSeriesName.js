@@ -10,12 +10,6 @@
  */
 class TestSeriesName {
 	/**
-	 * Create a TestSeriesName.
-	 * @member {string} name Name of the new test series
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestSeriesName
 	 *
 	 * @returns {object} metadata of TestSeriesName

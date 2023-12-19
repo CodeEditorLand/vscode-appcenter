@@ -10,12 +10,6 @@
  */
 class ReleasePublishErrorResponse {
 	/**
-	 * Create a ReleasePublishErrorResponse.
-	 * @member {string} [message] error Details
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleasePublishErrorResponse
 	 *
 	 * @returns {object} metadata of ReleasePublishErrorResponse

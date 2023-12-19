@@ -10,13 +10,6 @@
  */
 class AgentQueueResponse {
 	/**
-	 * Create a AgentQueueResponse.
-	 * @member {number} [id]
-	 * @member {string} [name]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AgentQueueResponse
 	 *
 	 * @returns {object} metadata of AgentQueueResponse

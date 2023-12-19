@@ -9,13 +9,6 @@
  */
 class ReleaseUpdateResponseDestinationsItem {
 	/**
-	 * Create a ReleaseUpdateResponseDestinationsItem.
-	 * @member {string} [id]
-	 * @member {string} [name]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleaseUpdateResponseDestinationsItem
 	 *
 	 * @returns {object} metadata of ReleaseUpdateResponseDestinationsItem

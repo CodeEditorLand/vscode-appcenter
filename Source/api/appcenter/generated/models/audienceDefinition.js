@@ -10,16 +10,6 @@
  */
 class AudienceDefinition {
 	/**
-	 * Create a AudienceDefinition.
-	 * @member {string} [description] Audience description.
-	 * @member {string} definition Audience definition in OData format.
-	 * @member {boolean} [enabled] Default value: true .
-	 * @member {object} [customProperties] Custom properties used in the
-	 * definition.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AudienceDefinition
 	 *
 	 * @returns {object} metadata of AudienceDefinition

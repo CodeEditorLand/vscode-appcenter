@@ -27,7 +27,7 @@ export default class SimulateCrashes extends Command {
 					const profile: AppCenterProfile | null =
 						await this.appCenterProfile;
 					if (!this._app) {
-						if (profile && profile.currentApp) {
+						if (profile?.currentApp) {
 							this._app = profile.currentApp;
 						} else {
 							VsCodeUI.ShowWarningMessage(

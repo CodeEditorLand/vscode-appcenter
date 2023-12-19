@@ -10,13 +10,6 @@
  */
 class XcodeVersion {
 	/**
-	 * Create a XcodeVersion.
-	 * @member {string} [name] The version name
-	 * @member {boolean} [current] If the Xcode is latest stable
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XcodeVersion
 	 *
 	 * @returns {object} metadata of XcodeVersion

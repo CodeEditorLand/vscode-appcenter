@@ -12,12 +12,6 @@
  */
 class DeviceSelection {
 	/**
-	 * Create a DeviceSelection.
-	 * @member {string} shortId Identifier of the device selection
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceSelection
 	 *
 	 * @returns {object} metadata of DeviceSelection

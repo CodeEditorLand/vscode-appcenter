@@ -13,18 +13,6 @@ const models = require("./index");
  */
 class ErrorLog extends models["Log"] {
 	/**
-	 * Create a ErrorLog.
-	 * @member {uuid} sessionId Session ID.
-	 * @member {uuid} id Error identifier.
-	 * @member {number} [appLaunchToffset] Corresponds to the number of
-	 * milliseconds elapsed between the time the error occurred and the app was
-	 * launched.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ErrorLog
 	 *
 	 * @returns {object} metadata of ErrorLog

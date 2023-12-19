@@ -12,14 +12,6 @@ const models = require("./index");
  */
 class LogFlowLogWithProperties extends models["LogFlowLog"] {
 	/**
-	 * Create a LogFlowLogWithProperties.
-	 * @member {object} [properties] Additional key/value pair parameters.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogFlowLogWithProperties
 	 *
 	 * @returns {object} metadata of LogFlowLogWithProperties

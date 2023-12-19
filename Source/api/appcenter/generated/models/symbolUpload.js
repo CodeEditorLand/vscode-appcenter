@@ -12,31 +12,6 @@ const models = require("./index");
  */
 class SymbolUpload {
 	/**
-	 * Create a SymbolUpload.
-	 * @member {string} symbolUploadId The id for the current symbol upload
-	 * @member {string} appId The application that this symbol upload belongs to
-	 * @member {object} [user] User information of the one who intitiated the
-	 * symbol upload
-	 * @member {string} [user.email] The email of the user
-	 * @member {string} [user.displayName] The full name of the user. Might for
-	 * example be first and last name
-	 * @member {string} status The current status for the symbol upload. Possible
-	 * values include: 'created', 'committed', 'aborted', 'processing',
-	 * 'indexed', 'failed'
-	 * @member {string} symbolType The type of the symbol for the current symbol
-	 * upload. Possible values include: 'Apple', 'Breakpad', 'AndroidProguard',
-	 * 'UWP'
-	 * @member {array} [symbolsUploaded] The symbols found in the upload
-	 * @member {string} [origin] The origin of the symbol upload. Possible values
-	 * include: 'User', 'System'
-	 * @member {string} [fileName] The file name for the symbol upload
-	 * @member {number} [fileSize] The size of the file in Mebibytes
-	 * @member {date} [timestamp] When the symbol upload was committed, or last
-	 * transaction time if not committed
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SymbolUpload
 	 *
 	 * @returns {object} metadata of SymbolUpload

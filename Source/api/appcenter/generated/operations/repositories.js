@@ -119,10 +119,9 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/source_hosts/{source_host}/repositories";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/source_hosts/{source_host}/repositories`;
 	requestUrl = requestUrl.replace(
 		"{source_host}",
 		encodeURIComponent(sourceHost),
@@ -135,19 +134,19 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 	const queryParameters = [];
 	if (vstsAccountName !== null && vstsAccountName !== undefined) {
 		queryParameters.push(
-			"vstsAccountName=" + encodeURIComponent(vstsAccountName),
+			`vstsAccountName=${encodeURIComponent(vstsAccountName)}`,
 		);
 	}
 	if (vstsProjectId !== null && vstsProjectId !== undefined) {
 		queryParameters.push(
-			"vstsProjectId=" + encodeURIComponent(vstsProjectId),
+			`vstsProjectId=${encodeURIComponent(vstsProjectId)}`,
 		);
 	}
 	if (form !== null && form !== undefined) {
-		queryParameters.push("form=" + encodeURIComponent(form));
+		queryParameters.push(`form=${encodeURIComponent(form)}`);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -177,14 +176,17 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -215,7 +217,9 @@ function _list(sourceHost, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;

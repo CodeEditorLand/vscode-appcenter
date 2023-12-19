@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class GetReleasesContainer {
 	/**
-	 * Create a GetReleasesContainer.
-	 * @member {array} releases
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of GetReleasesContainer
 	 *
 	 * @returns {object} metadata of GetReleasesContainer

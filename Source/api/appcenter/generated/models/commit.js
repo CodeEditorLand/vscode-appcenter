@@ -9,13 +9,6 @@
  */
 class Commit {
 	/**
-	 * Create a Commit.
-	 * @member {string} [sha] The commit SHA
-	 * @member {string} [url] The URL to the commit
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Commit
 	 *
 	 * @returns {object} metadata of Commit

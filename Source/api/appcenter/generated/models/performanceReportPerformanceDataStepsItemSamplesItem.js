@@ -9,14 +9,6 @@
  */
 class PerformanceReportPerformanceDataStepsItemSamplesItem {
 	/**
-	 * Create a PerformanceReportPerformanceDataStepsItemSamplesItem.
-	 * @member {number} [cpu]
-	 * @member {number} [mem]
-	 * @member {number} [elapsedSecs]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of PerformanceReportPerformanceDataStepsItemSamplesItem
 	 *
 	 * @returns {object} metadata of PerformanceReportPerformanceDataStepsItemSamplesItem

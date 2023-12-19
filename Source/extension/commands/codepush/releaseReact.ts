@@ -59,7 +59,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 					VsCodeUI.ShowWarningMessage(Messages.NoDeploymentsWarning);
 					return void 0;
 				}
-				if (!this._app.os || !reactNative.isValidOS(this._app.os)) {
+				if (!(this._app.os && reactNative.isValidOS(this._app.os))) {
 					VsCodeUI.ShowWarningMessage(Messages.UnsupportedOSWarning);
 					return void 0;
 				}
@@ -75,21 +75,24 @@ export default class ReleaseReact extends RNCPAppCommand {
 					appVersion = this._app.targetBinaryVersion;
 				} else {
 					switch (this._app.os.toLowerCase()) {
-						case "android":
+						case "android": {
 							appVersion = await reactNative.getAndroidAppVersion(
 								this.rootPath,
 							);
 							break;
-						case "ios":
+						}
+						case "ios": {
 							appVersion = await reactNative.getiOSAppVersion(
 								this.rootPath,
 							);
 							break;
-						case "windows":
+						}
+						case "windows": {
 							appVersion = await reactNative.getWindowsAppVersion(
 								this.rootPath,
 							);
 							break;
+						}
 						default: {
 							VsCodeUI.ShowWarningMessage(
 								Messages.UnsupportedOSWarning,
@@ -178,7 +181,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 					VsCodeUI.ShowErrorMessage(response.errorMessage);
 				}
 			} catch (error) {
-				if (error && error.message) {
+				if (error?.message) {
 					VsCodeUI.ShowErrorMessage(
 						`${Messages.FailedToMakeCodePushRelease} ${error.message}`,
 					);

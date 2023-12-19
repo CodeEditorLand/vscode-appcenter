@@ -1,6 +1,6 @@
 import * as os from "os";
 import * as qs from "qs";
-import { CommandParams, Profile } from "../../../helpers/interfaces";
+import { Profile } from "../../../helpers/interfaces";
 import { SettingsHelper } from "../../../helpers/settingsHelper";
 import { AuthProvider } from "../../resources/constants";
 import { LogStrings } from "../../resources/logStrings";
@@ -10,10 +10,6 @@ import { IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
 import { Command } from "../command";
 
 export default class Login extends Command {
-	constructor(params: CommandParams) {
-		super(params);
-	}
-
 	public async runNoClient(): Promise<boolean | void> {
 		if (!(await super.runNoClient())) {
 			return false;

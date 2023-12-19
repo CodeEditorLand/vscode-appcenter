@@ -11,16 +11,6 @@ const models = require("./index");
  */
 class ErrorResponse {
 	/**
-	 * Create a ErrorResponse.
-	 * @member {object} error
-	 * @member {string} [error.code] Possible values include: 'BadRequest',
-	 * 'Conflict', 'NotAcceptable', 'NotFound', 'InternalServerError',
-	 * 'Unauthorized', 'TooManyRequests'
-	 * @member {string} [error.message]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorResponse
 	 *
 	 * @returns {object} metadata of ErrorResponse

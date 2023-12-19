@@ -1,29 +1,29 @@
-var glob = require("glob");
-var mocha = require("gulp-mocha");
-var gulp = require("gulp");
-var del = require("del");
-var gutil = require("gulp-util");
-var tslint = require("gulp-tslint");
-var libtslint = require("tslint");
-var runSequence = require("run-sequence");
-var sourcemaps = require("gulp-sourcemaps");
-var ts = require("gulp-typescript");
+const glob = require("glob");
+const mocha = require("gulp-mocha");
+const gulp = require("gulp");
+const del = require("del");
+const gutil = require("gulp-util");
+const tslint = require("gulp-tslint");
+const libtslint = require("tslint");
+const runSequence = require("run-sequence");
+const sourcemaps = require("gulp-sourcemaps");
+const ts = require("gulp-typescript");
 
-var srcPath = "src";
-var testPath = "test";
-var integrationTestPath = "integrationTest";
+const srcPath = "src";
+const testPath = "test";
+const integrationTestPath = "integrationTest";
 
-var sources = [srcPath, testPath, integrationTestPath].map(
-	(tsFolder) => tsFolder + "/**/*.ts",
+const sources = [srcPath, testPath, integrationTestPath].map(
+	(tsFolder) => `${tsFolder}/**/*.ts`,
 );
 
-var lintSources = [srcPath, testPath, integrationTestPath].map(
-	(tsFolder) => tsFolder + "/**/*.ts",
+let lintSources = [srcPath, testPath, integrationTestPath].map(
+	(tsFolder) => `${tsFolder}/**/*.ts`,
 );
 lintSources = lintSources.concat(["!src/api/appcenter/generated/**"]);
 
 gulp.task("tslint", () => {
-	var program = libtslint.Linter.createProgram("./tsconfig.json");
+	const program = libtslint.Linter.createProgram("./tsconfig.json");
 	return gulp
 		.src(lintSources, { base: "." })
 		.pipe(
@@ -36,7 +36,7 @@ gulp.task("tslint", () => {
 });
 
 gulp.task("clean", () => {
-	var pathsToDelete = [
+	const pathsToDelete = [
 		"src/**/*.js",
 		"!src/api/appcenter/generated/**/*.js",
 		"src/**/*.js.map",
@@ -51,7 +51,7 @@ gulp.task("clean", () => {
 });
 
 gulp.task("build", (callback) => {
-	var tsProject = ts.createProject("tsconfig.json");
+	const tsProject = ts.createProject("tsconfig.json");
 	// var isProd = false; // TODO: determine
 	// var preprocessorContext = isProd ? { PROD: true } : { DEBUG: true };
 	return (
@@ -77,10 +77,10 @@ gulp.task("build", (callback) => {
 });
 
 gulp.task("test", (callback) => {
-	var tsProject = ts.createProject("tsconfig.json");
+	const tsProject = ts.createProject("tsconfig.json");
 	tsProject.config.files = glob.sync("./test/**/*.ts");
 
-	var globalMochaSettings = {
+	const globalMochaSettings = {
 		clearRequireCache: true,
 		ignoreLeaks: false,
 		timeout: 5000,
@@ -88,8 +88,8 @@ gulp.task("test", (callback) => {
 		reporter: "spec",
 	};
 
-	var testFiles = tsProject.config.files.slice();
-	for (var i = 0; i < testFiles.length; i++) {
+	const testFiles = tsProject.config.files.slice();
+	for (let i = 0; i < testFiles.length; i++) {
 		testFiles[i] = testFiles[i].replace(/.ts$/i, ".js");
 	}
 

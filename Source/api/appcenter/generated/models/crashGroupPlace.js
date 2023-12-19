@@ -9,13 +9,6 @@
  */
 class CrashGroupPlace {
 	/**
-	 * Create a CrashGroupPlace.
-	 * @member {string} [placeName] Place name
-	 * @member {number} [crashCount] count of places
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupPlace
 	 *
 	 * @returns {object} metadata of CrashGroupPlace

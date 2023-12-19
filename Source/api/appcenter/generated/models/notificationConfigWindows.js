@@ -13,15 +13,6 @@ const models = require("./index");
  */
 class NotificationConfigWindows extends models["NotificationConfig"] {
 	/**
-	 * Create a NotificationConfigWindows.
-	 * @member {string} packageSid Package security identifier (SID).
-	 * @member {string} secretKey Secret key.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationConfigWindows
 	 *
 	 * @returns {object} metadata of NotificationConfigWindows

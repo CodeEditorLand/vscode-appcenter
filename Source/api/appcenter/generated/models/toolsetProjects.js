@@ -12,31 +12,6 @@ const models = require("./index");
  */
 class ToolsetProjects {
 	/**
-	 * Create a ToolsetProjects.
-	 * @member {string} [commit] The commit hash of the analyzed commit
-	 * @member {object} [xcode]
-	 * @member {array} [xcode.xcodeSchemeContainers] The Xcode scheme containers
-	 * @member {object} [javascript]
-	 * @member {array} [javascript.packageJsonPaths] Paths for detected
-	 * package.json files
-	 * @member {array} [javascript.javascriptSolutions] The React Native
-	 * solutions detected
-	 * @member {object} [xamarin]
-	 * @member {array} [xamarin.xamarinSolutions] Xamarin solutions for the
-	 * toolset
-	 * @member {object} [android]
-	 * @member {array} [android.androidModules] Android Gradle modules
-	 * @member {string} [android.gradleWrapperPath] The path of the Gradle
-	 * wrapper
-	 * @member {object} [buildscripts]
-	 * @member {object} [uwp]
-	 * @member {array} [uwp.uwpSolutions] The UWP solutions detected
-	 * @member {object} [testcloud]
-	 * @member {array} [testcloud.projects] The TestCloud projects detected
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ToolsetProjects
 	 *
 	 * @returns {object} metadata of ToolsetProjects

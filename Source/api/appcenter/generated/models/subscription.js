@@ -14,18 +14,6 @@ const models = require("./index");
  */
 class Subscription {
 	/**
-	 * Create a Subscription.
-	 * @member {string} [startsAt] The date the subscription began
-	 * @member {string} [endsAt] The date the subscription will end or ended
-	 * @member {number} [daysLeft] The number of days left in the subscription
-	 * @member {object} [tier]
-	 * @member {string} [tier.name] The name of the tier
-	 * @member {boolean} [active] Is the subscription currently active?
-	 * @member {uuid} [id] Id of the subscription
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Subscription
 	 *
 	 * @returns {object} metadata of Subscription

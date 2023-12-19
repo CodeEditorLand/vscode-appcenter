@@ -10,12 +10,6 @@
  */
 class DeviceMemory {
 	/**
-	 * Create a DeviceMemory.
-	 * @member {string} [formattedSize]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceMemory
 	 *
 	 * @returns {object} metadata of DeviceMemory

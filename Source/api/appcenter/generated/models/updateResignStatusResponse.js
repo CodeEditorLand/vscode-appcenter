@@ -11,12 +11,6 @@
  */
 class UpdateResignStatusResponse {
 	/**
-	 * Create a UpdateResignStatusResponse.
-	 * @member {string} status The status.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UpdateResignStatusResponse
 	 *
 	 * @returns {object} metadata of UpdateResignStatusResponse

@@ -13,15 +13,6 @@ const models = require("./index");
  */
 class PageLog extends models["LogWithProperties"] {
 	/**
-	 * Create a PageLog.
-	 * @member {uuid} sessionId Session ID.
-	 * @member {string} name Name of the page.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of PageLog
 	 *
 	 * @returns {object} metadata of PageLog

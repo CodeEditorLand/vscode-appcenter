@@ -12,19 +12,6 @@ const models = require("./index");
  */
 class UserProfileResponseInternal extends models["UserProfileResponse"] {
 	/**
-	 * Create a UserProfileResponseInternal.
-	 * @member {array} [featureFlags] The feature flags that are enabled for this
-	 * app
-	 * @member {string} [adminRole] The new admin_role. Possible values include:
-	 * 'superAdmin', 'admin', 'devOps', 'customerSupport', 'notAdmin'
-	 * @member {object} [settings] The user's settings
-	 * @member {string} [settings.marketingOptIn] The marketing opt-in setting
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of UserProfileResponseInternal
 	 *
 	 * @returns {object} metadata of UserProfileResponseInternal

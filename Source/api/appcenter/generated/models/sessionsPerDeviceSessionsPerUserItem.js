@@ -9,13 +9,6 @@
  */
 class SessionsPerDeviceSessionsPerUserItem {
 	/**
-	 * Create a SessionsPerDeviceSessionsPerUserItem.
-	 * @member {string} [datetime] the ISO 8601 datetime
-	 * @member {number} [count] count
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SessionsPerDeviceSessionsPerUserItem
 	 *
 	 * @returns {object} metadata of SessionsPerDeviceSessionsPerUserItem

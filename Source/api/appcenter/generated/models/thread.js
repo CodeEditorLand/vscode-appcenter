@@ -12,30 +12,6 @@ const models = require("./index");
  */
 class Thread {
 	/**
-	 * Create a Thread.
-	 * @member {string} title name of the thread
-	 * @member {array} frames frames of that thread
-	 * @member {object} [exception] potential additional exception happened in
-	 * that thread (Last Exception Backtrace)
-	 * @member {string} [exception.reason] Reason of the exception
-	 * @member {string} [exception.type] Type of the exception
-	 * (NSSomethingException, NullPointerException)
-	 * @member {array} [exception.frames] frames of the excetpion
-	 * @member {boolean} [exception.relevant] relevant exception (crashed)
-	 * @member {array} [exception.innerExceptions]
-	 * @member {string} [exception.platform] SDK/Platform this thread is beeing
-	 * generated from. Possible values include: 'ios', 'android', 'xamarin',
-	 * 'react-native', 'ndk', 'unity', 'other'
-	 * @member {boolean} [relevant] Shows if a thread is relevant or not. Is
-	 * false if all frames are non relevant, otherwise true
-	 * @member {string} [platform] SDK/Platform this thread is beeing generated
-	 * from. Possible values include: 'ios', 'android', 'xamarin',
-	 * 'react-native', 'ndk', 'unity', 'other'
-	 * @member {boolean} [crashed] True if this thread crashed
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Thread
 	 *
 	 * @returns {object} metadata of Thread

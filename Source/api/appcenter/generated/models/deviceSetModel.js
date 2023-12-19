@@ -9,15 +9,6 @@
  */
 class DeviceSetModel {
 	/**
-	 * Create a DeviceSetModel.
-	 * @member {string} [name]
-	 * @member {string} [manufacturer]
-	 * @member {string} [releaseDate]
-	 * @member {string} [formFactor]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceSetModel
 	 *
 	 * @returns {object} metadata of DeviceSetModel

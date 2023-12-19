@@ -1,6 +1,5 @@
 import { models } from "../../../api/appcenter";
 import {
-	CommandParams,
 	CurrentApp,
 	CurrentAppDeployments,
 	Deployment,
@@ -19,10 +18,6 @@ import * as General from "../general";
 import { ReactNativeAppCommand } from "../reactNativeAppCommand";
 
 export default class SetCurrentApp extends ReactNativeAppCommand {
-	constructor(params: CommandParams) {
-		super(params);
-	}
-
 	public async run(): Promise<void> {
 		if (!(await super.run())) {
 			return;

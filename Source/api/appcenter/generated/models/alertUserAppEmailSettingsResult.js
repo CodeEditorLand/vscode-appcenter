@@ -15,16 +15,6 @@ class AlertUserAppEmailSettingsResult extends models[
 	"AlertUserEmailSettingsResult"
 ] {
 	/**
-	 * Create a AlertUserAppEmailSettingsResult.
-	 * @member {string} appId Application ID
-	 * @member {boolean} userEnabled A flag indicating if settings are enabled at
-	 * user/global level
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of AlertUserAppEmailSettingsResult
 	 *
 	 * @returns {object} metadata of AlertUserAppEmailSettingsResult

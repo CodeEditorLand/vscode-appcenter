@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class UWPToolset {
 	/**
-	 * Create a UWPToolset.
-	 * @member {array} uwpSolutions The UWP solutions detected
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UWPToolset
 	 *
 	 * @returns {object} metadata of UWPToolset

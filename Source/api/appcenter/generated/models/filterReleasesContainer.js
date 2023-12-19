@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class FilterReleasesContainer {
 	/**
-	 * Create a FilterReleasesContainer.
-	 * @member {array} [releases]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FilterReleasesContainer
 	 *
 	 * @returns {object} metadata of FilterReleasesContainer

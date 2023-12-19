@@ -10,12 +10,6 @@
  */
 class NotificationTarget {
 	/**
-	 * Create a NotificationTarget.
-	 * @member {string} type Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of NotificationTarget
 	 *
 	 * @returns {object} metadata of NotificationTarget

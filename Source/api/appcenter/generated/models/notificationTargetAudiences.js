@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class NotificationTargetAudiences extends models["NotificationTarget"] {
 	/**
-	 * Create a NotificationTargetAudiences.
-	 * @member {array} audiences List of target audiences.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationTargetAudiences
 	 *
 	 * @returns {object} metadata of NotificationTargetAudiences

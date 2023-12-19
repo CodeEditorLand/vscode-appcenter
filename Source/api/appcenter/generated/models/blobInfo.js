@@ -9,13 +9,6 @@
  */
 class BlobInfo {
 	/**
-	 * Create a BlobInfo.
-	 * @member {number} size
-	 * @member {string} url
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BlobInfo
 	 *
 	 * @returns {object} metadata of BlobInfo

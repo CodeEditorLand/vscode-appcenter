@@ -10,13 +10,6 @@
  */
 class BillingPlansChangeTypeResponse {
 	/**
-	 * Create a BillingPlansChangeTypeResponse.
-	 * @member {string} [result] Possible values include: 'NoChange',
-	 * 'Downgrade', 'Upgrade'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BillingPlansChangeTypeResponse
 	 *
 	 * @returns {object} metadata of BillingPlansChangeTypeResponse

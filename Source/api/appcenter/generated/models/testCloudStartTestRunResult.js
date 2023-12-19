@@ -12,14 +12,6 @@
  */
 class TestCloudStartTestRunResult {
 	/**
-	 * Create a TestCloudStartTestRunResult.
-	 * @member {array} [acceptedDevices] List with names of accepted devices
-	 * @member {array} [rejectedDevices] List with names and descriptions of
-	 * rejected devices
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestCloudStartTestRunResult
 	 *
 	 * @returns {object} metadata of TestCloudStartTestRunResult

@@ -61,11 +61,11 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -76,7 +76,8 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -131,10 +132,9 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/versions";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/versions`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -142,23 +142,23 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -188,14 +188,17 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -226,7 +229,9 @@ function _versionsMethod(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -318,11 +323,11 @@ function _perDeviceCounts(
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -333,7 +338,8 @@ function _perDeviceCounts(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -382,10 +388,9 @@ function _perDeviceCounts(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/sessions_per_device";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/sessions_per_device`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -393,21 +398,21 @@ function _perDeviceCounts(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
-	queryParameters.push("interval=" + encodeURIComponent(interval));
+	queryParameters.push(`interval=${encodeURIComponent(interval)}`);
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -437,14 +442,17 @@ function _perDeviceCounts(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -475,7 +483,9 @@ function _perDeviceCounts(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -563,11 +573,11 @@ function _sessionDurationsDistributionMethod(
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -578,7 +588,8 @@ function _sessionDurationsDistributionMethod(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -618,10 +629,9 @@ function _sessionDurationsDistributionMethod(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/session_durations_distribution";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/session_durations_distribution`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -629,20 +639,20 @@ function _sessionDurationsDistributionMethod(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -672,14 +682,17 @@ function _sessionDurationsDistributionMethod(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -710,7 +723,9 @@ function _sessionDurationsDistributionMethod(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -801,11 +816,11 @@ function _sessionCounts(
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -816,7 +831,8 @@ function _sessionCounts(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -865,10 +881,9 @@ function _sessionCounts(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/session_counts";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/session_counts`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -876,21 +891,21 @@ function _sessionCounts(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
-	queryParameters.push("interval=" + encodeURIComponent(interval));
+	queryParameters.push(`interval=${encodeURIComponent(interval)}`);
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -920,14 +935,17 @@ function _sessionCounts(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -958,7 +976,9 @@ function _sessionCounts(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1055,11 +1075,11 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -1070,7 +1090,8 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -1125,10 +1146,9 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/places";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/places`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1136,23 +1156,23 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -1182,14 +1202,17 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1220,7 +1243,9 @@ function _placeCounts(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1303,11 +1328,11 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -1318,7 +1343,8 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -1373,10 +1399,9 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/oses";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/oses`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1384,23 +1409,23 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -1430,14 +1455,17 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1468,7 +1496,9 @@ function _operatingSystemCounts(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1551,11 +1581,11 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -1566,7 +1596,8 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -1621,10 +1652,9 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/models";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/models`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1632,23 +1662,23 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -1678,14 +1708,17 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1716,7 +1749,9 @@ function _modelCounts(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1796,7 +1831,7 @@ function _logFlow(ownerName, appName, options, callback) {
 			!(
 				start instanceof Date ||
 				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+					!Number.isNaN(Date.parse(start)))
 			)
 		) {
 			throw new Error("start must be of type date.");
@@ -1825,10 +1860,9 @@ function _logFlow(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/log_flow";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/log_flow`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -1837,11 +1871,11 @@ function _logFlow(ownerName, appName, options, callback) {
 	const queryParameters = [];
 	if (start !== null && start !== undefined) {
 		queryParameters.push(
-			"start=" + encodeURIComponent(client.serializeObject(start)),
+			`start=${encodeURIComponent(client.serializeObject(start))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -1871,14 +1905,17 @@ function _logFlow(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -1909,7 +1946,9 @@ function _logFlow(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -1994,11 +2033,11 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -2009,7 +2048,8 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -2064,10 +2104,9 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/languages";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/languages`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -2075,23 +2114,23 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -2121,14 +2160,17 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2159,7 +2201,9 @@ function _languageCounts(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -2240,7 +2284,7 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 			!(
 				start instanceof Date ||
 				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+					!Number.isNaN(Date.parse(start)))
 			)
 		) {
 			throw new Error("start must be of type date.");
@@ -2269,10 +2313,9 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/generic_log_flow";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/generic_log_flow`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -2281,11 +2324,11 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 	const queryParameters = [];
 	if (start !== null && start !== undefined) {
 		queryParameters.push(
-			"start=" + encodeURIComponent(client.serializeObject(start)),
+			`start=${encodeURIComponent(client.serializeObject(start))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -2315,14 +2358,17 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2353,7 +2399,9 @@ function _genericLogFlow(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -2468,11 +2516,11 @@ function _eventPropertyCounts(
 			);
 		}
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -2483,7 +2531,8 @@ function _eventPropertyCounts(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -2542,10 +2591,9 @@ function _eventPropertyCounts(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/properties/{event_property_name}/counts";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/properties/{event_property_name}/counts`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -2561,23 +2609,23 @@ function _eventPropertyCounts(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (count !== null && count !== undefined) {
-		queryParameters.push("count=" + encodeURIComponent(count.toString()));
+		queryParameters.push(`count=${encodeURIComponent(count.toString())}`);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -2607,14 +2655,17 @@ function _eventPropertyCounts(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2645,7 +2696,9 @@ function _eventPropertyCounts(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -2754,10 +2807,9 @@ function _eventPropertiesMethod(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/properties";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/properties`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -2795,14 +2847,17 @@ function _eventPropertiesMethod(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -2833,7 +2888,9 @@ function _eventPropertiesMethod(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -2932,11 +2989,11 @@ function _eventCountMethod(
 			);
 		}
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -2947,7 +3004,8 @@ function _eventCountMethod(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -2987,10 +3045,9 @@ function _eventCountMethod(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/event_count";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/event_count`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -3002,20 +3059,20 @@ function _eventCountMethod(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -3045,14 +3102,17 @@ function _eventCountMethod(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -3083,7 +3143,9 @@ function _eventCountMethod(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -3182,11 +3244,11 @@ function _eventDeviceCountMethod(
 			);
 		}
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -3197,7 +3259,8 @@ function _eventDeviceCountMethod(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -3237,10 +3300,9 @@ function _eventDeviceCountMethod(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/device_count";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/device_count`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -3252,20 +3314,20 @@ function _eventDeviceCountMethod(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -3295,14 +3357,17 @@ function _eventDeviceCountMethod(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -3333,7 +3398,9 @@ function _eventDeviceCountMethod(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -3432,11 +3499,11 @@ function _eventPerSessionCount(
 			);
 		}
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -3447,7 +3514,8 @@ function _eventPerSessionCount(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -3487,10 +3555,9 @@ function _eventPerSessionCount(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/count_per_session";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/count_per_session`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -3502,20 +3569,20 @@ function _eventPerSessionCount(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -3545,14 +3612,17 @@ function _eventPerSessionCount(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -3583,7 +3653,9 @@ function _eventPerSessionCount(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -3682,11 +3754,11 @@ function _eventPerDeviceCount(
 			);
 		}
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -3697,7 +3769,8 @@ function _eventPerDeviceCount(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -3737,10 +3810,9 @@ function _eventPerDeviceCount(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/count_per_device";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}/count_per_device`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -3752,20 +3824,20 @@ function _eventPerDeviceCount(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -3795,14 +3867,17 @@ function _eventPerDeviceCount(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -3833,7 +3908,9 @@ function _eventPerDeviceCount(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -3935,10 +4012,9 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events/{event_name}`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -3976,14 +4052,17 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -4014,7 +4093,9 @@ function _eventsDelete(eventName, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -4100,11 +4181,11 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -4115,7 +4196,8 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -4205,10 +4287,9 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/events";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/events`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -4216,37 +4297,37 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (eventName !== null && eventName !== undefined) {
 		queryParameters.push(
-			"event_name=" + encodeURIComponent(eventName.join("|")),
+			`event_name=${encodeURIComponent(eventName.join("|"))}`,
 		);
 	}
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (skip !== null && skip !== undefined) {
-		queryParameters.push("$skip=" + encodeURIComponent(skip.toString()));
+		queryParameters.push(`$skip=${encodeURIComponent(skip.toString())}`);
 	}
 	if (inlinecount !== null && inlinecount !== undefined) {
-		queryParameters.push("$inlinecount=" + encodeURIComponent(inlinecount));
+		queryParameters.push(`$inlinecount=${encodeURIComponent(inlinecount)}`);
 	}
 	if (orderby !== null && orderby !== undefined) {
-		queryParameters.push("$orderby=" + encodeURIComponent(orderby));
+		queryParameters.push(`$orderby=${encodeURIComponent(orderby)}`);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -4276,14 +4357,17 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -4314,7 +4398,9 @@ function _eventsMethod(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -4414,10 +4500,9 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/event_logs/{event_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/event_logs/{event_name}`;
 	requestUrl = requestUrl.replace(
 		"{event_name}",
 		encodeURIComponent(eventName),
@@ -4455,14 +4540,17 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -4493,7 +4581,9 @@ function _eventsDeleteLogs(eventName, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -4580,10 +4670,9 @@ function _distributionReleaseCounts(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/distribution/release_counts";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/distribution/release_counts`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -4639,14 +4728,17 @@ function _distributionReleaseCounts(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -4677,7 +4769,9 @@ function _distributionReleaseCounts(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -4767,11 +4861,11 @@ function _crashFreeDevicePercentagesMethod(
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -4782,7 +4876,8 @@ function _crashFreeDevicePercentagesMethod(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -4822,10 +4917,9 @@ function _crashFreeDevicePercentagesMethod(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/crashfree_device_percentages";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/crashfree_device_percentages`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -4833,20 +4927,20 @@ function _crashFreeDevicePercentagesMethod(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -4876,14 +4970,17 @@ function _crashFreeDevicePercentagesMethod(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -4914,7 +5011,9 @@ function _crashFreeDevicePercentagesMethod(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -5036,10 +5135,9 @@ function _crashGroupTotals(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/overall";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/overall`;
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
 		encodeURIComponent(crashGroupId),
@@ -5050,9 +5148,9 @@ function _crashGroupTotals(
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
-	queryParameters.push("version=" + encodeURIComponent(version));
+	queryParameters.push(`version=${encodeURIComponent(version)}`);
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -5082,14 +5180,17 @@ function _crashGroupTotals(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -5120,7 +5221,9 @@ function _crashGroupTotals(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -5261,10 +5364,9 @@ function _crashGroupOperatingSystemCounts(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/operating_systems";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/operating_systems`;
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
 		encodeURIComponent(crashGroupId),
@@ -5275,12 +5377,12 @@ function _crashGroupOperatingSystemCounts(
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
-	queryParameters.push("version=" + encodeURIComponent(version));
+	queryParameters.push(`version=${encodeURIComponent(version)}`);
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -5310,14 +5412,17 @@ function _crashGroupOperatingSystemCounts(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -5348,7 +5453,9 @@ function _crashGroupOperatingSystemCounts(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -5488,10 +5595,9 @@ function _crashGroupModelCounts(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/models";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/models`;
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
 		encodeURIComponent(crashGroupId),
@@ -5502,12 +5608,12 @@ function _crashGroupModelCounts(
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
-	queryParameters.push("version=" + encodeURIComponent(version));
+	queryParameters.push(`version=${encodeURIComponent(version)}`);
 	if (top !== null && top !== undefined) {
-		queryParameters.push("$top=" + encodeURIComponent(top.toString()));
+		queryParameters.push(`$top=${encodeURIComponent(top.toString())}`);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -5537,14 +5643,17 @@ function _crashGroupModelCounts(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -5575,7 +5684,9 @@ function _crashGroupModelCounts(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -5681,11 +5792,11 @@ function _crashGroupCounts(
 			);
 		}
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -5696,7 +5807,8 @@ function _crashGroupCounts(
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -5725,10 +5837,9 @@ function _crashGroupCounts(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/crash_counts";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups/{crash_group_id}/crash_counts`;
 	requestUrl = requestUrl.replace(
 		"{crash_group_id}",
 		encodeURIComponent(crashGroupId),
@@ -5739,17 +5850,17 @@ function _crashGroupCounts(
 	);
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
-	queryParameters.push("version=" + encodeURIComponent(version));
+	queryParameters.push(`version=${encodeURIComponent(version)}`);
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -5779,14 +5890,17 @@ function _crashGroupCounts(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -5817,7 +5931,9 @@ function _crashGroupCounts(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -5929,10 +6045,9 @@ function _crashGroupsTotals(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/crash_groups`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -5988,14 +6103,17 @@ function _crashGroupsTotals(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -6026,7 +6144,9 @@ function _crashGroupsTotals(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -6119,11 +6239,11 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -6134,7 +6254,8 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -6174,10 +6295,9 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/crash_counts";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/crash_counts`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -6185,20 +6305,20 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -6228,14 +6348,17 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -6266,7 +6389,9 @@ function _crashCountsMethod(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -6386,10 +6511,9 @@ function _audienceNameExists(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}`;
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
 		encodeURIComponent(audienceName),
@@ -6427,14 +6551,17 @@ function _audienceNameExists(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -6465,7 +6592,9 @@ function _audienceNameExists(
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -6554,10 +6683,9 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}`;
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
 		encodeURIComponent(audienceName),
@@ -6595,14 +6723,17 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -6633,7 +6764,9 @@ function _deleteAudience(audienceName, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		const result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 
 		return callback(null, result, httpRequest, response);
 	});
@@ -6723,10 +6856,9 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}`;
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
 		encodeURIComponent(audienceName),
@@ -6764,14 +6896,17 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -6802,7 +6937,9 @@ function _getAudience(audienceName, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -6938,10 +7075,9 @@ function _createOrUpdateAudience(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/{audience_name}`;
 	requestUrl = requestUrl.replace(
 		"{audience_name}",
 		encodeURIComponent(audienceName),
@@ -7001,14 +7137,17 @@ function _createOrUpdateAudience(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -7039,7 +7178,9 @@ function _createOrUpdateAudience(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -7162,10 +7303,9 @@ function _listDevicePropertyValues(
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/device_properties/{property_name}/values";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/device_properties/{property_name}/values`;
 	requestUrl = requestUrl.replace(
 		"{property_name}",
 		encodeURIComponent(propertyName),
@@ -7177,10 +7317,10 @@ function _listDevicePropertyValues(
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	if (contains !== null && contains !== undefined) {
-		queryParameters.push("contains=" + encodeURIComponent(contains));
+		queryParameters.push(`contains=${encodeURIComponent(contains)}`);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -7210,14 +7350,17 @@ function _listDevicePropertyValues(
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -7248,7 +7391,9 @@ function _listDevicePropertyValues(
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -7341,10 +7486,9 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/device_properties";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/device_properties`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -7378,14 +7522,17 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -7416,7 +7563,9 @@ function _listDeviceProperties(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -7509,10 +7658,9 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/custom_properties";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/metadata/custom_properties`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -7546,14 +7694,17 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -7584,7 +7735,9 @@ function _listCustomProperties(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -7690,10 +7843,9 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences/definition/test";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences/definition/test`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -7749,14 +7901,17 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -7787,7 +7942,9 @@ function _testAudience(audience, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -7893,10 +8050,9 @@ function _listAudiences(ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/audiences";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/audiences`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -7905,12 +8061,13 @@ function _listAudiences(ownerName, appName, options, callback) {
 	const queryParameters = [];
 	if (includeDisabled !== null && includeDisabled !== undefined) {
 		queryParameters.push(
-			"include_disabled=" +
-				encodeURIComponent(includeDisabled.toString()),
+			`include_disabled=${encodeURIComponent(
+				includeDisabled.toString(),
+			)}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -7940,14 +8097,17 @@ function _listAudiences(ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -7978,7 +8138,9 @@ function _listAudiences(ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;
@@ -8059,11 +8221,11 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 	// Validate
 	try {
 		if (
-			!start ||
 			!(
-				start instanceof Date ||
-				(typeof start.valueOf() === "string" &&
-					!isNaN(Date.parse(start)))
+				start &&
+				(start instanceof Date ||
+					(typeof start.valueOf() === "string" &&
+						!Number.isNaN(Date.parse(start))))
 			)
 		) {
 			throw new Error(
@@ -8074,7 +8236,8 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 			end &&
 			!(
 				end instanceof Date ||
-				(typeof end.valueOf() === "string" && !isNaN(Date.parse(end)))
+				(typeof end.valueOf() === "string" &&
+					!Number.isNaN(Date.parse(end)))
 			)
 		) {
 			throw new Error("end must be of type date.");
@@ -8114,10 +8277,9 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 
 	// Construct URL
 	const baseUrl = this.client.baseUri;
-	let requestUrl =
-		baseUrl +
-		(baseUrl.endsWith("/") ? "" : "/") +
-		"v0.1/apps/{owner_name}/{app_name}/analytics/active_device_counts";
+	let requestUrl = `${
+		baseUrl + (baseUrl.endsWith("/") ? "" : "/")
+	}v0.1/apps/{owner_name}/{app_name}/analytics/active_device_counts`;
 	requestUrl = requestUrl.replace(
 		"{owner_name}",
 		encodeURIComponent(ownerName),
@@ -8125,20 +8287,20 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 	requestUrl = requestUrl.replace("{app_name}", encodeURIComponent(appName));
 	const queryParameters = [];
 	queryParameters.push(
-		"start=" + encodeURIComponent(client.serializeObject(start)),
+		`start=${encodeURIComponent(client.serializeObject(start))}`,
 	);
 	if (end !== null && end !== undefined) {
 		queryParameters.push(
-			"end=" + encodeURIComponent(client.serializeObject(end)),
+			`end=${encodeURIComponent(client.serializeObject(end))}`,
 		);
 	}
 	if (versions !== null && versions !== undefined) {
 		queryParameters.push(
-			"versions=" + encodeURIComponent(versions.join("|")),
+			`versions=${encodeURIComponent(versions.join("|"))}`,
 		);
 	}
 	if (queryParameters.length > 0) {
-		requestUrl += "?" + queryParameters.join("&");
+		requestUrl += `?${queryParameters.join("&")}`;
 	}
 
 	// Create HTTP transport objects
@@ -8168,14 +8330,17 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 			error.statusCode = response.statusCode;
 			error.request = msRest.stripRequest(httpRequest);
 			error.response = msRest.stripResponse(response);
-			if (responseBody === "") responseBody = null;
+			if (responseBody === "") {
+				responseBody = null;
+			}
 			let parsedErrorResponse;
 			try {
 				parsedErrorResponse = JSON.parse(responseBody);
 				if (parsedErrorResponse) {
 					let internalError = null;
-					if (parsedErrorResponse.error)
+					if (parsedErrorResponse.error) {
 						internalError = parsedErrorResponse.error;
+					}
 					error.code = internalError
 						? internalError.code
 						: parsedErrorResponse.code;
@@ -8206,7 +8371,9 @@ function _deviceCounts(start, ownerName, appName, options, callback) {
 		}
 		// Create Result
 		let result = null;
-		if (responseBody === "") responseBody = null;
+		if (responseBody === "") {
+			responseBody = null;
+		}
 		// Deserialize Response
 		if (statusCode === 200) {
 			let parsedResponse = null;

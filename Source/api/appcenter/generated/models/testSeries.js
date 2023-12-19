@@ -14,16 +14,6 @@ const models = require("./index");
  */
 class TestSeries {
 	/**
-	 * Create a TestSeries.
-	 * @member {string} slug Unique, human-readable identifier of the test series
-	 * @member {string} name Name of the test series
-	 * @member {string} [mostRecentActivity] Date of the latest test run that
-	 * used this test series
-	 * @member {array} [testRuns] Most recent test runs
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestSeries
 	 *
 	 * @returns {object} metadata of TestSeries

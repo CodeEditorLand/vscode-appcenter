@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class ErrorGroupOperatingSystems {
 	/**
-	 * Create a ErrorGroupOperatingSystems.
-	 * @member {number} [errorCount]
-	 * @member {array} [operatingSystems]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorGroupOperatingSystems
 	 *
 	 * @returns {object} metadata of ErrorGroupOperatingSystems

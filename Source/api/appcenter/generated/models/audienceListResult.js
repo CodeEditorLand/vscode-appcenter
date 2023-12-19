@@ -12,13 +12,6 @@ const models = require("./index");
  */
 class AudienceListResult {
 	/**
-	 * Create a AudienceListResult.
-	 * @member {array} values List of audiences.
-	 * @member {string} [nextLink]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AudienceListResult
 	 *
 	 * @returns {object} metadata of AudienceListResult

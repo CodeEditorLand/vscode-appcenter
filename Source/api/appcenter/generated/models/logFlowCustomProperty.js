@@ -9,13 +9,6 @@
  */
 class LogFlowCustomProperty {
 	/**
-	 * Create a LogFlowCustomProperty.
-	 * @member {string} name
-	 * @member {string} type Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of LogFlowCustomProperty
 	 *
 	 * @returns {object} metadata of LogFlowCustomProperty

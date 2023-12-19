@@ -10,15 +10,6 @@
  */
 class StatusData {
 	/**
-	 * Create a StatusData.
-	 * @member {string} [status] status from store
-	 * @member {string} [storetype] store type
-	 * @member {string} [track] track information from store
-	 * @member {string} [version] version of the app from store
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StatusData
 	 *
 	 * @returns {object} metadata of StatusData

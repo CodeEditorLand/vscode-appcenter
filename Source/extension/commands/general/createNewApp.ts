@@ -1,7 +1,6 @@
 import AppCenterAppBuilder from "../../../createApp/appCenterAppBuilder";
 import { AppCenterUrlBuilder } from "../../../helpers/appCenterUrlBuilder";
 import {
-	CommandParams,
 	CreatedAppFromAppCenter,
 	QuickPickAppItem,
 } from "../../../helpers/interfaces";
@@ -20,10 +19,6 @@ export enum CreateNewAppOption {
 }
 
 export default class CreateNewApp extends CreateAppCommand {
-	constructor(params: CommandParams) {
-		super(params);
-	}
-
 	public async run(): Promise<boolean | void> {
 		if (!(await super.run())) {
 			return false;
@@ -40,7 +35,7 @@ export default class CreateNewApp extends CreateAppCommand {
 		}
 
 		const appNameFromPackage = Utils.parseJsonFile(
-			this.rootPath + "/package.json",
+			`${this.rootPath}/package.json`,
 			"",
 		).name;
 
@@ -115,10 +110,11 @@ export default class CreateNewApp extends CreateAppCommand {
 				return CreateNewAppOption.Android;
 			case CommandNames.CreateApp.Both:
 				return CreateNewAppOption.Both;
-			default:
+			default: {
 				// Ideally shouldn't be there :)
 				this.logger.error("Unknown create app option");
 				return null;
+			}
 		}
 	}
 

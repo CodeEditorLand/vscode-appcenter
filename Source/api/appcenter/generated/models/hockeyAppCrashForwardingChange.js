@@ -9,12 +9,6 @@
  */
 class HockeyAppCrashForwardingChange {
 	/**
-	 * Create a HockeyAppCrashForwardingChange.
-	 * @member {boolean} [enableForwarding]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of HockeyAppCrashForwardingChange
 	 *
 	 * @returns {object} metadata of HockeyAppCrashForwardingChange

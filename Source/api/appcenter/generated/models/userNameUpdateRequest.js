@@ -9,12 +9,6 @@
  */
 class UserNameUpdateRequest {
 	/**
-	 * Create a UserNameUpdateRequest.
-	 * @member {string} [name] The new, unique name that is used to identify.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserNameUpdateRequest
 	 *
 	 * @returns {object} metadata of UserNameUpdateRequest

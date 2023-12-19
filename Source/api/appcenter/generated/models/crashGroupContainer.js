@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class CrashGroupContainer {
 	/**
-	 * Create a CrashGroupContainer.
-	 * @member {array} crashGroups
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupContainer
 	 *
 	 * @returns {object} metadata of CrashGroupContainer

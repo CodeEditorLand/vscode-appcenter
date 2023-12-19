@@ -9,12 +9,6 @@
  */
 class IntuneAppCategory {
 	/**
-	 * Create a IntuneAppCategory.
-	 * @member {string} [name] display name for the app category
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneAppCategory
 	 *
 	 * @returns {object} metadata of IntuneAppCategory

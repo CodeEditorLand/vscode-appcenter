@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class Languages {
 	/**
-	 * Create a Languages.
-	 * @member {number} [total]
-	 * @member {array} [languages]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Languages
 	 *
 	 * @returns {object} metadata of Languages

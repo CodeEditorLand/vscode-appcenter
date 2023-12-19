@@ -10,33 +10,6 @@
  */
 class XcodeBranchConfigurationProperties {
 	/**
-	 * Create a XcodeBranchConfigurationProperties.
-	 * @member {string} projectOrWorkspacePath Xcode project/workspace path
-	 * @member {string} [podfilePath] Path to CococaPods file, if present
-	 * @member {string} [cartfilePath] Path to Carthage file, if present
-	 * @member {string} [provisioningProfileEncoded]
-	 * @member {string} [certificateEncoded]
-	 * @member {string} [provisioningProfileFileId]
-	 * @member {string} [certificateFileId]
-	 * @member {string} [provisioningProfileUploadId]
-	 * @member {string} [certificateUploadId]
-	 * @member {string} [certificatePassword]
-	 * @member {string} scheme
-	 * @member {string} xcodeVersion
-	 * @member {string} [provisioningProfileFilename]
-	 * @member {string} [certificateFilename]
-	 * @member {string} [teamId]
-	 * @member {boolean} [automaticSigning]
-	 * @member {string} [xcodeProjectSha] The selected pbxproject hash to the
-	 * repositroy
-	 * @member {string} [archiveConfiguration] The build configuration of the
-	 * target to archive
-	 * @member {string} [targetToArchive] The target id of the selected scheme to
-	 * archive
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XcodeBranchConfigurationProperties
 	 *
 	 * @returns {object} metadata of XcodeBranchConfigurationProperties

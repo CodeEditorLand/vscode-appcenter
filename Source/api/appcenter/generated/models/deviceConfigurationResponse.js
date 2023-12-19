@@ -10,13 +10,6 @@
  */
 class DeviceConfigurationResponse {
 	/**
-	 * Create a DeviceConfigurationResponse.
-	 * @member {string} dataUrl A data URL containing a signed mobileconfig
-	 * profile
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceConfigurationResponse
 	 *
 	 * @returns {object} metadata of DeviceConfigurationResponse

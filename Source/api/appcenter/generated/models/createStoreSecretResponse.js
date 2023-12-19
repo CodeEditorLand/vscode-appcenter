@@ -9,12 +9,6 @@
  */
 class CreateStoreSecretResponse {
 	/**
-	 * Create a CreateStoreSecretResponse.
-	 * @member {string} [secretId] the secret id for store secret
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CreateStoreSecretResponse
 	 *
 	 * @returns {object} metadata of CreateStoreSecretResponse

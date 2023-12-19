@@ -11,38 +11,6 @@ const models = require("./index");
  */
 class TestReport {
 	/**
-	 * Create a TestReport.
-	 * @member {string} appUploadId
-	 * @member {string} date
-	 * @member {string} testType
-	 * @member {string} platform
-	 * @member {object} stats
-	 * @member {number} [stats.os]
-	 * @member {number} [stats.devices]
-	 * @member {number} [stats.filesize]
-	 * @member {number} [stats.totalDeviceMinutes]
-	 * @member {number} [stats.devicesNotRunned]
-	 * @member {number} [stats.failed]
-	 * @member {number} [stats.skipped]
-	 * @member {number} [stats.passed]
-	 * @member {number} [stats.total]
-	 * @member {number} [stats.devicesFinished]
-	 * @member {number} [stats.devicesFailed]
-	 * @member {number} [stats.devicesSkipped]
-	 * @member {number} [stats.stepCount]
-	 * @member {object} [stats.artifacts]
-	 * @member {string} id
-	 * @member {number} schemaVersion
-	 * @member {number} revision
-	 * @member {array} features
-	 * @member {array} finishedDeviceSnapshots
-	 * @member {array} deviceLogs
-	 * @member {string} dateFinished
-	 * @member {string} [errorMessage]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of TestReport
 	 *
 	 * @returns {object} metadata of TestReport

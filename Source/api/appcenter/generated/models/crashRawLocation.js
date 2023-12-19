@@ -10,12 +10,6 @@
  */
 class CrashRawLocation {
 	/**
-	 * Create a CrashRawLocation.
-	 * @member {string} uri
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashRawLocation
 	 *
 	 * @returns {object} metadata of CrashRawLocation

@@ -10,15 +10,6 @@
  */
 class AppleLoginRequest {
 	/**
-	 * Create a AppleLoginRequest.
-	 * @member {string} username The username for the Apple Developer account.
-	 * @member {string} password The password for the Apple Developer account.
-	 * @member {string} [teamIdentifier] Identifier of the team to use when
-	 * logged in.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppleLoginRequest
 	 *
 	 * @returns {object} metadata of AppleLoginRequest

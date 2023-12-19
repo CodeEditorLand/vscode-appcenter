@@ -16,15 +16,6 @@ class ExportConfigurationAppInsightsLinkedSubscription extends models[
 	"ExportConfiguration"
 ] {
 	/**
-	 * Create a ExportConfigurationAppInsightsLinkedSubscription.
-	 * @member {string} subscriptionId Id of customer subscription linked in App
-	 * Center
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ExportConfigurationAppInsightsLinkedSubscription
 	 *
 	 * @returns {object} metadata of ExportConfigurationAppInsightsLinkedSubscription

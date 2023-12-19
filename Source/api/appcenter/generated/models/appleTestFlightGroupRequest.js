@@ -12,19 +12,6 @@
  */
 class AppleTestFlightGroupRequest {
 	/**
-	 * Create a AppleTestFlightGroupRequest.
-	 * @member {string} username The username for the Apple Developer account.
-	 * @member {string} password The password for the Apple Developer account.
-	 * @member {string} [appleId] apple_id of the app for which test flight
-	 * groups need to be fetched.
-	 * @member {string} [bundleIdentifier] apple_id of the app for which test
-	 * flight groups need to be fetched.
-	 * @member {string} [teamIdentifier] Identifier of the team to use when
-	 * logged in.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppleTestFlightGroupRequest
 	 *
 	 * @returns {object} metadata of AppleTestFlightGroupRequest

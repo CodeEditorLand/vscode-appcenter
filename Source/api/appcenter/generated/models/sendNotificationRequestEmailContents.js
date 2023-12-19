@@ -10,17 +10,6 @@
  */
 class SendNotificationRequestEmailContents {
 	/**
-	 * Create a SendNotificationRequestEmailContents.
-	 * @member {string} [releaseId]
-	 * @member {string} [appName]
-	 * @member {string} [platform]
-	 * @member {string} [build]
-	 * @member {string} [version]
-	 * @member {string} installLink
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of SendNotificationRequestEmailContents
 	 *
 	 * @returns {object} metadata of SendNotificationRequestEmailContents

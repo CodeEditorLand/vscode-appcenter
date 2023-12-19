@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class Versions {
 	/**
-	 * Create a Versions.
-	 * @member {array} [versions] list of version count
-	 * @member {number} [total] the total count of versions
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Versions
 	 *
 	 * @returns {object} metadata of Versions

@@ -13,20 +13,6 @@ const models = require("./index");
  */
 class NotificationDetailsResult extends models["NotificationOverviewResult"] {
 	/**
-	 * Create a NotificationDetailsResult.
-	 * @member {object} notificationContent
-	 * @member {string} [notificationContent.name] Notification name
-	 * @member {string} [notificationContent.title] Notification title
-	 * @member {string} [notificationContent.body] Notification body
-	 * @member {object} [notificationContent.customData] Notification custom
-	 * data(priority, expiration, etc.)
-	 * @member {array} [failureOutcomes] Failture outcome counts
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationDetailsResult
 	 *
 	 * @returns {object} metadata of NotificationDetailsResult

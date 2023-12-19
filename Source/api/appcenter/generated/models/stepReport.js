@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class StepReport {
 	/**
-	 * Create a StepReport.
-	 * @member {array} finishedSnapshots
-	 * @member {array} deviceScreenshots
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StepReport
 	 *
 	 * @returns {object} metadata of StepReport

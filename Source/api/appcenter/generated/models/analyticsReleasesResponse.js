@@ -11,12 +11,6 @@ const models = require("./index");
  */
 class AnalyticsReleasesResponse {
 	/**
-	 * Create a AnalyticsReleasesResponse.
-	 * @member {array} [releases]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AnalyticsReleasesResponse
 	 *
 	 * @returns {object} metadata of AnalyticsReleasesResponse

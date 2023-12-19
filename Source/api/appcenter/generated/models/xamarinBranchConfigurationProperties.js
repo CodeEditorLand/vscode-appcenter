@@ -10,20 +10,6 @@
  */
 class XamarinBranchConfigurationProperties {
 	/**
-	 * Create a XamarinBranchConfigurationProperties.
-	 * @member {string} slnPath
-	 * @member {string} isSimBuild
-	 * @member {string} args
-	 * @member {string} configuration
-	 * @member {string} p12File
-	 * @member {string} p12Pwd
-	 * @member {string} provProfile
-	 * @member {string} [monoVersion]
-	 * @member {string} [sdkBundle]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of XamarinBranchConfigurationProperties
 	 *
 	 * @returns {object} metadata of XamarinBranchConfigurationProperties

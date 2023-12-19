@@ -9,15 +9,6 @@
  */
 class ApiTokensGetResponse {
 	/**
-	 * Create a ApiTokensGetResponse.
-	 * @member {string} id The unique id (UUID) of the api token
-	 * @member {string} [description] The description of the token
-	 * @member {array} [scope] The scope for this token.
-	 * @member {string} createdAt The creation time
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ApiTokensGetResponse
 	 *
 	 * @returns {object} metadata of ApiTokensGetResponse

@@ -9,13 +9,6 @@
  */
 class UserInvitationPermissionsUpdateRequest {
 	/**
-	 * Create a UserInvitationPermissionsUpdateRequest.
-	 * @member {array} permissions The permissions the user has for the app in
-	 * the invitation
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UserInvitationPermissionsUpdateRequest
 	 *
 	 * @returns {object} metadata of UserInvitationPermissionsUpdateRequest

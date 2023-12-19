@@ -9,16 +9,6 @@
  */
 class StoreDestinationDetails {
 	/**
-	 * Create a StoreDestinationDetails.
-	 * @member {string} [destPublishId] destination ID identifying a unique id in
-	 * distribution store.
-	 * @member {string} [storeType] type of store. Possible values include:
-	 * 'intune', 'windows'
-	 * @member {string} [appId] app id of application.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of StoreDestinationDetails
 	 *
 	 * @returns {object} metadata of StoreDestinationDetails

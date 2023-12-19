@@ -9,14 +9,6 @@
  */
 class CrashingAppDetail {
 	/**
-	 * Create a CrashingAppDetail.
-	 * @member {string} [appId] application identifier
-	 * @member {string} [appVersion] application version
-	 * @member {string} [crashGroupId] crash group identifier
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashingAppDetail
 	 *
 	 * @returns {object} metadata of CrashingAppDetail

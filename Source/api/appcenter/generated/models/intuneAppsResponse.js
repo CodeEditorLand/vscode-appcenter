@@ -10,14 +10,6 @@
  */
 class IntuneAppsResponse {
 	/**
-	 * Create a IntuneAppsResponse.
-	 * @member {string} [createdMonth] PartitionKey year-month
-	 * @member {string} [appId] App id
-	 * @member {string} [refreshStatus] Refresh Status
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of IntuneAppsResponse
 	 *
 	 * @returns {object} metadata of IntuneAppsResponse

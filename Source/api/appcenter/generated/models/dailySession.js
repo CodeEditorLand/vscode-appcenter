@@ -9,13 +9,6 @@
  */
 class DailySession {
 	/**
-	 * Create a DailySession.
-	 * @member {string} [datetime] the ISO 8601 datetime
-	 * @member {number} [count]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DailySession
 	 *
 	 * @returns {object} metadata of DailySession

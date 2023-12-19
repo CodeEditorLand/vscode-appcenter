@@ -9,17 +9,6 @@
  */
 class FileAsset {
 	/**
-	 * Create a FileAsset.
-	 * @member {string} [id]
-	 * @member {string} [location]
-	 * @member {string} [token]
-	 * @member {string} [uploadDomain]
-	 * @member {string} [uploadWindowLocation]
-	 * @member {string} [urlEncodedToken]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FileAsset
 	 *
 	 * @returns {object} metadata of FileAsset

@@ -12,20 +12,6 @@ const models = require("./index");
  */
 class ErrorGroupListItem extends models["ErrorGroupState"] {
 	/**
-	 * Create a ErrorGroupListItem.
-	 * @member {string} errorGroupId
-	 * @member {string} appVersion
-	 * @member {number} count
-	 * @member {number} deviceCount
-	 * @member {date} lastOccurrence
-	 * @member {string} [exceptionType]
-	 * @member {string} [exceptionMessage]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ErrorGroupListItem
 	 *
 	 * @returns {object} metadata of ErrorGroupListItem

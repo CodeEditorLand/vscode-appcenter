@@ -9,14 +9,6 @@
  */
 class DataSubjectRightResponse {
 	/**
-	 * Create a DataSubjectRightResponse.
-	 * @member {string} token Unique request identifier
-	 * @member {string} createdAt ISO 8601 format timestamp of when request was
-	 * created.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DataSubjectRightResponse
 	 *
 	 * @returns {object} metadata of DataSubjectRightResponse

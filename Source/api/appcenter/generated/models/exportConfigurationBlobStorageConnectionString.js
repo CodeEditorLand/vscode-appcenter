@@ -16,15 +16,6 @@ class ExportConfigurationBlobStorageConnectionString extends models[
 	"ExportConfiguration"
 ] {
 	/**
-	 * Create a ExportConfigurationBlobStorageConnectionString.
-	 * @member {string} connectionString Connection string for blob storage
-	 * account
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of ExportConfigurationBlobStorageConnectionString
 	 *
 	 * @returns {object} metadata of ExportConfigurationBlobStorageConnectionString

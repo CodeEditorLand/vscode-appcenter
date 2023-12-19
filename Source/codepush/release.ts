@@ -32,11 +32,7 @@ export default class CodePushRelease {
 				return success(result);
 			})
 			.catch((error) => {
-				if (
-					error &&
-					error.reposnse &&
-					error.response.statusCode === 409
-				) {
+				if (error?.reposnse && error.response.statusCode === 409) {
 					logger.log(error.response.body, LogLevel.Error);
 					return failure(ErrorCodes.Exception, error.response.body);
 				}

@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class StringProperty extends models["CustomProperty"] {
 	/**
-	 * Create a StringProperty.
-	 * @member {string} value String property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of StringProperty
 	 *
 	 * @returns {object} metadata of StringProperty

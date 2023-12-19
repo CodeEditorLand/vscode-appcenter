@@ -9,13 +9,6 @@
  */
 class DateTimeCounts {
 	/**
-	 * Create a DateTimeCounts.
-	 * @member {string} [datetime] the ISO 8601 datetime
-	 * @member {number} [count] count of the object
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DateTimeCounts
 	 *
 	 * @returns {object} metadata of DateTimeCounts

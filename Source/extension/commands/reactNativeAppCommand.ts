@@ -74,7 +74,7 @@ export class ReactNativeAppCommand extends Command {
 		return await VsCodeUI.showProgress(() => {
 			return this.appCenterProfile.then(
 				async (profile: AppCenterProfile | null) => {
-					if (profile && profile.currentApp) {
+					if (profile?.currentApp) {
 						if (refreshDeployments) {
 							try {
 								const result: models.Deployment[] =
@@ -225,7 +225,7 @@ export class ReactNativeAppCommand extends Command {
 		appsList: models.AppResponse[],
 		cachedApps: models.AppResponse[],
 	): boolean {
-		if (!cachedApps || !appsList) {
+		if (!(cachedApps && appsList)) {
 			return true;
 		}
 		if (cachedApps.length !== appsList.length) {

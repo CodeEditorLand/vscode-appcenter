@@ -11,43 +11,6 @@ const models = require("./index");
  */
 class CrashGroup {
 	/**
-	 * Create a CrashGroup.
-	 * @member {string} crashGroupId
-	 * @member {string} displayId
-	 * @member {string} appVersion
-	 * @member {string} build
-	 * @member {string} status Possible values include: 'open', 'closed',
-	 * 'ignored'
-	 * @member {number} count
-	 * @member {number} [impactedUsers]
-	 * @member {date} firstOccurrence
-	 * @member {date} lastOccurrence
-	 * @member {string} [exception]
-	 * @member {string} crashReason
-	 * @member {object} [reasonFrame]
-	 * @member {string} [reasonFrame.className] name of the class
-	 * @member {string} [reasonFrame.method] name of the method
-	 * @member {boolean} [reasonFrame.classMethod] is a class method
-	 * @member {string} [reasonFrame.file] name of the file
-	 * @member {number} [reasonFrame.line] line number
-	 * @member {boolean} [reasonFrame.appCode] this line isn't from any framework
-	 * @member {string} [reasonFrame.frameworkName] Name of the framework
-	 * @member {string} [reasonFrame.codeFormatted] Formatted frame string
-	 * @member {string} [reasonFrame.codeRaw] Unformatted Frame string
-	 * @member {string} [reasonFrame.language] programming language of the frame.
-	 * Possible values include: 'JavaScript', 'CSharp', 'Objective-C',
-	 * 'Objective-Cpp', 'Cpp', 'C', 'Swift', 'Java', 'Unknown'
-	 * @member {string} [reasonFrame.methodParams] parameters of the frames
-	 * method
-	 * @member {string} [reasonFrame.exceptionType] Exception type.
-	 * @member {string} [reasonFrame.osExceptionType] OS exception type. (aka.
-	 * SIGNAL)
-	 * @member {boolean} fatal Crash or handled exception
-	 * @member {string} annotation
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroup
 	 *
 	 * @returns {object} metadata of CrashGroup

@@ -9,14 +9,6 @@
  */
 class DistributionRequest {
 	/**
-	 * Create a DistributionRequest.
-	 * @member {string} distributionGroupId A distribution group ID or a store
-	 * group ID
-	 * @member {string} [releaseNotes] The release notes
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DistributionRequest
 	 *
 	 * @returns {object} metadata of DistributionRequest

@@ -9,16 +9,6 @@
  */
 class CodePushReleaseMetric {
 	/**
-	 * Create a CodePushReleaseMetric.
-	 * @member {string} label
-	 * @member {number} active
-	 * @member {number} [downloaded]
-	 * @member {number} [failed]
-	 * @member {number} [installed]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CodePushReleaseMetric
 	 *
 	 * @returns {object} metadata of CodePushReleaseMetric

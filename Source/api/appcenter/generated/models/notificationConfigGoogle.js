@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class NotificationConfigGoogle extends models["NotificationConfig"] {
 	/**
-	 * Create a NotificationConfigGoogle.
-	 * @member {string} googleApiKey GCM API key.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationConfigGoogle
 	 *
 	 * @returns {object} metadata of NotificationConfigGoogle

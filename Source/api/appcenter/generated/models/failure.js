@@ -9,12 +9,6 @@
  */
 class Failure {
 	/**
-	 * Create a Failure.
-	 * @member {string} message
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Failure
 	 *
 	 * @returns {object} metadata of Failure

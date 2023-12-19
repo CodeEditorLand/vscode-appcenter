@@ -9,12 +9,6 @@
  */
 class AzureSubscriptionUpdateBillableRequest {
 	/**
-	 * Create a AzureSubscriptionUpdateBillableRequest.
-	 * @member {boolean} isBillable Billable status of the subscription
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AzureSubscriptionUpdateBillableRequest
 	 *
 	 * @returns {object} metadata of AzureSubscriptionUpdateBillableRequest

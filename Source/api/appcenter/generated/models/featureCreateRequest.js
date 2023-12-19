@@ -9,15 +9,6 @@
  */
 class FeatureCreateRequest {
 	/**
-	 * Create a FeatureCreateRequest.
-	 * @member {string} name The unique name of the feature
-	 * @member {string} displayName The full (friendly) name of the feature.
-	 * @member {number} [state] The state of the feature
-	 * @member {string} [description] The friendly name of the feature
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FeatureCreateRequest
 	 *
 	 * @returns {object} metadata of FeatureCreateRequest

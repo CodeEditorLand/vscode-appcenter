@@ -9,13 +9,6 @@
  */
 class CrashGroupLanguage {
 	/**
-	 * Create a CrashGroupLanguage.
-	 * @member {string} [languageName] language name
-	 * @member {number} [crashCount] count of languages
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CrashGroupLanguage
 	 *
 	 * @returns {object} metadata of CrashGroupLanguage

@@ -10,15 +10,6 @@
  */
 class EventSetting {
 	/**
-	 * Create a EventSetting.
-	 * @member {string} value Frequency of event. Possible values include:
-	 * 'Disabled', 'Individual', 'Daily', 'DailyAndIndividual', 'Default'
-	 * @member {string} [defaultValue] Default frequency of event. Possible
-	 * values include: 'Disabled', 'Individual', 'Daily', 'DailyAndIndividual'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of EventSetting
 	 *
 	 * @returns {object} metadata of EventSetting

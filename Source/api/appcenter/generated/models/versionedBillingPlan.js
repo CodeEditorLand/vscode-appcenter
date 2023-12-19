@@ -12,21 +12,6 @@ const models = require("./index");
  */
 class VersionedBillingPlan {
 	/**
-	 * Create a VersionedBillingPlan.
-	 * @member {object} [document]
-	 * @member {string} [document.id] The Billing Plan ID
-	 * @member {string} [document.version] Version of the Billing Plan schema
-	 * @member {number} [document.priceBucket] Price bucket of the billing plan.
-	 * Free plans start with 0, paid plans have higher price buckets
-	 * @member {string} [document.service] Name of the service that the plan
-	 * applies to. Possible values include: 'Build', 'Push', 'Test'
-	 * @member {object} [document.limits]
-	 * @member {object} [document.attributes]
-	 * @member {string} [etag] The version of the object
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of VersionedBillingPlan
 	 *
 	 * @returns {object} metadata of VersionedBillingPlan

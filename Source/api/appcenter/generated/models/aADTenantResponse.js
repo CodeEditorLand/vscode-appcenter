@@ -9,13 +9,6 @@
  */
 class AADTenantResponse {
 	/**
-	 * Create a AADTenantResponse.
-	 * @member {string} aadTenantId The AAD tenant id
-	 * @member {string} displayName The name of the AAD Tenant
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AADTenantResponse
 	 *
 	 * @returns {object} metadata of AADTenantResponse

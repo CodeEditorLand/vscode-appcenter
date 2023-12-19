@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class ErrorCounts {
 	/**
-	 * Create a ErrorCounts.
-	 * @member {number} [count] total error count
-	 * @member {array} [errors] the total error count for day
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorCounts
 	 *
 	 * @returns {object} metadata of ErrorCounts

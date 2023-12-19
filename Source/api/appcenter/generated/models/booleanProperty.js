@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class BooleanProperty extends models["CustomProperty"] {
 	/**
-	 * Create a BooleanProperty.
-	 * @member {boolean} value Boolean property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of BooleanProperty
 	 *
 	 * @returns {object} metadata of BooleanProperty

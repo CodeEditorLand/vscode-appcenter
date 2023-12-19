@@ -11,15 +11,6 @@
  */
 class UpdateDevicesResponse {
 	/**
-	 * Create a UpdateDevicesResponse.
-	 * @member {string} profilesZipBase64 The updated provisioning profiles
-	 * base64 encoded.
-	 * @member {string} statusUrl URL that can be used to check the status of the
-	 * update devices operation.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UpdateDevicesResponse
 	 *
 	 * @returns {object} metadata of UpdateDevicesResponse

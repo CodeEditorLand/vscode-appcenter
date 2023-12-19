@@ -11,13 +11,6 @@ const models = require("./index");
  */
 class HandledErrors {
 	/**
-	 * Create a HandledErrors.
-	 * @member {string} [nextLink]
-	 * @member {array} [errors] Errors list.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of HandledErrors
 	 *
 	 * @returns {object} metadata of HandledErrors

@@ -9,21 +9,6 @@
  */
 class DistributionGroupUserGetResponse {
 	/**
-	 * Create a DistributionGroupUserGetResponse.
-	 * @member {string} [id] The unique id (UUID) of the user
-	 * @member {string} [avatarUrl] The avatar URL of the user
-	 * @member {boolean} [canChangePassword] User is required to send an old
-	 * password in order to change the password.
-	 * @member {string} [displayName] The full name of the user. Might for
-	 * example be first and last name
-	 * @member {string} email The email address of the user
-	 * @member {boolean} [invitePending] Whether the has accepted the invite.
-	 * Available when an invite is pending, and the value will be "true".
-	 * @member {string} [name] The unique name that is used to identify the user.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DistributionGroupUserGetResponse
 	 *
 	 * @returns {object} metadata of DistributionGroupUserGetResponse

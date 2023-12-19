@@ -12,18 +12,6 @@ const models = require("./index");
  */
 class ServiceResourceUsage {
 	/**
-	 * Create a ServiceResourceUsage.
-	 * @member {object} [currentUsagePeriod]
-	 * @member {string} [currentUsagePeriod.startTime] Inclusive start time of
-	 * the usage period
-	 * @member {string} [currentUsagePeriod.endTime] Exclusive end time of the
-	 * usage period.
-	 * @member {object} [currentUsagePeriod.byAccount]
-	 * @member {object} [currentUsagePeriod.byApp]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ServiceResourceUsage
 	 *
 	 * @returns {object} metadata of ServiceResourceUsage

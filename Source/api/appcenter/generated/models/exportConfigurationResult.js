@@ -12,31 +12,6 @@ const models = require("./index");
  */
 class ExportConfigurationResult {
 	/**
-	 * Create a ExportConfigurationResult.
-	 * @member {string} id Export configuration id
-	 * @member {string} exportType Target resource type of export configuration.
-	 * Possible values include: 'BlobStorage', 'AppInsights'
-	 * @member {string} creationTime Creation time in ISO 8601 format
-	 * @member {string} [lastRunTime] Latest time in ISO 8601 format when export
-	 * completed successfully
-	 * @member {string} state State of the export job. Possible values include:
-	 * 'Enabled', 'Disabled', 'Pending', 'Deleted', 'Invalid'
-	 * @member {string} [stateInfo] Additional information about export
-	 * configuration state
-	 * @member {string} [resourceGroup] resource group for the storage
-	 * account/App Insights resource
-	 * @member {string} [resourceName] Storage accout or Appinsights resource
-	 * name
-	 * @member {object} [exportConfiguration]
-	 * @member {string} [exportConfiguration.resourceName] The resource name on
-	 * azure
-	 * @member {string} [exportConfiguration.resourceGroup] The resource group
-	 * name on azure
-	 * @member {string} [exportConfiguration.type] Polymorphic Discriminator
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ExportConfigurationResult
 	 *
 	 * @returns {object} metadata of ExportConfigurationResult

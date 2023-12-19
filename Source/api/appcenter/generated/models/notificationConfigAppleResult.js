@@ -13,17 +13,6 @@ const models = require("./index");
  */
 class NotificationConfigAppleResult extends models["NotificationConfigResult"] {
 	/**
-	 * Create a NotificationConfigAppleResult.
-	 * @member {string} endpointType Possible values include: 'production',
-	 * 'sandbox'
-	 * @member {date} certExpiration Certificate expiration date.
-	 * @member {string} certFilename Certificate file name
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NotificationConfigAppleResult
 	 *
 	 * @returns {object} metadata of NotificationConfigAppleResult

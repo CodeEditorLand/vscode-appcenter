@@ -10,13 +10,6 @@
  */
 class BranchConfigurationArtifactVersioning {
 	/**
-	 * Create a BranchConfigurationArtifactVersioning.
-	 * @member {string} [buildNumberFormat] Possible values include: 'buildId',
-	 * 'timestamp'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of BranchConfigurationArtifactVersioning
 	 *
 	 * @returns {object} metadata of BranchConfigurationArtifactVersioning

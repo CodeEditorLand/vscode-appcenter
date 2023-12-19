@@ -12,12 +12,6 @@
  */
 class DeviceList {
 	/**
-	 * Create a DeviceList.
-	 * @member {array} devices
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DeviceList
 	 *
 	 * @returns {object} metadata of DeviceList

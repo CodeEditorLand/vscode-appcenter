@@ -11,17 +11,6 @@ const models = require("./index");
  */
 class CreateStoreSecretRequest {
 	/**
-	 * Create a CreateStoreSecretRequest.
-	 * @member {object} [secretJson]
-	 * @member {string} [secretJson.idToken] the id token of user
-	 * @member {string} [secretJson.refreshToken] the refresh token for user
-	 * @member {string} [secretJson.refreshTokenExpiry] the expiry of refresh
-	 * token
-	 * @member {string} [tenantId] the tenant id for user
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of CreateStoreSecretRequest
 	 *
 	 * @returns {object} metadata of CreateStoreSecretRequest

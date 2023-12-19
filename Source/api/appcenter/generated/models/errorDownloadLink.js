@@ -9,12 +9,6 @@
  */
 class ErrorDownloadLink {
 	/**
-	 * Create a ErrorDownloadLink.
-	 * @member {string} link
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ErrorDownloadLink
 	 *
 	 * @returns {object} metadata of ErrorDownloadLink

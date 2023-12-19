@@ -12,14 +12,6 @@ const models = require("./index");
  */
 class ReleaseUpdateResponse {
 	/**
-	 * Create a ReleaseUpdateResponse.
-	 * @member {boolean} [mandatoryUpdate]
-	 * @member {string} [releaseNotes]
-	 * @member {array} [destinations]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ReleaseUpdateResponse
 	 *
 	 * @returns {object} metadata of ReleaseUpdateResponse

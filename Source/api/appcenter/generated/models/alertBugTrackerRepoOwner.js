@@ -10,14 +10,6 @@
  */
 class AlertBugTrackerRepoOwner {
 	/**
-	 * Create a AlertBugTrackerRepoOwner.
-	 * @member {string} [name]
-	 * @member {string} [id]
-	 * @member {string} [login]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertBugTrackerRepoOwner
 	 *
 	 * @returns {object} metadata of AlertBugTrackerRepoOwner

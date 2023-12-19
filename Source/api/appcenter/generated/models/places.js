@@ -12,13 +12,6 @@ const models = require("./index");
  */
 class Places {
 	/**
-	 * Create a Places.
-	 * @member {number} [total]
-	 * @member {array} [places]
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of Places
 	 *
 	 * @returns {object} metadata of Places

@@ -9,14 +9,6 @@
  */
 class UWPSolution {
 	/**
-	 * Create a UWPSolution.
-	 * @member {string} path The path to the UWP solution
-	 * @member {array} configurations The possible configurations detected for
-	 * the UWP solution
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of UWPSolution
 	 *
 	 * @returns {object} metadata of UWPSolution

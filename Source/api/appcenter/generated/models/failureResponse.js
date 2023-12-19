@@ -10,13 +10,6 @@
  */
 class FailureResponse {
 	/**
-	 * Create a FailureResponse.
-	 * @member {string} code
-	 * @member {string} message
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of FailureResponse
 	 *
 	 * @returns {object} metadata of FailureResponse

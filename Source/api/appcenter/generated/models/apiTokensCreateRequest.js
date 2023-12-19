@@ -9,13 +9,6 @@
  */
 class ApiTokensCreateRequest {
 	/**
-	 * Create a ApiTokensCreateRequest.
-	 * @member {string} [description] The description of the token
-	 * @member {array} [scope] The scope for this token.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ApiTokensCreateRequest
 	 *
 	 * @returns {object} metadata of ApiTokensCreateRequest

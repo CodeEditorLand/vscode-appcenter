@@ -13,38 +13,6 @@ const models = require("./index");
  */
 class NewAppReleaseAlertingEvent extends models["AlertingEvent"] {
 	/**
-	 * Create a NewAppReleaseAlertingEvent.
-	 * @member {array} [userIds] List of users who need to receive an email
-	 * notification. If this is not null, then only sending emails will be
-	 * triggered even if the event requires calling webhooks or doing other
-	 * actions.
-	 * @member {object} [appReleaseProperties] Properties of new application
-	 * release
-	 * @member {string} [appReleaseProperties.appName]
-	 * @member {string} [appReleaseProperties.appDisplayName]
-	 * @member {string} [appReleaseProperties.releaseId]
-	 * @member {string} [appReleaseProperties.platform]
-	 * @member {string} [appReleaseProperties.uploadedAt] Date and time in ISO
-	 * 8601 format
-	 * @member {string} [appReleaseProperties.fingerprint]
-	 * @member {string} [appReleaseProperties.releaseNotes]
-	 * @member {string} [appReleaseProperties.version]
-	 * @member {string} [appReleaseProperties.shortVersion]
-	 * @member {string} [appReleaseProperties.minOs]
-	 * @member {boolean} [appReleaseProperties.mandatoryUpdate]
-	 * @member {number} [appReleaseProperties.size]
-	 * @member {string} [appReleaseProperties.provisioningProfileName]
-	 * @member {string} [appReleaseProperties.provisioningProfileType]
-	 * @member {string} [appReleaseProperties.bundleIdentifier]
-	 * @member {string} [appReleaseProperties.installLink]
-	 * @member {string} [appReleaseProperties.iconLink]
-	 * @member {string} [appReleaseProperties.distributionGroupId]
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of NewAppReleaseAlertingEvent
 	 *
 	 * @returns {object} metadata of NewAppReleaseAlertingEvent

@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class LogFlowStringProperty extends models["LogFlowCustomProperty"] {
 	/**
-	 * Create a LogFlowStringProperty.
-	 * @member {string} value String property value.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of LogFlowStringProperty
 	 *
 	 * @returns {object} metadata of LogFlowStringProperty

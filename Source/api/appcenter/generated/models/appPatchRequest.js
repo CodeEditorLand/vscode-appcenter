@@ -9,16 +9,6 @@
  */
 class AppPatchRequest {
 	/**
-	 * Create a AppPatchRequest.
-	 * @member {string} [description] A short text describing the app
-	 * @member {string} [displayName] The display name of the app
-	 * @member {string} [name] The name of the app used in URLs
-	 * @member {string} [iconUrl] The string representation of the URL pointing
-	 * to the app's icon
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AppPatchRequest
 	 *
 	 * @returns {object} metadata of AppPatchRequest

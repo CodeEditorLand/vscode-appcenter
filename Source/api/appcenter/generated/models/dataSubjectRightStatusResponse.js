@@ -9,19 +9,6 @@
  */
 class DataSubjectRightStatusResponse {
 	/**
-	 * Create a DataSubjectRightStatusResponse.
-	 * @member {string} [sasUrl] Azure Storage shared access signature (SAS) URL
-	 * for exported user data.
-	 * @member {boolean} [sasUrlExpired] Whether Azure Storage shared access
-	 * signature (SAS) URL has expired or not.
-	 * @member {string} status Status of data subject right request. Possible
-	 * values include: 'None', 'Created', 'Queued', 'InProgress', 'Completed',
-	 * 'Failed'
-	 * @member {string} message explanation message of the status
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of DataSubjectRightStatusResponse
 	 *
 	 * @returns {object} metadata of DataSubjectRightStatusResponse

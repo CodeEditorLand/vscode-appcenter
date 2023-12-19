@@ -10,12 +10,6 @@
  */
 class AlertOperationResult {
 	/**
-	 * Create a AlertOperationResult.
-	 * @member {string} requestId Unique request identifier for tracking
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of AlertOperationResult
 	 *
 	 * @returns {object} metadata of AlertOperationResult

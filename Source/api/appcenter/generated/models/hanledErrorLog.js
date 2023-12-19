@@ -13,14 +13,6 @@ const models = require("./index");
  */
 class HanledErrorLog extends models["Log"] {
 	/**
-	 * Create a HanledErrorLog.
-	 * @member {uuid} errorId Error ID.
-	 */
-	constructor() {
-		super();
-	}
-
-	/**
 	 * Defines the metadata of HanledErrorLog
 	 *
 	 * @returns {object} metadata of HanledErrorLog

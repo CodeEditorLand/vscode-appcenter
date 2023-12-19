@@ -10,21 +10,6 @@
  */
 class ExternalStoreResponse {
 	/**
-	 * Create a ExternalStoreResponse.
-	 * @member {string} [id] Store id
-	 * @member {string} [name] Store Name
-	 * @member {string} [type] Store Type
-	 * @member {string} [track] Store track. Possible values include:
-	 * 'production', 'alpha', 'beta', 'testflight-internal',
-	 * 'testflight-external'
-	 * @member {object} [intuneDetails] store details for intune
-	 * @member {string} [serviceConnectionId] Id for the shared service
-	 * connection. In case of Apple AppStore, this connection will be used to
-	 * create and connect to the Apple AppStore in Mobile Center.
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ExternalStoreResponse
 	 *
 	 * @returns {object} metadata of ExternalStoreResponse

@@ -9,15 +9,6 @@
  */
 class ListOKResponseItem {
 	/**
-	 * Create a ListOKResponseItem.
-	 * @member {string} displayName The display name of the organization
-	 * @member {string} name The slug name of the organization
-	 * @member {string} origin The creation origin of this organization. Possible
-	 * values include: 'appcenter', 'hockeyapp'
-	 */
-	constructor() {}
-
-	/**
 	 * Defines the metadata of ListOKResponseItem
 	 *
 	 * @returns {object} metadata of ListOKResponseItem
