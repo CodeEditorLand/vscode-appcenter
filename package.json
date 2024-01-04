@@ -292,7 +292,7 @@
 		"date-fns": "3.0.6",
 		"del": "7.1.0",
 		"event-stream": "4.0.1",
-		"git-url-parse": "13.1.1",
+		"git-url-parse": "14.0.0",
 		"gradle-to-js": "2.0.1",
 		"gulp-mocha": "10.0.0",
 		"jsonwebtoken": "9.0.2",
@@ -332,7 +332,7 @@
 		"mock-fs": "5.2.0",
 		"tslint-microsoft-contrib": "5.0.3",
 		"typescript": "5.3.3",
-		"typescript-esbuild": "0.3.3",
+		"typescript-esbuild": "0.3.4",
 		"vscode": "1.1.21"
 	},
 	"publishConfig": {
