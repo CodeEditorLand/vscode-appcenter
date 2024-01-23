@@ -1,8 +1,8 @@
-import { QuickPickItem } from "vscode";
-import AppCenterAuth from "../auth/appCenterAuth";
-import VstsAuth from "../auth/vstsAuth";
-import { ExtensionManager } from "../extension/extensionManager";
-import { AppCenterOS } from "../extension/resources/constants";
+import type { QuickPickItem } from "vscode";
+import type AppCenterAuth from "../auth/appCenterAuth";
+import type VstsAuth from "../auth/vstsAuth";
+import type { ExtensionManager } from "../extension/extensionManager";
+import type { AppCenterOS } from "../extension/resources/constants";
 
 export interface Deployment {
 	name: string;

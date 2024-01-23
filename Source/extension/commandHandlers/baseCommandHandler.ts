@@ -1,7 +1,7 @@
-import AppCenterAuth from "../../auth/appCenterAuth";
-import VstsAuth from "../../auth/vstsAuth";
-import { CommandParams } from "../../helpers/interfaces";
-import { ExtensionManager } from "../extensionManager";
+import type AppCenterAuth from "../../auth/appCenterAuth";
+import type VstsAuth from "../../auth/vstsAuth";
+import type { CommandParams } from "../../helpers/interfaces";
+import type { ExtensionManager } from "../extensionManager";
 export default abstract class BaseCommandHandler {
 	constructor(
 		private manager: ExtensionManager,

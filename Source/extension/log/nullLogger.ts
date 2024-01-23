@@ -1,4 +1,4 @@
-import { ILogger, LogLevel } from "./logHelper";
+import type { ILogger, LogLevel } from "./logHelper";
 
 export class NullLogger implements ILogger {
 	public log(_message: string, _level: LogLevel | undefined) {}

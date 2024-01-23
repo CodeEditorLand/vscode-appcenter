@@ -1,4 +1,4 @@
-import { CommandParams, CurrentApp } from "../../../helpers/interfaces";
+import type { CommandParams, CurrentApp } from "../../../helpers/interfaces";
 import { Messages } from "../../resources/messages";
 import { VsCodeUI } from "../../ui/vscodeUI";
 import { ReactNativeAppCommand } from "../reactNativeAppCommand";

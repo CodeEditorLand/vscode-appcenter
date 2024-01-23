@@ -1,8 +1,13 @@
 import { ConsoleLogger } from "../../extension/log/consoleLogger";
-import { ILogger } from "../../extension/log/logHelper";
+import type { ILogger } from "../../extension/log/logHelper";
 import { LogStrings } from "../../extension/resources/logStrings";
 import { Messages } from "../../extension/resources/messages";
-import { Config, HTTP_METHODS, VSTSGitRepository, VSTSProject } from "./types";
+import {
+	type Config,
+	HTTP_METHODS,
+	type VSTSGitRepository,
+	type VSTSProject,
+} from "./types";
 // tslint:disable-next-line:no-var-requires
 const btoa = require("btoa");
 // tslint:disable-next-line:no-var-requires

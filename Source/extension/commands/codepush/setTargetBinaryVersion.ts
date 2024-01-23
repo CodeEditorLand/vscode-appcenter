@@ -1,5 +1,5 @@
 import { validRange } from "semver";
-import { CurrentApp } from "../../../helpers/interfaces";
+import type { CurrentApp } from "../../../helpers/interfaces";
 import { AppCenterOS, Constants } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";

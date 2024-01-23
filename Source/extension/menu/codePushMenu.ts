@@ -1,5 +1,5 @@
 import { AppCenterUrlBuilder } from "../../helpers/appCenterUrlBuilder";
-import {
+import type {
 	CommandParams,
 	CurrentApp,
 	MenuQuickPickItem,

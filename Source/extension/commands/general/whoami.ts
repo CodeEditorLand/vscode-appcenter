@@ -1,4 +1,4 @@
-import { Profile } from "../../../helpers/interfaces";
+import type { Profile } from "../../../helpers/interfaces";
 import { AuthProvider } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
 import { VsCodeUI } from "../../ui/vscodeUI";

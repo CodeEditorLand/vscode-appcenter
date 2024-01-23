@@ -1,6 +1,6 @@
 import { createAppCenterClient } from "../api/appcenter";
 import { LogStrings } from "../extension/resources/logStrings";
-import {
+import type {
 	AppCenterLoginInfo,
 	AppCenterProfile,
 	CurrentApp,

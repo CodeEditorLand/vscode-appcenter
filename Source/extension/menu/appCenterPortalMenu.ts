@@ -1,5 +1,5 @@
 import { AppCenterUrlBuilder } from "../../helpers/appCenterUrlBuilder";
-import {
+import type {
 	CommandParams,
 	CurrentApp,
 	MenuQuickPickItem,
@@ -20,7 +20,10 @@ import { Menu, MenuItems } from "./menu";
 
 export class AppCenterPortalMenu extends Menu {
 	private isOrg: boolean;
-	constructor(private app: CurrentApp, params: CommandParams) {
+	constructor(
+		private app: CurrentApp,
+		params: CommandParams,
+	) {
 		super(params);
 		this.isOrg =
 			app.type.toLowerCase() === AppCenterAppType.Org.toLowerCase();

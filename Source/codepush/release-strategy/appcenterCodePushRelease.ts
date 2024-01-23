@@ -1,6 +1,6 @@
-import * as fs from "fs";
-import { AppCenterClient } from "../../api/appcenter";
-import { ICodePushReleaseParams } from "../../helpers/interfaces";
+import * as fs from "node:fs";
+import type { AppCenterClient } from "../../api/appcenter";
+import type { ICodePushReleaseParams } from "../../helpers/interfaces";
 
 export async function appCenterCodePushRelease(
 	client: AppCenterClient,

@@ -1,10 +1,10 @@
 import {
-	MessageItem,
-	Progress,
+	type MessageItem,
+	type Progress,
 	ProgressLocation,
-	QuickPickItem,
+	type QuickPickItem,
 	StatusBarAlignment,
-	StatusBarItem,
+	type StatusBarItem,
 	commands,
 	window,
 } from "vscode";

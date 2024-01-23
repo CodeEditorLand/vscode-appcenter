@@ -1,9 +1,9 @@
-import AppCenterAppCreator from "../createApp/appCenterAppCreator";
-import { ILogger } from "../extension/log/logHelper";
+import type AppCenterAppCreator from "../createApp/appCenterAppCreator";
+import type { ILogger } from "../extension/log/logHelper";
 import { AppCenterOS } from "../extension/resources/constants";
 import { Messages } from "../extension/resources/messages";
 import { VsCodeUI } from "../extension/ui/vscodeUI";
-import {
+import type {
 	Deployment,
 	LinkableApp,
 	ReactNativeLinkInputValue,

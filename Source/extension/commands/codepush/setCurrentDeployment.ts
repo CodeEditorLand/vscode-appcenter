@@ -1,8 +1,8 @@
-import { CurrentApp } from "../../../helpers/interfaces";
+import type { CurrentApp } from "../../../helpers/interfaces";
 import { AppCenterOS } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
-import { CustomQuickPickItem, VsCodeUI } from "../../ui/vscodeUI";
+import { type CustomQuickPickItem, VsCodeUI } from "../../ui/vscodeUI";
 import { RNCPAppCommand } from "./rncpAppCommand";
 
 export default class SetCurrentDeployment extends RNCPAppCommand {

@@ -40,7 +40,7 @@ export class ConfigurationReader {
 		if (ConfigurationReader.isInt(value)) {
 			return value;
 		} else if (ConfigurationReader.isString(value)) {
-			return parseInt(value, 10);
+			return Number.parseInt(value, 10);
 		} else {
 			throw new Error(LogStrings.ConfigurationFailedToParse(value));
 		}

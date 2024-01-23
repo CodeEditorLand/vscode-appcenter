@@ -1,9 +1,9 @@
-import { AppCenterClient } from "../api/appcenter";
+import type { AppCenterClient } from "../api/appcenter";
 import { CreateNewAppOption } from "../extension/commands/general/createNewApp";
-import { ILogger } from "../extension/log/logHelper";
+import type { ILogger } from "../extension/log/logHelper";
 import { Constants } from "../extension/resources/constants";
 import { VsCodeUI } from "../extension/ui/vscodeUI";
-import {
+import type {
 	CreatedAppFromAppCenter,
 	UserOrOrganizationItem,
 } from "../helpers/interfaces";
@@ -12,7 +12,8 @@ import { Utils } from "../helpers/utils/utils";
 
 import { LogStrings } from "../extension/resources/logStrings";
 import { Messages } from "../extension/resources/messages";
-import AppCenterAppCreator, {
+import type AppCenterAppCreator from "./appCenterAppCreator";
+import {
 	AndroidAppCenterAppCreator,
 	IOSAppCenterAppCreator,
 	NullAppCenterAppCreator,

@@ -1,4 +1,4 @@
-import { CommandParams } from "../../../helpers/interfaces";
+import type { CommandParams } from "../../../helpers/interfaces";
 import { SettingsMenu } from "../../menu/settingsMenu";
 import { Command } from "../command";
 

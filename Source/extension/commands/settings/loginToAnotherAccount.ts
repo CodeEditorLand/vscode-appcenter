@@ -1,4 +1,4 @@
-import { CommandParams } from "../../../helpers/interfaces";
+import type { CommandParams } from "../../../helpers/interfaces";
 import { Command } from "../command";
 import Login from "../general/login";
 

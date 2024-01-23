@@ -1,4 +1,4 @@
-import { VstsLoginInfo, VstsProfile } from "../helpers/interfaces";
+import type { VstsLoginInfo, VstsProfile } from "../helpers/interfaces";
 import Auth from "./auth";
 
 class VstsProfileImpl implements VstsProfile {

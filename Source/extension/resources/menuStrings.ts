@@ -1,4 +1,4 @@
-import { CurrentApp } from "../../helpers/interfaces";
+import type { CurrentApp } from "../../helpers/interfaces";
 
 export class MenuStrings {
 	// #region Menu labels

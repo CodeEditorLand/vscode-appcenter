@@ -1,7 +1,7 @@
-import * as cp from "child_process";
-import * as os from "os";
-import { ILogger } from "../../extension/log/logHelper";
-import { ReactNativeLinkInputValue } from "../interfaces";
+import * as cp from "node:child_process";
+import * as os from "node:os";
+import type { ILogger } from "../../extension/log/logHelper";
+import type { ReactNativeLinkInputValue } from "../interfaces";
 
 export class SpawnError extends Error {
 	public exitCode: number;

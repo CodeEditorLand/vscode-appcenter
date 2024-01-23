@@ -1,4 +1,4 @@
-import { WebResource } from "ms-rest";
+import type { WebResource } from "ms-rest";
 
 export class AppCenterClientCredentials {
 	private getToken: () => Promise<string>;

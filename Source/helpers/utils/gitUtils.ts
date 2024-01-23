@@ -1,4 +1,4 @@
-import { ILogger } from "../../extension/log/logHelper";
+import type { ILogger } from "../../extension/log/logHelper";
 import { Constants } from "../../extension/resources/constants";
 import { LogStrings } from "../../extension/resources/logStrings";
 import { cpUtils } from "./cpUtils";

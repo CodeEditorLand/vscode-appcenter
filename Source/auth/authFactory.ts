@@ -1,7 +1,7 @@
 import FsProfileStorage from "../data/fsProfileStorage";
-import { ILogger } from "../extension/log/logHelper";
+import type { ILogger } from "../extension/log/logHelper";
 import { AuthProvider } from "../extension/resources/constants";
-import { AppCenterProfile, VstsProfile } from "../helpers/interfaces";
+import type { AppCenterProfile, VstsProfile } from "../helpers/interfaces";
 import { Utils } from "../helpers/utils/utils";
 import AppCenterAuth from "./appCenterAuth";
 import VstsAuth from "./vstsAuth";

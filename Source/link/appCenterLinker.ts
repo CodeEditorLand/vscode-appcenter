@@ -1,14 +1,17 @@
-import { ILogger } from "../extension/log/logHelper";
+import type { ILogger } from "../extension/log/logHelper";
 import { AppCenterOS } from "../extension/resources/constants";
 import { Messages } from "../extension/resources/messages";
 import { Strings } from "../extension/resources/strings";
 import { VsCodeTerminal } from "../extension/ui/VsCodeTerminal";
-import { IButtonMessageItem, VsCodeUI } from "../extension/ui/vscodeUI";
-import { CurrentApp } from "../helpers/interfaces";
+import { type IButtonMessageItem, VsCodeUI } from "../extension/ui/vscodeUI";
+import type { CurrentApp } from "../helpers/interfaces";
 import { cpUtils } from "../helpers/utils/cpUtils";
 
 export default class AppCenterLinker {
-	constructor(private logger: ILogger, private rootPath: string) {}
+	constructor(
+		private logger: ILogger,
+		private rootPath: string,
+	) {}
 
 	public async installAppcenter(): Promise<boolean> {
 		const installAppCenterCmd: string =

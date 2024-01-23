@@ -1,5 +1,5 @@
 import AppCenterAppCreator from "../../../createApp/appCenterAppCreator";
-import {
+import type {
 	CommandParams,
 	CurrentApp,
 	Deployment,
@@ -12,7 +12,10 @@ import { VsCodeUI } from "../../ui/vscodeUI";
 import { LinkCommand } from "../linkCommand";
 
 export default class LinkCodePush extends LinkCommand {
-	public constructor(params: CommandParams, private _app: CurrentApp = null) {
+	public constructor(
+		params: CommandParams,
+		private _app: CurrentApp = null,
+	) {
 		super(params);
 	}
 

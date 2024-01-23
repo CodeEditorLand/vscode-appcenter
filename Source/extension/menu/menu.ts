@@ -1,5 +1,5 @@
-import { models } from "../../api/appcenter";
-import {
+import type { models } from "../../api/appcenter";
+import type {
 	CommandParams,
 	CurrentApp,
 	MenuQuickPickItem,
@@ -9,7 +9,7 @@ import {
 } from "../../helpers/interfaces";
 import { FSUtils } from "../../helpers/utils/fsUtils";
 import { Utils } from "../../helpers/utils/utils";
-import { ILogger } from "../log/logHelper";
+import type { ILogger } from "../log/logHelper";
 import {
 	AppCenterBeacons,
 	AppCenterCrashesTabs,
@@ -17,7 +17,7 @@ import {
 	CommandNames,
 } from "../resources/constants";
 import { MenuStrings } from "../resources/menuStrings";
-import { CustomQuickPickItem, VsCodeUI } from "../ui/vscodeUI";
+import { type CustomQuickPickItem, VsCodeUI } from "../ui/vscodeUI";
 
 export abstract class Menu {
 	protected rootPath: string;

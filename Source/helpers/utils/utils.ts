@@ -1,14 +1,18 @@
-import { execSync } from "child_process";
-import * as fs from "fs";
-import * as os from "os";
-import * as path from "path";
+import { execSync } from "node:child_process";
+import * as fs from "node:fs";
+import * as os from "node:os";
+import * as path from "node:path";
 import * as open from "open";
 import * as opener from "opener";
 import AppCenterConfig from "../../data/appCenterConfig";
-import { ILogger } from "../../extension/log/logHelper";
+import type { ILogger } from "../../extension/log/logHelper";
 import { AppCenterOS, Constants } from "../../extension/resources/constants";
 import { LogStrings } from "../../extension/resources/logStrings";
-import { CurrentApp, CurrentAppDeployments, Deployment } from "../interfaces";
+import type {
+	CurrentApp,
+	CurrentAppDeployments,
+	Deployment,
+} from "../interfaces";
 import { SpawnError, cpUtils } from "./cpUtils";
 import { Validators } from "./validators";
 

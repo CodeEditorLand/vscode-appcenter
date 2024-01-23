@@ -1,4 +1,4 @@
-import { AuthProvider } from "./constants";
+import type { AuthProvider } from "./constants";
 
 export class Messages {
 	// #region Progress labels
@@ -193,7 +193,8 @@ The current app is '${currentAppName}'.`;
 		"This command can only be executed from a React Native project. Check out the Output window for more details.";
 	public static NoCurrentAppSetWarning =
 		"You haven't specified an App Center app for this project.";
-	public static UnsupportedOSWarning = `OS must be "android", "ios", or "windows".`;
+	public static UnsupportedOSWarning =
+		`OS must be "android", "ios", or "windows".`;
 	public static NoDeploymentsWarning =
 		"There are no deployments for current app.";
 	public static InvalidCurrentAppNameWarning =

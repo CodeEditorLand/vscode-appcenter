@@ -1,10 +1,13 @@
-import { CommandParams, CurrentApp } from "../../../helpers/interfaces";
+import type { CommandParams, CurrentApp } from "../../../helpers/interfaces";
 import { CodePushMenu } from "../../menu/codePushMenu";
 import { RNCPAppCommand } from "./rncpAppCommand";
 
 /* Internal command */
 export default class ShowMenu extends RNCPAppCommand {
-	constructor(params: CommandParams, private _app: CurrentApp = null) {
+	constructor(
+		params: CommandParams,
+		private _app: CurrentApp = null,
+	) {
 		super(params);
 		this.checkForCodePush = false;
 	}

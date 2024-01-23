@@ -1,16 +1,19 @@
 import { CrashGenerator } from "../../../crashes/crashGenerator";
 import { AppCenterUrlBuilder } from "../../../helpers/appCenterUrlBuilder";
-import {
+import type {
 	AppCenterProfile,
 	CommandParams,
 	CurrentApp,
 } from "../../../helpers/interfaces";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
-import { IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
+import { type IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
 import { Command } from "../command";
 export default class SimulateCrashes extends Command {
-	public constructor(params: CommandParams, private _app: CurrentApp = null) {
+	public constructor(
+		params: CommandParams,
+		private _app: CurrentApp = null,
+	) {
 		super(params);
 	}
 

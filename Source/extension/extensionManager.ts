@@ -1,12 +1,12 @@
-import { Disposable, StatusBarItem } from "vscode";
-import { AppCenterClient, createAppCenterClient } from "../api/appcenter";
-import AppCenterAuth from "../auth/appCenterAuth";
-import VstsAuth from "../auth/vstsAuth";
-import { AppCenterProfile, Profile } from "../helpers/interfaces";
+import type { Disposable, StatusBarItem } from "vscode";
+import { type AppCenterClient, createAppCenterClient } from "../api/appcenter";
+import type AppCenterAuth from "../auth/appCenterAuth";
+import type VstsAuth from "../auth/vstsAuth";
+import type { AppCenterProfile, Profile } from "../helpers/interfaces";
 import { SettingsHelper } from "../helpers/settingsHelper";
 import { Utils } from "../helpers/utils/utils";
 import * as CommandHandlers from "./commandHandlers";
-import { ILogger } from "./log/logHelper";
+import type { ILogger } from "./log/logHelper";
 import { AuthProvider, CommandNames } from "./resources/constants";
 import { Messages } from "./resources/messages";
 import { Strings } from "./resources/strings";

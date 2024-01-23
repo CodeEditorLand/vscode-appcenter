@@ -1,8 +1,8 @@
 // Copyright (c) Microsoft Corporation. All rights reserved.
 // Licensed under the MIT license. See LICENSE file in the project root for details.
 
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import chalk from "chalk";
 import * as mkdirp from "mkdirp";
 import * as xml2js from "xml2js";
@@ -13,7 +13,7 @@ const g2js = require("gradle-to-js/lib/parser");
 // tslint:disable-next-line:no-var-requires
 const properties = require("properties");
 // tslint:disable-next-line:no-var-requires
-const childProcess = require("child_process");
+const childProcess = require("node:child_process");
 import { SettingsHelper } from "../../../../helpers/settingsHelper";
 import * as fileUtils from "../utils/file-utils";
 import { isValidVersion } from "../utils/validation-utils";

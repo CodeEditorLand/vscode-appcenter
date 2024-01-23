@@ -1,5 +1,5 @@
-import { models } from "../../api/appcenter";
-import { CurrentApp, QuickPickAppItem } from "../../helpers/interfaces";
+import type { models } from "../../api/appcenter";
+import type { CurrentApp, QuickPickAppItem } from "../../helpers/interfaces";
 import { SettingsHelper } from "../../helpers/settingsHelper";
 import { Utils } from "../../helpers/utils/utils";
 import { AppCenterOS, Constants } from "../resources/constants";

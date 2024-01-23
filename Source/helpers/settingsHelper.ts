@@ -166,7 +166,7 @@ export class SettingsHelper {
 			const logLevelString: string = ConfigurationReader.readString(
 				workspaceConfiguration.get("appcenter.logLevel"),
 			);
-			return <LogLevel>parseInt(LogLevel[<any>logLevelString], 10);
+			return <LogLevel>Number.parseInt(LogLevel[<any>logLevelString], 10);
 		}
 		return LogLevel.Info;
 	}
@@ -178,7 +178,10 @@ export class SettingsHelper {
 				workspaceConfiguration.get("appcenter.environment"),
 			);
 			return <AppCenterEnvironment>(
-				parseInt(AppCenterEnvironment[<any>appCenterEnvironment], 10)
+				Number.parseInt(
+					AppCenterEnvironment[<any>appCenterEnvironment],
+					10,
+				)
 			);
 		}
 		return AppCenterEnvironment.Prod;

@@ -1,7 +1,7 @@
 import * as vscode from "vscode";
-import AppCenterAuth from "../auth/appCenterAuth";
+import type AppCenterAuth from "../auth/appCenterAuth";
 import { AuthFactory } from "../auth/authFactory";
-import VstsAuth from "../auth/vstsAuth";
+import type VstsAuth from "../auth/vstsAuth";
 import { ExtensionManager } from "./extensionManager";
 import { OutputChannelLogger } from "./log/outputChannelLogger";
 import { AuthProvider, CommandNames } from "./resources/constants";

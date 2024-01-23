@@ -2,10 +2,10 @@ import fetch = require("node-fetch");
 import uuid = require("uuid");
 import { HTTP_METHODS } from "../api/vsts/types";
 import { ConsoleLogger } from "../extension/log/consoleLogger";
-import { ILogger } from "../extension/log/logHelper";
+import type { ILogger } from "../extension/log/logHelper";
 import { LogStrings } from "../extension/resources/logStrings";
-import { CurrentApp } from "../helpers/interfaces";
-import { CrashLogSchema } from "./crashLogSchema";
+import type { CurrentApp } from "../helpers/interfaces";
+import type { CrashLogSchema } from "./crashLogSchema";
 
 export class CrashGenerator {
 	private _appSecret: string;

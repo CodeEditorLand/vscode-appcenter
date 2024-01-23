@@ -1,4 +1,7 @@
-import { Profile, ProfileQuickPickItem } from "../../../helpers/interfaces";
+import type {
+	Profile,
+	ProfileQuickPickItem,
+} from "../../../helpers/interfaces";
 import { AuthProvider } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";

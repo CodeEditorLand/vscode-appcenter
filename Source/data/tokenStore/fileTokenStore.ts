@@ -6,10 +6,10 @@
 // proper security settings.
 //
 
-import * as fs from "fs";
+import * as fs from "node:fs";
 import { toPairs } from "lodash";
 import * as rx from "rx-lite";
-import {
+import type {
 	TokenEntry,
 	TokenKeyType,
 	TokenStore,

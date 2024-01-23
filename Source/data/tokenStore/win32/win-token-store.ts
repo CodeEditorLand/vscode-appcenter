@@ -3,14 +3,14 @@
 // Uses included "creds.exe" program to access the credential store.
 //
 
-import * as childProcess from "child_process";
-import * as path from "path";
-import * as stream from "stream";
+import * as childProcess from "node:child_process";
+import * as path from "node:path";
+import type * as stream from "node:stream";
 import * as es from "event-stream";
-import { Observable, Observer } from "rx-lite";
+import { Observable, type Observer } from "rx-lite";
 import * as parser from "./win-credstore-parser";
 
-import {
+import type {
 	TokenEntry,
 	TokenKeyType,
 	TokenStore,

@@ -1,6 +1,6 @@
 import {
-	AppCenterBeacons,
-	AppCenterDistributionTabs,
+	type AppCenterBeacons,
+	type AppCenterDistributionTabs,
 	AppCenterEnvironment,
 	Constants,
 } from "../extension/resources/constants";

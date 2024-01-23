@@ -1,11 +1,11 @@
-import * as fs from "fs";
-import * as os from "os";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as os from "node:os";
+import * as path from "node:path";
 import { Constants } from "../../extension/resources/constants";
 import { Utils } from "../../helpers/utils/utils";
 import { createFileTokenStore } from "./fileTokenStore";
 import { createOsxTokenStore } from "./osx/osx-token-store";
-import { TokenStore } from "./tokenStore";
+import type { TokenStore } from "./tokenStore";
 import { createWinTokenStore } from "./win32/win-token-store";
 
 export * from "./tokenStore";

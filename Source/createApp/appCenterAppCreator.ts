@@ -1,5 +1,5 @@
-import { AppCenterClient, models } from "../api/appcenter";
-import { ILogger } from "../extension/log/logHelper";
+import type { AppCenterClient, models } from "../api/appcenter";
+import type { ILogger } from "../extension/log/logHelper";
 import {
 	AppCenterOS,
 	AppCenterPlatform,
@@ -8,16 +8,19 @@ import {
 import { LogStrings } from "../extension/resources/logStrings";
 import { Messages } from "../extension/resources/messages";
 import { Strings } from "../extension/resources/strings";
-import { IButtonMessageItem, VsCodeUI } from "../extension/ui/vscodeUI";
+import { type IButtonMessageItem, VsCodeUI } from "../extension/ui/vscodeUI";
 import { AppCenterUrlBuilder } from "../helpers/appCenterUrlBuilder";
-import { CreatedAppFromAppCenter } from "../helpers/interfaces";
+import type { CreatedAppFromAppCenter } from "../helpers/interfaces";
 import { SettingsHelper } from "../helpers/settingsHelper";
 
 export default class AppCenterAppCreator {
 	protected platform: AppCenterPlatform = AppCenterPlatform.ReactNative;
 	protected os: AppCenterOS;
 
-	constructor(private client: AppCenterClient, private logger: ILogger) {}
+	constructor(
+		private client: AppCenterClient,
+		private logger: ILogger,
+	) {}
 
 	public async withBranchConfigurationCreatedAndBuildKickOff(
 		appName: string,

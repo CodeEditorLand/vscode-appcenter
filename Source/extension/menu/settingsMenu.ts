@@ -1,4 +1,7 @@
-import { CommandParams, MenuQuickPickItem } from "../../helpers/interfaces";
+import type {
+	CommandParams,
+	MenuQuickPickItem,
+} from "../../helpers/interfaces";
 import { SettingsHelper } from "../../helpers/settingsHelper";
 import * as Settings from "../commands/settings";
 import { CommandNames } from "../resources/constants";

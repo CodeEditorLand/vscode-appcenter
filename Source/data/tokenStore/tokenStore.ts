@@ -1,4 +1,4 @@
-import { Observable } from "rx-lite";
+import type { Observable } from "rx-lite";
 
 export interface TokenStore {
 	// List all entries in the store for our project

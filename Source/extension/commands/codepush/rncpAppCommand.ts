@@ -1,4 +1,4 @@
-import { CurrentApp } from "../../../helpers/interfaces";
+import type { CurrentApp } from "../../../helpers/interfaces";
 import { Utils } from "../../../helpers/utils/utils";
 import { Messages } from "../../resources/messages";
 import { VsCodeUI } from "../../ui/vscodeUI";

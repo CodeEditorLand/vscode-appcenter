@@ -2,8 +2,8 @@
 // Filter to add command telemetry headers for requests.
 //
 
-import { Readable, Writable } from "stream";
-import { WebResource } from "ms-rest";
+import type { Readable, Writable } from "node:stream";
+import type { WebResource } from "ms-rest";
 import { Constants } from "../../extension/resources/constants";
 
 // tslint:disable:no-var-requires

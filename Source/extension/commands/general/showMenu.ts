@@ -1,4 +1,7 @@
-import { AppCenterProfile, CommandParams } from "../../../helpers/interfaces";
+import type {
+	AppCenterProfile,
+	CommandParams,
+} from "../../../helpers/interfaces";
 import { GeneralMenu } from "../../menu/generalMenu";
 import { Command } from "../command";
 

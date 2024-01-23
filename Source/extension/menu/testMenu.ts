@@ -1,4 +1,4 @@
-import {
+import type {
 	CommandParams,
 	CurrentApp,
 	MenuQuickPickItem,
@@ -8,7 +8,10 @@ import { CommandNames } from "../resources/constants";
 import { Menu, MenuItems } from "./menu";
 
 export class TestMenu extends Menu {
-	constructor(params: CommandParams, private _app: CurrentApp = null) {
+	constructor(
+		params: CommandParams,
+		private _app: CurrentApp = null,
+	) {
 		super(params);
 	}
 

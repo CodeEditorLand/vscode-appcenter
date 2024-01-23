@@ -1,11 +1,11 @@
 import {
-	AppCenterClient,
-	AppCenterClientFactory,
+	type AppCenterClient,
+	type AppCenterClientFactory,
 	createAppCenterClient,
 } from "../../api/appcenter";
-import AppCenterAuth from "../../auth/appCenterAuth";
-import VstsAuth from "../../auth/vstsAuth";
-import {
+import type AppCenterAuth from "../../auth/appCenterAuth";
+import type VstsAuth from "../../auth/vstsAuth";
+import type {
 	AppCenterProfile,
 	CommandParams,
 	CurrentApp,
@@ -13,9 +13,9 @@ import {
 } from "../../helpers/interfaces";
 import { SettingsHelper } from "../../helpers/settingsHelper";
 import { Utils } from "../../helpers/utils/utils";
-import { ExtensionManager } from "../extensionManager";
-import { ILogger } from "../log/logHelper";
-import { AppCenterOS } from "../resources/constants";
+import type { ExtensionManager } from "../extensionManager";
+import type { ILogger } from "../log/logHelper";
+import type { AppCenterOS } from "../resources/constants";
 import { LogStrings } from "../resources/logStrings";
 import { Messages } from "../resources/messages";
 import { VsCodeUI } from "../ui/vscodeUI";

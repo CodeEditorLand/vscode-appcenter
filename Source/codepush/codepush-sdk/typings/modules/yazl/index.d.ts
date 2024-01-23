@@ -1,6 +1,6 @@
 declare module "yazl" {
-	import * as events from "events";
-	import * as stream from "stream";
+	import * as events from "node:events";
+	import type * as stream from "node:stream";
 
 	export interface IDosDateTime {
 		date: number;

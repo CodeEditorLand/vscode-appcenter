@@ -1,7 +1,7 @@
-import { models } from "../../api/appcenter";
+import type { models } from "../../api/appcenter";
 import AppCenterAppBuilder from "../../createApp/appCenterAppBuilder";
 import { AppCenterUrlBuilder } from "../../helpers/appCenterUrlBuilder";
-import {
+import type {
 	CreatedAppFromAppCenter,
 	Profile,
 	QuickPickAppItem,
@@ -15,8 +15,8 @@ import { LogStrings } from "../resources/logStrings";
 import { Messages } from "../resources/messages";
 import { Strings } from "../resources/strings";
 import {
-	CustomQuickPickItem,
-	IButtonMessageItem,
+	type CustomQuickPickItem,
+	type IButtonMessageItem,
 	VsCodeUI,
 } from "../ui/vscodeUI";
 import { Command } from "./command";

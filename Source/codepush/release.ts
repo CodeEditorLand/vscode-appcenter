@@ -1,9 +1,14 @@
-import { AppCenterClient, models } from "../api/appcenter";
-import { ILogger, LogLevel } from "../extension/log/logHelper";
+import type { AppCenterClient, models } from "../api/appcenter";
+import { type ILogger, LogLevel } from "../extension/log/logHelper";
 import { LogStrings } from "../extension/resources/logStrings";
-import { ICodePushReleaseParams } from "../helpers/interfaces";
+import type { ICodePushReleaseParams } from "../helpers/interfaces";
 import { SettingsHelper } from "../helpers/settingsHelper";
-import { CommandResult, ErrorCodes, failure, success } from "./commandResult";
+import {
+	type CommandResult,
+	ErrorCodes,
+	failure,
+	success,
+} from "./commandResult";
 import { appCenterCodePushRelease } from "./release-strategy/appcenterCodePushRelease";
 import { legacyCodePushRelease } from "./release-strategy/legacyCodePushRelease";
 

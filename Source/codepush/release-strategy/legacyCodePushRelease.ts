@@ -1,7 +1,7 @@
-import { models } from "../../api/appcenter";
-import { ICodePushReleaseParams } from "../../helpers/interfaces";
+import type { models } from "../../api/appcenter";
+import type { ICodePushReleaseParams } from "../../helpers/interfaces";
 import LegacyCodePushServiceClient, {
-	PackageInfo,
+	type PackageInfo,
 } from "./legacyCodePushService";
 
 export function legacyCodePushRelease(

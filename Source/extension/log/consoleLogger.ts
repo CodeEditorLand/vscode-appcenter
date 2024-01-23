@@ -1,6 +1,6 @@
 import {
 	AppCenterExtensionLogPrefix,
-	ILogger,
+	type ILogger,
 	LogHelper,
 	LogLevel,
 } from "./logHelper";

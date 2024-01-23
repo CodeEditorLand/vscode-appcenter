@@ -1,8 +1,8 @@
 import { tokenStore } from "../data/tokenStore";
 import { fileTokenStore } from "../data/tokenStore";
-import { ILogger } from "../extension/log/logHelper";
+import type { ILogger } from "../extension/log/logHelper";
 import { LogStrings } from "../extension/resources/logStrings";
-import { LoginInfo, Profile, ProfileStorage } from "../helpers/interfaces";
+import type { LoginInfo, Profile, ProfileStorage } from "../helpers/interfaces";
 
 export default abstract class Auth<T extends Profile> {
 	public constructor(

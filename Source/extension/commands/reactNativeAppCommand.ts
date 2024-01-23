@@ -1,6 +1,6 @@
 import { Md5 } from "ts-md5/dist/md5";
-import { models } from "../../api/appcenter";
-import {
+import type { models } from "../../api/appcenter";
+import type {
 	AppCenterProfile,
 	CommandParams,
 	CurrentApp,

@@ -1,5 +1,5 @@
-import { models } from "../../../api/appcenter";
-import {
+import type { models } from "../../../api/appcenter";
+import type {
 	CurrentApp,
 	CurrentAppDeployments,
 	Deployment,
@@ -8,7 +8,7 @@ import {
 import { Utils } from "../../../helpers/utils/utils";
 import { AppCenterPortalMenu } from "../../menu/appCenterPortalMenu";
 import {
-	AppCenterOS,
+	type AppCenterOS,
 	CommandNames,
 	Constants,
 } from "../../resources/constants";

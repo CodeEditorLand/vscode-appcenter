@@ -1,6 +1,6 @@
 import AppCenterAppBuilder from "../../../createApp/appCenterAppBuilder";
 import { AppCenterUrlBuilder } from "../../../helpers/appCenterUrlBuilder";
-import {
+import type {
 	CreatedAppFromAppCenter,
 	QuickPickAppItem,
 } from "../../../helpers/interfaces";
@@ -9,7 +9,7 @@ import * as Menu from "../../menu/menu";
 import { CommandNames } from "../../resources/constants";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
-import { IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
+import { type IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
 import { CreateAppCommand } from "../createAppCommand";
 
 export enum CreateNewAppOption {

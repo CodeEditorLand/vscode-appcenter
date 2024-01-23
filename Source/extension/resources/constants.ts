@@ -78,50 +78,72 @@ export class Constants {
 // tslint:disable:max-classes-per-file
 export class CommandNames {
 	public static CommandPrefix = `${Constants.ExtensionCommandPrefix}.`;
-	public static AppCenterPortal = `${CommandNames.CommandPrefix}showPortalMenu`;
+	public static AppCenterPortal =
+		`${CommandNames.CommandPrefix}showPortalMenu`;
 	public static WhoAmI = `${CommandNames.CommandPrefix}whoAmI`;
 	public static Login = `${CommandNames.CommandPrefix}login`;
 	public static ShowMenu = `${CommandNames.CommandPrefix}menu`;
 	public static Start = `${CommandNames.CommandPrefix}start`;
 	public static GetCurrentApp = `${CommandNames.CommandPrefix}getCurrentApp`;
 	public static SetCurrentApp = `${CommandNames.CommandPrefix}setCurrentApp`;
-	public static SimulateCrashes = `${CommandNames.CommandPrefix}simulateCrashes`;
+	public static SimulateCrashes =
+		`${CommandNames.CommandPrefix}simulateCrashes`;
 	public static InstallSDK = `${CommandNames.CommandPrefix}installSDK`;
 	public static CreateNewApp = `${CommandNames.CommandPrefix}createNewApp`;
 
 	public static Settings = class {
-		public static ShowMenu = `${CommandNames.CommandPrefix}settings.showMenu`;
-		public static LoginToAnotherAccount = `${CommandNames.CommandPrefix}settings.loginToAnotherAccount`;
-		public static SwitchAccount = `${CommandNames.CommandPrefix}settings.switchAccount`;
+		public static ShowMenu =
+			`${CommandNames.CommandPrefix}settings.showMenu`;
+		public static LoginToAnotherAccount =
+			`${CommandNames.CommandPrefix}settings.loginToAnotherAccount`;
+		public static SwitchAccount =
+			`${CommandNames.CommandPrefix}settings.switchAccount`;
 		public static Logout = `${CommandNames.CommandPrefix}settings.logout`;
 
-		public static LoginVsts = `${CommandNames.CommandPrefix}settings.vsts.login`;
-		public static SwitchAccountVsts = `${CommandNames.CommandPrefix}settings.vsts.switchAccount`;
-		public static LogoutVsts = `${CommandNames.CommandPrefix}settings.vsts.logout`;
-		public static ShowStatusBar = `${CommandNames.CommandPrefix}settings.showStatusBar`;
-		public static HideStatusBar = `${CommandNames.CommandPrefix}settings.hideStatusBar`;
+		public static LoginVsts =
+			`${CommandNames.CommandPrefix}settings.vsts.login`;
+		public static SwitchAccountVsts =
+			`${CommandNames.CommandPrefix}settings.vsts.switchAccount`;
+		public static LogoutVsts =
+			`${CommandNames.CommandPrefix}settings.vsts.logout`;
+		public static ShowStatusBar =
+			`${CommandNames.CommandPrefix}settings.showStatusBar`;
+		public static HideStatusBar =
+			`${CommandNames.CommandPrefix}settings.hideStatusBar`;
 	};
 
 	public static CreateApp = class {
-		public static CommandName = `${CommandNames.CommandPrefix}appcenter.createNewApp`;
-		public static Android = `${CommandNames.CommandPrefix}appcenter.createNewApp.android`;
-		public static IOS = `${CommandNames.CommandPrefix}appcenter.createNewApp.ios`;
-		public static Both = `${CommandNames.CommandPrefix}appcenter.createNewApp.both`;
+		public static CommandName =
+			`${CommandNames.CommandPrefix}appcenter.createNewApp`;
+		public static Android =
+			`${CommandNames.CommandPrefix}appcenter.createNewApp.android`;
+		public static IOS =
+			`${CommandNames.CommandPrefix}appcenter.createNewApp.ios`;
+		public static Both =
+			`${CommandNames.CommandPrefix}appcenter.createNewApp.both`;
 	};
 
 	public static CodePush = class {
-		public static SetCurrentDeployment = `${CommandNames.CommandPrefix}codePush.setCurrentDeployment`;
-		public static ReleaseReact = `${CommandNames.CommandPrefix}codePush.releaseReact`;
-		public static SwitchMandatoryPropForRelease = `${CommandNames.CommandPrefix}codePush.switchMandatoryPropForRelease`;
-		public static SetTargetBinaryVersion = `${CommandNames.CommandPrefix}codePush.setTargetBinaryVersion`;
-		public static LinkCodePush = `${CommandNames.CommandPrefix}codePush.linkCodePush`;
+		public static SetCurrentDeployment =
+			`${CommandNames.CommandPrefix}codePush.setCurrentDeployment`;
+		public static ReleaseReact =
+			`${CommandNames.CommandPrefix}codePush.releaseReact`;
+		public static SwitchMandatoryPropForRelease =
+			`${CommandNames.CommandPrefix}codePush.switchMandatoryPropForRelease`;
+		public static SetTargetBinaryVersion =
+			`${CommandNames.CommandPrefix}codePush.setTargetBinaryVersion`;
+		public static LinkCodePush =
+			`${CommandNames.CommandPrefix}codePush.linkCodePush`;
 	};
 
 	public static Test = class {
 		public static ShowMenu = `${CommandNames.CommandPrefix}test.showMenu`;
-		public static RunUITests = `${CommandNames.CommandPrefix}test.runUITests`;
-		public static RunUITestsAsync = `${CommandNames.CommandPrefix}test.runUITestsAsync`;
-		public static ViewResults = `${CommandNames.CommandPrefix}test.viewResults`;
+		public static RunUITests =
+			`${CommandNames.CommandPrefix}test.runUITests`;
+		public static RunUITestsAsync =
+			`${CommandNames.CommandPrefix}test.runUITestsAsync`;
+		public static ViewResults =
+			`${CommandNames.CommandPrefix}test.viewResults`;
 	};
 }
 

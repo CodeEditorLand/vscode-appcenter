@@ -1,10 +1,10 @@
-import { VSTSGitRepository, VSTSProject } from "../../../api/vsts/types";
+import type { VSTSGitRepository, VSTSProject } from "../../../api/vsts/types";
 import { VSTSProvider } from "../../../api/vsts/vstsProvider";
 import Auth from "../../../auth/auth";
 import AppCenterAppBuilder from "../../../createApp/appCenterAppBuilder";
 import AppCenterAppCreator from "../../../createApp/appCenterAppCreator";
-import AppCenterConfig from "../../../data/appCenterConfig";
-import {
+import type AppCenterConfig from "../../../data/appCenterConfig";
+import type {
 	CreatedAppFromAppCenter,
 	Deployment,
 	QuickPickAppItem,
@@ -21,7 +21,7 @@ import { AppCenterOS, Constants } from "../../resources/constants";
 import { LogStrings } from "../../resources/logStrings";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
-import { IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
+import { type IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
 import { CreateAppCommand } from "../createAppCommand";
 import { LoginToVsts } from "../settings";
 import { CreateNewAppOption } from "./createNewApp";

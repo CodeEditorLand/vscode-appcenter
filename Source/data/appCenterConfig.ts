@@ -1,7 +1,7 @@
-import * as fs from "fs";
-import * as path from "path";
+import * as fs from "node:fs";
+import * as path from "node:path";
 import * as mkdirp from "mkdirp";
-import { ILogger } from "../extension/log/logHelper";
+import type { ILogger } from "../extension/log/logHelper";
 import { LogStrings } from "../extension/resources/logStrings";
 // tslint:disable-next-line:no-var-requires
 const jsxml = require("node-jsxml");

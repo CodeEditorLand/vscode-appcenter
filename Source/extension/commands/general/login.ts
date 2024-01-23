@@ -1,12 +1,12 @@
-import * as os from "os";
+import * as os from "node:os";
 import * as qs from "qs";
-import { Profile } from "../../../helpers/interfaces";
+import type { Profile } from "../../../helpers/interfaces";
 import { SettingsHelper } from "../../../helpers/settingsHelper";
 import { AuthProvider } from "../../resources/constants";
 import { LogStrings } from "../../resources/logStrings";
 import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
-import { IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
+import { type IButtonMessageItem, VsCodeUI } from "../../ui/vscodeUI";
 import { Command } from "../command";
 
 export default class Login extends Command {

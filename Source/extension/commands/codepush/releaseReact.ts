@@ -1,4 +1,4 @@
-import * as path from "path";
+import * as path from "node:path";
 import Auth from "../../../auth/auth";
 import { codePushRelease } from "../../../codepush";
 import {
@@ -6,8 +6,8 @@ import {
 	reactNative,
 	updateContents,
 } from "../../../codepush/codepush-sdk/src";
-import { BundleConfig } from "../../../codepush/codepush-sdk/src/react-native/react-native-utils";
-import {
+import type { BundleConfig } from "../../../codepush/codepush-sdk/src/react-native/react-native-utils";
+import type {
 	AppCenterProfile,
 	CommandParams,
 	CurrentApp,
@@ -23,7 +23,10 @@ import { VsCodeUI } from "../../ui/vscodeUI";
 import { RNCPAppCommand } from "./rncpAppCommand";
 
 export default class ReleaseReact extends RNCPAppCommand {
-	constructor(params: CommandParams, private _app: CurrentApp = null) {
+	constructor(
+		params: CommandParams,
+		private _app: CurrentApp = null,
+	) {
 		super(params);
 	}
 

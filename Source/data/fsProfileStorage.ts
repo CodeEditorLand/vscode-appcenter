@@ -1,6 +1,6 @@
-import { ILogger } from "../extension/log/logHelper";
+import type { ILogger } from "../extension/log/logHelper";
 import { LogStrings } from "../extension/resources/logStrings";
-import { Profile, ProfileStorage } from "../helpers/interfaces";
+import type { Profile, ProfileStorage } from "../helpers/interfaces";
 import { FSUtils } from "../helpers/utils/fsUtils";
 
 export default class FsProfileStorage<T extends Profile>
@@ -9,7 +9,10 @@ export default class FsProfileStorage<T extends Profile>
 	protected profiles: T[];
 	protected indexOfActiveProfile: number | null;
 
-	constructor(protected storageFilePath: string, protected logger: ILogger) {
+	constructor(
+		protected storageFilePath: string,
+		protected logger: ILogger,
+	) {
 		this.profiles = [];
 	}
 

@@ -1,6 +1,6 @@
 import { VSTSProvider } from "../../../api/vsts/vstsProvider";
 import Auth from "../../../auth/auth";
-import { VstsLoginInfo, VstsProfile } from "../../../helpers/interfaces";
+import type { VstsLoginInfo, VstsProfile } from "../../../helpers/interfaces";
 import { AuthProvider } from "../../resources/constants";
 import { LogStrings } from "../../resources/logStrings";
 import { Messages } from "../../resources/messages";

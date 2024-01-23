@@ -1,4 +1,4 @@
-import { IncomingMessage } from "http";
+import type { IncomingMessage } from "node:http";
 
 import { AppCenterClientCredentials } from "./appcenter-client-credentials";
 import AppCenterClient = require("./generated/appCenterClient");
@@ -7,11 +7,11 @@ import { userAgentFilter } from "./user-agent-filter";
 // tslint:disable-next-line:no-var-requires
 const BasicAuthenticationCredentials =
 	require("ms-rest").BasicAuthenticationCredentials;
-import { ServiceCallback, ServiceError, WebResource } from "ms-rest";
+import type { ServiceCallback, ServiceError, WebResource } from "ms-rest";
 
 import Auth from "../../auth/auth";
 import { ErrorCodes } from "../../codepush/commandResult";
-import { Profile } from "../../helpers/interfaces";
+import type { Profile } from "../../helpers/interfaces";
 import { SettingsHelper } from "../../helpers/settingsHelper";
 import { telemetryFilter } from "./telemetry-filter";
 

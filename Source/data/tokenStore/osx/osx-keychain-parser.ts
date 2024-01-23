@@ -2,7 +2,7 @@
 // Parser for the output of the security(1) command line.
 //
 
-import * as stream from "stream";
+import * as stream from "node:stream";
 import * as es from "event-stream";
 
 //
