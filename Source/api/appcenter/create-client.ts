@@ -1,4 +1,4 @@
-import type { IncomingMessage } from "node:http";
+import type { IncomingMessage } from "http";
 
 import { AppCenterClientCredentials } from "./appcenter-client-credentials";
 import AppCenterClient = require("./generated/appCenterClient");

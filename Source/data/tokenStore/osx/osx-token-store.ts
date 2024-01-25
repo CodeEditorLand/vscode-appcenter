@@ -1,7 +1,7 @@
 // Token store implementation over OSX keychain
 
-import * as childProcess from "node:child_process";
-import type * as stream from "node:stream";
+import * as childProcess from "child_process";
+import type * as stream from "stream";
 import * as es from "event-stream";
 //
 // Access to the OSX keychain - list, add, get password, remove

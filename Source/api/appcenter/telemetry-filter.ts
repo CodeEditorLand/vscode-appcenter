@@ -2,7 +2,7 @@
 // Filter to add command telemetry headers for requests.
 //
 
-import type { Readable, Writable } from "node:stream";
+import type { Readable, Writable } from "stream";
 import type { WebResource } from "ms-rest";
 import { Constants } from "../../extension/resources/constants";
 

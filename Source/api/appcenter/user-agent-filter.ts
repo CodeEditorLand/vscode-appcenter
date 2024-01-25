@@ -1,4 +1,4 @@
-import { platform, release } from "node:os";
+import { platform, release } from "os";
 import type { WebResource } from "ms-rest";
 // tslint:disable-next-line:no-var-requires
 const { version: cliVersion } = require("../../../package.json");

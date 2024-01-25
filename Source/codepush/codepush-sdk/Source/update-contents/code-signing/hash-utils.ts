@@ -6,10 +6,10 @@
  * integrity checks) and Management SDK (for end-to-end code signing), please keep them in sync.
  */
 
-import * as crypto from "node:crypto";
-import * as fs from "node:fs";
-import * as path from "node:path";
-import type * as stream from "node:stream";
+import * as crypto from "crypto";
+import * as fs from "fs";
+import * as path from "path";
+import type * as stream from "stream";
 import * as _ from "lodash";
 import * as fileUtils from "../../utils/file-utils";
 

@@ -2,7 +2,7 @@
 // Parser for the output of the creds.exe helper program.
 //
 
-import { Transform } from "node:stream";
+import { Transform } from "stream";
 import { pipeline, split } from "event-stream";
 
 //

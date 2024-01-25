@@ -1,4 +1,4 @@
-import * as fs from "node:fs";
+import * as fs from "fs";
 import * as request from "request";
 import type { models } from "../../api/appcenter";
 import type { CurrentApp } from "../../helpers/interfaces";

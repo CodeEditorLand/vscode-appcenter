@@ -1,4 +1,4 @@
-import * as fs from "node:fs";
+import * as fs from "fs";
 import type { AppCenterClient } from "../../api/appcenter";
 import type { ICodePushReleaseParams } from "../../helpers/interfaces";
 

@@ -6,7 +6,7 @@
 // proper security settings.
 //
 
-import * as fs from "node:fs";
+import * as fs from "fs";
 import { toPairs } from "lodash";
 import * as rx from "rx-lite";
 import type {

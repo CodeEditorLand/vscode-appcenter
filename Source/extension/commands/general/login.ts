@@ -1,4 +1,4 @@
-import * as os from "node:os";
+import * as os from "os";
 import * as qs from "qs";
 import type { Profile } from "../../../helpers/interfaces";
 import { SettingsHelper } from "../../../helpers/settingsHelper";

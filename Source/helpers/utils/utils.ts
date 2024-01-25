@@ -1,7 +1,7 @@
-import { execSync } from "node:child_process";
-import * as fs from "node:fs";
-import * as os from "node:os";
-import * as path from "node:path";
+import { execSync } from "child_process";
+import * as fs from "fs";
+import * as os from "os";
+import * as path from "path";
 import * as open from "open";
 import * as opener from "opener";
 import AppCenterConfig from "../../data/appCenterConfig";

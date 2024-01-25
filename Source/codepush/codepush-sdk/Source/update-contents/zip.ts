@@ -4,8 +4,8 @@
 // tslint:disable-next-line:no-reference
 /// <reference path="../../typings/index.d.ts" />
 
-import * as fs from "node:fs";
-import * as path from "node:path";
+import * as fs from "fs";
+import * as path from "path";
 import * as yazl from "yazl";
 import * as fileUtils from "../utils/file-utils";
 

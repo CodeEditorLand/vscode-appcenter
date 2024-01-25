@@ -1,4 +1,4 @@
-import * as path from "node:path";
+import * as path from "path";
 import Auth from "../../../auth/auth";
 import { codePushRelease } from "../../../codepush";
 import {

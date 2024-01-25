@@ -1,5 +1,5 @@
-import * as cp from "node:child_process";
-import * as os from "node:os";
+import * as cp from "child_process";
+import * as os from "os";
 import type { ILogger } from "../../extension/log/logHelper";
 import type { ReactNativeLinkInputValue } from "../interfaces";
 
