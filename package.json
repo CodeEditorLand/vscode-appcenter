@@ -1,14 +1,32 @@
 {
-	"activationEvents": [
-		"*"
-	],
-	"author": {
-		"email": "Hello@Playform.Cloud",
-		"name": "Playform",
-		"url": "https://playform.cloud"
-	},
+	"name": "vscode-appcenter",
+	"displayName": "App Center",
+	"version": "0.0.1",
+	"private": false,
+	"description": "Visual Studio App Center tools and services.",
+	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
 	"bugs": {
 		"url": "https://github.com/CodeEditorLand/Foundation/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
+	},
+	"license": "SEE LICENSE IN LICENSE",
+	"author": {
+		"name": "Playform",
+		"email": "Hello@Playform.Cloud",
+		"url": "https://playform.cloud"
+	},
+	"type": "module",
+	"main": "./src/extension/extension",
+	"scripts": {
+		"compile": "tsc -p ./",
+		"postinstall": "node ./node_modules/vscode/bin/install",
+		"integrationTest": "node ./node_modules/vscode/bin/test",
+		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
+		"vscode:prepublish": "gulp",
+		"watch": "tsc -watch -p ./"
 	},
 	"contributes": {
 		"commands": [
@@ -263,6 +281,9 @@
 			"type": "object"
 		}
 	},
+	"activationEvents": [
+		"*"
+	],
 	"dependencies": {
 		"btoa": "1.2.1",
 		"chalk": "5.3.0",
@@ -298,7 +319,6 @@
 		"xml2js": "0.6.2",
 		"yazl": "2.5.1"
 	},
-	"description": "Visual Studio App Center tools and services.",
 	"devDependencies": {
 		"@types/mocha": "10.0.6",
 		"@types/node": "20.11.30",
@@ -310,31 +330,11 @@
 		"mock-fs": "5.2.0",
 		"tslint-microsoft-contrib": "5.0.3",
 		"typescript": "5.4.2",
-		"typescript-esbuild": "",
+		"typescript-esbuild": "0.4.5",
 		"vscode": "1.1.21"
 	},
-	"displayName": "App Center",
-	"homepage": "https://github.com/CodeEditorLand/Foundation#readme",
-	"icon": "images/icon.png",
-	"license": "SEE LICENSE IN LICENSE",
-	"main": "./src/extension/extension",
-	"name": "vscode-appcenter",
-	"private": false,
 	"publishConfig": {
 		"access": "public"
 	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/CodeEditorLand/Foundation.git"
-	},
-	"scripts": {
-		"compile": "tsc -p ./",
-		"integrationTest": "node ./node_modules/vscode/bin/test",
-		"postinstall": "node ./node_modules/vscode/bin/install",
-		"prepublishOnly": "TypeScriptESBuild 'Source/**/*.ts'",
-		"vscode:prepublish": "gulp",
-		"watch": "tsc -watch -p ./"
-	},
-	"type": "module",
-	"version": "0.0.1"
+	"icon": "images/icon.png"
 }
