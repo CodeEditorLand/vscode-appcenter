@@ -1,27 +1,7 @@
 {
 	"name": "vscode-appcenter",
 	"displayName": "App Center",
-	"version": "0.0.1",
-	"private": false,
 	"description": "Visual Studio App Center tools and services.",
-	"keywords": [
-		"land"
-	],
-	"homepage": "HTTPS://GitHub.Com/CodeEditorLand/LandAppcenter#readme",
-	"bugs": {
-		"url": "HTTPS://GitHub.Com/CodeEditorLand/LandAppcenter/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+HTTPS://github.com/CodeEditorLand/LandAppcenter.git"
-	},
-	"license": "SEE LICENSE IN LICENSE",
-	"author": {
-		"name": "🛬 Land —",
-		"email": "Land@PlayForm.Cloud",
-		"url": "HTTPS://Land.PlayForm.Cloud"
-	},
-	"type": "module",
 	"main": "./src/extension/extension",
 	"scripts": {
 		"Document": "Document 'Source/**/*.ts'",
@@ -320,13 +300,9 @@
 	},
 	"devDependencies": {
 		"@playform/build": "0.0.7",
-		"@playform/document": "0.0.6",
 		"@types/node": "20.12.10",
 		"@types/rimraf": "3.0.2",
 		"mock-fs": "5.2.0"
-	},
-	"publishConfig": {
-		"access": "public"
 	},
 	"icon": "images/icon.png"
 }
