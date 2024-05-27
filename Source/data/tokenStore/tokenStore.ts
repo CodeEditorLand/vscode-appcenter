@@ -1,28 +1,28 @@
-import type { Observable } from "rx-lite";
+import { Observable } from "rx-lite";
 
 export interface TokenStore {
-	// List all entries in the store for our project
-	list(): Observable<TokenEntry>;
+    // List all entries in the store for our project
+    list(): Observable<TokenEntry>;
 
-	// Get a specific token
-	get(key: TokenKeyType): Promise<TokenEntry | null>;
+    // Get a specific token
+    get(key: TokenKeyType): Promise<TokenEntry | null>;
 
-	// Add or update a token
-	set(key: TokenKeyType, token: TokenValueType): Promise<void>;
+    // Add or update a token
+    set(key: TokenKeyType, token: TokenValueType): Promise<void>;
 
-	// Remove a token
-	remove(key: TokenKeyType): Promise<void>;
-}
+    // Remove a token
+    remove(key: TokenKeyType): Promise<void> ;
+  }
 
 // Information stored about in each token
 export interface TokenEntry {
-	key: TokenKeyType;
-	accessToken: TokenValueType;
+    key: TokenKeyType;
+    accessToken: TokenValueType;
 }
 
 export interface TokenValueType {
-	id?: string;
-	token: string;
+    id?: string;
+    token: string;
 }
 
 //

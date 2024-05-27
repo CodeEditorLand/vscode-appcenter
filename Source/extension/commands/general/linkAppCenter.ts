@@ -1,92 +1,65 @@
 import { Utils } from "../../../helpers/utils/utils";
 import AppCenterLinker from "../../../link/appCenterLinker";
-import { AppCenterOS, Constants } from "../../resources/constants";
-import { Messages } from "../../resources/messages";
 import { Strings } from "../../resources/strings";
-import { VsCodeUI } from "../../ui/vscodeUI";
 import { LinkCommand } from "../linkCommand";
+import { VsCodeUI } from "../../ui/vscodeUI";
+import { Constants, AppCenterOS } from "../../resources/constants";
+import { Messages } from "../../resources/messages";
 
 export default class LinkAppCenter extends LinkCommand {
-	public async run(): Promise<void> {
-		if (!(await super.run())) {
-			return;
-		}
 
-		if (!Utils.isReactNativeProject(this.logger, this.rootPath, false)) {
-			VsCodeUI.ShowWarningMessage(Messages.NotReactProjectWarning);
-			return;
-		}
+    public async run(): Promise<void> {
+        if (!await super.run()) {
+            return;
+        }
 
-		this.showAppsQuickPick(
-			this.CachedAllApps,
-			false,
-			true,
-			false,
-			Strings.ProvideSecondAppHint,
-		);
-		this.refreshCachedAppsAndRepaintQuickPickIfNeeded(
-			true,
-			false,
-			false,
-			Strings.ProvideFirstAppHint,
-		);
-	}
+        if (!Utils.isReactNativeProject(this.logger, this.rootPath, false)) {
+            VsCodeUI.ShowWarningMessage(Messages.NotReactProjectWarning);
+            return;
+        }
 
-	protected async linkApps(): Promise<boolean> {
-		const appCenterLinker: AppCenterLinker = new AppCenterLinker(
-			this.logger,
-			this.rootPath,
-		);
+        this.showAppsQuickPick(this.CachedAllApps, false, true, false, Strings.ProvideSecondAppHint);
+        this.refreshCachedAppsAndRepaintQuickPickIfNeeded(true, false, false, Strings.ProvideFirstAppHint);
+    }
 
-		if (
-			!Utils.isReactNativeAppCenterProject(
-				this.logger,
-				this.rootPath,
-				false,
-			)
-		) {
-			const appCenterInstalled: boolean =
-				await appCenterLinker.installAppcenter();
-			if (!appCenterInstalled) {
-				VsCodeUI.ShowErrorMessage(Messages.FailedToLinkAppCenter);
-				return void 0;
-			}
-		}
+    protected async linkApps(): Promise<boolean> {
+        const appCenterLinker: AppCenterLinker = new AppCenterLinker(this.logger, this.rootPath);
 
-		this.removeAppSecretKeys();
+        if (!Utils.isReactNativeAppCenterProject(this.logger, this.rootPath, false)) {
+            const appCenterInstalled: boolean = await appCenterLinker.installAppcenter();
+            if (!appCenterInstalled) {
+                VsCodeUI.ShowErrorMessage(Messages.FailedToLinkAppCenter);
+                return void 0;
+            }
+        }
 
-		return await appCenterLinker.linkAppCenter(this.pickedApps);
-	}
+        this.removeAppSecretKeys();
 
-	private removeAppSecretKeys() {
-		const appName: string = Utils.getAppName(this.rootPath);
+        return await appCenterLinker.linkAppCenter(this.pickedApps);
+    }
 
-		const appCenterConfig = Utils.createAppCenterConfigFrom(
-			appName,
-			this.rootPath,
-			this.logger,
-		);
+    private removeAppSecretKeys() {
+        const appName: string = Utils.getAppName(this.rootPath);
 
-		const hasAndroidApps: boolean = this.pickedApps.some((app) => {
-			return app.os.toLowerCase() === AppCenterOS.Android.toLowerCase();
-		});
+        const appCenterConfig = Utils.createAppCenterConfigFrom(appName, this.rootPath, this.logger);
 
-		const hasiOSApps: boolean = this.pickedApps.some((app) => {
-			return app.os.toLowerCase() === AppCenterOS.iOS.toLowerCase();
-		});
+        const hasAndroidApps: boolean = this.pickedApps.some(app => {
+            return app.os.toLowerCase() === AppCenterOS.Android.toLowerCase();
+        });
 
-		if (hasiOSApps) {
-			appCenterConfig.deleteConfigPlistValueByKey(
-				Constants.IOSAppSecretKey,
-			);
-			appCenterConfig.saveConfigPlist();
-		}
+        const hasiOSApps: boolean = this.pickedApps.some(app => {
+            return app.os.toLowerCase() === AppCenterOS.iOS.toLowerCase();
+        });
 
-		if (hasAndroidApps) {
-			appCenterConfig.deleteAndroidAppCenterConfigValueByKey(
-				Constants.AndroidAppSecretKey,
-			);
-			appCenterConfig.saveAndroidAppCenterConfig();
-		}
-	}
+        if (hasiOSApps) {
+            appCenterConfig.deleteConfigPlistValueByKey(Constants.IOSAppSecretKey);
+            appCenterConfig.saveConfigPlist();
+        }
+
+        if (hasAndroidApps) {
+            appCenterConfig.deleteAndroidAppCenterConfigValueByKey(Constants.AndroidAppSecretKey);
+            appCenterConfig.saveAndroidAppCenterConfig();
+        }
+    }
+
 }
