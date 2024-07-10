@@ -283,7 +283,7 @@
 		"opener": "1.5.2",
 		"plist": "3.1.0",
 		"properties": "1.2.1",
-		"rimraf": "5.0.7",
+		"rimraf": "6.0.0",
 		"run-sequence": "2.2.1",
 		"rx-lite": "4.0.8",
 		"sandbox": "0.8.6",
@@ -297,7 +297,7 @@
 		"yazl": "2.5.1"
 	},
 	"devDependencies": {
-		"@types/node": "20.14.9",
+		"@types/node": "20.14.10",
 		"@types/rimraf": "3.0.2",
 		"mock-fs": "5.2.0"
 	},
