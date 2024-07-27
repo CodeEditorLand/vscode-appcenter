@@ -276,7 +276,7 @@
 		"mkdirp": "0.5.1",
 		"moment": "2.22.1",
 		"ms-rest": "2.3.7",
-		"node-fetch": "2.1.2",
+		"node-fetch": "2.6.7",
 		"node-jsxml": "0.9.0",
 		"node-noop": "1.0.0",
 		"open": "0.0.5",
