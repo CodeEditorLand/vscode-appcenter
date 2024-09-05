@@ -290,7 +290,7 @@
 	},
 	"description": "Visual Studio App Center tools and services.",
 	"devDependencies": {
-		"@types/node": "22.5.3",
+		"@types/node": "22.5.4",
 		"@types/rimraf": "4.0.5",
 		"mock-fs": "5.2.0"
 	},
