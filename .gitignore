@@ -7,7 +7,6 @@ coverage/
 out
 src/**/nodeDebugLocation.json
 
-# Compiled files
 src/**/*.js
 !src/api/appcenter/generated/**/*.js
 test/**/*.js
