@@ -1,0 +1,167 @@
+<!DOCTYPE html><html class="default" lang="en"><head><meta charset="utf-8"/><meta name="keywords" content="@playform/document"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>reactNativeAppCodePush</title><meta name="description" content="Documentation for reactNativeAppCodePush"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="assets/style.css"/><link rel="stylesheet" href="assets/highlight.css"/><link rel="stylesheet" href="assets/custom.css"/><script defer src="assets/main.js"></script><script async src="assets/icons.js" id="tsd-icons-script"></script><script async src="assets/search.js" id="tsd-search-script"></script><script async src="assets/navigation.js" id="tsd-nav-script"></script></head><body><script>document.documentElement.dataset.theme = localStorage.getItem("tsd-theme") || "os";document.body.style.display="none";setTimeout(() => app?app.showPage():document.body.style.removeProperty("display"),500)</script><header class="tsd-page-toolbar"><div class="tsd-toolbar-contents container"><div class="table-cell" id="tsd-search" data-base="."><div class="field"><label for="tsd-search-field" class="tsd-widget tsd-toolbar-icon search no-caption"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-search"></use></svg></label><input type="text" id="tsd-search-field" aria-label="Search"/></div><div class="field"><div id="tsd-toolbar-links"></div></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="index.html" class="title">reactNativeAppCodePush</a></div><div class="table-cell" id="tsd-widgets"><a href="#" class="tsd-widget tsd-toolbar-icon menu no-caption" data-toggle="menu" aria-label="Menu"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"><use href="assets/icons.svg#icon-menu"></use></svg></a></div></div></header><div class="container container-main"><div class="col-content"><div class="tsd-page-title"><h2>reactNativeAppCodePush</h2></div><div class="tsd-panel tsd-typography"><a id="md:vscode-app-center-tools" class="tsd-anchor"></a><h1 class="tsd-anchor-link">VSCode App Center Tools<a href="#md:vscode-app-center-tools" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h1><p>This extension provides development support for App Center projects.</p>
+<p><em>NOTE: Currently it supports only React-Native based apps.</em></p>
+<a id="md:getting-started" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Getting Started<a href="#md:getting-started" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><ul>
+<li><a href="https://code.visualstudio.com" target="_blank" class="external">Install VS Code</a></li>
+<li><a href="https://marketplace.visualstudio.com/items?itemName=vsmobile.vscode-appcenter" target="_blank" class="external">Install the extension</a></li>
+<li>If you haven't already, please also install:
+<ul>
+<li><a href="https://www.npmjs.com/package/react-native-cli" target="_blank" class="external">react-native-cli</a></li>
+<li><a href="https://www.npmjs.com/package/appcenter-cli" target="_blank" class="external">appcenter-cli</a></li>
+<li><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank" class="external">git</a></li>
+</ul>
+</li>
+</ul>
+<a id="md:how-it-works" class="tsd-anchor"></a><h2 class="tsd-anchor-link">How it works<a href="#md:how-it-works" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>There are several possible scenarios this extension solves:</p>
+<ol>
+<li>
+<p>Start development of a new React Native application with <a href="https://appcenter.ms" target="_blank" class="external">App Center</a> already configured:</p>
+<ul>
+<li>
+<p>Open an empty folder where you would like to create a new application.</p>
+</li>
+<li>
+<p>Login to App Center using the status bar icon.</p>
+<p><img src="media/appcenter-login.png" alt="Login to App Center"></p>
+</li>
+<li>
+<p>Login to Visual Studio Team Services using the status bar icon.</p>
+<p><img src="media/appcenter-settings.png" alt="Settings"></p>
+<p><img src="media/appcenter-add-vsts-account.png" alt="Add VSTS account"></p>
+<p>If you don't already have a personal access token to access your VSTS account you can go <a href="https://docs.microsoft.com/en-us/vsts/accounts/use-personal-access-tokens-to-authenticate?view=vsts" target="_blank" class="external">here</a> to learn how to create one.</p>
+</li>
+<li>
+<p>After logging in, click the App Center status bar to show possible menu options and choose <code>Start a new project</code>.</p>
+<p><img src="media/appcenter-start-new-idea.png" alt="AppCenter Menu"></p>
+</li>
+<li>
+<p>You will be prompted to enter a new name for your project and select user or organization where you would like to create app in App Center.</p>
+<p><img src="media/appcenter-enter-new-name.png" alt="Enter New Name"></p>
+<ul>
+<li>App Center sample app will be cloned into the repository you have provided (it will also have preconfigured for App Center Analytics/Crashes/CodePush SDK's)</li>
+<li>Two React Native apps (for iOS and Android) will be created in App Center (<code>project-name-ios</code> and <code>project-name-android</code>)</li>
+<li>CodePush deployments will be created for both apps</li>
+<li>Apps will be automatically linked with corresponding iOS/Android secret keys and CodePush deployment keys</li>
+<li>Changes will be pushed to your remote repository</li>
+<li>New Testers Distribution Group will be created for every new app in App Center</li>
+</ul>
+<blockquote>
+<p>Tip: If you enable <code>appcenter.api.configurebranchandstartnewbuild</code> in extension sessings, the app will also be connected to your GH repository <code>master</code> branch and new build will be started</p>
+</blockquote>
+<ul>
+<li>You will be notified when everything's finished and also we will automatically run <code>npm install</code> and <code>pod update</code> for you</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p>Link an existing React Native application to App Center.
+You will see a <code>Set Current App</code> option, when logged in.</p>
+<p><img src="media/appcenter-set-current-app.png" alt="Set current app"></p>
+<p>You can either choose an app from App Center or choose it to be created for you.
+When you pick <code>Create an App Center app</code> option, several options are available:</p>
+<ul>
+<li>Create an app for Android</li>
+<li>Create an app for iOS</li>
+<li>Create apps for both platforms</li>
+</ul>
+<p>If you choose one of the first two, the app will be created and automatically set as current. If you choose to create two apps, you will have to pick one of them as current when a prompt is shown.</p>
+<p><img src="media/appcenter-choose-app.png" alt="Choose app"></p>
+<p>When the current app is set, several new options appear in the menu:</p>
+<ul>
+<li>Test (only for iOS)</li>
+<li>CodePush</li>
+</ul>
+<p>They all open the corresponding App Center tabs for the application. <code>CodePush</code> also contains CodePush stuff.</p>
+<p><img src="media/appcenter-portal.png" alt="App Center Portal"></p>
+<blockquote>
+<p>Tip: If you enable <code>appcenter.crashes</code> setting, you will see <code>Simulate crashes</code> menu option under <code>Crashes</code>. It sends test crash data to the linked App Center application.</p>
+</blockquote>
+</li>
+<li>
+<p>Link CodePush module to an existing React Native application.
+When inside of a React Native application, you will see a <code>Link CodePush</code> button under <code>CodePush</code> menu. Choose it.</p>
+<ul>
+<li>You will be prompted to choose an Android and iOS app to link.</li>
+<li>CodePush SDK for React Native will be installed and saved into your <code>plugin.json</code>.</li>
+<li>Deployment keys for the chosen applications will be fetched or created</li>
+<li>We will run <code>react-native link react-native-code-push</code> for you and automatically fill all the prompts, and notify you when finished.</li>
+</ul>
+</li>
+<li>
+<p>Link App Center to an existing React Native application.
+When inside of a React Native application, you will see an <code>Install SDK</code> button in menu. Choose it.</p>
+<ul>
+<li>You will be prompted to choose an Android and iOS app to link.</li>
+<li>App Center SDK for React Native will be installed and saved into your <code>plugin.json</code>.</li>
+<li>App secrets for the chosen applications will be fetched</li>
+<li>We will run <code>react-native link appcenter</code> for you and show you the secrets to be pasted.</li>
+</ul>
+<blockquote>
+<p>Pay attention: Unlike linking CodePush, you will have to paste these secrets in the Terminal yourself when prompted.</p>
+</blockquote>
+</li>
+<li>
+<p>You would like to open already existing React Native application with CodePush installed. When logged in, the following App Center Menu options should be avaliable under <code>CodePush</code>:</p>
+<ul>
+<li>Link CodePush</li>
+<li>Navigate to CodePush tab in App Center</li>
+<li>Make a new CodePush release</li>
+<li>Change current Deployment</li>
+<li>Change target binary verson</li>
+<li>Change if release should be mandatory</li>
+</ul>
+<p><img src="media/appcenter-code-push.png" alt="CodePush"></p>
+</li>
+</ol>
+<a id="md:test" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Test<a href="#md:test" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>If your React Native application has UI tests, you can run it in the App Center cloud using the extension.</p>
+<a id="md:preparing-tests" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Preparing tests<a href="#md:preparing-tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><p>In order to run the tests in App Center cloud, you need <a href="https://github.com/Microsoft/appcenter-cli" target="_blank" class="external">App Center CLI</a>. To install it, run <code>npm install -g appcenter-cli</code> in terminal.</p>
+<a id="md:ios" class="tsd-anchor"></a><h4 class="tsd-anchor-link">iOS<a href="#md:ios" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Extension supports XCUI tests only. Please, follow <a href="https://docs.microsoft.com/en-us/appcenter/test-cloud/preparing-for-upload/xcuitest" target="_blank" class="external">the instructions for App Center portal docs</a> to prepare tests for uploading to the App Center cloud.</p>
+<a id="md:android" class="tsd-anchor"></a><h4 class="tsd-anchor-link">Android<a href="#md:android" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h4><p>Extension supports Espresso tests only. Please, follow <a href="https://docs.microsoft.com/en-us/appcenter/test-cloud/preparing-for-upload/espresso#2-changes-to-the-tests" target="_blank" class="external">the instructions for App Center portal docs</a> to prepare tests for uploading to the App Center cloud. You only have to complete steps 1 - 3, we will run all the builds and upload tests to the portal for you.</p>
+<a id="md:running-tests" class="tsd-anchor"></a><h3 class="tsd-anchor-link">Running tests<a href="#md:running-tests" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h3><ol>
+<li>
+<p>Open <strong>App Center menu</strong> and then click <code>Test</code> button.</p>
+</li>
+<li>
+<p>To run tests, you can use two options: <code>Run UI tests</code> and <code>Run UI tests asynchronously</code>. Command <code>Run UI tests</code> will start to build your application for testing, upload it together with tests to App Center cloud and then run it there waiting for tests to be done. Command <code>Run UI tests asynchronously</code> does the same thing except it exits the command when tests are uploaded, without waiting for test results. Choose the one you prefer the most. Also, you can track progress of command below in status bar.</p>
+</li>
+</ol>
+<p><img src="media/appcenter-test-options.png" alt="Test options"></p>
+<ol start="3">
+<li>Select device configuration for tests. If you have device sets, they will appear at the top of the list and you can choose them.</li>
+</ol>
+<p><img src="media/appcenter-test-devices.png" alt="Test devices"></p>
+<ol start="4">
+<li>After that, <code>Output &gt; React Native</code> window will be opened,  where you can monitor the progress of the build, upload and run the tests.</li>
+</ol>
+<p><img src="media/appcenter-test-output.png" alt="Test output"></p>
+<a id="md:contributing" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Contributing<a href="#md:contributing" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>There are a couple of ways you can contribute to this repo:</p>
+<ul>
+<li><strong>Ideas, feature requests and bugs</strong>: We are open to all ideas and we want to get rid of bugs! Use the Issues section to either report a new issue, provide your ideas or contribute to existing threads.</li>
+<li><strong>Documentation</strong>: Found a typo or strangely worded sentences? Submit a PR!</li>
+<li><strong>Code</strong>: Contribute bug fixes, features or design changes.</li>
+</ul>
+<a id="md:troubleshooting" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Troubleshooting<a href="#md:troubleshooting" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Here is the list of common known issues you may experience while using the extension:</p>
+<table>
+<thead>
+<tr>
+<th>Issue</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>You received error '<code>failed to push to remote ... Device not configured</code>' when starting new project and pushing to remote repo</td>
+<td>Install <a href="https://docs.microsoft.com/en-us/vsts/git/set-up-credential-managers?view=vsts#install-the-git-credential-manager" target="_blank" class="external">Git Credential Manager</a> and try again</td>
+</tr>
+<tr>
+<td>You received error '<code>CocoaPods was not able to update the master repo</code>' when running '<code>pod repo update</code>' while linking App Center</td>
+<td>Delete and recreate your specs for repo by running <code>pod repo remove master</code> and <code>pod setup</code> commands</td>
+</tr>
+</tbody>
+</table>
+<a id="md:legal" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Legal<a href="#md:legal" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>Before we can accept your pull request you will need to sign a <strong>Contribution License Agreement</strong>. All you need to do is to submit a pull request, then the PR will get appropriately labelled (e.g. <code>cla-required</code>, <code>cla-norequired</code>, <code>cla-signed</code>, <code>cla-already-signed</code>). If you already signed the agreement we will continue with reviewing the PR, otherwise system will tell you how you can sign the CLA. Once you sign the CLA all future PR's will be labeled as <code>cla-signed</code>.</p>
+<a id="md:telemetry-reporting" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Telemetry reporting<a href="#md:telemetry-reporting" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>VS Code App Center extension collects usage data and sends it to Microsoft to help improve our products and services. Read our <a href="https://www.visualstudio.com/en-us/dn948229" target="_blank" class="external">privacy statement</a> to learn more.</p>
+<p>If you don’t wish to send usage data to Microsoft, edit your workspace settings file <code>&lt;project-root&gt;/.vscode/settings.json</code> and add <code>&quot;appcenter.telemetryEnabled&quot;: false</code>.</p>
+<a id="md:code-of-conduct" class="tsd-anchor"></a><h2 class="tsd-anchor-link">Code of conduct<a href="#md:code-of-conduct" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p>This project has adopted the <a href="https://opensource.microsoft.com/codeofconduct/" target="_blank" class="external">Microsoft Open Source Code of Conduct</a>. For more information see the <a href="https://opensource.microsoft.com/codeofconduct/faq/" target="_blank" class="external">Code of Conduct FAQ</a> or contact <a href="mailto:opencode@microsoft.com">opencode@microsoft.com</a> with any additional questions or comments.</p>
+<a id="md:license" class="tsd-anchor"></a><h2 class="tsd-anchor-link">License<a href="#md:license" aria-label="Permalink" class="tsd-anchor-icon"><svg viewBox="0 0 24 24"><use href="assets/icons.svg#icon-anchor"></use></svg></a></h2><p><a href="media/LICENSE">MIT</a></p>
+</div></div><div class="col-sidebar"><div class="page-menu"><div class="tsd-navigation settings"><details class="tsd-accordion"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>Settings</h3></summary><div class="tsd-accordion-details"><div class="tsd-filter-visibility"><span class="settings-label">Member Visibility</span><ul id="tsd-filter-options"><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-protected" name="protected"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Protected</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-inherited" name="inherited" checked/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>Inherited</span></label></li><li class="tsd-filter-item"><label class="tsd-filter-input"><input type="checkbox" id="tsd-filter-external" name="external"/><svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true"><rect class="tsd-checkbox-background" width="30" height="30" x="1" y="1" rx="6" fill="none"></rect><path class="tsd-checkbox-checkmark" d="M8.35422 16.8214L13.2143 21.75L24.6458 10.25" stroke="none" stroke-width="3.5" stroke-linejoin="round" fill="none"></path></svg><span>External</span></label></li></ul></div><div class="tsd-theme-toggle"><label class="settings-label" for="tsd-theme">Theme</label><select id="tsd-theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></div></div></details></div><details open class="tsd-accordion tsd-page-navigation"><summary class="tsd-accordion-summary"><h3><svg width="20" height="20" viewBox="0 0 24 24" fill="none"><use href="assets/icons.svg#icon-chevronDown"></use></svg>On This Page</h3></summary><div class="tsd-accordion-details"><a href="#md:vscode-app-center-tools"><span>VSCode <wbr/>App <wbr/>Center <wbr/>Tools</span></a><ul><li><a href="#md:getting-started"><span>Getting <wbr/>Started</span></a></li><li><a href="#md:how-it-works"><span>How it works</span></a></li><li><a href="#md:test"><span>Test</span></a></li><li><ul><li><a href="#md:preparing-tests"><span>Preparing tests</span></a></li><li><ul><li><a href="#md:ios"><span>iOS</span></a></li><li><a href="#md:android"><span>Android</span></a></li></ul></li><li><a href="#md:running-tests"><span>Running tests</span></a></li></ul></li><li><a href="#md:contributing"><span>Contributing</span></a></li><li><a href="#md:troubleshooting"><span>Troubleshooting</span></a></li><li><a href="#md:legal"><span>Legal</span></a></li><li><a href="#md:telemetry-reporting"><span>Telemetry reporting</span></a></li><li><a href="#md:code-of-conduct"><span>Code of conduct</span></a></li><li><a href="#md:license"><span>License</span></a></li></ul></div></details></div><div class="site-menu"><nav class="tsd-navigation"><a href="modules.html" class="current"><svg class="tsd-kind-icon" viewBox="0 0 24 24"><use href="assets/icons.svg#icon-1"></use></svg><span>reactNativeAppCodePush</span></a><ul class="tsd-small-nested-navigation" id="tsd-nav-container" data-base="."><li>Loading...</li></ul></nav></div></div></div><footer><p class="tsd-generator">Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></footer><div class="overlay"></div></body></html>
