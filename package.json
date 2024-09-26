@@ -297,7 +297,7 @@
 		"yazl": "2.5.1"
 	},
 	"devDependencies": {
-		"@types/node": "22.7.2",
+		"@types/node": "22.7.3",
 		"@types/rimraf": "4.0.5",
 		"mock-fs": "5.2.0"
 	},
