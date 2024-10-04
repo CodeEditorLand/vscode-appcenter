@@ -4,7 +4,7 @@
  * regenerated.
  */
 
-'use strict';
+"use strict";
 
 /**
  * Apple credentials with username, password or service_connection_id of the
@@ -12,64 +12,63 @@
  *
  */
 class ItunesAppsRequest {
-  /**
-   * Create a ItunesAppsRequest.
-   * @member {string} [username] The username for the Apple Developer account.
-   * @member {string} [password] The password for the Apple Developer account.
-   * @member {string} [serviceConnectionId] The service_connection_id of the
-   * stored Apple credentials instead of username, password.
-   * @member {string} [teamIdentifier] Identifier of the team to use when
-   * logged in.
-   */
-  constructor() {
-  }
+	/**
+	 * Create a ItunesAppsRequest.
+	 * @member {string} [username] The username for the Apple Developer account.
+	 * @member {string} [password] The password for the Apple Developer account.
+	 * @member {string} [serviceConnectionId] The service_connection_id of the
+	 * stored Apple credentials instead of username, password.
+	 * @member {string} [teamIdentifier] Identifier of the team to use when
+	 * logged in.
+	 */
+	constructor() {}
 
-  /**
-   * Defines the metadata of ItunesAppsRequest
-   *
-   * @returns {object} metadata of ItunesAppsRequest
-   *
-   */
-  mapper() {
-    return {
-      required: false,
-      serializedName: 'ItunesAppsRequest',
-      type: {
-        name: 'Composite',
-        className: 'ItunesAppsRequest',
-        modelProperties: {
-          username: {
-            required: false,
-            serializedName: 'username',
-            type: {
-              name: 'String'
-            }
-          },
-          password: {
-            required: false,
-            serializedName: 'password',
-            type: {
-              name: 'String'
-            }
-          },
-          serviceConnectionId: {
-            required: false,
-            serializedName: 'service_connection_id',
-            type: {
-              name: 'String'
-            }
-          },
-          teamIdentifier: {
-            required: false,
-            serializedName: 'team_identifier',
-            type: {
-              name: 'String'
-            }
-          }
-        }
-      }
-    };
-  }
+	/**
+	 * Defines the metadata of ItunesAppsRequest
+	 *
+	 * @returns {object} metadata of ItunesAppsRequest
+	 *
+	 */
+	mapper() {
+		return {
+			required: false,
+			serializedName: "ItunesAppsRequest",
+			type: {
+				name: "Composite",
+				className: "ItunesAppsRequest",
+				modelProperties: {
+					username: {
+						required: false,
+						serializedName: "username",
+						type: {
+							name: "String",
+						},
+					},
+					password: {
+						required: false,
+						serializedName: "password",
+						type: {
+							name: "String",
+						},
+					},
+					serviceConnectionId: {
+						required: false,
+						serializedName: "service_connection_id",
+						type: {
+							name: "String",
+						},
+					},
+					teamIdentifier: {
+						required: false,
+						serializedName: "team_identifier",
+						type: {
+							name: "String",
+						},
+					},
+				},
+			},
+		};
+	}
 }
 
 module.exports = ItunesAppsRequest;
