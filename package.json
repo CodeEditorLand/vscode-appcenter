@@ -290,9 +290,9 @@
 	},
 	"description": "Visual Studio App Center tools and services.",
 	"devDependencies": {
-		"@types/node": "22.8.4",
+		"@types/node": "22.8.6",
 		"@types/rimraf": "4.0.5",
-		"mock-fs": "5.4.0"
+		"mock-fs": "5.4.1"
 	},
 	"displayName": "App Center",
 	"icon": "images/icon.png",
