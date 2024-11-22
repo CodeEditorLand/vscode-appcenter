@@ -30,6 +30,7 @@ export class Validators {
 		}
 		const regex =
 			/(?:git|ssh|https?|git@[-\w.]+):(\/\/)?(.*?)(\.git)(\/?|\#[-\d\w._]+?)$/;
+
 		return regex.test(name);
 	}
 }

@@ -14,6 +14,7 @@ export default class LinkAppCenter extends LinkCommand {
 
 		if (!Utils.isReactNativeProject(this.logger, this.rootPath, false)) {
 			VsCodeUI.ShowWarningMessage(Messages.NotReactProjectWarning);
+
 			return;
 		}
 
@@ -47,8 +48,10 @@ export default class LinkAppCenter extends LinkCommand {
 		) {
 			const appCenterInstalled: boolean =
 				await appCenterLinker.installAppcenter();
+
 			if (!appCenterInstalled) {
 				VsCodeUI.ShowErrorMessage(Messages.FailedToLinkAppCenter);
+
 				return void 0;
 			}
 		}

@@ -53,11 +53,13 @@ export class MenuStrings {
 	): string {
 		const targetBinaryVersionProvided =
 			app.targetBinaryVersion !== undefined && app.targetBinaryVersion;
+
 		return `Change ${targetBinaryVersionProvided ? `'${app.targetBinaryVersion}'` : "automatically fetched"} target binary version`;
 	}
 
 	public static setCurrentAppIsMandatoryMenuLabel(app: CurrentApp): string {
 		const isMandatory = app.isMandatory !== undefined && app.isMandatory;
+
 		return `Change release to ${isMandatory ? "be not Mandatory" : "be Mandatory"}`;
 	}
 

@@ -24,11 +24,14 @@ export class Utils {
 
 	public static FormatAppName(name: string): string {
 		const ELLIPSIZE_LENGTH_WO_HINT = 15;
+
 		const ELLIPSIZE_LENGTH_WITH_HINT = 10;
+
 		if (name.length < ELLIPSIZE_LENGTH_WO_HINT) {
 			return name;
 		}
 		let hint: string = "";
+
 		if (name.endsWith("-ios")) {
 			hint = " (iOS)";
 		} else if (name.endsWith("-android")) {
@@ -58,15 +61,19 @@ export class Utils {
 			case "win32":
 			case "darwin":
 				open(url);
+
 				break;
+
 			default:
 				opener(url);
+
 				break;
 		}
 	}
 
 	public static getYarnVersionIfAvailable(): string | null {
 		let yarnVersion: string | null = null;
+
 		try {
 			// execSync returns a Buffer -> convert to string
 			if (process.platform.startsWith("win")) {
@@ -86,6 +93,7 @@ export class Utils {
 
 	public static parseJsonFile(path: string, installHint?: string) {
 		let fileContents;
+
 		try {
 			fileContents = fs.readFileSync(path, "utf8");
 		} catch (err) {
@@ -177,10 +185,13 @@ export class Utils {
 		switch (codePushOs.toLowerCase()) {
 			case "android":
 				return AppCenterOS.Android;
+
 			case "ios":
 				return AppCenterOS.iOS;
+
 			case "windows":
 				return AppCenterOS.Windows;
+
 			default:
 				throw new Error("Unknown App Center OS");
 		}
@@ -196,6 +207,7 @@ export class Utils {
 		appSecret: string,
 	): CurrentApp | null {
 		const matches = app.match(Validators.ValidAppCenterAppName);
+
 		if (matches !== null) {
 			return {
 				ownerName: matches[1],
@@ -254,13 +266,16 @@ export class Utils {
 		const packageJsonPath = path.resolve(projectRoot, "package.json");
 
 		const packageJson = Utils.parseJsonFile(packageJsonPath);
+
 		return packageJson.name;
 	}
 
 	public static async packageInstalledGlobally(packageName: string) {
 		const resultSignalsThatPackageInstalled = (result) =>
 			!/\(empty\)/.test(result);
+
 		let result: string = "";
+
 		try {
 			result = await cpUtils.executeCommand(
 				undefined,
@@ -298,12 +313,14 @@ export class Utils {
 			appName,
 			"AppCenter-Config.plist",
 		);
+
 		const pathToMainPlist: string = path.join(
 			projectRootPath,
 			"ios",
 			appName,
 			"Info.plist",
 		);
+
 		const pathToAndroidConfig: string = path.join(
 			projectRootPath,
 			"android",
@@ -313,6 +330,7 @@ export class Utils {
 			"assets",
 			"appcenter-config.json",
 		);
+
 		const pathToAndroidStringResources: string = path.join(
 			projectRootPath,
 			"android",
@@ -323,6 +341,7 @@ export class Utils {
 			"values",
 			"strings.xml",
 		);
+
 		return new AppCenterConfig(
 			pathToAppCenterConfigPlist,
 			pathToMainPlist,

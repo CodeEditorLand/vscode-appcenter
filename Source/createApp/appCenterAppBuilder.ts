@@ -42,6 +42,7 @@ export default class AppCenterAppBuilder {
 		) {
 			const errMsg: string = LogStrings.ProjectOrOrgNotSet;
 			this.logger.error(errMsg);
+
 			throw new Error(errMsg);
 		}
 		this.withIOSApp();
@@ -75,6 +76,7 @@ export default class AppCenterAppBuilder {
 		const iosApp: AppCenterAppCreator = this._createIOSApp
 			? new IOSAppCenterAppCreator(this.client, this.logger)
 			: new NullAppCenterAppCreator(this.client, this.logger);
+
 		return iosApp;
 	}
 
@@ -82,6 +84,7 @@ export default class AppCenterAppBuilder {
 		const androidAppCreator: AppCenterAppCreator = this._createAndroidApp
 			? new AndroidAppCenterAppCreator(this.client, this.logger)
 			: new NullAppCenterAppCreator(this.client, this.logger);
+
 		return androidAppCreator;
 	}
 
@@ -93,6 +96,7 @@ export default class AppCenterAppBuilder {
 		ok: boolean = SettingsHelper.createIOSAppInAppCenter(),
 	): AppCenterAppBuilder {
 		this._createIOSApp = ok;
+
 		return this;
 	}
 
@@ -100,6 +104,7 @@ export default class AppCenterAppBuilder {
 		ok: boolean = SettingsHelper.createAndroidAppInAppCenter(),
 	): AppCenterAppBuilder {
 		this._createAndroidApp = ok;
+
 		return this;
 	}
 
@@ -107,6 +112,7 @@ export default class AppCenterAppBuilder {
 		ok: boolean = SettingsHelper.createTestersDistributionGroupInAppCenter(),
 	): AppCenterAppBuilder {
 		this._createBetaTestersDistributionGroup = ok;
+
 		return this;
 	}
 
@@ -114,6 +120,7 @@ export default class AppCenterAppBuilder {
 		ok: boolean = SettingsHelper.connectRepoToBuildService(),
 	): AppCenterAppBuilder {
 		this._connectRepositoryToBuildService = ok;
+
 		return this;
 	}
 
@@ -121,6 +128,7 @@ export default class AppCenterAppBuilder {
 		ok: boolean = SettingsHelper.configureBranchAndStartNewBuild(),
 	): AppCenterAppBuilder {
 		this._withBranchConfigurationCreatedAndBuildKickOff = ok;
+
 		return this;
 	}
 
@@ -128,12 +136,15 @@ export default class AppCenterAppBuilder {
 		option: CreateNewAppOption = CreateNewAppOption.Both,
 	): Promise<void> {
 		let created: any;
+
 		if (!this.appsCreated) {
 			await VsCodeUI.showProgress(async (progress) => {
 				progress.report({
 					message: Messages.CreatingAppStatusBarProgressMessage,
 				});
+
 				const promises: Promise<false | CreatedAppFromAppCenter>[] = [];
+
 				if (
 					option === CreateNewAppOption.IOS ||
 					option === CreateNewAppOption.Both
@@ -228,6 +239,7 @@ export default class AppCenterAppBuilder {
 					message:
 						Messages.CreatingDistributionStatusBarProgressMessage,
 				});
+
 				const createdBetaTestersGroup: boolean[] = await Promise.all([
 					this.iOSAppCreator.createBetaTestersDistributionGroup(
 						AppCenterAppBuilder.getiOSAppName(this.projectName),
@@ -262,6 +274,7 @@ export default class AppCenterAppBuilder {
 					message:
 						Messages.ConnectingRepoToBuildServiceStatusBarProgressMessage,
 				});
+
 				const conected: boolean[] = await Promise.all([
 					this.iOSAppCreator.connectRepositoryToBuildService(
 						AppCenterAppBuilder.getiOSAppName(this.projectName),
@@ -276,6 +289,7 @@ export default class AppCenterAppBuilder {
 						this.isCreatedForOrganization(),
 					),
 				]);
+
 				if (
 					!conected.every((val: boolean) => {
 						return val === true;
@@ -291,11 +305,13 @@ export default class AppCenterAppBuilder {
 							this.repoUrl,
 						),
 					);
+
 					if (this._withBranchConfigurationCreatedAndBuildKickOff) {
 						progress.report({
 							message:
 								Messages.CreateBranchConfigAndKickOffBuildProgressMessage,
 						});
+
 						const branchConfiguredAndBuildStarted: boolean[] =
 							await Promise.all([
 								this.iOSAppCreator.withBranchConfigurationCreatedAndBuildKickOff(
@@ -315,6 +331,7 @@ export default class AppCenterAppBuilder {
 									this.isCreatedForOrganization(),
 								),
 							]);
+
 						if (
 							!branchConfiguredAndBuildStarted.every(
 								(val: boolean) => {

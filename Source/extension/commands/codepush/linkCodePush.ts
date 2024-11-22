@@ -26,6 +26,7 @@ export default class LinkCodePush extends LinkCommand {
 
 		if (!Utils.isReactNativeProject(this.logger, this.rootPath, false)) {
 			VsCodeUI.ShowWarningMessage(Messages.NotReactProjectWarning);
+
 			return;
 		}
 		if (this._app) {
@@ -54,6 +55,7 @@ export default class LinkCodePush extends LinkCommand {
 	protected async linkApps(): Promise<boolean> {
 		const appCenterAppCreator: AppCenterAppCreator =
 			new AppCenterAppCreator(this.client, this.logger);
+
 		const codePushLinker: CodePushLinker = new CodePushLinker(
 			appCenterAppCreator,
 			this.logger,
@@ -69,8 +71,10 @@ export default class LinkCodePush extends LinkCommand {
 		) {
 			const codePushInstalled: boolean =
 				await codePushLinker.installCodePush();
+
 			if (!codePushInstalled) {
 				VsCodeUI.ShowErrorMessage(Messages.FailedToLinkCodePush);
+
 				return false;
 			}
 		}
@@ -84,15 +88,19 @@ export default class LinkCodePush extends LinkCommand {
 
 		if (deployments.length < 1) {
 			VsCodeUI.ShowErrorMessage(Messages.FailedToLinkCodePush);
+
 			return false;
 		}
 
 		const linked = await codePushLinker.linkCodePush(deployments);
+
 		if (!linked) {
 			VsCodeUI.ShowErrorMessage(Messages.FailedToLinkCodePush);
+
 			return false;
 		}
 		VsCodeUI.ShowInfoMessage(Messages.CodePushLinkedMessage);
+
 		return true;
 	}
 }

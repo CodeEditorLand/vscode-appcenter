@@ -48,6 +48,7 @@ export default class FsProfileStorage<T extends Profile>
 					(e && e.message) || "",
 			);
 			FSUtils.removeFile(this.storageFilePath);
+
 			return;
 		}
 
@@ -99,6 +100,7 @@ export default class FsProfileStorage<T extends Profile>
 
 	private async saveProfiles(): Promise<void> {
 		const data = JSON.stringify(this.profiles, null, "\t");
+
 		try {
 			await FSUtils.writeFile(this.storageFilePath, data);
 		} catch (e) {
@@ -106,6 +108,7 @@ export default class FsProfileStorage<T extends Profile>
 				LogStrings.FailedToWriteProfiles(this.storageFilePath) +
 					(e && e.message) || "",
 			);
+
 			return;
 		}
 	}
@@ -125,6 +128,7 @@ export default class FsProfileStorage<T extends Profile>
 
 		// Add new user
 		const createdIndex = this.profiles.push(profile) - 1;
+
 		if (profile.isActive) {
 			this.indexOfActiveProfile = createdIndex;
 		}
@@ -133,11 +137,14 @@ export default class FsProfileStorage<T extends Profile>
 
 	public async delete(userId: string): Promise<T | null> {
 		const foundProfile = await this.get(userId);
+
 		if (!foundProfile) {
 			return null;
 		}
 		const indexToDelete = this.profiles.indexOf(foundProfile);
+
 		const deletedProfile: T[] = this.profiles.splice(indexToDelete, 1);
+
 		if (this.indexOfActiveProfile) {
 			if (indexToDelete < this.indexOfActiveProfile) {
 				this.indexOfActiveProfile--;
@@ -146,6 +153,7 @@ export default class FsProfileStorage<T extends Profile>
 			}
 		}
 		await this.saveProfiles();
+
 		return deletedProfile[0];
 	}
 
@@ -153,6 +161,7 @@ export default class FsProfileStorage<T extends Profile>
 		const foundProfiles: T[] = this.profiles.filter(
 			(value) => value.userId === userId,
 		);
+
 		if (foundProfiles.length === 1) {
 			return foundProfiles[0];
 		} else if (foundProfiles.length > 1) {

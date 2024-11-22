@@ -20,6 +20,7 @@ function getTokenDir(): string {
 // Currently only support file-base token store
 const getTokenFilePath = (tokenFile: string) => {
 	const tokenFilePath = path.join(getTokenDir(), tokenFile);
+
 	if (!fs.existsSync(tokenFilePath)) {
 		if (!fs.existsSync(getTokenDir())) {
 			fs.mkdirSync(getTokenDir());

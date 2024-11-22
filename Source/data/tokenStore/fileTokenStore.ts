@@ -32,6 +32,7 @@ export class FileTokenStore implements TokenStore {
 
 	public list(): rx.Observable<TokenEntry> {
 		this.loadTokenStoreCache();
+
 		return rx.Observable.from(toPairs(this.tokenStoreCache)).map(
 			(pair) => ({ key: pair[0], accessToken: pair[1] }),
 		);
@@ -39,7 +40,9 @@ export class FileTokenStore implements TokenStore {
 
 	public get(key: TokenKeyType): Promise<TokenEntry | null> {
 		this.loadTokenStoreCache();
+
 		let token;
+
 		if (this.tokenStoreCache) {
 			token = this.tokenStoreCache[key];
 		}
@@ -51,19 +54,23 @@ export class FileTokenStore implements TokenStore {
 
 	public set(key: TokenKeyType, value: TokenValueType): Promise<void> {
 		this.loadTokenStoreCache();
+
 		if (this.tokenStoreCache) {
 			this.tokenStoreCache[key] = value;
 		}
 		this.writeTokenStoreCache();
+
 		return Promise.resolve(void 0);
 	}
 
 	public remove(key: TokenKeyType): Promise<void> {
 		this.loadTokenStoreCache();
+
 		if (this.tokenStoreCache) {
 			delete this.tokenStoreCache[key];
 		}
 		this.writeTokenStoreCache();
+
 		return Promise.resolve(void 0);
 	}
 

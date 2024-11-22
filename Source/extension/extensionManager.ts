@@ -102,6 +102,7 @@ export class ExtensionManager implements Disposable {
 
 	public async checkCurrentApps(appCenterAuth: AppCenterAuth) {
 		const profile: AppCenterProfile = await appCenterAuth.activeProfile;
+
 		if (profile && profile.currentApp) {
 			await this.checkAppExists(profile, appCenterAuth);
 		}
@@ -116,6 +117,7 @@ export class ExtensionManager implements Disposable {
 				profile,
 				SettingsHelper.getAppCenterAPIEndpoint(),
 			);
+
 		try {
 			await clientForProfile.apps.get(
 				profile.currentApp.ownerName,
@@ -193,6 +195,7 @@ export class ExtensionManager implements Disposable {
 
 	private cleanup(): void {
 		this._logger.info("Extension Manager: Called cleanup");
+
 		if (this._appCenterStatusBarItem) {
 			this._appCenterStatusBarItem.dispose();
 		}

@@ -38,6 +38,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 	public async ShowStatusBar(): Promise<void> {
 		if (SettingsHelper.shouldStatusBarBeShown()) {
 			VsCodeUI.ShowInfoMessage(Messages.StatusBarAlreadyShownMessage);
+
 			return;
 		}
 		await new Settings.ToggleStatusBar(
@@ -48,6 +49,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 	public async HideStatusBar(): Promise<void> {
 		if (!SettingsHelper.shouldStatusBarBeShown()) {
 			VsCodeUI.ShowInfoMessage(Messages.StatusBarAlreadyHiddenMessage);
+
 			return;
 		}
 		await new Settings.ToggleStatusBar(

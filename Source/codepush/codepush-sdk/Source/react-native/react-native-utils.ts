@@ -38,6 +38,7 @@ export async function getAndroidAppVersion(
 	console.log(chalk.cyan(`Detecting "Android" app version:\n`));
 
 	let buildGradlePath: string = path.join(projectRoot, "android", "app");
+
 	if (gradleFile) {
 		buildGradlePath = gradleFile;
 	}
@@ -66,11 +67,13 @@ export async function getAndroidAppVersion(
 			if (buildGradle.android instanceof Array) {
 				for (let i = 0; i < buildGradle.android.length; i++) {
 					const gradlePart = buildGradle.android[i];
+
 					if (
 						gradlePart.defaultConfig &&
 						gradlePart.defaultConfig.versionName
 					) {
 						versionName = gradlePart.defaultConfig.versionName;
+
 						break;
 					}
 				}
@@ -100,13 +103,16 @@ export async function getAndroidAppVersion(
 				console.log(
 					`Using the target binary version value "${appVersion}" from "${buildGradlePath}".\n`,
 				);
+
 				return appVersion;
 			}
 
 			// The version property isn"t a valid semver string
 			// so we assume it is a reference to a property variable.
 			const propertyName = appVersion.replace("project.", "");
+
 			const propertiesFileName = "gradle.properties";
+
 			const knownLocations = [
 				path.join(
 					projectRoot || "",
@@ -119,16 +125,20 @@ export async function getAndroidAppVersion(
 
 			// Search for gradle properties across all `gradle.properties` files
 			let propertiesFile: string | null = null;
+
 			for (let i = 0; i < knownLocations.length; i++) {
 				propertiesFile = knownLocations[i];
+
 				if (fileUtils.fileExists(propertiesFile)) {
 					const propertiesContent: string = fs
 						.readFileSync(propertiesFile)
 						.toString();
+
 					try {
 						const parsedProperties: any =
 							properties.parse(propertiesContent);
 						appVersion = parsedProperties[propertyName];
+
 						if (appVersion) {
 							break;
 						}
@@ -155,6 +165,7 @@ export async function getAndroidAppVersion(
 			console.log(
 				`Using the target binary version value "${appVersion}" from the "${propertyName}" key in the "${propertiesFile}" file.\n`,
 			);
+
 			return appVersion.toString();
 		});
 }
@@ -165,14 +176,17 @@ export async function getiOSAppVersion(
 	plistFile?: string,
 ): Promise<string> {
 	projectRoot = projectRoot || process.cwd();
+
 	const projectPackageJson: any = require(
 		path.join(projectRoot, "package.json"),
 	);
+
 	const projectName: string = projectPackageJson.name;
 
 	console.log(chalk.cyan(`Detecting "iOS" app version:\n`));
 
 	let resolvedPlistFile: string | undefined = plistFile;
+
 	if (resolvedPlistFile) {
 		// If a plist file path is explicitly provided, then we don"t
 		// need to attempt to "resolve" it within the well-known locations.
@@ -190,6 +204,7 @@ export async function getiOSAppVersion(
 		}
 
 		const iOSDirectory: string = "ios";
+
 		const plistFileName = `${plistFilePrefix || ""}Info.plist`;
 
 		const knownLocations = [
@@ -209,6 +224,7 @@ export async function getiOSAppVersion(
 	const plistContents = fs.readFileSync(resolvedPlistFile).toString();
 
 	let parsedPlist: any;
+
 	try {
 		parsedPlist = plist.parse(plistContents);
 	} catch (e) {
@@ -222,6 +238,7 @@ export async function getiOSAppVersion(
 			console.log(
 				`Using the target binary version value "${parsedPlist.CFBundleShortVersionString}" from "${resolvedPlistFile}".\n`,
 			);
+
 			return Promise.resolve(parsedPlist.CFBundleShortVersionString);
 		} else {
 			throw new Error(
@@ -239,16 +256,21 @@ export async function getWindowsAppVersion(
 	projectRoot?: string,
 ): Promise<string> {
 	projectRoot = projectRoot || process.cwd();
+
 	const projectPackageJson: any = require(
 		path.join(projectRoot, "package.json"),
 	);
+
 	const projectName: string = projectPackageJson.name;
 
 	console.log(chalk.cyan(`Detecting "Windows" app version:\n`));
 
 	const appxManifestFileName: string = "Package.appxmanifest";
+
 	let appxManifestContainingFolder: string;
+
 	let appxManifestContents: string;
+
 	try {
 		appxManifestContainingFolder = path.join(
 			projectRoot,
@@ -275,6 +297,7 @@ export async function getWindowsAppVersion(
 							`Unable to parse the "${path.join(appxManifestContainingFolder, appxManifestFileName)}" file, it could be malformed.`,
 						),
 					);
+
 					return;
 				}
 				try {
@@ -285,6 +308,7 @@ export async function getWindowsAppVersion(
 					console.log(
 						`Using the target binary version value "${appVersion}" from the "Identity" key in the "${appxManifestFileName}" file.\n`,
 					);
+
 					return resolve(appVersion);
 				} catch (e) {
 					reject(
@@ -292,6 +316,7 @@ export async function getWindowsAppVersion(
 							`Unable to parse the package version from the "${path.join(appxManifestContainingFolder, appxManifestFileName)}" file.`,
 						),
 					);
+
 					return;
 				}
 			},
@@ -309,6 +334,7 @@ export function runReactNativeBundleCommand(
 	sourcemapOutput: string | undefined,
 ): Promise<void> {
 	const reactNativeBundleArgs: string[] = [];
+
 	const envNodeArgs: string | undefined = process.env.CODE_PUSH_NODE_ARGS;
 
 	if (typeof envNodeArgs !== "undefined") {
@@ -344,6 +370,7 @@ export function runReactNativeBundleCommand(
 	}
 
 	console.log(chalk.cyan(`Running "react-native bundle" command:\n`));
+
 	const reactNativeBundleProcess = spawn("node", reactNativeBundleArgs, {
 		cwd: projectRootPath,
 	});
@@ -378,6 +405,7 @@ export function isValidOS(os: string): boolean {
 		case "ios":
 		case "windows":
 			return true;
+
 		default:
 			return false;
 	}
@@ -392,7 +420,9 @@ export function isReactNativeProject(): boolean {
 		const projectPackageJson: any = require(
 			path.join(process.cwd(), "package.json"),
 		);
+
 		const projectName: string = projectPackageJson.name;
+
 		if (!projectName) {
 			throw new Error(
 				`The "package.json" file in the CWD does not have the "name" field set.`,
@@ -434,7 +464,9 @@ export function getDefautEntryFilePath(
 	}
 
 	const entryFileName = `index.${os.toLowerCase()}.js`;
+
 	let entryFilePath: string = path.join(projectDir, entryFileName);
+
 	if (fileUtils.fileDoesNotExistOrIsDirectory(entryFilePath)) {
 		entryFilePath = path.join(projectDir, "index.js");
 	}

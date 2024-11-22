@@ -13,6 +13,7 @@ export default abstract class Auth<T extends Profile> {
 
 	public get activeProfile(): Promise<T | null> {
 		const activeProfile: T = this.profileStorage.activeProfile;
+
 		if (!activeProfile) {
 			return this.tryFixProfileStorage();
 		} else {
@@ -22,10 +23,12 @@ export default abstract class Auth<T extends Profile> {
 
 	private async tryFixProfileStorage(): Promise<T | null> {
 		const fixed: boolean = await this.profileStorage.tryFixStorage();
+
 		if (fixed) {
 			return this.profileStorage.activeProfile;
 		} else {
 			this.logger.info(LogStrings.FailedToGetProfileFile);
+
 			return null;
 		}
 	}
@@ -36,14 +39,17 @@ export default abstract class Auth<T extends Profile> {
 
 	public async doLogin(loginInfo: LoginInfo): Promise<T | null> {
 		const token: string = loginInfo.token;
+
 		if (!token) {
 			return null;
 		}
 
 		// Ask server for user info by token
 		const profile: T = await this.getUserInfo(loginInfo);
+
 		if (!profile) {
 			this.logger.error(LogStrings.FailedToGetUserProfile);
+
 			return null;
 		}
 
@@ -62,6 +68,7 @@ export default abstract class Auth<T extends Profile> {
 
 		// Save it in local store
 		await this.profileStorage.save(profile);
+
 		return profile;
 	}
 
@@ -78,6 +85,7 @@ export default abstract class Auth<T extends Profile> {
 
 		// If there are no profiles left just exit
 		const profiles: T[] | null = await this.profileStorage.list();
+
 		if (profiles.length === 0) {
 			return;
 		}
@@ -103,6 +111,7 @@ export default abstract class Auth<T extends Profile> {
 		// tslint:disable-next-line:no-any
 		try {
 			const entry = await tokenStore.get(profile.userId);
+
 			if (entry) {
 				return entry.accessToken.token;
 			}
@@ -111,17 +120,20 @@ export default abstract class Auth<T extends Profile> {
 			// compatibility
 			try {
 				const oldToken = await fileTokenStore.get(profile.userId);
+
 				if (oldToken) {
 					await fileTokenStore.remove(profile.userId);
 					await tokenStore.set(profile.userId, {
 						token: oldToken.accessToken.token,
 					});
+
 					return oldToken.accessToken.token;
 				}
 				return emptyToken;
 			} catch (e) {
 				// TODO Find a way to log it via logger
 				console.error(LogStrings.FailedToGetToken, err);
+
 				return emptyToken;
 			}
 		}

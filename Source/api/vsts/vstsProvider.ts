@@ -26,8 +26,11 @@ export class VSTSProvider {
 
 	public async TestVstsConnection(): Promise<boolean> {
 		const url: string = `${this._baseUrl}_apis/accounts?api-version=${this._apiVersion}`;
+
 		const requestInfo = this.getRequestInfo(HTTP_METHODS.GET);
+
 		const res = await fetch(url, requestInfo);
+
 		if (res.status === 203 || res.status === 401) {
 			return false;
 		}
@@ -37,17 +40,22 @@ export class VSTSProvider {
 	public async GetAllProjects(): Promise<VSTSProject[] | null> {
 		try {
 			const url: string = `${this._baseUrl}_apis/projects?api-version=${this._apiVersion}`;
+
 			const requestInfo = this.getRequestInfo(HTTP_METHODS.GET);
+
 			const res = await fetch(url, requestInfo);
+
 			if (res.status === 203 || res.status === 401) {
 				throw new Error(Messages.VstsCredsNotValidWarning);
 			}
 			const response = await res.json();
+
 			return <VSTSProject[]>response.value;
 		} catch (e) {
 			this.logger.error(
 				`${LogStrings.FailedToGetVSTSProjectList}. ${(e && e.message) || ""}`,
 			);
+
 			return null;
 		}
 	}
@@ -58,15 +66,20 @@ export class VSTSProvider {
 	): Promise<VSTSGitRepository | null> {
 		try {
 			const url: string = `${this._baseUrl}_apis/git/repositories?api-version=${this._apiVersion}`;
+
 			const body: any = {
 				name: gitRepoName,
 				project: {
 					id: projectId,
 				},
 			};
+
 			const requestInfo = this.getRequestInfo(HTTP_METHODS.POST, body);
+
 			const res = await fetch(url, requestInfo);
+
 			const response = await res.json();
+
 			if (response.errorCode !== undefined) {
 				throw new Error(response.message);
 			}
@@ -75,6 +88,7 @@ export class VSTSProvider {
 			this.logger.error(
 				`${LogStrings.FailedToGetVSTSReposList} ${(e && e.message) || ""}`,
 			);
+
 			return null;
 		}
 	}
@@ -84,14 +98,19 @@ export class VSTSProvider {
 	): Promise<VSTSGitRepository[] | null> {
 		try {
 			const url: string = `${this._baseUrl}${projectName}/_apis/git/repositories?api-version=${this._apiVersion}`;
+
 			const requestInfo = this.getRequestInfo(HTTP_METHODS.GET);
+
 			const res = await fetch(url, requestInfo);
+
 			const response = await res.json();
+
 			return <VSTSGitRepository[]>response.value;
 		} catch (e) {
 			this.logger.error(
 				`${LogStrings.FailedToGetVSTSReposList} ${(e && e.message) || ""}`,
 			);
+
 			return null;
 		}
 	}

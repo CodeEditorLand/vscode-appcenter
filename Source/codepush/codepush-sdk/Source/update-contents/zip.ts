@@ -39,6 +39,7 @@ export default function zip(
 		}
 
 		const directoryPath: string = updateContentsPath;
+
 		const baseDirectoryPath = path.join(directoryPath, ".."); // For legacy reasons, put the root directory in the zip
 
 		const files: string[] = await fileUtils.walk(updateContentsPath);
@@ -62,7 +63,9 @@ export default function zip(
 			outputDir,
 			fileUtils.generateRandomFilename(15) + ".zip",
 		);
+
 		const zipFile = new yazl.ZipFile();
+
 		const writeStream: fs.WriteStream = fs.createWriteStream(packagePath);
 
 		zipFile.outputStream

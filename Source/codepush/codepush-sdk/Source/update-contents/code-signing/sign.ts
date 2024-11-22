@@ -9,6 +9,7 @@ import * as fileUtils from "../../utils/file-utils";
 import * as hashUtils from "./hash-utils";
 
 const CURRENT_CLAIM_VERSION: string = "1.0.0";
+
 const METADATA_FILE_NAME: string = ".codepushrelease";
 
 interface CodeSigningClaims {
@@ -25,6 +26,7 @@ export default async function sign(
 	}
 
 	let privateKey: Buffer;
+
 	let signatureFilePath: string;
 
 	try {
@@ -47,7 +49,9 @@ export default async function sign(
 	}
 
 	signatureFilePath = path.join(updateContentsPath, METADATA_FILE_NAME);
+
 	let prevSignatureExists = true;
+
 	try {
 		await fileUtils.access(signatureFilePath, fs.constants.F_OK);
 	} catch (err) {
@@ -74,6 +78,7 @@ export default async function sign(
 		updateContentsPath,
 		path.join(updateContentsPath, ".."),
 	);
+
 	const claims: CodeSigningClaims = {
 		claimVersion: CURRENT_CLAIM_VERSION,
 		contentHash: hash,

@@ -21,6 +21,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 	public async run(): Promise<void> {
 		// Disabling the check whether project has react-native package installed cause it's kinda useless here.
 		this.checkForReact = false;
+
 		if (!(await super.run())) {
 			return;
 		}
@@ -34,6 +35,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 	) {
 		if (selected.target === CommandNames.CreateApp.CommandName) {
 			await new General.CreateNewApp(this._params).run();
+
 			return;
 		} else {
 			let selectedApp: models.AppResponse;
@@ -55,8 +57,11 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 
 			if (selectedApp) {
 				const selectedApp: models.AppResponse = selectedApps[0];
+
 				const selectedAppName: string = `${selectedApp.owner.name}/${selectedApp.name}`;
+
 				const selectedAppSecret: string = selectedApp.appSecret;
+
 				const type: string = selectedApp.owner.type;
 
 				const OS: AppCenterOS | undefined = Utils.toAppCenterOS(
@@ -68,11 +73,13 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 						progress.report({
 							message: Messages.FetchDeploymentsProgressMessage,
 						});
+
 						return await this.client.codePushDeployments.list(
 							selectedApp.owner.name,
 							selectedApp.name,
 						);
 					});
+
 				const appDeployments: models.Deployment[] = deployments.sort(
 					(a, b): any => {
 						return a.name < b.name; // sort alphabetically
@@ -80,6 +87,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 				);
 
 				let currentDeployments: CurrentAppDeployments | null = null;
+
 				if (appDeployments.length > 0) {
 					const deployments: Deployment[] = appDeployments.map(
 						(d) => {
@@ -107,10 +115,12 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 			} else {
 				const currentApp: CurrentApp | null =
 					await this.getCurrentApp();
+
 				if (currentApp) {
 					currentAppToUse = currentApp;
 				} else {
 					this.logger.error("Current app is undefined");
+
 					throw new Error("Current app is undefined");
 				}
 			}

@@ -47,11 +47,13 @@ export class Command {
 
 	public runNoClient(): Promise<boolean | void> {
 		const rootPath: string | undefined = this.manager.projectRootPath;
+
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
 			VsCodeUI.ShowWarningMessage(
 				Messages.NoProjectRootFolderFoundWarning,
 			);
+
 			return Promise.resolve(false);
 		}
 
@@ -60,24 +62,30 @@ export class Command {
 
 	public async run(): Promise<boolean | void> {
 		const rootPath: string | undefined = this.manager.projectRootPath;
+
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
 			VsCodeUI.ShowWarningMessage(
 				Messages.NoProjectRootFolderFoundWarning,
 			);
+
 			return Promise.resolve(false);
 		}
 		const profile: AppCenterProfile | null = await this.appCenterProfile;
+
 		if (!profile) {
 			VsCodeUI.ShowWarningMessage(Messages.UserIsNotLoggedInWarning);
+
 			return Promise.resolve(false);
 		} else {
 			const clientOrNull: AppCenterClient | null =
 				this.resolveAppCenterClient(profile);
+
 			if (clientOrNull) {
 				this.client = clientOrNull;
 			} else {
 				this.logger.error(LogStrings.FailedToGetClient);
+
 				return Promise.resolve(false);
 			}
 			return Promise.resolve(true);
@@ -95,6 +103,7 @@ export class Command {
 				);
 			} else {
 				this.logger.error(LogStrings.NoUserSpecified);
+
 				return null;
 			}
 		}
@@ -119,20 +128,25 @@ export class Command {
 			isMandatory,
 			appSecret,
 		);
+
 		if (!currentApp) {
 			VsCodeUI.ShowWarningMessage(Messages.InvalidCurrentAppNameWarning);
+
 			return null;
 		}
 
 		const profile: AppCenterProfile | null = await this.appCenterProfile;
+
 		if (profile) {
 			profile.currentApp = currentApp;
 			await this.appCenterAuth.updateProfile(profile);
 			this.manager.setupAppCenterStatusBar(profile);
+
 			return currentApp;
 		} else {
 			// No profile - not logged in?
 			VsCodeUI.ShowWarningMessage(Messages.UserIsNotLoggedInWarning);
+
 			return null;
 		}
 	}

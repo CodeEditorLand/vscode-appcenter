@@ -62,6 +62,7 @@ export default class LegacyCodePushServiceClient {
 		updateMetadata: PackageInfo,
 	): Promise<models.CodePushRelease> {
 		const appName = this.app.identifier;
+
 		return new Promise<models.CodePushRelease>((resolve, reject) => {
 			const options = {
 				url:
@@ -82,6 +83,7 @@ export default class LegacyCodePushServiceClient {
 			request.post(options, (err: any, httpResponse: any) => {
 				if (err) {
 					reject(this.getErrorMessage(err, httpResponse));
+
 					return;
 				}
 				if (httpResponse.statusCode === 201) {
@@ -92,6 +94,7 @@ export default class LegacyCodePushServiceClient {
 					);
 				} else {
 					reject(this.getErrorMessage(null, httpResponse));
+
 					return;
 				}
 			});
@@ -101,8 +104,10 @@ export default class LegacyCodePushServiceClient {
 	// A template string tag function that URL encodes the substituted values
 	private urlEncode(strings: any, ...values: string[]): string {
 		let result = "";
+
 		for (let i = 0; i < strings.length; i++) {
 			result += strings[i];
+
 			if (i < values.length) {
 				result += encodeURIComponent(values[i]);
 			}

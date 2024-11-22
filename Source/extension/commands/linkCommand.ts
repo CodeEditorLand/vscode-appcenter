@@ -22,6 +22,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 		_rnApps: models.AppResponse[],
 	) {
 		let currentApp: CurrentApp | null;
+
 		if (selected.target === this.currentAppMenuTarget) {
 			currentApp = await this.getCurrentApp();
 		} else {
@@ -30,14 +31,19 @@ export class LinkCommand extends ReactNativeAppCommand {
 					app.name === selected.target &&
 					app.owner.type === selected.description,
 			);
+
 			if (!selectedApps || selectedApps.length !== 1) {
 				this.showedCount = 0;
 				this.pickedApps = [];
+
 				return;
 			}
 			const selectedApp: models.AppResponse = selectedApps[0];
+
 			const selectedAppName: string = `${selectedApp.owner.name}/${selectedApp.name}`;
+
 			const selectedAppSecret: string = selectedApp.appSecret;
+
 			const type: string = selectedApp.owner.type;
 
 			const OS: AppCenterOS | undefined = Utils.toAppCenterOS(
@@ -54,19 +60,24 @@ export class LinkCommand extends ReactNativeAppCommand {
 			);
 		}
 		this.pickedApps.push(currentApp);
+
 		if (this.showedCount < 1 && SettingsHelper.linkTwoApps()) {
 			this.showedCount++;
+
 			const missingOS: AppCenterOS =
 				currentApp.os.toLowerCase() ===
 				AppCenterOS.Android.toLowerCase()
 					? AppCenterOS.iOS
 					: AppCenterOS.Android;
+
 			const cachedFilteredApps = this.getRnApps(
 				this.CachedAllApps,
 			).filter((cachedApp) => {
 				return cachedApp.os.toLowerCase() === missingOS.toLowerCase();
 			});
+
 			const current: CurrentApp | null = await this.getCurrentApp();
+
 			const showCurrentApp: boolean =
 				current.os.toLowerCase() !== currentApp.os.toLowerCase();
 			this.showAppsQuickPick(

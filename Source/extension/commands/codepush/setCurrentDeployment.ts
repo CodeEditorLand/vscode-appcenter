@@ -15,12 +15,15 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 			return;
 		}
 		const currentApp: CurrentApp = await this.getCurrentApp(true);
+
 		if (!currentApp) {
 			VsCodeUI.ShowWarningMessage(Messages.NoCurrentAppSetWarning);
+
 			return;
 		}
 		if (!this.hasCodePushDeployments(currentApp)) {
 			VsCodeUI.ShowWarningMessage(Messages.NoDeploymentsWarning);
+
 			return;
 		}
 		const deploymentOptions: CustomQuickPickItem[] =
@@ -33,10 +36,12 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 					};
 				},
 			);
+
 		const deployment: CustomQuickPickItem = await VsCodeUI.showQuickPick(
 			deploymentOptions,
 			Strings.SelectCurrentDeploymentHint,
 		);
+
 		if (deployment) {
 			this.saveCurrentApp(
 				currentApp.identifier,

@@ -19,21 +19,25 @@ export default class LoginToVsts extends Command {
 			userName: "",
 			token: "",
 		};
+
 		let value;
 
 		value = await VsCodeUI.showInput(Strings.SpecifyTenantTitleHint);
+
 		if (!value) {
 			return true;
 		}
 		loginInfo.tenantName = value;
 
 		value = await VsCodeUI.showInput(Strings.SpecifyUserNameTitleHint);
+
 		if (!value) {
 			return true;
 		}
 		loginInfo.userName = value;
 
 		value = await VsCodeUI.showInput(Strings.SpecifyPATTitleHint);
+
 		if (!value) {
 			return true;
 		}
@@ -45,11 +49,13 @@ export default class LoginToVsts extends Command {
 	private async login(loginInfo: VstsLoginInfo): Promise<boolean> {
 		try {
 			const profile: VstsProfile = await this.vstsAuth.doLogin(loginInfo);
+
 			if (!profile) {
 				this.logger.error(LogStrings.FailedToGetUserFromServer);
 				VsCodeUI.ShowErrorMessage(
 					Messages.FailedToExecuteLoginMsg(AuthProvider.Vsts),
 				);
+
 				return false;
 			}
 
@@ -58,6 +64,7 @@ export default class LoginToVsts extends Command {
 			const accessToken: string = await Auth.accessTokenFor(profile);
 
 			const userName: string = profile.userName;
+
 			const vsts = new VSTSProvider(
 				{
 					tenantName: tenantName,
@@ -66,10 +73,13 @@ export default class LoginToVsts extends Command {
 				},
 				this.logger,
 			);
+
 			const isValid: boolean = await vsts.TestVstsConnection();
+
 			if (!isValid) {
 				VsCodeUI.ShowWarningMessage(Messages.VstsCredsNotValidWarning);
 				this.vstsAuth.doLogout(profile.userId);
+
 				return false;
 			} else {
 				VsCodeUI.ShowInfoMessage(
@@ -83,6 +93,7 @@ export default class LoginToVsts extends Command {
 		} catch (e) {
 			VsCodeUI.ShowErrorMessage(Messages.FailedToLogin);
 			this.logger.error(e.message, e, true);
+
 			return false;
 		}
 	}

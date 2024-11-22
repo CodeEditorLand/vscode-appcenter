@@ -24,6 +24,7 @@ export class GitUtils {
 				{},
 				"--version",
 			);
+
 			return true;
 		} catch (error) {
 			return false;
@@ -36,9 +37,11 @@ export class GitUtils {
 	): Promise<boolean> {
 		try {
 			const result: boolean = await git(workingDirectory).checkIsRepo();
+
 			return result;
 		} catch (e) {
 			logger.error(`failed: ${e.message}`);
+
 			return false;
 		}
 	}
@@ -61,11 +64,13 @@ export class GitUtils {
 	): Promise<boolean> {
 		try {
 			await git(workingDirectory).removeRemote(remoteName);
+
 			return true;
 		} catch (e) {
 			logger.error(
 				`${LogStrings.FailedToRemoveRemote(remoteName)}: ${e.message}`,
 			);
+
 			return false;
 		}
 	}
@@ -79,11 +84,13 @@ export class GitUtils {
 		try {
 			const gitrepo = git(workingDirectory);
 			await gitrepo.addRemote(remoteName, remoteUrl);
+
 			return true;
 		} catch (e) {
 			logger.error(
 				`${LogStrings.FailedToAddRemote(remoteName)}: ${e.message}`,
 			);
+
 			return false;
 		}
 	}
@@ -94,11 +101,13 @@ export class GitUtils {
 	): Promise<string[]> {
 		try {
 			const remote: string[] = await git(workingDirectory).getRemotes();
+
 			return remote;
 		} catch (e) {
 			logger.error(
 				`${LogStrings.FailedToGetRemote("name")}: ${e.message}`,
 			);
+
 			return [];
 		}
 	}
@@ -111,11 +120,13 @@ export class GitUtils {
 			const remote: string = await git(workingDirectory).listRemote([
 				"--get-url",
 			]);
+
 			return remote;
 		} catch (e) {
 			logger.error(
 				`${LogStrings.FailedToGetRemote("url")}: ${e.message}`,
 			);
+
 			return "";
 		}
 	}
@@ -131,11 +142,13 @@ export class GitUtils {
 				"--rebase": "true",
 				"--squash": null,
 			});
+
 			return true;
 		} catch (e) {
 			logger.error(
 				`${LogStrings.FailedToPullRemote(remoteRepo)}: ${e.message}`,
 			);
+
 			return false;
 		}
 	}
@@ -154,11 +167,13 @@ export class GitUtils {
 			logger.debug(
 				LogStrings.SuccessfullyPushedTo(remoteRepoName, branch),
 			);
+
 			return true;
 		} catch (e) {
 			logger.error(
 				`${LogStrings.FailedToPushTo(remoteRepoName)}: ${e.message}`,
 			);
+
 			return false;
 		}
 	}
@@ -176,6 +191,7 @@ export class GitUtils {
 			await gitrepo.checkout(["-t", "origin/master"]);
 		} catch (e) {
 			logger.error(`${LogStrings.FailedToClone}: "${e.message}"`);
+
 			return false;
 		}
 		return true;
@@ -199,6 +215,7 @@ export class GitUtils {
 			logger.error(
 				`${LogStrings.FailedToPushTo(remoteRepo)}: ${e.message}`,
 			);
+
 			return false;
 		}
 		return true;

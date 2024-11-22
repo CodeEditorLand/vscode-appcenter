@@ -12,13 +12,17 @@ export class FSUtils {
 	public static IsEmptyDirectory(dirName: string) {
 		let dirContent: string[] | null = null;
 		dirContent = fs.readdirSync(dirName);
+
 		const ignoredItems = [".vscode"];
+
 		const filteredDir =
 			dirContent &&
 			dirContent.filter((item: string) => {
 				return ignoredItems.indexOf(item) === -1;
 			});
+
 		const dirExistAndEmpty = filteredDir && filteredDir.length === 0;
+
 		return dirExistAndEmpty;
 	}
 
@@ -27,12 +31,15 @@ export class FSUtils {
 		dirContent = fs.readdirSync(dirName);
 
 		const ignoredItems = [".vscode", ".git"];
+
 		const filteredDir =
 			dirContent &&
 			dirContent.filter((item: string) => {
 				return ignoredItems.indexOf(item) === -1;
 			});
+
 		const dirExistAndEmpty = filteredDir && filteredDir.length === 0;
+
 		return dirExistAndEmpty;
 	}
 
@@ -41,8 +48,10 @@ export class FSUtils {
 			return;
 		}
 		const dirContent = fs.readdirSync(sourcePath);
+
 		for (const dir of dirContent) {
 			const fullDir = path.join(sourcePath, dir);
+
 			if (!fs.lstatSync(fullDir).isDirectory()) {
 				const outputFilePath: string = path.join(destinationPath, dir);
 				fs.writeFileSync(outputFilePath, fs.readFileSync(fullDir));

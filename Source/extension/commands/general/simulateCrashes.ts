@@ -28,8 +28,10 @@ export default class SimulateCrashes extends Command {
 					progress.report({
 						message: Messages.SimulateCrashesProgressMessage,
 					});
+
 					const profile: AppCenterProfile | null =
 						await this.appCenterProfile;
+
 					if (!this._app) {
 						if (profile && profile.currentApp) {
 							this._app = profile.currentApp;
@@ -49,8 +51,10 @@ export default class SimulateCrashes extends Command {
 						AppCenterUrlBuilder.getCrashesEndpoint(),
 						this.logger,
 					);
+
 					try {
 						await crashGenerator.generateCrashes();
+
 						return AppCenterUrlBuilder.GetPortalCrashesLink(
 							this._app.ownerName,
 							this._app.appName,
@@ -66,6 +70,7 @@ export default class SimulateCrashes extends Command {
 					return null;
 				},
 			);
+
 			if (link) {
 				const messageItems: IButtonMessageItem[] = [];
 				messageItems.push({

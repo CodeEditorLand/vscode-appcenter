@@ -41,11 +41,13 @@ export default class Logout extends Command {
 				profile: profile,
 			});
 		});
+
 		try {
 			const selected: ProfileQuickPickItem = await VsCodeUI.showQuickPick(
 				menuOptions,
 				Strings.SelectProfileTitleHint,
 			);
+
 			if (!selected) {
 				// User cancel selection
 				return void 0;
@@ -68,9 +70,11 @@ export default class Logout extends Command {
 			await this.manager.setupAppCenterStatusBar(
 				await this.appCenterAuth.activeProfile,
 			);
+
 			return true;
 		} catch (e) {
 			this.handleError(e);
+
 			return false;
 		}
 	}

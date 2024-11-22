@@ -54,6 +54,7 @@ export class VsCodeUI {
 			statusBar.command = commandOnClick; // undefined clears the command
 			statusBar.text = text;
 			statusBar.tooltip = tooltip;
+
 			if (SettingsHelper.shouldStatusBarBeShown()) {
 				statusBar.show();
 			}
@@ -92,29 +93,37 @@ export class VsCodeUI {
 		const messageItems: ButtonMessageItem[] = <ButtonMessageItem[]>(
 			urlMessageItem
 		);
+
 		const messageToDisplay: string = `(${Constants.ExtensionName}) ${Utils.FormatMessage(message)}`;
 
 		//Use the typescript spread operator to pass the rest parameter to showErrorMessage
 		let chosenItem: IButtonMessageItem | undefined;
+
 		switch (type) {
 			case MessageTypes.Error:
 				chosenItem = await window.showErrorMessage(
 					messageToDisplay,
 					...messageItems,
 				);
+
 				break;
+
 			case MessageTypes.Info:
 				chosenItem = await window.showInformationMessage(
 					messageToDisplay,
 					...messageItems,
 				);
+
 				break;
+
 			case MessageTypes.Warn:
 				chosenItem = await window.showWarningMessage(
 					messageToDisplay,
 					...messageItems,
 				);
+
 				break;
+
 			default:
 				break;
 		}

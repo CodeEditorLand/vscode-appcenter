@@ -60,22 +60,28 @@ export class PackageManifest {
 
 	public static deserialize(serializedContents: string): PackageManifest {
 		const map = new Map<string, string>();
+
 		try {
 			const obj: any = JSON.parse(serializedContents);
+
 			for (const key of Object.keys(obj)) {
 				map.set(key, obj[key]);
 			}
 			return new PackageManifest(map);
 		} catch (e) {
 			console.error(e);
+
 			return new PackageManifest(map);
 		}
 	}
 
 	public static isIgnored(relativeFilePath: string): boolean {
 		const __MACOSX = "__MACOSX/";
+
 		const DS_STORE = ".DS_Store";
+
 		const CODEPUSH_METADATA = ".codepushrelease";
+
 		return (
 			_.startsWith(relativeFilePath, __MACOSX) ||
 			relativeFilePath === DS_STORE ||
@@ -104,6 +110,7 @@ export async function generatePackageHashFromDirectory(
 
 	const manifest: PackageManifest =
 		await generatePackageManifestFromDirectory(directoryPath, basePath);
+
 	return manifest.computePackageHash();
 }
 
@@ -120,6 +127,7 @@ export function generatePackageManifestFromDirectory(
 			reject(
 				`Error: Can"t sign the release because no files were found.`,
 			);
+
 			return;
 		}
 
@@ -130,6 +138,7 @@ export function generatePackageManifestFromDirectory(
 					const relativePath: string = fileUtils.normalizePath(
 						path.relative(basePath, filePath),
 					);
+
 					if (!PackageManifest.isIgnored(relativePath)) {
 						return hashFile(filePath).then((hash: string) => {
 							fileHashesMap.set(relativePath, hash);
@@ -149,6 +158,7 @@ export function generatePackageManifestFromDirectory(
 
 export function hashFile(filePath: string): Promise<string> {
 	const readStream: fs.ReadStream = fs.createReadStream(filePath);
+
 	return hashStream(readStream);
 }
 
@@ -167,6 +177,7 @@ export function hashStream(readStream: stream.Readable): Promise<string> {
 				hashStream.end();
 
 				const buffer = <Buffer>hashStream.read();
+
 				const hash: string = buffer.toString("hex");
 
 				resolve(hash);

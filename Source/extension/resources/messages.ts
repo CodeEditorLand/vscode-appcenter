@@ -179,6 +179,7 @@ The current app is '${currentAppName}'.`;
 		iosSecret: string,
 	): string {
 		let secretsHint = "Paste these app secrets when needed. ";
+
 		if (androidSecret) {
 			secretsHint += ` Android app secret:< ${androidSecret}   > `;
 		}

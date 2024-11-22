@@ -26,12 +26,15 @@ export class GeneralMenu extends Menu {
 
 	protected getMenuItems(): MenuQuickPickItem[] {
 		const menuItems: MenuQuickPickItem[] = [];
+
 		if (!this.profile) {
 			menuItems.push(MenuItems.Login);
+
 			return menuItems;
 		}
 
 		let currentApp: CurrentApp | undefined;
+
 		if (this.profile.currentApp) {
 			currentApp = this.profile.currentApp;
 		}
@@ -42,6 +45,7 @@ export class GeneralMenu extends Menu {
 			menuItems.push(MenuItems.AppCenterPortal);
 		} else {
 			menuItems.push(MenuItems.AppCenterPortal);
+
 			if (this.isRNproject() && currentApp) {
 				menuItems.push(MenuItems.TestTab);
 				menuItems.push(MenuItems.CodePushTab);
@@ -58,6 +62,7 @@ export class GeneralMenu extends Menu {
 		}
 
 		menuItems.push(MenuItems.Settings);
+
 		return menuItems;
 	}
 
@@ -65,47 +70,58 @@ export class GeneralMenu extends Menu {
 		switch (menuItem.command) {
 			case AppCenterBeacons.CodePush:
 				new CodePush.ShowMenu(this._params).run();
+
 				break;
 
 			case AppCenterBeacons.Test:
 				new Test.ShowMenu(this._params).runNoClient();
+
 				break;
 
 			case AppCenterCrashesTabs.Simulate:
 				new General.SimulateCrashes(this._params).run();
+
 				break;
 
 			case CommandNames.AppCenterPortal:
 				new General.AppCenterPortal(this._params).run();
+
 				break;
 
 			case CommandNames.Start:
 				new General.Start(this._params).run();
+
 				break;
 
 			case CommandNames.Login:
 				new General.Login(this._params).run();
+
 				break;
 
 			case CommandNames.SetCurrentApp:
 				new General.SetCurrentApp(this._params).run();
+
 				break;
 
 			case CommandNames.GetCurrentApp:
 				new General.GetCurrentApp(this._params).runNoClient();
+
 				break;
 
 			case CommandNames.Settings.ShowMenu:
 				new Settings.ShowMenu(this._params).run();
+
 				break;
 
 			case CommandNames.InstallSDK:
 				new General.LinkAppCenter(this._params).run();
+
 				break;
 
 			default:
 				// Ideally shouldn't be there :)
 				this.logger.error("Unknown App Center menu command");
+
 				break;
 		}
 		return void 0;

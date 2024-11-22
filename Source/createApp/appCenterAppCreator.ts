@@ -31,6 +31,7 @@ export default class AppCenterAppCreator {
 		// TODO: get out what to do with this magic with not working of method to create default config!
 		try {
 			const configJson = Constants.defaultBuildConfigJSON;
+
 			const configObj = JSON.parse(configJson);
 			// tslint:disable-next-line:no-debugger
 			await this.client.branchConfigurations.create(
@@ -39,9 +40,12 @@ export default class AppCenterAppCreator {
 				appName,
 				configObj,
 			);
+
 			const queueBuildRequestResponse: models.Build =
 				await this.client.builds.create(branchName, ownerName, appName);
+
 			const buildId = queueBuildRequestResponse.id;
+
 			const realBranchName = queueBuildRequestResponse.sourceBranch;
 
 			const url = AppCenterUrlBuilder.GetPortalBuildLink(
@@ -60,6 +64,7 @@ export default class AppCenterAppCreator {
 					branchName,
 					isOrg,
 				);
+
 			if (error.statusCode === 400) {
 				this.logger.error(LogStrings.BuildConfigureError(appName));
 			} else {
@@ -74,6 +79,7 @@ export default class AppCenterAppCreator {
 				Messages.BuildManualConfigureMessage(appName),
 				...messageItems,
 			);
+
 			return false;
 		}
 		return true;
@@ -91,6 +97,7 @@ export default class AppCenterAppCreator {
 				appName,
 				repoUrl,
 			);
+
 			return true;
 		} catch (err) {
 			const connectRepoLink: string =
@@ -110,6 +117,7 @@ export default class AppCenterAppCreator {
 				Messages.RepoManualConnectMessage(appName),
 				...messageItems,
 			);
+
 			return false;
 		}
 	}
@@ -155,6 +163,7 @@ export default class AppCenterAppCreator {
 					os: this.os,
 					platform: this.platform,
 				});
+
 			return {
 				appSecret: result.appSecret,
 				platform: result.platform,
@@ -184,6 +193,7 @@ export default class AppCenterAppCreator {
 				os: this.os,
 				platform: this.platform,
 			});
+
 			return {
 				appSecret: result.appSecret,
 				platform: result.platform,
@@ -213,10 +223,12 @@ export default class AppCenterAppCreator {
 					appName,
 					Constants.CodePushStagingDeploymentName,
 				);
+
 			return result;
 		} catch (err) {
 			if (err.statusCode === 409) {
 				this.logger.info(LogStrings.DeploymentExists(appName));
+
 				try {
 					const result: models.Deployment =
 						await this.client.codePushDeployments.get(
@@ -224,6 +236,7 @@ export default class AppCenterAppCreator {
 							ownerName,
 							appName,
 						);
+
 					return result;
 				} catch (err) {
 					this.logger.error(

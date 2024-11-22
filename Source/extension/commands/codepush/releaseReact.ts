@@ -37,20 +37,26 @@ export default class ReleaseReact extends RNCPAppCommand {
 		}
 
 		const codePushRelaseParams = <ICodePushReleaseParams>{};
+
 		let updateContentsDirectory: string;
+
 		let isMandatory: boolean;
+
 		return await VsCodeUI.showProgress<void>(async (progress) => {
 			try {
 				progress.report({
 					message: Messages.GettingAppInfoProgressMessage,
 				});
+
 				if (!this._app) {
 					const currentApp: CurrentApp =
 						await this.getCurrentApp(true);
+
 					if (!currentApp) {
 						VsCodeUI.ShowWarningMessage(
 							Messages.NoCurrentAppSetWarning,
 						);
+
 						return void 0;
 					}
 					this._app = currentApp;
@@ -59,19 +65,24 @@ export default class ReleaseReact extends RNCPAppCommand {
 				progress.report({
 					message: Messages.DetectingAppVersionProgressMessage,
 				});
+
 				if (!this.hasCodePushDeployments(this._app)) {
 					VsCodeUI.ShowWarningMessage(Messages.NoDeploymentsWarning);
+
 					return void 0;
 				}
 				if (!this._app.os || !reactNative.isValidOS(this._app.os)) {
 					VsCodeUI.ShowWarningMessage(Messages.UnsupportedOSWarning);
+
 					return void 0;
 				}
 				codePushRelaseParams.app = this._app;
 				codePushRelaseParams.deploymentName =
 					this._app.currentAppDeployments.currentDeploymentName;
 				isMandatory = !!this._app.isMandatory;
+
 				let appVersion: string;
+
 				if (
 					this._app.targetBinaryVersion !==
 					Constants.AppCenterDefaultTargetBinaryVersion
@@ -83,21 +94,28 @@ export default class ReleaseReact extends RNCPAppCommand {
 							appVersion = await reactNative.getAndroidAppVersion(
 								this.rootPath,
 							);
+
 							break;
+
 						case "ios":
 							appVersion = await reactNative.getiOSAppVersion(
 								this.rootPath,
 							);
+
 							break;
+
 						case "windows":
 							appVersion = await reactNative.getWindowsAppVersion(
 								this.rootPath,
 							);
+
 							break;
+
 						default: {
 							VsCodeUI.ShowWarningMessage(
 								Messages.UnsupportedOSWarning,
 							);
+
 							return void 0;
 						}
 					}
@@ -115,6 +133,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 					os: codePushRelaseParams.app.os,
 					projectRootPath: this.rootPath,
 				});
+
 				if (!updateContentsDirectory) {
 					return void 0;
 				}
@@ -122,6 +141,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 				// If user has enabled a mixin update, this is the place where we would add mixin folder contents to a bundle.
 				let codePushReleaseMixinPath: string =
 					SettingsHelper.codePushReleaseMixinPath();
+
 				if (codePushReleaseMixinPath) {
 					progress.report({
 						message: Messages.MakingMixinProgressMessage(
@@ -152,6 +172,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 						updateContentsDirectory,
 						updateContentsDirectory,
 					);
+
 				if (!codePushRelaseParams.updatedContentZipPath) {
 					return void 0;
 				}
@@ -159,14 +180,18 @@ export default class ReleaseReact extends RNCPAppCommand {
 					message: Messages.ReleasingUpdateContentsProgressMessage,
 				});
 				codePushRelaseParams.isMandatory = isMandatory;
+
 				const profile: AppCenterProfile = await this.appCenterProfile;
+
 				const token: string = await Auth.accessTokenFor(profile);
 				codePushRelaseParams.token = token;
+
 				const response: any = await codePushRelease.exec(
 					this.client,
 					codePushRelaseParams,
 					this.logger,
 				);
+
 				if (!response) {
 					return void 0;
 				}
@@ -177,6 +202,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 							codePushRelaseParams.app.appName,
 						),
 					);
+
 					return response.result;
 				} else {
 					VsCodeUI.ShowErrorMessage(response.errorMessage);

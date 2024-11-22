@@ -16,14 +16,19 @@ export function escape(s: string): string {
 		switch (ch) {
 			case ":":
 				result += "\\:";
+
 				break;
+
 			case "\\":
 				result += "\\\\";
+
 				break;
+
 			default:
 				result += ch;
 		}
 	});
+
 	return result;
 }
 
@@ -33,6 +38,7 @@ export function escape(s: string): string {
 //
 export function unescape(s: string): string {
 	let result = "";
+
 	let afterSlash = false;
 	// tslint:disable-next-line:underscore-consistent-invocation
 	_.each(s, function (ch) {
@@ -86,6 +92,7 @@ function endsWith(s: string, ending: string): boolean {
 
 function partToKeyValue(part: string): string[] {
 	const parts: string[] = part.split(":");
+
 	const value: string[] = parts.reduce(
 		(
 			accumulator: string[],
@@ -106,6 +113,7 @@ function partToKeyValue(part: string): string[] {
 		},
 		[null, null],
 	);
+
 	return value;
 }
 

@@ -49,6 +49,7 @@ export class ReactNativeAppCommand extends Command {
 			!Utils.isReactNativeProject(this.logger, this.rootPath, true)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotReactProjectWarning);
+
 			return false;
 		}
 		return true;
@@ -64,6 +65,7 @@ export class ReactNativeAppCommand extends Command {
 			!Utils.isReactNativeProject(this.logger, this.rootPath, true)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotReactProjectWarning);
+
 			return false;
 		}
 		return true;
@@ -83,6 +85,7 @@ export class ReactNativeAppCommand extends Command {
 										profile.currentApp.ownerName,
 										profile.currentApp.appName,
 									);
+
 								if (result) {
 									profile.currentApp.currentAppDeployments.codePushDeployments =
 										[];
@@ -129,15 +132,18 @@ export class ReactNativeAppCommand extends Command {
 	) {
 		if (!apps) {
 			this.logger.debug(LogStrings.NoAppsToShow);
+
 			return;
 		}
 		const rnApps: models.AppResponse[] = this.getRnApps(apps);
+
 		if (!force) {
 			ReactNativeAppCommand.cachedAllApps = apps;
 		}
 		const options: QuickPickAppItem[] = Menu.getQuickPickItemsForAppsList(
 			includeAllApps ? apps : rnApps,
 		);
+
 		if (
 			includeCreateNew &&
 			Utils.isReactNativeProject(this.logger, this.rootPath, false)
@@ -167,6 +173,7 @@ export class ReactNativeAppCommand extends Command {
 				prompt,
 			);
 			this.userAlreadySelectedApp = true;
+
 			if (!selected) {
 				return;
 			}
@@ -196,6 +203,7 @@ export class ReactNativeAppCommand extends Command {
 			const apps: models.AppResponse[] = await this.client.apps.list({
 				orderBy: "name",
 			});
+
 			const rnApps: models.AppResponse[] = includeAllApps
 				? apps
 				: this.getRnApps(apps);
@@ -241,10 +249,12 @@ export class ReactNativeAppCommand extends Command {
 			// If we find no matches to this cache item in items, then arrays differ.
 			if (matches.length === 0) {
 				differs = true;
+
 				return false;
 			}
 			return true;
 		});
+
 		return differs;
 	}
 
@@ -253,7 +263,9 @@ export class ReactNativeAppCommand extends Command {
 		item: models.AppResponse,
 	): boolean {
 		const hashOfTheCachedObject = Md5.hashStr(JSON.stringify(cachedItem));
+
 		const hashOfTheIncomingObject = Md5.hashStr(JSON.stringify(item));
+
 		return hashOfTheCachedObject === hashOfTheIncomingObject;
 	}
 }

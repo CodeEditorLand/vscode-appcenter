@@ -9,6 +9,7 @@ import * as xml2js from "xml2js";
 export function getAppVersion(projectRoot?: string): Promise<string> {
 	return new Promise<string>((resolve, reject) => {
 		let configString: string = "";
+
 		try {
 			projectRoot = projectRoot || process.cwd();
 			configString = fs.readFileSync(
@@ -44,6 +45,7 @@ export function isValidOS(os: string): boolean {
 		case "android":
 		case "ios":
 			return true;
+
 		default:
 			return false;
 	}
@@ -60,10 +62,12 @@ export function getCordovaOrPhonegapCLI(): string {
 
 	try {
 		which.sync(cordovaCLI);
+
 		return cordovaCLI;
 	} catch (e) {
 		cordovaCLI = "phonegap";
 		which.sync(cordovaCLI);
+
 		return cordovaCLI;
 	}
 }
@@ -74,7 +78,9 @@ export function makeUpdateContents(os: string): string {
 	}
 
 	const projectRoot: string = process.cwd();
+
 	const platformFolder: string = path.join(projectRoot, "platforms", os);
+
 	let outputFolder: string = "";
 
 	if (os === "ios") {
@@ -89,6 +95,7 @@ export function makeUpdateContents(os: string): string {
 			"assets",
 			"www",
 		);
+
 		if (fs.existsSync(outputFolderVer7)) {
 			outputFolder = outputFolderVer7;
 		} else {

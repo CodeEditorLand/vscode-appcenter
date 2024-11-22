@@ -19,6 +19,7 @@ const fieldRe = /^([^:]+):\s(.*)$/;
 function fieldNameToPropertyName(fieldName: string): string {
 	const parts = fieldName.split(" ");
 	parts[0] = parts[0].toLowerCase();
+
 	return parts.join("");
 }
 
@@ -49,10 +50,14 @@ class WinCredStoreParsingStream extends Transform {
 		}
 
 		this.currentEntry = this.currentEntry || {};
+
 		const match = fieldRe.exec(line);
+
 		const key = fieldNameToPropertyName(match[1]);
+
 		const value = match[2];
 		this.currentEntry[key] = value;
+
 		return callback();
 	}
 

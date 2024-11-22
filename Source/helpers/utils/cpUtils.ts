@@ -21,8 +21,10 @@ export namespace cpUtils {
 		...args: string[]
 	): Promise<string> {
 		let cmdOutput: string = "";
+
 		let cmdOutputIncludingStderr: string = "";
 		workingDirectory = workingDirectory || os.tmpdir();
+
 		const formattedArgs: string = exposeArgs ? args.join(" ") : "";
 		await new Promise(
 			(resolve: () => void, reject: (e: Error) => void): void => {
@@ -31,6 +33,7 @@ export namespace cpUtils {
 					shell: true,
 					env: { ...process.env, ...environment },
 				};
+
 				const childProc: cp.ChildProcess = cp.spawn(
 					command,
 					args,
@@ -48,20 +51,24 @@ export namespace cpUtils {
 					cmdOutput = cmdOutput.concat(data);
 					cmdOutputIncludingStderr =
 						cmdOutputIncludingStderr.concat(data);
+
 					if (logger && !logErrorsOnly) {
 						logger.info(data);
 					}
 					if (inputValues.length > 0) {
 						let sentResponse: boolean;
+
 						const lines = data.split("\n").filter(function (line) {
 							return line.length > 0;
 						});
+
 						for (const line of lines) {
 							const filtered = inputValues.filter(
 								(inputValue) => {
 									return line.indexOf(inputValue.label) > 0;
 								},
 							);
+
 							if (filtered.length > 0 && !filtered[0].sent) {
 								sentResponse = true;
 								childProc.stdin.write(filtered[0].input + "\n");
@@ -80,6 +87,7 @@ export namespace cpUtils {
 					data = data.toString();
 					cmdOutputIncludingStderr =
 						cmdOutputIncludingStderr.concat(data);
+
 					if (logger && !logErrorsOnly) {
 						logger.info(data);
 					}
@@ -92,6 +100,7 @@ export namespace cpUtils {
 				childProc.on("close", (code: number) => {
 					if (code !== 0) {
 						const errMsg: string = `AppCenter.commandError', 'Command "${command} ${formattedArgs}" failed with exit code "${code}":${os.EOL}${cmdOutputIncludingStderr}`;
+
 						if (logger) {
 							logger.error(errMsg);
 						}

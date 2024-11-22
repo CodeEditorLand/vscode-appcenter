@@ -12,5 +12,6 @@ export function userAgentFilter(
 	const scriptName: string = "vscode-appcenter";
 	resource.headers["user-agent"] =
 		`${scriptName}Cli/${cliVersion} ${platform()}/${release()}`;
+
 	return next(resource, callback);
 }

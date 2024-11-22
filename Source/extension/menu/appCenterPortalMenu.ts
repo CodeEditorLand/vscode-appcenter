@@ -20,6 +20,7 @@ import { Menu, MenuItems } from "./menu";
 
 export class AppCenterPortalMenu extends Menu {
 	private isOrg: boolean;
+
 	constructor(
 		private app: CurrentApp,
 		params: CommandParams,
@@ -33,6 +34,7 @@ export class AppCenterPortalMenu extends Menu {
 		const menuItems: MenuQuickPickItem[] = [];
 		menuItems.push(MenuItems.BuildTab);
 		menuItems.push(MenuItems.TestTab);
+
 		if (this.isRNproject()) {
 			menuItems.push(MenuItems.CodePushTab);
 		}
@@ -56,12 +58,15 @@ export class AppCenterPortalMenu extends Menu {
 						this.isOrg,
 					),
 				);
+
 				break;
+
 			case AppCenterBeacons.Distribute:
 				const selected: MenuQuickPickItem =
 					await VsCodeUI.showQuickPick(
 						this.getAppCenterDistributeTabMenuItems(),
 					);
+
 				if (!selected) {
 					return;
 				}
@@ -75,7 +80,9 @@ export class AppCenterPortalMenu extends Menu {
 								this.isOrg,
 							),
 						);
+
 						break;
+
 					case AppCenterDistributionTabs.Stores:
 						Utils.OpenUrl(
 							AppCenterUrlBuilder.GetAppCenterDistributeTabLinkByTabName(
@@ -85,7 +92,9 @@ export class AppCenterPortalMenu extends Menu {
 								this.isOrg,
 							),
 						);
+
 						break;
+
 					case AppCenterDistributionTabs.Releases:
 						Utils.OpenUrl(
 							AppCenterUrlBuilder.GetAppCenterDistributeTabLinkByTabName(
@@ -95,16 +104,20 @@ export class AppCenterPortalMenu extends Menu {
 								this.isOrg,
 							),
 						);
+
 						break;
+
 					default:
 						break;
 				}
 				break;
+
 			case AppCenterBeacons.Crashes:
 				const selectedCrash: MenuQuickPickItem =
 					await VsCodeUI.showQuickPick(
 						this.getAppCenterCrashesTabMenuItems(),
 					);
+
 				if (!selectedCrash) {
 					return;
 				}
@@ -118,13 +131,17 @@ export class AppCenterPortalMenu extends Menu {
 								this.isOrg,
 							),
 						);
+
 						break;
+
 					case AppCenterCrashesTabs.Simulate:
 						new SimulateCrashes(this._params, this.app).run();
+
 					default:
 						break;
 				}
 				break;
+
 			case AppCenterBeacons.Analytics:
 				Utils.OpenUrl(
 					AppCenterUrlBuilder.GetAppCenterLinkByBeacon(
@@ -134,13 +151,19 @@ export class AppCenterPortalMenu extends Menu {
 						this.isOrg,
 					),
 				);
+
 				break;
+
 			case AppCenterBeacons.CodePush:
 				new CodePush.ShowMenu(this._params, this.app).run();
+
 				break;
+
 			case AppCenterBeacons.Test:
 				new Test.ShowMenu(this._params, this.app).runNoClient();
+
 				break;
+
 			default:
 				break;
 		}
@@ -149,17 +172,23 @@ export class AppCenterPortalMenu extends Menu {
 
 	private getAppCenterDistributeTabMenuItems(): MenuQuickPickItem[] {
 		const getAppCenterDistributeTabMenuItems: MenuQuickPickItem[] = [];
+
 		getAppCenterDistributeTabMenuItems.push(MenuItems.DistributeGroupsTab);
+
 		getAppCenterDistributeTabMenuItems.push(MenuItems.DistributeStoresTab);
+
 		getAppCenterDistributeTabMenuItems.push(
 			MenuItems.DistributeReleasesTab,
 		);
+
 		return getAppCenterDistributeTabMenuItems;
 	}
 
 	private getAppCenterCrashesTabMenuItems(): MenuQuickPickItem[] {
 		const getAppCenterCrashesTabMenuItems: MenuQuickPickItem[] = [];
+
 		getAppCenterCrashesTabMenuItems.push(MenuItems.CrashesTab);
+
 		if (SettingsHelper.isCrashesEnabled()) {
 			getAppCenterCrashesTabMenuItems.push(MenuItems.SimulateCrashes);
 		}

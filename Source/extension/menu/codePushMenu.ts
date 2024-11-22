@@ -39,6 +39,7 @@ export class CodePushMenu extends Menu {
 
 			if (this.hasCodePushDeployments() && this.isCodePushProject()) {
 				menuItems.push(MenuItems.ReleaseReact(this.currentApp));
+
 				if (!this.notCurrentApp) {
 					menuItems.push(
 						MenuItems.SetCurrentDeployment(this.currentApp),
@@ -57,22 +58,27 @@ export class CodePushMenu extends Menu {
 		switch (menuItem.command) {
 			case CommandNames.CodePush.SetCurrentDeployment:
 				new CodePush.SetCurrentDeployment(this._params).run();
+
 				break;
 
 			case CommandNames.CodePush.ReleaseReact:
 				new CodePush.ReleaseReact(this._params, this.currentApp).run();
+
 				break;
 
 			case CommandNames.CodePush.SetTargetBinaryVersion:
 				new CodePush.SetTargetBinaryVersion(this._params).run();
+
 				break;
 
 			case CommandNames.CodePush.SwitchMandatoryPropForRelease:
 				new CodePush.SwitchMandatoryPropForRelease(this._params).run();
+
 				break;
 
 			case CommandNames.CodePush.LinkCodePush:
 				new CodePush.LinkCodePush(this._params, this.currentApp).run();
+
 				break;
 
 			case AppCenterDistributionTabs.CodePush:
@@ -84,11 +90,13 @@ export class CodePushMenu extends Menu {
 						this.currentApp.type !== "user",
 					),
 				);
+
 				break;
 
 			default:
 				// Ideally shouldn't be there :)
 				this.logger.error("Unknown App Center menu command");
+
 				break;
 		}
 		return void 0;

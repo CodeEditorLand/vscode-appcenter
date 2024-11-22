@@ -5,6 +5,7 @@ import { Command } from "../command";
 /* Internal command */
 export default class ShowMenu extends Command {
 	private _params: CommandParams;
+
 	constructor(params: CommandParams) {
 		super(params);
 		this._params = params;
@@ -16,7 +17,9 @@ export default class ShowMenu extends Command {
 		}
 
 		const profiles = await this.appCenterAuth.getProfiles();
+
 		const vstsProfiles = await this.vstsAuth.getProfiles();
+
 		return new SettingsMenu(
 			profiles.length,
 			vstsProfiles.length,

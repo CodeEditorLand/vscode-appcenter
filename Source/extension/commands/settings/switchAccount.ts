@@ -12,6 +12,7 @@ export default class SwitchAccount extends Command {
 		}
 
 		const profiles = await this.appCenterAuth.getProfiles();
+
 		if (profiles.length < 2) {
 			return true;
 		}
@@ -32,6 +33,7 @@ export default class SwitchAccount extends Command {
 				menuOptions,
 				Strings.SelectProfileTitleHint,
 			);
+
 			if (!selected) {
 				// User cancel selection
 				return void 0;
@@ -60,6 +62,7 @@ export default class SwitchAccount extends Command {
 			);
 		} catch (e) {
 			this.handleError(e);
+
 			return false;
 		}
 		return true;

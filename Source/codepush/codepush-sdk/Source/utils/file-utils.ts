@@ -50,6 +50,7 @@ export function copyFileToTmpDir(filePath: string): string {
 
 export function generateRandomFilename(length: number): string {
 	let filename: string = "";
+
 	const validChar: string =
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
 
@@ -87,8 +88,10 @@ export function normalizePath(filePath: string): string {
 
 export async function walk(dir: string): Promise<string[]> {
 	const stats = await stat(dir);
+
 	if (stats.isDirectory()) {
 		let files: string[] = [];
+
 		for (const file of await readdir(dir)) {
 			files = files.concat(await walk(path.join(dir, file)));
 		}

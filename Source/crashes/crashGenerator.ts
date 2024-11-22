@@ -21,9 +21,13 @@ export class CrashGenerator {
 
 	public async generateCrashes(): Promise<void> {
 		const crashTime = Date.now();
+
 		const crashDate = new Date(crashTime).toISOString();
+
 		const sessionId: string = uuid.v4();
+
 		const crashId: string = uuid.v4();
+
 		const installId: string = uuid.v4();
 
 		const crashLog: CrashLogSchema = require("./log.json");
@@ -46,10 +50,13 @@ export class CrashGenerator {
 		};
 
 		const sessionLogContainer = { Logs: [session] };
+
 		const crashLogContainer = { Logs: [crashLog] };
+
 		try {
 			await this.sendCrashes(installId, sessionLogContainer);
 			await this.sendCrashes(installId, crashLogContainer);
+
 			return;
 		} catch (error) {
 			throw new Error(error);
@@ -59,6 +66,7 @@ export class CrashGenerator {
 	private async sendCrashes(installId: string, body: object): Promise<void> {
 		try {
 			const url: string = `${this._baseUrl}?api-version=1.0`;
+
 			const requestInfo = this.getRequestInfo(
 				HTTP_METHODS.POST,
 				body,
@@ -66,6 +74,7 @@ export class CrashGenerator {
 			);
 
 			const response = await fetch(url, requestInfo);
+
 			const responseBody = await response.text();
 
 			if (response.status !== 200) {
@@ -76,6 +85,7 @@ export class CrashGenerator {
 			this.logger.error(
 				LogStrings.FailedToSendCrashes + (e && e.message) || "",
 			);
+
 			throw new Error(e);
 		}
 	}
@@ -89,6 +99,7 @@ export class CrashGenerator {
 			"Install-ID": installId,
 			"App-Secret": this._appSecret,
 		};
+
 		const requestOptions = {
 			method: method,
 			headers: headers,
@@ -96,6 +107,7 @@ export class CrashGenerator {
 			json: true,
 			body: JSON.stringify(body),
 		};
+
 		return requestOptions;
 	}
 }

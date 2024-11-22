@@ -49,6 +49,7 @@ export abstract class Menu {
 
 		const selected: MenuQuickPickItem =
 			await VsCodeUI.showQuickPick(menuItems);
+
 		if (!selected) {
 			return;
 		}
@@ -283,9 +284,11 @@ export function getSelectedUserOrOrgItem(
 	allItems: CustomQuickPickItem[],
 ): UserOrOrganizationItem | null {
 	let userOrOrgItem: UserOrOrganizationItem;
+
 	const selectedUserOrOrgs: CustomQuickPickItem[] = allItems.filter(
 		(item) => item.target === selected.target,
 	);
+
 	if (selectedUserOrOrgs && selectedUserOrOrgs.length === 1) {
 		userOrOrgItem = {
 			name: selectedUserOrOrgs[0].target,
@@ -294,6 +297,7 @@ export function getSelectedUserOrOrgItem(
 				selectedUserOrOrgs[0].description !==
 				MenuStrings.UserMenuDescription,
 		};
+
 		return userOrOrgItem;
 	} else {
 		return null;
@@ -317,6 +321,7 @@ export function getCreateAppOptions(): QuickPickAppItem[] {
 		description: "",
 		target: CommandNames.CreateApp.Both,
 	});
+
 	return createAppOptions;
 }
 
@@ -341,6 +346,7 @@ export function getQuickPickItemsForOrgList(
 			target: item.name,
 		};
 	});
+
 	if (myself) {
 		// Insert user at the very 1st position
 		options.splice(0, 0, {

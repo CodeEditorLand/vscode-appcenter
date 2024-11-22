@@ -37,6 +37,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 	) {
 		if (selected.target === CommandNames.CreateApp.CommandName) {
 			await new General.CreateNewApp(this._params).run();
+
 			return;
 		} else {
 			const selectedApps: models.AppResponse[] = rnApps.filter(
@@ -44,21 +45,27 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 					app.name === selected.target &&
 					app.owner.type === selected.description,
 			);
+
 			if (!selectedApps || selectedApps.length !== 1) {
 				return;
 			}
 			const selectedApp: models.AppResponse = selectedApps[0];
+
 			const selectedAppName: string = `${selectedApp.owner.name}/${selectedApp.name}`;
+
 			const selectedAppSecret: string = selectedApp.appSecret;
+
 			const type: string = selectedApp.owner.type;
 
 			const OS: AppCenterOS | undefined = Utils.toAppCenterOS(
 				selectedApp.os,
 			);
+
 			if (!OS) {
 				this.logger.error(
 					LogStrings.UnknownOSFromCodePush(selectedApp.os),
 				);
+
 				return;
 			}
 			try {
@@ -67,11 +74,13 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 						progress.report({
 							message: Messages.FetchDeploymentsProgressMessage,
 						});
+
 						return await this.client.codePushDeployments.list(
 							selectedApp.owner.name,
 							selectedApp.name,
 						);
 					});
+
 				const appDeployments: models.Deployment[] = deployments.sort(
 					(a, b): any => {
 						return a.name < b.name; // sort alphabetically
@@ -79,6 +88,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 				);
 
 				let currentDeployments: CurrentAppDeployments | null = null;
+
 				if (appDeployments.length > 0) {
 					const deployments: Deployment[] = appDeployments.map(
 						(d) => {
@@ -102,6 +112,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 					Constants.AppCenterDefaultIsMandatoryParam,
 					selectedAppSecret,
 				);
+
 				if (app) {
 					const message = Messages.YourCurrentAppAndDeploymentMessage(
 						selected.target,

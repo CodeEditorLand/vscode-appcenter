@@ -36,7 +36,9 @@ export default class AppCenterAuth extends Auth<AppCenterProfile> {
 			credentials.token,
 			SettingsHelper.getAppCenterAPIEndpoint(),
 		);
+
 		const userResponse = await client.users.get();
+
 		if (!userResponse) {
 			throw new Error(LogStrings.FailedToGetAppCenterProfile);
 		}

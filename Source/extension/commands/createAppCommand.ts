@@ -41,7 +41,9 @@ export class CreateAppCommand extends Command {
 		): number {
 			if (a.displayName && b.displayName) {
 				const nameA = a.displayName.toUpperCase();
+
 				const nameB = b.displayName.toUpperCase();
+
 				if (nameA < nameB) {
 					return -1;
 				}
@@ -53,20 +55,27 @@ export class CreateAppCommand extends Command {
 				return 0;
 			}
 		};
+
 		let items: CustomQuickPickItem[] = [];
 		this.logger.debug(LogStrings.GettingUserOrOrg);
+
 		const orgList: models.ListOKResponseItem[] =
 			await VsCodeUI.showProgress(async (progress) => {
 				progress.report({
 					message: Messages.LoadingStatusBarProgressMessage,
 				});
+
 				const orgList: models.ListOKResponseItem[] =
 					await this.client.organizations.list();
+
 				const organizations: models.ListOKResponseItem[] = orgList;
+
 				return organizations.sort(sortOrganizations);
 			});
+
 		const myself: Profile | null = await this.appCenterProfile;
 		items = Menu.getQuickPickItemsForOrgList(orgList, myself);
+
 		return items;
 	}
 
@@ -79,12 +88,14 @@ export class CreateAppCommand extends Command {
 			progress.report({
 				message: Messages.CheckIfAppsExistProgressMessage,
 			});
+
 			let apps: models.AppResponse[];
 			apps = await this.client.apps.list();
 			exist = apps.some((item) => {
 				return item.name === projectName;
 			});
 		});
+
 		return exist;
 	}
 
@@ -104,6 +115,7 @@ export class CreateAppCommand extends Command {
 			!Validators.ValidateAppCenterAppName(projectName)
 		) {
 			VsCodeUI.ShowErrorMessage(Messages.ProjectNameIsNotValidWarning);
+
 			return null;
 		}
 		if (
@@ -120,6 +132,7 @@ export class CreateAppCommand extends Command {
 						AppCenterAppBuilder.getAndroidAppName(projectName),
 					),
 				);
+
 				return null;
 			}
 		}
@@ -137,6 +150,7 @@ export class CreateAppCommand extends Command {
 						AppCenterAppBuilder.getiOSAppName(projectName),
 					),
 				);
+
 				return null;
 			}
 		}
@@ -146,21 +160,25 @@ export class CreateAppCommand extends Command {
 	protected async getOrg(): Promise<UserOrOrganizationItem | null> {
 		const userOrOrgQuickPickItems: CustomQuickPickItem[] =
 			await this.getUserOrOrganizationItems();
+
 		const selectedQuickPickItem: CustomQuickPickItem =
 			await VsCodeUI.showQuickPick(
 				userOrOrgQuickPickItems,
 				Strings.PleaseSelectCurrentAppOrgHint,
 			);
+
 		if (selectedQuickPickItem) {
 			const userOrOrgItem: UserOrOrganizationItem | null =
 				Menu.getSelectedUserOrOrgItem(
 					selectedQuickPickItem,
 					userOrOrgQuickPickItems,
 				);
+
 			if (!userOrOrgItem) {
 				VsCodeUI.ShowErrorMessage(
 					Messages.FailedToGetSelectedUserOrOrganizationMsg,
 				);
+
 				return null;
 			}
 			return userOrOrgItem;
@@ -184,6 +202,7 @@ export class CreateAppCommand extends Command {
 	protected async pickApp(apps: CreatedAppFromAppCenter[]) {
 		if (apps.length < 2) {
 			VsCodeUI.ShowErrorMessage(Messages.FailedToCreateAppInAppCenter);
+
 			return false;
 		}
 
@@ -224,13 +243,17 @@ export class CreateAppCommand extends Command {
 				target: `1`,
 			},
 		];
+
 		const selected: QuickPickAppItem = await VsCodeUI.showQuickPick(
 			options,
 			Strings.ChooseAppToBeSetHint,
 		);
+
 		if (selected) {
 			await this.setCurrentApp(apps[+selected.target]);
+
 			const messageItems: IButtonMessageItem[] = [];
+
 			const appUrl = AppCenterUrlBuilder.GetAppCenterAppLink(
 				this.userOrOrg.name,
 				apps[+selected.target].appName,
@@ -240,6 +263,7 @@ export class CreateAppCommand extends Command {
 				title: Strings.AppCreatedBtnLabel,
 				url: appUrl,
 			});
+
 			return VsCodeUI.ShowInfoMessage(
 				Messages.AppCreatedMessage(apps[+selected.target].appName),
 				...messageItems,

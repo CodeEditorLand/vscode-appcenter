@@ -75,13 +75,17 @@ export class AppCenterUrlBuilder {
 	public static getCrashesEndpoint(): string {
 		const appCenterEnvironment: AppCenterEnvironment =
 			SettingsHelper.getEnvironment();
+
 		switch (appCenterEnvironment) {
 			case AppCenterEnvironment.Prod:
 				return Constants.ProdCrashesEndPoint;
+
 			case AppCenterEnvironment.Int:
 				return Constants.IntCrashesEndPoint;
+
 			case AppCenterEnvironment.Staging:
 				return Constants.StagingCrashesEndPoint;
+
 			default:
 				return Constants.ProdCrashesEndPoint;
 		}

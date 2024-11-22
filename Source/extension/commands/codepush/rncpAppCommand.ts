@@ -20,6 +20,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 			)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotCodePushProjectWarning);
+
 			return false;
 		}
 		return true;
@@ -38,6 +39,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 			)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.NotCodePushProjectWarning);
+
 			return false;
 		}
 		return true;

@@ -12,6 +12,7 @@ export default class LoginToAnotherAccount extends Command {
 			appCenterAuth: this.appCenterAuth,
 			vstsAuth: this.vstsAuth,
 		};
+
 		return await new Login(params).runNoClient();
 	}
 }

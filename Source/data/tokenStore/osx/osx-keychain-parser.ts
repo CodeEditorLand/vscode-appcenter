@@ -49,15 +49,18 @@ export class OsxSecurityParsingStream extends stream.Transform {
 		// debug(`Parsing line [${line}]`);
 
 		const rootMatch = line.match(rootFieldRe);
+
 		if (rootMatch) {
 			this.processRootLine(rootMatch[1], rootMatch[2] || rootMatch[3]);
 		} else {
 			const attrMatch = line.match(attrRe);
+
 			if (attrMatch) {
 				// Did we match a four-char named field? We don't care about hex fields
 				if (attrMatch[2]) {
 					// We skip nulls, and grab text rather than hex encoded versions of value
 					const value = attrMatch[6] || attrMatch[4];
+
 					if (value) {
 						this.processAttributeLine(attrMatch[2], value);
 					}
@@ -81,6 +84,7 @@ export class OsxSecurityParsingStream extends stream.Transform {
 
 	public processRootLine(key: string, value: string): void {
 		//debug(`matched root line`);
+
 		if (this.inAttributes) {
 			//  debug(`was in attributes, emitting`);
 			this.emitCurrentEntry();

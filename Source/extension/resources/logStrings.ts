@@ -144,6 +144,7 @@ export class LogStrings {
 	): string {
 		let failed = `An unexpected error occurred trying to create "${appName}"`;
 		failed += orgName ? `under ${orgName}.` : ".";
+
 		return failed;
 	}
 

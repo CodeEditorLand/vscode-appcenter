@@ -8,16 +8,19 @@ import { OutputChannelLogger } from "./log/outputChannelLogger";
 import { AuthProvider, CommandNames } from "./resources/constants";
 
 let _extensionManager: ExtensionManager;
+
 const outputChannelLogger = OutputChannelLogger.getMainChannel();
 
 export async function activate(context: vscode.ExtensionContext) {
 	// Construct the extension manager that handles App Center commands
 	_extensionManager = new ExtensionManager();
+
 	const rootPath = vscode.workspace.rootPath;
 
 	const appCenterAuth: AppCenterAuth = <AppCenterAuth>(
 		await AuthFactory.getAuth(AuthProvider.AppCenter, outputChannelLogger)
 	);
+
 	const vstsAuth: VstsAuth = <VstsAuth>(
 		await AuthFactory.getAuth(AuthProvider.Vsts, outputChannelLogger)
 	);

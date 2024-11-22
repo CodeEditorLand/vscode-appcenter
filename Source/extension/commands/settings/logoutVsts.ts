@@ -47,6 +47,7 @@ export default class Logout extends Command {
 				menuOptions,
 				Strings.SelectProfileTitleHint,
 			);
+
 			if (!selected) {
 				// User cancel selection
 				return void 0;
@@ -66,9 +67,11 @@ export default class Logout extends Command {
 					profile.userName,
 				),
 			);
+
 			return true;
 		} catch (e) {
 			this.handleError(e);
+
 			return false;
 		}
 	}

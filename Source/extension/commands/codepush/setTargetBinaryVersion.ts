@@ -17,17 +17,21 @@ export default class SetTargetBinaryVersion extends RNCPAppCommand {
 			return;
 		}
 		const app: CurrentApp = await this.getCurrentApp(true);
+
 		if (!app) {
 			VsCodeUI.ShowWarningMessage(Messages.NoCurrentAppSetWarning);
+
 			return void 0;
 		}
 		if (!this.hasCodePushDeployments(app)) {
 			VsCodeUI.ShowWarningMessage(Messages.NoDeploymentsWarning);
+
 			return void 0;
 		}
 		const appVersion: string = await VsCodeUI.showInput(
 			Strings.PleaseProvideTargetBinaryVersionHint,
 		);
+
 		if (!appVersion) {
 			// if user press esc do nothing then
 			return void 0;
@@ -37,6 +41,7 @@ export default class SetTargetBinaryVersion extends RNCPAppCommand {
 			!validRange(appVersion)
 		) {
 			VsCodeUI.ShowWarningMessage(Messages.InvalidAppVersionParamWarning);
+
 			return void 0;
 		}
 
@@ -54,6 +59,7 @@ export default class SetTargetBinaryVersion extends RNCPAppCommand {
 			app.isMandatory,
 			app.appSecret,
 		);
+
 		if (!currentApp) {
 			return;
 		}

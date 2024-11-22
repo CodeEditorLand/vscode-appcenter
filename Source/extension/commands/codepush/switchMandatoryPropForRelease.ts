@@ -15,12 +15,15 @@ export default class SwitchMandatoryPropForRelease extends RNCPAppCommand {
 		}
 
 		const app: CurrentApp = await this.getCurrentApp(true);
+
 		if (!app) {
 			VsCodeUI.ShowWarningMessage(Messages.NoCurrentAppSetWarning);
+
 			return;
 		}
 		if (!this.hasCodePushDeployments(app)) {
 			VsCodeUI.ShowWarningMessage(Messages.NoDeploymentsWarning);
+
 			return;
 		}
 		const newMandatoryValue = !!!app.isMandatory;

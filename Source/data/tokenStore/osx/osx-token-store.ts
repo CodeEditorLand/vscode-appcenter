@@ -21,6 +21,7 @@ import {
 } from "./osx-keychain-parser";
 
 const securityPath = "/usr/bin/security";
+
 const serviceName = "appcenter-extension";
 
 export class OsxTokenStore implements TokenStore {
@@ -41,8 +42,10 @@ export class OsxTokenStore implements TokenStore {
 
 			securityStream.on("data", (data: any) => {
 				//debug(`listing, got data ${inspect(data)}`);
+
 				if (data.svce !== serviceName) {
 					//debug(`service does not match, skipping`);
+
 					return;
 				}
 
@@ -57,6 +60,7 @@ export class OsxTokenStore implements TokenStore {
 			});
 			securityStream.on("end", (err: Error) => {
 				// debug(`output from security program complete`);
+
 				if (err) {
 					observer.onError(err);
 				} else {
@@ -93,6 +97,7 @@ export class OsxTokenStore implements TokenStore {
 					const match = /^password: (?:0x[0-9A-F]+. )?"(.*)"$/m.exec(
 						stderr,
 					);
+
 					if (match) {
 						const accessToken = match[1].replace(/\\134/g, "\\");
 
@@ -100,6 +105,7 @@ export class OsxTokenStore implements TokenStore {
 						//debug(`parsing stdout`);
 						// Parse the rest of the information from stdout to get user & token ID
 						const source = es.through();
+
 						const parsed = source.pipe(
 							createOsxSecurityParsingStream(),
 						);

@@ -25,6 +25,7 @@ const targetNamePrefix = "AppCenterExtension:target=";
 
 class Prefixer {
 	private prefix: string;
+
 	constructor(_useOldName: boolean) {
 		this.prefix = targetNamePrefix;
 	}
@@ -50,6 +51,7 @@ class Prefixer {
 
 function encodeTokenValueAsHex(token: TokenValueType): string {
 	const tokenValueAsString = JSON.stringify(token);
+
 	return Buffer.from(tokenValueAsString, "utf8").toString("hex");
 }
 
@@ -78,6 +80,7 @@ export class WinTokenStore implements TokenStore {
 	 */
 	public list(): Observable<TokenEntry> {
 		const prefixer = new Prefixer(false);
+
 		return Observable.create<TokenEntry>(
 			(observer: Observer<TokenEntry>) => {
 				const credsProcess = childProcess.spawn(credExePath, [
@@ -118,13 +121,17 @@ export class WinTokenStore implements TokenStore {
 		useOldName: boolean = false,
 	): Promise<TokenEntry> {
 		const prefixer = new Prefixer(useOldName);
+
 		const args = ["-s", "-t", prefixer.ensurePrefix(key)];
 
 		const credsProcess = childProcess.spawn(credExePath, args);
+
 		let result: any = null;
+
 		const errors: string[] = [];
 
 		//debug(`Getting key with args ${inspect(args)}`);
+
 		return new Promise<TokenEntry>((resolve, reject) => {
 			credsProcess.stdout
 				.pipe(parser.createParsingStream())
@@ -149,6 +156,7 @@ export class WinTokenStore implements TokenStore {
 			credsProcess.on("exit", (code: number) => {
 				if (code === 0) {
 					//debug(`Completed getting token, result = ${inspect(result)}`);
+
 					return resolve(credToTokenEntry(result));
 				}
 				return reject(
@@ -172,6 +180,7 @@ export class WinTokenStore implements TokenStore {
 	 */
 	public set(key: TokenKeyType, credential: TokenValueType): Promise<void> {
 		const prefixer = new Prefixer(false);
+
 		const args = [
 			"-a",
 			"-t",
@@ -181,13 +190,16 @@ export class WinTokenStore implements TokenStore {
 		];
 
 		//debug(`Saving token with args ${inspect(args)}`);
+
 		return new Promise<void>((resolve, reject) => {
 			childProcess.execFile(credExePath, args, function (err) {
 				if (err) {
 					//debug(`Token store failed, ${inspect(err)}`);
+
 					return reject(err);
 				}
 				// debug(`Token successfully stored`);
+
 				return resolve();
 			});
 		});
@@ -204,6 +216,7 @@ export class WinTokenStore implements TokenStore {
 	 */
 	public remove(key: TokenKeyType): Promise<void> {
 		const prefixer = new Prefixer(false);
+
 		const args = ["-d", "-t", prefixer.ensurePrefix(key)];
 
 		if (key.slice(-1) === "*") {
@@ -211,6 +224,7 @@ export class WinTokenStore implements TokenStore {
 		}
 
 		// debug(`Deleting token with args ${inspect(args)}`);
+
 		return new Promise<void>((resolve, reject) => {
 			childProcess.execFile(credExePath, args, function (err) {
 				if (err) {
@@ -224,5 +238,6 @@ export class WinTokenStore implements TokenStore {
 
 export function createWinTokenStore(): TokenStore {
 	// debug(`Creating WinTokenStore`);
+
 	return new WinTokenStore();
 }

@@ -38,10 +38,12 @@ export default class CodePushRelease {
 					error.response.statusCode === 409
 				) {
 					logger.log(error.response.body, LogLevel.Error);
+
 					return failure(ErrorCodes.Exception, error.response.body);
 				}
 
 				logger.log(LogStrings.CodePushError, LogLevel.Error);
+
 				if (typeof error === "string") {
 					return failure(ErrorCodes.Exception, error);
 				} else {

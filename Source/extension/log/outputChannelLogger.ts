@@ -123,6 +123,7 @@ export class OutputChannelLogger implements ILogger {
 				this.channelName,
 			);
 			this.outputChannel.show(this.preserveFocus);
+
 			return this.outputChannel;
 		}
 	}
