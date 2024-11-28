@@ -110,16 +110,19 @@ export async function readdir(path: string | Buffer): Promise<string[]> {
 }
 
 export function readFile(filename: string): Promise<Buffer>;
+
 export function readFile(filename: string, encoding: string): Promise<string>;
 // tslint:disable-next-line:unified-signatures
 export function readFile(
 	filename: string,
 	options: { flag?: string },
 ): Promise<Buffer>;
+
 export function readFile(
 	filename: string,
 	options?: string | { encoding: string; flag?: string },
 ): Promise<string>;
+
 export async function readFile(...args: any[]): Promise<any> {
 	return (await callFs(fs.readFile, ...args))[0];
 }

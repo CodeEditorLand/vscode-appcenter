@@ -40,6 +40,7 @@ if (os.platform() === "win32") {
 	);
 }
 export const tokenStore = store;
+
 export const fileTokenStore = createFileTokenStore(
 	getTokenFilePath(Constants.AppCenterTokenFileName),
 );
