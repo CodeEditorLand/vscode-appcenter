@@ -22,18 +22,26 @@ import { VsCodeUI } from "../ui/vscodeUI";
 
 export class Command {
 	protected clientFactory: AppCenterClientFactory;
+
 	protected client: AppCenterClient;
 
 	protected appCenterAuth: AppCenterAuth;
+
 	protected manager: ExtensionManager;
+
 	protected logger: ILogger;
+
 	protected vstsAuth: VstsAuth;
 
 	constructor(commandParams: CommandParams) {
 		this.manager = commandParams.manager;
+
 		this.logger = commandParams.manager._logger;
+
 		this.appCenterAuth = commandParams.appCenterAuth;
+
 		this.vstsAuth = commandParams.vstsAuth;
+
 		this.clientFactory = createAppCenterClient();
 	}
 
@@ -50,6 +58,7 @@ export class Command {
 
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
+
 			VsCodeUI.ShowWarningMessage(
 				Messages.NoProjectRootFolderFoundWarning,
 			);
@@ -65,12 +74,14 @@ export class Command {
 
 		if (!rootPath) {
 			this.logger.error(LogStrings.RootNotFound);
+
 			VsCodeUI.ShowWarningMessage(
 				Messages.NoProjectRootFolderFoundWarning,
 			);
 
 			return Promise.resolve(false);
 		}
+
 		const profile: AppCenterProfile | null = await this.appCenterProfile;
 
 		if (!profile) {
@@ -88,6 +99,7 @@ export class Command {
 
 				return Promise.resolve(false);
 			}
+
 			return Promise.resolve(true);
 		}
 	}
@@ -107,6 +119,7 @@ export class Command {
 				return null;
 			}
 		}
+
 		return this.client;
 	}
 
@@ -139,7 +152,9 @@ export class Command {
 
 		if (profile) {
 			profile.currentApp = currentApp;
+
 			await this.appCenterAuth.updateProfile(profile);
+
 			this.manager.setupAppCenterStatusBar(profile);
 
 			return currentApp;

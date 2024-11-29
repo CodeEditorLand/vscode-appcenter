@@ -81,6 +81,7 @@ export default abstract class Auth<T extends Profile> {
 			// If removing token fails, then maybe we have something stored in the file storage, need to clean that up, too.
 			await fileTokenStore.remove(userId);
 		}
+
 		await this.profileStorage.delete(userId);
 
 		// If there are no profiles left just exit
@@ -93,7 +94,9 @@ export default abstract class Auth<T extends Profile> {
 		// If there is no active profile then choose first saved profile and make it active if possible
 		if (!this.profileStorage.activeProfile) {
 			const firstProfile = profiles[0];
+
 			firstProfile.isActive = true;
+
 			await this.profileStorage.save(firstProfile);
 		}
 	}
@@ -115,6 +118,7 @@ export default abstract class Auth<T extends Profile> {
 			if (entry) {
 				return entry.accessToken.token;
 			}
+
 			throw new Error("Empty token!");
 		} catch (err) {
 			// compatibility
@@ -123,12 +127,14 @@ export default abstract class Auth<T extends Profile> {
 
 				if (oldToken) {
 					await fileTokenStore.remove(profile.userId);
+
 					await tokenStore.set(profile.userId, {
 						token: oldToken.accessToken.token,
 					});
 
 					return oldToken.accessToken.token;
 				}
+
 				return emptyToken;
 			} catch (e) {
 				// TODO Find a way to log it via logger

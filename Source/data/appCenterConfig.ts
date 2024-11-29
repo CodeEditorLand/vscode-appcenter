@@ -12,8 +12,11 @@ const plist = require("plist");
 
 export default class AppCenterConfig {
 	private parsedInfoConfigPlist: any;
+
 	private parsedInfoMainPlist: any;
+
 	private androidAppCenterConfig: any;
+
 	private androidStringResources: any;
 
 	constructor(
@@ -27,11 +30,13 @@ export default class AppCenterConfig {
 			this.logger.debug(LogStrings.ReadContents(configPlistPath));
 
 			const plistContents = fs.readFileSync(configPlistPath, "utf8");
+
 			this.parsedInfoConfigPlist = plist.parse(plistContents);
 		} catch (e) {
 			this.logger.error(
 				`${LogStrings.CouldNotRead("AppCenter-Config.plist")} ${e.message}`,
 			);
+
 			this.parsedInfoConfigPlist = plist.parse(plist.build({}));
 		}
 
@@ -39,22 +44,26 @@ export default class AppCenterConfig {
 			this.logger.debug(LogStrings.ReadContents(mainPlistPath));
 
 			const plistContents = fs.readFileSync(mainPlistPath, "utf8");
+
 			this.parsedInfoMainPlist = plist.parse(plistContents);
 		} catch (e) {
 			this.logger.error(
 				`${LogStrings.CouldNotRead("Info.plist")} ${e.message}`,
 			);
+
 			this.parsedInfoMainPlist = plist.parse(plist.build({}));
 		}
 
 		try {
 			this.logger.debug(LogStrings.ReadContents(pathToAndroidConfig));
+
 			this.androidAppCenterConfig = {};
 
 			const fileContent: string | Buffer = fs.readFileSync(
 				pathToAndroidConfig,
 				"utf-8",
 			);
+
 			this.androidAppCenterConfig = JSON.parse(fileContent);
 		} catch (e) {
 			this.logger.error(
@@ -72,6 +81,7 @@ export default class AppCenterConfig {
 			});
 
 			const xml = new jsxml.XML(data);
+
 			this.androidStringResources = xml;
 		} catch (e) {
 			this.logger.error(
@@ -98,6 +108,7 @@ export default class AppCenterConfig {
 
 			return false;
 		}
+
 		this.logger.debug(
 			LogStrings.SavedCodePushDeploymentKey(
 				this.pathToAndroidStringResources,
@@ -129,6 +140,7 @@ export default class AppCenterConfig {
 
 			return false;
 		}
+
 		this.logger.debug(LogStrings.SavedAppSecret(this.configPlistPath));
 
 		return true;
@@ -152,6 +164,7 @@ export default class AppCenterConfig {
 
 			return false;
 		}
+
 		this.logger.debug(
 			LogStrings.SavedCodePushDeploymentKey(this.mainPlistPath),
 		);
@@ -181,10 +194,12 @@ export default class AppCenterConfig {
 
 			return false;
 		}
+
 		fs.writeFileSync(
 			this.pathToAndroidConfig,
 			JSON.stringify(this.androidAppCenterConfig, null, 4),
 		);
+
 		this.logger.debug(LogStrings.SavedAppSecret(this.pathToAndroidConfig));
 
 		return true;

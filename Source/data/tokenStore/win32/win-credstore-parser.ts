@@ -18,6 +18,7 @@ const fieldRe = /^([^:]+):\s(.*)$/;
 //
 function fieldNameToPropertyName(fieldName: string): string {
 	const parts = fieldName.split(" ");
+
 	parts[0] = parts[0].toLowerCase();
 
 	return parts.join("");
@@ -31,6 +32,7 @@ class WinCredStoreParsingStream extends Transform {
 
 	constructor() {
 		super({ objectMode: true });
+
 		this.currentEntry = null;
 	}
 
@@ -44,8 +46,10 @@ class WinCredStoreParsingStream extends Transform {
 		if (line === "") {
 			if (this.currentEntry) {
 				this.push(this.currentEntry);
+
 				this.currentEntry = null;
 			}
+
 			return callback();
 		}
 
@@ -56,6 +60,7 @@ class WinCredStoreParsingStream extends Transform {
 		const key = fieldNameToPropertyName(match[1]);
 
 		const value = match[2];
+
 		this.currentEntry[key] = value;
 
 		return callback();
@@ -64,8 +69,10 @@ class WinCredStoreParsingStream extends Transform {
 	public _flush(callback: { (err?: Error): void }): void {
 		if (this.currentEntry) {
 			this.push(this.currentEntry);
+
 			this.currentEntry = null;
 		}
+
 		callback();
 	}
 }

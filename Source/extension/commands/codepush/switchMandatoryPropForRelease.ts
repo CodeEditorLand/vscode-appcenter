@@ -21,12 +21,15 @@ export default class SwitchMandatoryPropForRelease extends RNCPAppCommand {
 
 			return;
 		}
+
 		if (!this.hasCodePushDeployments(app)) {
 			VsCodeUI.ShowWarningMessage(Messages.NoDeploymentsWarning);
 
 			return;
 		}
+
 		const newMandatoryValue = !!!app.isMandatory;
+
 		await this.saveCurrentApp(
 			app.identifier,
 			AppCenterOS[app.os],
@@ -41,6 +44,7 @@ export default class SwitchMandatoryPropForRelease extends RNCPAppCommand {
 			newMandatoryValue,
 			app.appSecret,
 		);
+
 		VsCodeUI.ShowInfoMessage(
 			Messages.ChangedMandatoryMessage(newMandatoryValue),
 		);

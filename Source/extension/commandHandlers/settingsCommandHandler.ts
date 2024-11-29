@@ -41,6 +41,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 
 			return;
 		}
+
 		await new Settings.ToggleStatusBar(
 			this.getCommandParams(),
 		).runNoClient();
@@ -52,6 +53,7 @@ export default class SettingsCommandHandler extends BaseCommandHandler {
 
 			return;
 		}
+
 		await new Settings.ToggleStatusBar(
 			this.getCommandParams(),
 		).runNoClient();

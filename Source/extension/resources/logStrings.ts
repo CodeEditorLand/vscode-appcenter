@@ -1,76 +1,116 @@
 export class LogStrings {
 	public static NodeModulesInstalledMessage: string =
 		"Dependencies have been successfully installed.";
+
 	public static PodsInstalledMessage: string =
 		"Pods have been successfully installed.";
+
 	public static CodePushInstallMessage: string =
 		'Make sure you ran "npm install" and that you are inside a React Native CodePush project.';
+
 	public static AppCenterInstallMessage: string =
 		'Make sure you ran "npm install" and that you are inside a React Native App Center project.';
+
 	public static ReactNativeInstallMessage: string =
 		'Make sure you ran "npm install" and that you are inside a React Native project.';
+
 	public static FailedToGetVSTSProjectList: string =
 		"Failed to get VSTS Project list.";
+
 	public static FailedToGetVSTSReposList: string =
 		"Failed to get VSTS Git repositories list.";
+
 	public static FailedToGetAppCenterProfile: string =
 		"Could get profile from App Center.";
+
 	public static FailedToGetProfileFile: string =
 		"Profile not found. Login to the App Center via the Visual Studio Code Extension to create the profile.";
+
 	public static FailedToGetUserProfile: string = "Couldn't get user profile.";
+
 	public static FailedToGetUserFromServer: string =
 		"Failed to fetch user info from server";
+
 	public static NoTokenProvided: string = "No token provided on login";
+
 	public static FailedToGetToken: string =
 		"Failed to get token from profile.";
+
 	public static CodePushError: string =
 		"An error occured on doing Code Push release.";
+
 	public static FailedToSendCrashes: string =
 		"Failed to send crashes information.";
+
 	public static ProjectOrOrgNotSet: string = `Sorry, Project name or User/Organization is not set`;
+
 	public static FailedToClone: string =
 		"Failed to clone into exiting repository";
+
 	public static RootNotFound: string = "No project root folder found";
+
 	public static FailedToGetClient: string = "Failed to get App Center client";
+
 	public static NoUserSpecified: string = "No App Center user specified!";
+
 	public static GettingUserOrOrg: string =
 		"Getting user/organization items...";
+
 	public static NoAppsToShow: string =
 		"Do not show apps quick pick due to no apps (either in cache or fetched from server).";
+
 	public static BuildingProject: string =
 		"Building a new App Center project...";
+
 	public static FailedToGetVSTSProfile: string =
 		"Failed to get VSTS profile for command.";
+
 	public static FailedToGetVSTSProject: string =
 		"Failed to get VSTS project.";
+
 	public static FailedToCreateVSTSRepo: string =
 		"Failed to create VSTS git repo.";
+
 	public static CreatingAppsInAppCenter: string =
 		"Creating your iOS and Android app in App Center...";
+
 	public static FailedCreateAppsInAppCenter: string =
 		"Failed to create apps in App Center.";
+
 	public static FailedToSaveCurrentApp: string = "Failed to save current app";
+
 	public static ConfiguringAppCenterSDK: string =
 		"Configuring App Center SDKs...";
+
 	public static FailedToUpdateAppSecret: string =
 		"Failed to update app secret keys!";
+
 	public static CreatingCodePushDeployments: string =
 		"Creating CodePush deployments...";
+
 	public static SettingDeploymentKeys: string =
 		"Setting CodePush deployment keys...";
+
 	public static FailedToCreateDeploymentKeys: string =
 		"Failed to update CodePush deployment keys!";
+
 	public static InstallingPods: string = "Installing pods for ios...";
+
 	public static FailedToInstallPods: string = "Failed to run pod update.";
+
 	public static RunningNpmI: string = "Running npm install...";
+
 	public static FailedNpmI: string = "Failed to run npm install.";
+
 	public static SettingAppSecrets: string = "Setting app secrets...";
+
 	public static PullingSample: string =
 		"Pull App Center sample app into current directory...";
 
 	public static PushingChangesTo(repoUrl: string): string {
 		return `Pushing changes to ${repoUrl}...`;
 	}
+
 	public static SecretsInfo(appName: string, secret: string): string {
 		return `App name: ${appName}, secret: ${secret}.`;
 	}
@@ -82,6 +122,7 @@ export class LogStrings {
 	): string {
 		return `Deployment name: ${name}, secret: ${key}, OS: ${os}.`;
 	}
+
 	public static CodePushUpdatedContentsDir(dir: string): string {
 		return `CodePush updated contents directory path: ${dir}`;
 	}
@@ -93,6 +134,7 @@ export class LogStrings {
 	public static CheckingProjectName(projectName: string) {
 		return `Checking if project name "${projectName}" is not already used before...`;
 	}
+
 	public static DistributionGroupCreated(
 		groupName: string,
 		projectName: string,
@@ -143,6 +185,7 @@ export class LogStrings {
 		orgName?: string,
 	): string {
 		let failed = `An unexpected error occurred trying to create "${appName}"`;
+
 		failed += orgName ? `under ${orgName}.` : ".";
 
 		return failed;

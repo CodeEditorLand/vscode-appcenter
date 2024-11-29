@@ -34,17 +34,21 @@ export function isDirectory(path: string): boolean {
 export function copyFileToTmpDir(filePath: string): string {
 	if (!isDirectory(filePath)) {
 		const outputFolderPath: string = temp.mkdirSync("code-push");
+
 		rimraf.sync(outputFolderPath);
+
 		fs.mkdirSync(outputFolderPath);
 
 		const outputFilePath: string = path.join(
 			outputFolderPath,
 			path.basename(filePath),
 		);
+
 		fs.writeFileSync(outputFilePath, fs.readFileSync(filePath));
 
 		return outputFolderPath;
 	}
+
 	return "";
 }
 
@@ -74,6 +78,7 @@ export function fileDoesNotExistOrIsDirectory(path: string): boolean {
 
 export function createEmptyTmpReleaseFolder(folderPath: string): void {
 	rimraf.sync(folderPath);
+
 	fs.mkdirSync(folderPath);
 }
 
@@ -95,6 +100,7 @@ export async function walk(dir: string): Promise<string[]> {
 		for (const file of await readdir(dir)) {
 			files = files.concat(await walk(path.join(dir, file)));
 		}
+
 		return files;
 	} else {
 		return [dir];

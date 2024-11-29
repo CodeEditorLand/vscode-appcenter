@@ -7,6 +7,7 @@ export default class LoginToAnotherAccount extends Command {
 		if (!(await super.run())) {
 			return false;
 		}
+
 		const params: CommandParams = {
 			manager: this.manager,
 			appCenterAuth: this.appCenterAuth,

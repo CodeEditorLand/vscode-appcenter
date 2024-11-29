@@ -7,6 +7,7 @@ export default class FsProfileStorage<T extends Profile>
 	implements ProfileStorage<T>
 {
 	protected profiles: T[];
+
 	protected indexOfActiveProfile: number | null;
 
 	constructor(
@@ -27,6 +28,7 @@ export default class FsProfileStorage<T extends Profile>
 		if (!(await this.storageExists())) {
 			await this.createEmptyStorage();
 		}
+
 		await this.loadDataFromStorage();
 	}
 
@@ -41,12 +43,14 @@ export default class FsProfileStorage<T extends Profile>
 	private async loadDataFromStorage(): Promise<void> {
 		try {
 			const data: string = await FSUtils.readFile(this.storageFilePath);
+
 			this.profiles = JSON.parse(data);
 		} catch (e) {
 			this.logger.info(
 				LogStrings.FailedToParseStorage(this.storageFilePath) +
 					(e && e.message) || "",
 			);
+
 			FSUtils.removeFile(this.storageFilePath);
 
 			return;
@@ -72,6 +76,7 @@ export default class FsProfileStorage<T extends Profile>
 		if (this.profiles.length === 0) {
 			return false;
 		}
+
 		const activeProfiles: T[] = this.profiles.filter(
 			(profile) => profile.isActive,
 		);
@@ -80,11 +85,15 @@ export default class FsProfileStorage<T extends Profile>
 			for (const activeProfile of activeProfiles) {
 				activeProfile.isActive = false;
 			}
+
 			const indexInArray: number = this.profiles.indexOf(
 				activeProfiles[0],
 			);
+
 			this.profiles[indexInArray].isActive = true;
+
 			this.indexOfActiveProfile = indexInArray;
+
 			this.saveProfiles();
 		} else if (activeProfiles.length === 1) {
 			this.indexOfActiveProfile = this.profiles.indexOf(
@@ -92,9 +101,12 @@ export default class FsProfileStorage<T extends Profile>
 			);
 		} else {
 			this.profiles[0].isActive = true;
+
 			this.indexOfActiveProfile = 0;
+
 			this.saveProfiles();
 		}
+
 		return true;
 	}
 
@@ -123,6 +135,7 @@ export default class FsProfileStorage<T extends Profile>
 
 		if (this.activeProfile) {
 			this.activeProfile.isActive = false;
+
 			this.indexOfActiveProfile = null;
 		}
 
@@ -132,6 +145,7 @@ export default class FsProfileStorage<T extends Profile>
 		if (profile.isActive) {
 			this.indexOfActiveProfile = createdIndex;
 		}
+
 		await this.saveProfiles();
 	}
 
@@ -141,6 +155,7 @@ export default class FsProfileStorage<T extends Profile>
 		if (!foundProfile) {
 			return null;
 		}
+
 		const indexToDelete = this.profiles.indexOf(foundProfile);
 
 		const deletedProfile: T[] = this.profiles.splice(indexToDelete, 1);
@@ -152,6 +167,7 @@ export default class FsProfileStorage<T extends Profile>
 				this.indexOfActiveProfile = null;
 			}
 		}
+
 		await this.saveProfiles();
 
 		return deletedProfile[0];
@@ -169,6 +185,7 @@ export default class FsProfileStorage<T extends Profile>
 				LogStrings.MultipleProfiles(userId, this.storageFilePath),
 			);
 		}
+
 		return null;
 	}
 

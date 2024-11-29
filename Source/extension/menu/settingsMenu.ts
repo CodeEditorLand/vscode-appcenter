@@ -31,6 +31,7 @@ export class SettingsMenu extends Menu {
 		if (SettingsHelper.shouldStatusBarBeShown()) {
 			menuItems.push(MenuItems.HideStatusBar);
 		}
+
 		return menuItems;
 	}
 
@@ -77,6 +78,7 @@ export class SettingsMenu extends Menu {
 
 				break;
 		}
+
 		return void 0;
 	}
 }

@@ -44,13 +44,16 @@ export class CodePushMenu extends Menu {
 					menuItems.push(
 						MenuItems.SetCurrentDeployment(this.currentApp),
 					);
+
 					menuItems.push(
 						MenuItems.SetTargetBinaryVersion(this.currentApp),
 					);
+
 					menuItems.push(MenuItems.SwitchMandatory(this.currentApp));
 				}
 			}
 		}
+
 		return menuItems;
 	}
 
@@ -99,6 +102,7 @@ export class CodePushMenu extends Menu {
 
 				break;
 		}
+
 		return void 0;
 	}
 }

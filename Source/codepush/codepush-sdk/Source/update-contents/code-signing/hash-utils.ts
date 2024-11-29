@@ -25,6 +25,7 @@ export class PackageManifest {
 		if (!map) {
 			map = new Map<string, string>();
 		}
+
 		this._map = map;
 	}
 
@@ -34,6 +35,7 @@ export class PackageManifest {
 
 	public computePackageHash(): string {
 		let entries: string[] = [];
+
 		this._map.forEach((hash: string, name: string): void => {
 			entries.push(name + ":" + hash);
 		});
@@ -67,6 +69,7 @@ export class PackageManifest {
 			for (const key of Object.keys(obj)) {
 				map.set(key, obj[key]);
 			}
+
 			return new PackageManifest(map);
 		} catch (e) {
 			console.error(e);
@@ -144,6 +147,7 @@ export function generatePackageManifestFromDirectory(
 							fileHashesMap.set(relativePath, hash);
 						});
 					}
+
 					return undefined;
 				});
 			},
@@ -171,6 +175,7 @@ export function hashStream(readStream: stream.Readable): Promise<string> {
 		readStream
 			.on("error", (error: any): void => {
 				hashStream.end();
+
 				reject(error);
 			})
 			.on("end", (): void => {

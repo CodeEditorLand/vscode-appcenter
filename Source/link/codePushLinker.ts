@@ -26,7 +26,9 @@ export default class CodePushLinker {
 		if (!apps || apps.length === 0) {
 			return null;
 		}
+
 		const deployments: Deployment[] = [];
+
 		await VsCodeUI.showProgress(async (progress) => {
 			progress.report({
 				message: Messages.CreatingCodePushDeploymentsProgressMessage,
@@ -44,9 +46,11 @@ export default class CodePushLinker {
 				if (!deployment) {
 					continue;
 				}
+
 				app.os.toLowerCase() === AppCenterOS.iOS.toLowerCase()
 					? (deployment.os = AppCenterOS.iOS)
 					: (deployment.os = AppCenterOS.Android);
+
 				deployments.push(deployment);
 			}
 		});
@@ -85,8 +89,10 @@ export default class CodePushLinker {
 
 						return false;
 					}
+
 					this.useRNPM = true;
 				}
+
 				return true;
 			} catch (error) {
 				this.logger.error(`Failed to run ${installCodePushCmd}`);
@@ -131,6 +137,7 @@ export default class CodePushLinker {
 
 			return Promise.resolve(false);
 		}
+
 		return await VsCodeUI.showProgress(async (progress) => {
 			progress.report({ message: Messages.LinkCodePushProgressMessage });
 
@@ -178,6 +185,7 @@ export default class CodePushLinker {
 		if (filteredDeployments.length === 0) {
 			return "";
 		}
+
 		return filteredDeployments[0].key || "";
 	}
 }

@@ -25,7 +25,9 @@ export let spawn = childProcess.spawn;
 export interface VersionSearchParams {
 	os: string; // ios or android
 	plistFile: string;
+
 	plistFilePrefix: string;
+
 	gradleFile: string;
 }
 
@@ -42,6 +44,7 @@ export async function getAndroidAppVersion(
 	if (gradleFile) {
 		buildGradlePath = gradleFile;
 	}
+
 	if (fs.lstatSync(buildGradlePath).isDirectory()) {
 		buildGradlePath = path.join(buildGradlePath, "build.gradle");
 	}
@@ -137,6 +140,7 @@ export async function getAndroidAppVersion(
 					try {
 						const parsedProperties: any =
 							properties.parse(propertiesContent);
+
 						appVersion = parsedProperties[propertyName];
 
 						if (appVersion) {
@@ -277,6 +281,7 @@ export async function getWindowsAppVersion(
 			"windows",
 			projectName,
 		);
+
 		appxManifestContents = fs
 			.readFileSync(
 				path.join(appxManifestContainingFolder, appxManifestFileName),
@@ -287,6 +292,7 @@ export async function getWindowsAppVersion(
 			`Unable to find or read "${appxManifestFileName}" in the "${path.join("windows", projectName)}" folder.`,
 		);
 	}
+
 	return new Promise<string>((resolve, reject) => {
 		xml2js.parseString(
 			appxManifestContents,
@@ -300,11 +306,13 @@ export async function getWindowsAppVersion(
 
 					return;
 				}
+
 				try {
 					const appVersion: string =
 						parsedAppxManifest.Package.Identity[0][
 							"$"
 						].Version.match(/^\d+\.\d+\.\d+/)[0];
+
 					console.log(
 						`Using the target binary version value "${appVersion}" from the "Identity" key in the "${appxManifestFileName}" file.\n`,
 					);
@@ -374,6 +382,7 @@ export function runReactNativeBundleCommand(
 	const reactNativeBundleProcess = spawn("node", reactNativeBundleArgs, {
 		cwd: projectRootPath,
 	});
+
 	console.log(`node ${reactNativeBundleArgs.join(" ")}`);
 
 	return new Promise<void>((resolve, reject) => {
@@ -482,11 +491,17 @@ export function getDefautEntryFilePath(
 
 export class BundleConfig {
 	public os: string;
+
 	public projectRootPath: string;
+
 	public outputDir?: string;
+
 	public entryFilePath?: string;
+
 	public bundleName?: string;
+
 	public development?: boolean;
+
 	public sourcemapOutput?: string;
 }
 
@@ -502,12 +517,14 @@ export async function makeUpdateContents(
 	}
 
 	let updateContentsPath: string;
+
 	updateContentsPath =
 		bundleConfig.outputDir || (await fileUtils.mkTempDir("code-push"));
 
 	// we have to add "CodePush" root folder to make update contents file structure
 	// to be compatible with React Native client SDK
 	updateContentsPath = path.join(updateContentsPath, "CodePush");
+
 	mkdirp.sync(updateContentsPath);
 
 	if (!bundleConfig.bundleName) {
@@ -529,9 +546,11 @@ export async function makeUpdateContents(
 	}
 
 	fileUtils.createEmptyTmpReleaseFolder(updateContentsPath);
+
 	fileUtils.removeReactTmpDir();
 
 	bundleConfig.development = SettingsHelper.codePushRNBundelDevFlag();
+
 	await runReactNativeBundleCommand(
 		bundleConfig.projectRootPath,
 		bundleConfig.bundleName,

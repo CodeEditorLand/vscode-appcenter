@@ -13,5 +13,6 @@ export function formatDate(unixOffset: number): string {
 	} else {
 		formattedDateString = format(date, "MMM DD, hh:mm A");
 	}
+
 	return formattedDateString;
 }

@@ -8,12 +8,14 @@ import { ReactNativeAppCommand } from "./reactNativeAppCommand";
 
 export class LinkCommand extends ReactNativeAppCommand {
 	protected showedCount: number = 0;
+
 	protected pickedApps: CurrentApp[] = [];
 
 	public async run(): Promise<boolean | void> {
 		if (!(await super.run())) {
 			return false;
 		}
+
 		return true;
 	}
 
@@ -34,10 +36,12 @@ export class LinkCommand extends ReactNativeAppCommand {
 
 			if (!selectedApps || selectedApps.length !== 1) {
 				this.showedCount = 0;
+
 				this.pickedApps = [];
 
 				return;
 			}
+
 			const selectedApp: models.AppResponse = selectedApps[0];
 
 			const selectedAppName: string = `${selectedApp.owner.name}/${selectedApp.name}`;
@@ -49,6 +53,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 			const OS: AppCenterOS | undefined = Utils.toAppCenterOS(
 				selectedApp.os,
 			);
+
 			currentApp = Utils.toCurrentApp(
 				selectedAppName,
 				OS,
@@ -59,6 +64,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 				selectedAppSecret,
 			);
 		}
+
 		this.pickedApps.push(currentApp);
 
 		if (this.showedCount < 1 && SettingsHelper.linkTwoApps()) {
@@ -80,6 +86,7 @@ export class LinkCommand extends ReactNativeAppCommand {
 
 			const showCurrentApp: boolean =
 				current.os.toLowerCase() !== currentApp.os.toLowerCase();
+
 			this.showAppsQuickPick(
 				cachedFilteredApps,
 				false,

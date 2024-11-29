@@ -19,13 +19,18 @@ import { Command } from "./command";
 
 export class ReactNativeAppCommand extends Command {
 	protected currentAppMenuTarget: string = "MenuCurrentApp";
+
 	protected static cachedAllApps: models.AppResponse[];
+
 	protected userAlreadySelectedApp: boolean;
+
 	protected checkForReact: boolean = true;
+
 	protected _params: CommandParams;
 
 	constructor(params: CommandParams) {
 		super(params);
+
 		this._params = params;
 	}
 
@@ -44,6 +49,7 @@ export class ReactNativeAppCommand extends Command {
 		if (!(await super.runNoClient())) {
 			return false;
 		}
+
 		if (
 			this.checkForReact &&
 			!Utils.isReactNativeProject(this.logger, this.rootPath, true)
@@ -52,6 +58,7 @@ export class ReactNativeAppCommand extends Command {
 
 			return false;
 		}
+
 		return true;
 	}
 
@@ -68,6 +75,7 @@ export class ReactNativeAppCommand extends Command {
 
 			return false;
 		}
+
 		return true;
 	}
 
@@ -89,6 +97,7 @@ export class ReactNativeAppCommand extends Command {
 								if (result) {
 									profile.currentApp.currentAppDeployments.codePushDeployments =
 										[];
+
 									profile.currentApp.currentAppDeployments.codePushDeployments.push(
 										...result,
 									);
@@ -105,8 +114,10 @@ export class ReactNativeAppCommand extends Command {
 								}
 							} catch (err) {}
 						}
+
 						return profile.currentApp;
 					}
+
 					return null;
 				},
 			);
@@ -135,11 +146,13 @@ export class ReactNativeAppCommand extends Command {
 
 			return;
 		}
+
 		const rnApps: models.AppResponse[] = this.getRnApps(apps);
 
 		if (!force) {
 			ReactNativeAppCommand.cachedAllApps = apps;
 		}
+
 		const options: QuickPickAppItem[] = Menu.getQuickPickItemsForAppsList(
 			includeAllApps ? apps : rnApps,
 		);
@@ -153,8 +166,10 @@ export class ReactNativeAppCommand extends Command {
 				description: "",
 				target: CommandNames.CreateApp.CommandName,
 			};
+
 			options.splice(0, 0, createNewAppItem);
 		}
+
 		if (includeSelectCurrent) {
 			const currentApp: CurrentApp | null = await this.getCurrentApp();
 
@@ -164,19 +179,23 @@ export class ReactNativeAppCommand extends Command {
 					description: currentApp.type,
 					target: this.currentAppMenuTarget,
 				};
+
 				options.splice(0, 0, currentAppItem);
 			}
 		}
+
 		if (!this.userAlreadySelectedApp || force) {
 			const selected: QuickPickAppItem = await VsCodeUI.showQuickPick(
 				options,
 				prompt,
 			);
+
 			this.userAlreadySelectedApp = true;
 
 			if (!selected) {
 				return;
 			}
+
 			this.handleShowCurrentAppQuickPickSelection(selected, apps);
 		}
 	}
@@ -185,6 +204,7 @@ export class ReactNativeAppCommand extends Command {
 		if (!apps) {
 			return [];
 		}
+
 		return apps.filter(
 			(app) =>
 				app.platform === Constants.AppCenterReactNativePlatformName,
@@ -226,6 +246,7 @@ export class ReactNativeAppCommand extends Command {
 			}
 		}).catch((e) => {
 			VsCodeUI.ShowErrorMessage(Messages.UnknownError);
+
 			this.logger.error(e.message, e);
 		});
 	}
@@ -237,11 +258,13 @@ export class ReactNativeAppCommand extends Command {
 		if (!cachedApps || !appsList) {
 			return true;
 		}
+
 		if (cachedApps.length !== appsList.length) {
 			return true;
 		}
 
 		let differs: boolean = false;
+
 		cachedApps.every((cachedItem) => {
 			const matches = appsList.filter((item) => {
 				return this.compareAppsItems(cachedItem, item);
@@ -252,6 +275,7 @@ export class ReactNativeAppCommand extends Command {
 
 				return false;
 			}
+
 			return true;
 		});
 

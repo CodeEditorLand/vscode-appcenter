@@ -14,6 +14,7 @@ const METADATA_FILE_NAME: string = ".codepushrelease";
 
 interface CodeSigningClaims {
 	claimVersion: string;
+
 	contentHash: string;
 }
 
@@ -71,6 +72,7 @@ export default async function sign(
 		console.log(
 			`Deleting previous release signature at ${signatureFilePath}`,
 		);
+
 		await fileUtils.rmDir(signatureFilePath);
 	}
 
@@ -100,9 +102,11 @@ export default async function sign(
 
 				try {
 					fs.writeFileSync(signatureFilePath, signedJwt);
+
 					console.log(
 						`Generated a release signature and wrote it to ${signatureFilePath}`,
 					);
+
 					resolve(void 0);
 				} catch (error) {
 					reject(error);

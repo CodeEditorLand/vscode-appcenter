@@ -19,6 +19,7 @@ export class Utils {
 			//Replace newlines with spaces
 			return message.replace(/\r\n/g, " ").replace(/\n/g, " ").trim();
 		}
+
 		return message;
 	}
 
@@ -30,6 +31,7 @@ export class Utils {
 		if (name.length < ELLIPSIZE_LENGTH_WO_HINT) {
 			return name;
 		}
+
 		let hint: string = "";
 
 		if (name.endsWith("-ios")) {
@@ -37,6 +39,7 @@ export class Utils {
 		} else if (name.endsWith("-android")) {
 			hint = " (android)";
 		}
+
 		return (
 			name.substr(
 				0,
@@ -88,6 +91,7 @@ export class Utils {
 		} catch (error) {
 			return null;
 		}
+
 		return yarnVersion;
 	}
 
@@ -100,8 +104,10 @@ export class Utils {
 			if (installHint) {
 				installHint = ` ${installHint}`;
 			}
+
 			throw new Error(`Cannot find "${path}".${installHint}`);
 		}
+
 		try {
 			return JSON.parse(fileContents);
 		} catch (err) {
@@ -133,6 +139,7 @@ export class Utils {
 			if (showMessageOnError) {
 				logger.error(e.message);
 			}
+
 			return false;
 		}
 
@@ -226,6 +233,7 @@ export class Utils {
 						},
 			};
 		}
+
 		return null;
 	}
 
@@ -296,9 +304,11 @@ export class Utils {
 				) {
 					return false;
 				}
+
 				throw e;
 			}
 		}
+
 		return resultSignalsThatPackageInstalled(result);
 	}
 

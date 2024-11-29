@@ -33,13 +33,21 @@ export class CrashGenerator {
 		const crashLog: CrashLogSchema = require("./log.json");
 
 		delete crashLog.appId;
+
 		delete crashLog.installId;
+
 		crashLog.type = "managedError";
+
 		crashLog.sid = sessionId;
+
 		crashLog.id = crashId;
+
 		crashLog.crashTimestamp = crashDate;
+
 		crashLog.ingestTimestamp = crashDate;
+
 		crashLog.installId = installId;
+
 		crashLog.timestamp = crashDate;
 
 		const session = {
@@ -55,6 +63,7 @@ export class CrashGenerator {
 
 		try {
 			await this.sendCrashes(installId, sessionLogContainer);
+
 			await this.sendCrashes(installId, crashLogContainer);
 
 			return;
@@ -80,6 +89,7 @@ export class CrashGenerator {
 			if (response.status !== 200) {
 				throw new Error(responseBody);
 			}
+
 			return response;
 		} catch (e) {
 			this.logger.error(

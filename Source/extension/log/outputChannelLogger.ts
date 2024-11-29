@@ -11,11 +11,13 @@ const channels: { [channelName: string]: OutputChannelLogger } = {};
 
 export class OutputChannelLogger implements ILogger {
 	public static MAIN_CHANNEL_NAME: string = "React Native";
+
 	private outputChannel: vscode.OutputChannel;
 
 	public static disposeChannel(channelName: string): void {
 		if (channels[channelName]) {
 			channels[channelName].getOutputChannel().dispose();
+
 			delete channels[channelName];
 		}
 	}
@@ -47,6 +49,7 @@ export class OutputChannelLogger implements ILogger {
 	) {
 		if (!lazy) {
 			this.channel = vscode.window.createOutputChannel(this.channelName);
+
 			this.channel.show(this.preserveFocus);
 		}
 	}
@@ -58,6 +61,7 @@ export class OutputChannelLogger implements ILogger {
 
 		if (level >= LogHelper.LOG_LEVEL) {
 			message = OutputChannelLogger.getFormattedMessage(message, level);
+
 			this.channel.appendLine(message);
 		}
 	}
@@ -122,6 +126,7 @@ export class OutputChannelLogger implements ILogger {
 			this.outputChannel = vscode.window.createOutputChannel(
 				this.channelName,
 			);
+
 			this.outputChannel.show(this.preserveFocus);
 
 			return this.outputChannel;

@@ -9,6 +9,7 @@ export default class ShowMenu extends RNCPAppCommand {
 		private _app: CurrentApp = null,
 	) {
 		super(params);
+
 		this.checkForCodePush = false;
 	}
 
@@ -26,8 +27,10 @@ export default class ShowMenu extends RNCPAppCommand {
 			if (!currentApp) {
 				return false;
 			}
+
 			this._app = currentApp;
 		}
+
 		return new CodePushMenu(this._app, this._params, notCurrentApp).show();
 	}
 }

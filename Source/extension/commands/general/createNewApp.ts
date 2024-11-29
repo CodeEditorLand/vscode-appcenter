@@ -75,6 +75,7 @@ export default class CreateNewApp extends CreateAppCommand {
 			this.client,
 			this.logger,
 		);
+
 		await appCenterAppBuilder.createApps(option);
 
 		const createdApps: CreatedAppFromAppCenter[] =
@@ -91,11 +92,13 @@ export default class CreateNewApp extends CreateAppCommand {
 
 				return true;
 			}
+
 			case CreateNewAppOption.Both: {
 				this.pickApp(createdApps);
 
 				return true;
 			}
+
 			default:
 				return false;
 		}
@@ -140,6 +143,7 @@ export default class CreateNewApp extends CreateAppCommand {
 
 			return;
 		}
+
 		await this.setCurrentApp(apps[0]);
 
 		const messageItems: IButtonMessageItem[] = [];
@@ -149,10 +153,12 @@ export default class CreateNewApp extends CreateAppCommand {
 			apps[0].appName,
 			this.userOrOrg.isOrganization,
 		);
+
 		messageItems.push({
 			title: Strings.AppCreatedBtnLabel,
 			url: appUrl,
 		});
+
 		VsCodeUI.ShowInfoMessage(
 			Messages.AppCreatedMessage(apps[0].appName, true),
 			...messageItems,

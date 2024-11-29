@@ -27,6 +27,7 @@ export default class LoginToVsts extends Command {
 		if (!value) {
 			return true;
 		}
+
 		loginInfo.tenantName = value;
 
 		value = await VsCodeUI.showInput(Strings.SpecifyUserNameTitleHint);
@@ -34,6 +35,7 @@ export default class LoginToVsts extends Command {
 		if (!value) {
 			return true;
 		}
+
 		loginInfo.userName = value;
 
 		value = await VsCodeUI.showInput(Strings.SpecifyPATTitleHint);
@@ -41,6 +43,7 @@ export default class LoginToVsts extends Command {
 		if (!value) {
 			return true;
 		}
+
 		loginInfo.token = value;
 
 		return await this.login(loginInfo);
@@ -52,6 +55,7 @@ export default class LoginToVsts extends Command {
 
 			if (!profile) {
 				this.logger.error(LogStrings.FailedToGetUserFromServer);
+
 				VsCodeUI.ShowErrorMessage(
 					Messages.FailedToExecuteLoginMsg(AuthProvider.Vsts),
 				);
@@ -78,6 +82,7 @@ export default class LoginToVsts extends Command {
 
 			if (!isValid) {
 				VsCodeUI.ShowWarningMessage(Messages.VstsCredsNotValidWarning);
+
 				this.vstsAuth.doLogout(profile.userId);
 
 				return false;
@@ -89,9 +94,11 @@ export default class LoginToVsts extends Command {
 					),
 				);
 			}
+
 			return true;
 		} catch (e) {
 			VsCodeUI.ShowErrorMessage(Messages.FailedToLogin);
+
 			this.logger.error(e.message, e, true);
 
 			return false;

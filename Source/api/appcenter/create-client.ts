@@ -21,10 +21,12 @@ export interface AppCenterClientFactory {
 		password: string,
 		endpoint: string,
 	): AppCenterClient;
+
 	fromToken(
 		token: string | Promise<string> | (() => Promise<string>),
 		endpoint: string,
 	): AppCenterClient;
+
 	fromProfile(user: Profile, endpoint: string): AppCenterClient | null;
 }
 
@@ -67,6 +69,7 @@ export function createAppCenterClient(): AppCenterClientFactory {
 			} else {
 				tokenFunc = token;
 			}
+
 			return new AppCenterClient(
 				new AppCenterClientCredentials(tokenFunc),
 				endpoint,
@@ -78,6 +81,7 @@ export function createAppCenterClient(): AppCenterClientFactory {
 			if (!user) {
 				return null;
 			}
+
 			return new AppCenterClient(
 				new AppCenterClientCredentials(() => Auth.accessTokenFor(user)),
 				endpoint,
@@ -107,6 +111,7 @@ export function clientCall<T>(action: {
 //
 export interface ClientResponse<T> {
 	result: T;
+
 	response: IncomingMessage;
 }
 

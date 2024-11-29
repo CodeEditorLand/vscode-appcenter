@@ -19,12 +19,17 @@ import AppCenterAppCreator, {
 
 export default class AppCenterAppBuilder {
 	private _createIOSApp: boolean = false;
+
 	private _createAndroidApp: boolean = false;
+
 	private _createBetaTestersDistributionGroup: boolean = false;
+
 	private _connectRepositoryToBuildService: boolean = false;
+
 	private _withBranchConfigurationCreatedAndBuildKickOff: boolean = false;
 
 	private appsCreated: boolean = false;
+
 	private createdApps: CreatedAppFromAppCenter[];
 
 	constructor(
@@ -41,14 +46,20 @@ export default class AppCenterAppBuilder {
 			this.projectName === undefined
 		) {
 			const errMsg: string = LogStrings.ProjectOrOrgNotSet;
+
 			this.logger.error(errMsg);
 
 			throw new Error(errMsg);
 		}
+
 		this.withIOSApp();
+
 		this.withAndroidApp();
+
 		this.withBetaTestersDistributionGroup();
+
 		this.withConnectedRepositoryToBuildService();
+
 		this.withBranchConfigurationCreatedAndBuildKickOff();
 	}
 
@@ -212,6 +223,7 @@ export default class AppCenterAppBuilder {
 						if (val) {
 							return val !== null && val !== false;
 						}
+
 						return false;
 					})
 				) {
@@ -221,7 +233,9 @@ export default class AppCenterAppBuilder {
 				}
 
 				this.createdApps = created;
+
 				this.appsCreated = true;
+
 				this.logger.debug(LogStrings.AppsCreated(this.projectName));
 			});
 		}
@@ -346,6 +360,7 @@ export default class AppCenterAppBuilder {
 					}
 				}
 			}
+
 			return true;
 		});
 	}

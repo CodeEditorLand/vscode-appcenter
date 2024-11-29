@@ -25,7 +25,9 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 		if (!(await super.run())) {
 			return;
 		}
+
 		this.showAppsQuickPick(this.CachedAllApps, true);
+
 		this.refreshCachedAppsAndRepaintQuickPickIfNeeded(true);
 	}
 
@@ -51,8 +53,10 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 				if (!selectedApps || selectedApps.length !== 1) {
 					return;
 				}
+
 				selectedApp = selectedApps[0];
 			}
+
 			let currentAppToUse: CurrentApp;
 
 			if (selectedApp) {
@@ -96,6 +100,7 @@ export default class AppCenterPortal extends ReactNativeAppCommand {
 							};
 						},
 					);
+
 					currentDeployments = {
 						codePushDeployments: deployments,
 						currentDeploymentName:

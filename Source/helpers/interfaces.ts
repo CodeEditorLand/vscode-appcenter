@@ -7,48 +7,65 @@ import { AppCenterOS } from "../extension/resources/constants";
 
 export interface Deployment {
 	name: string;
+
 	key?: string;
+
 	os?: AppCenterOS;
 }
 
 export interface CurrentAppDeployments {
 	currentDeploymentName: string;
+
 	codePushDeployments: Deployment[];
 }
 
 export interface UserOrOrganizationItem {
 	isOrganization: boolean;
+
 	name?: string;
+
 	displayName?: string;
 }
 
 export interface LinkableApp {
 	appName: string;
+
 	os: string;
 }
 
 export interface CurrentApp extends LinkableApp {
 	ownerName: string;
+
 	identifier: string;
+
 	targetBinaryVersion: string;
+
 	isMandatory: boolean;
+
 	type: string;
+
 	currentAppDeployments: CurrentAppDeployments;
+
 	appSecret: string;
 }
 
 export interface CreatedAppFromAppCenter extends LinkableApp {
 	appSecret: string;
+
 	platform: string;
 }
 
 export interface ProfileStorage<T extends Profile> {
 	activeProfile: T | null;
+
 	save(profile: Profile): Promise<void>;
+
 	delete(userId: string): Promise<T | null>;
 
 	get(userId: string): Promise<T | null>;
+
 	list(): Promise<T[]>;
+
 	init(): Promise<void>;
 
 	tryFixStorage(): Promise<boolean>;
@@ -56,14 +73,19 @@ export interface ProfileStorage<T extends Profile> {
 
 export interface Profile {
 	userId: string;
+
 	userName: string;
+
 	displayName: string;
+
 	isActive: boolean;
+
 	currentApp?: CurrentApp;
 }
 
 export interface AppCenterProfile extends Profile {
 	email: string;
+
 	currentApp?: CurrentApp;
 }
 
@@ -80,6 +102,7 @@ export interface AppCenterLoginInfo extends LoginInfo {}
 
 export interface VstsLoginInfo extends LoginInfo {
 	tenantName: string;
+
 	userName: string;
 }
 
@@ -88,32 +111,47 @@ export interface IDefaultCommandParams {
 }
 export interface ICodePushReleaseParams extends IDefaultCommandParams {
 	deploymentName: string;
+
 	updatedContentZipPath: string;
+
 	appVersion?: string;
+
 	description?: string;
+
 	isDisabled?: boolean;
+
 	isMandatory?: boolean;
+
 	label?: string;
+
 	packageHash?: string;
+
 	rollout?: number;
+
 	token?: string;
 }
 
 export interface QuickPickAppItem {
 	label: string;
+
 	description: string;
+
 	target: string;
 }
 
 export interface ProfileQuickPickItem {
 	label: string;
+
 	description: string;
+
 	profile: Profile;
 }
 
 export interface CommandParams {
 	manager: ExtensionManager;
+
 	appCenterAuth: AppCenterAuth;
+
 	vstsAuth: VstsAuth;
 }
 

@@ -31,11 +31,14 @@ const attrRe =
 
 export class OsxSecurityParsingStream extends stream.Transform {
 	private currentEntry: any;
+
 	private inAttributes: boolean;
 
 	constructor() {
 		super({ objectMode: true });
+
 		this.currentEntry = null;
+
 		this.inAttributes = false;
 	}
 
@@ -67,17 +70,20 @@ export class OsxSecurityParsingStream extends stream.Transform {
 				}
 			}
 		}
+
 		callback();
 	}
 
 	public _flush(callback: { (err?: Error): void }): void {
 		this.emitCurrentEntry();
+
 		callback();
 	}
 
 	public emitCurrentEntry(): void {
 		if (this.currentEntry) {
 			this.push(this.currentEntry);
+
 			this.currentEntry = null;
 		}
 	}
@@ -87,21 +93,28 @@ export class OsxSecurityParsingStream extends stream.Transform {
 
 		if (this.inAttributes) {
 			//  debug(`was in attributes, emitting`);
+
 			this.emitCurrentEntry();
+
 			this.inAttributes = false;
 		}
+
 		if (key === "attributes") {
 			// debug(`now in attributes`);
+
 			this.inAttributes = true;
 		} else {
 			// debug(`adding root attribute ${key} with value ${value} to object`);
+
 			this.currentEntry = this.currentEntry || {};
+
 			this.currentEntry[key] = value;
 		}
 	}
 
 	public processAttributeLine(key: string, value: string): void {
 		//debug(`adding attribute ${key} with value ${value} to object`);
+
 		this.currentEntry[key] = value;
 	}
 }

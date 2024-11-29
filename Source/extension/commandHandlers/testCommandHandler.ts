@@ -8,13 +8,17 @@ export default class TestCommandHandler extends BaseCommandHandler {
 
 	public async runUITests(): Promise<void> {
 		const cmd = new Test.RunUITests(this.getCommandParams());
+
 		cmd.runAsynchronously = false;
+
 		await cmd.run();
 	}
 
 	public async runUITestsAsync(): Promise<void> {
 		const cmd = new Test.RunUITests(this.getCommandParams());
+
 		cmd.runAsynchronously = true;
+
 		await cmd.run();
 	}
 

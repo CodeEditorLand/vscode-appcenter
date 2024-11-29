@@ -9,6 +9,7 @@ export default class NullCommand extends Command {
 
 	public async runNoClient(): Promise<void> {
 		super.runNoClient();
+
 		this.logger.info("Null cmd executed!");
 	}
 }

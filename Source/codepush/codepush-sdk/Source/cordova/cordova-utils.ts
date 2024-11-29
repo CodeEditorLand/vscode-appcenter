@@ -12,6 +12,7 @@ export function getAppVersion(projectRoot?: string): Promise<string> {
 
 		try {
 			projectRoot = projectRoot || process.cwd();
+
 			configString = fs.readFileSync(
 				path.join(projectRoot, "config.xml"),
 				{ encoding: "utf8" },
@@ -66,6 +67,7 @@ export function getCordovaOrPhonegapCLI(): string {
 		return cordovaCLI;
 	} catch (e) {
 		cordovaCLI = "phonegap";
+
 		which.sync(cordovaCLI);
 
 		return cordovaCLI;

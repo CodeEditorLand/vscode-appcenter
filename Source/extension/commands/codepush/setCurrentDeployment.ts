@@ -14,6 +14,7 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 		if (!(await super.run())) {
 			return;
 		}
+
 		const currentApp: CurrentApp = await this.getCurrentApp(true);
 
 		if (!currentApp) {
@@ -21,11 +22,13 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 
 			return;
 		}
+
 		if (!this.hasCodePushDeployments(currentApp)) {
 			VsCodeUI.ShowWarningMessage(Messages.NoDeploymentsWarning);
 
 			return;
 		}
+
 		const deploymentOptions: CustomQuickPickItem[] =
 			currentApp.currentAppDeployments.codePushDeployments.map(
 				(deployment) => {
@@ -56,6 +59,7 @@ export default class SetCurrentDeployment extends RNCPAppCommand {
 				currentApp.isMandatory,
 				currentApp.appSecret,
 			);
+
 			VsCodeUI.ShowInfoMessage(
 				Messages.YourCurrentDeploymentMessage(deployment.label),
 			);

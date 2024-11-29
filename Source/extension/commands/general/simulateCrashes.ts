@@ -22,6 +22,7 @@ export default class SimulateCrashes extends Command {
 		if (!(await super.run())) {
 			return;
 		}
+
 		try {
 			const link: string = await VsCodeUI.showProgress(
 				async (progress) => {
@@ -64,6 +65,7 @@ export default class SimulateCrashes extends Command {
 						VsCodeUI.ShowErrorMessage(
 							Messages.FailedToGenerateCrashes,
 						);
+
 						this.logger.error(e.message, e);
 					}
 
@@ -73,10 +75,12 @@ export default class SimulateCrashes extends Command {
 
 			if (link) {
 				const messageItems: IButtonMessageItem[] = [];
+
 				messageItems.push({
 					title: Strings.CrashesSimulatedBtnLabel,
 					url: link,
 				});
+
 				VsCodeUI.ShowInfoMessage(
 					Messages.CrashesSimulatedMessage,
 					...messageItems,
@@ -84,6 +88,7 @@ export default class SimulateCrashes extends Command {
 			}
 		} catch (e) {
 			VsCodeUI.ShowErrorMessage(Messages.FailedToGenerateCrashes);
+
 			this.logger.error(e.message, e);
 		}
 	}

@@ -6,6 +6,7 @@ import { ReactNativeAppCommand } from "../reactNativeAppCommand";
 export default class GetCurrentApp extends ReactNativeAppCommand {
 	constructor(params: CommandParams) {
 		super(params);
+
 		this.checkForReact = false;
 	}
 

@@ -8,6 +8,7 @@ export async function appCenterCodePushRelease(
 	params: ICodePushReleaseParams,
 ): Promise<void> {
 	const app = params.app;
+
 	await client.codePushDeploymentReleases.create(
 		params.deploymentName,
 		app.ownerName,

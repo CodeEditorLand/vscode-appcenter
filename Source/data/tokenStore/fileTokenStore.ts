@@ -19,10 +19,12 @@ import {
 
 export class FileTokenStore implements TokenStore {
 	private filePath: string;
+
 	private tokenStoreCache: { [key: string]: TokenValueType } | null;
 
 	constructor(filePath: string) {
 		this.filePath = filePath;
+
 		this.tokenStoreCache = null;
 	}
 
@@ -46,9 +48,11 @@ export class FileTokenStore implements TokenStore {
 		if (this.tokenStoreCache) {
 			token = this.tokenStoreCache[key];
 		}
+
 		if (!token) {
 			return Promise.resolve(null);
 		}
+
 		return Promise.resolve({ key: key, accessToken: token });
 	}
 
@@ -58,6 +62,7 @@ export class FileTokenStore implements TokenStore {
 		if (this.tokenStoreCache) {
 			this.tokenStoreCache[key] = value;
 		}
+
 		this.writeTokenStoreCache();
 
 		return Promise.resolve(void 0);
@@ -69,6 +74,7 @@ export class FileTokenStore implements TokenStore {
 		if (this.tokenStoreCache) {
 			delete this.tokenStoreCache[key];
 		}
+
 		this.writeTokenStoreCache();
 
 		return Promise.resolve(void 0);

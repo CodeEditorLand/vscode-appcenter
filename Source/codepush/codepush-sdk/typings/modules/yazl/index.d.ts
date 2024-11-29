@@ -5,6 +5,7 @@ declare module "yazl" {
 
 	export interface IDosDateTime {
 		date: number;
+
 		time: number;
 	}
 
@@ -14,8 +15,11 @@ declare module "yazl" {
 
 	export interface IOptions {
 		compress?: boolean;
+
 		mode?: number;
+
 		mtime?: Date;
+
 		size?: number;
 	}
 
@@ -29,20 +33,24 @@ declare module "yazl" {
 			metadataPath: string,
 			options?: IOptions,
 		): void;
+
 		public addEmptyDirectory(
 			metadataPath: string,
 			options?: IOptions,
 		): void;
+
 		public addFile(
 			realPath: string,
 			metadataPath: string,
 			options?: IOptions,
 		): void;
+
 		public addReadStream(
 			readStream: stream.Readable,
 			metadataPath: string,
 			options?: IOptions,
 		): void;
+
 		public end(finalSizeCallback?: IFinalSizeCallback): void;
 	}
 }

@@ -8,6 +8,7 @@ export default class ShowMenu extends Command {
 
 	constructor(params: CommandParams) {
 		super(params);
+
 		this._params = params;
 	}
 

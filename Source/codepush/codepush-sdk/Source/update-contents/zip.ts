@@ -35,6 +35,7 @@ export default function zip(
 			error.message =
 				error.message +
 				" Make sure you have added the platform you are making a release to.`.";
+
 			reject(error);
 		}
 
@@ -49,6 +50,7 @@ export default function zip(
 				baseDirectoryPath,
 				filePath,
 			);
+
 			releaseFiles.push({
 				sourceLocation: filePath,
 				targetLocation: fileUtils.normalizePath(relativePath),

@@ -59,6 +59,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 
 						return void 0;
 					}
+
 					this._app = currentApp;
 				}
 
@@ -71,14 +72,18 @@ export default class ReleaseReact extends RNCPAppCommand {
 
 					return void 0;
 				}
+
 				if (!this._app.os || !reactNative.isValidOS(this._app.os)) {
 					VsCodeUI.ShowWarningMessage(Messages.UnsupportedOSWarning);
 
 					return void 0;
 				}
+
 				codePushRelaseParams.app = this._app;
+
 				codePushRelaseParams.deploymentName =
 					this._app.currentAppDeployments.currentDeploymentName;
+
 				isMandatory = !!this._app.isMandatory;
 
 				let appVersion: string;
@@ -120,13 +125,17 @@ export default class ReleaseReact extends RNCPAppCommand {
 						}
 					}
 				}
+
 				if (!appVersion) {
 					return void 0;
 				}
+
 				progress.report({
 					message: Messages.RunningBundleCommandProgressMessage,
 				});
+
 				codePushRelaseParams.appVersion = appVersion;
+
 				updateContentsDirectory = await reactNative.makeUpdateContents(<
 					BundleConfig
 				>{
@@ -148,10 +157,12 @@ export default class ReleaseReact extends RNCPAppCommand {
 							codePushReleaseMixinPath,
 						),
 					});
+
 					codePushReleaseMixinPath = path.join(
 						this.rootPath,
 						codePushReleaseMixinPath,
 					);
+
 					FSUtils.copyFiles(
 						codePushReleaseMixinPath,
 						updateContentsDirectory,
@@ -161,12 +172,14 @@ export default class ReleaseReact extends RNCPAppCommand {
 				progress.report({
 					message: Messages.ArchivingUpdateContentsProgressMessage,
 				});
+
 				this.logger.log(
 					LogStrings.CodePushUpdatedContentsDir(
 						updateContentsDirectory,
 					),
 					LogLevel.Debug,
 				);
+
 				codePushRelaseParams.updatedContentZipPath =
 					await updateContents.zip(
 						updateContentsDirectory,
@@ -176,14 +189,17 @@ export default class ReleaseReact extends RNCPAppCommand {
 				if (!codePushRelaseParams.updatedContentZipPath) {
 					return void 0;
 				}
+
 				progress.report({
 					message: Messages.ReleasingUpdateContentsProgressMessage,
 				});
+
 				codePushRelaseParams.isMandatory = isMandatory;
 
 				const profile: AppCenterProfile = await this.appCenterProfile;
 
 				const token: string = await Auth.accessTokenFor(profile);
+
 				codePushRelaseParams.token = token;
 
 				const response: any = await codePushRelease.exec(
@@ -195,6 +211,7 @@ export default class ReleaseReact extends RNCPAppCommand {
 				if (!response) {
 					return void 0;
 				}
+
 				if (response.succeeded && response.result) {
 					VsCodeUI.ShowInfoMessage(
 						Messages.ReleaseMadeMessage(

@@ -17,11 +17,13 @@ export interface TokenStore {
 // Information stored about in each token
 export interface TokenEntry {
 	key: TokenKeyType;
+
 	accessToken: TokenValueType;
 }
 
 export interface TokenValueType {
 	id?: string;
+
 	token: string;
 }
 

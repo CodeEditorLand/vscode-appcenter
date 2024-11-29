@@ -25,8 +25,10 @@ const getTokenFilePath = (tokenFile: string) => {
 		if (!fs.existsSync(getTokenDir())) {
 			fs.mkdirSync(getTokenDir());
 		}
+
 		fs.writeFileSync(tokenFilePath, /* create empty */ "");
 	}
+
 	return tokenFilePath;
 };
 

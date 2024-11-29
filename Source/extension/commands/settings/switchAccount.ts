@@ -18,6 +18,7 @@ export default class SwitchAccount extends Command {
 		}
 
 		const menuOptions: ProfileQuickPickItem[] = [];
+
 		profiles.forEach((profile) => {
 			if (!profile.isActive) {
 				menuOptions.push(<ProfileQuickPickItem>{
@@ -38,6 +39,7 @@ export default class SwitchAccount extends Command {
 				// User cancel selection
 				return void 0;
 			}
+
 			return this.switchActiveProfile(selected.profile);
 		} catch (error) {
 			this.handleError(error);
@@ -49,14 +51,18 @@ export default class SwitchAccount extends Command {
 	): Promise<boolean> {
 		try {
 			selectedProfile.isActive = true;
+
 			await this.appCenterAuth.updateProfile(selectedProfile);
+
 			await this.manager.checkCurrentApps(this.appCenterAuth);
+
 			VsCodeUI.ShowInfoMessage(
 				Messages.UserSwitchedMessage(
 					AuthProvider.AppCenter,
 					selectedProfile.userName,
 				),
 			);
+
 			await this.manager.setupAppCenterStatusBar(
 				await this.appCenterAuth.activeProfile,
 			);
@@ -65,11 +71,13 @@ export default class SwitchAccount extends Command {
 
 			return false;
 		}
+
 		return true;
 	}
 
 	private handleError(error: Error) {
 		VsCodeUI.ShowErrorMessage(Messages.FailedToSwitchAccounts);
+
 		this.logger.error(error.message, error, true);
 	}
 }

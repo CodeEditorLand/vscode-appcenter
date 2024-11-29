@@ -45,9 +45,11 @@ export default class AppCenterLinker {
 		const androidAppSecret = this.findSecretFor(AppCenterOS.Android, apps);
 
 		const terminalHelper: VsCodeTerminal = new VsCodeTerminal();
+
 		terminalHelper.show();
 
 		const messageItems: IButtonMessageItem[] = [];
+
 		messageItems.push({
 			title: Strings.OkBtnLabel,
 		});
@@ -62,9 +64,11 @@ export default class AppCenterLinker {
 			terminalHelper.run("react-native link");
 
 			const messageItems: IButtonMessageItem[] = [];
+
 			messageItems.push({
 				title: Strings.LinkDoneBtnLabel,
 			});
+
 			VsCodeUI.ShowInfoMessage(
 				Messages.AppCenterSecretsHintMessage(
 					androidAppSecret,
@@ -75,6 +79,7 @@ export default class AppCenterLinker {
 
 			return true;
 		}
+
 		return false;
 	}
 
@@ -86,6 +91,7 @@ export default class AppCenterLinker {
 		if (filteredApps.length === 0) {
 			return "";
 		}
+
 		return filteredApps[0].appSecret || "";
 	}
 }

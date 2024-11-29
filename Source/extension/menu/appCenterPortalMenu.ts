@@ -26,20 +26,26 @@ export class AppCenterPortalMenu extends Menu {
 		params: CommandParams,
 	) {
 		super(params);
+
 		this.isOrg =
 			app.type.toLowerCase() === AppCenterAppType.Org.toLowerCase();
 	}
 
 	protected getMenuItems(): MenuQuickPickItem[] {
 		const menuItems: MenuQuickPickItem[] = [];
+
 		menuItems.push(MenuItems.BuildTab);
+
 		menuItems.push(MenuItems.TestTab);
 
 		if (this.isRNproject()) {
 			menuItems.push(MenuItems.CodePushTab);
 		}
+
 		menuItems.push(MenuItems.DistributeTab);
+
 		menuItems.push(MenuItems.CrashesTab);
+
 		menuItems.push(MenuItems.AnalyticsTab);
 
 		return menuItems;
@@ -70,6 +76,7 @@ export class AppCenterPortalMenu extends Menu {
 				if (!selected) {
 					return;
 				}
+
 				switch (selected.command) {
 					case AppCenterDistributionTabs.Groups:
 						Utils.OpenUrl(
@@ -110,6 +117,7 @@ export class AppCenterPortalMenu extends Menu {
 					default:
 						break;
 				}
+
 				break;
 
 			case AppCenterBeacons.Crashes:
@@ -121,6 +129,7 @@ export class AppCenterPortalMenu extends Menu {
 				if (!selectedCrash) {
 					return;
 				}
+
 				switch (selectedCrash.command) {
 					case AppCenterBeacons.Crashes:
 						Utils.OpenUrl(
@@ -140,6 +149,7 @@ export class AppCenterPortalMenu extends Menu {
 					default:
 						break;
 				}
+
 				break;
 
 			case AppCenterBeacons.Analytics:
@@ -167,6 +177,7 @@ export class AppCenterPortalMenu extends Menu {
 			default:
 				break;
 		}
+
 		return void 0;
 	}
 
@@ -192,6 +203,7 @@ export class AppCenterPortalMenu extends Menu {
 		if (SettingsHelper.isCrashesEnabled()) {
 			getAppCenterCrashesTabMenuItems.push(MenuItems.SimulateCrashes);
 		}
+
 		return getAppCenterCrashesTabMenuItems;
 	}
 }

@@ -27,7 +27,9 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 		if (!(await super.run())) {
 			return;
 		}
+
 		this.showAppsQuickPick(this.CachedAllApps);
+
 		this.refreshCachedAppsAndRepaintQuickPickIfNeeded(false, true, false);
 	}
 
@@ -49,6 +51,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 			if (!selectedApps || selectedApps.length !== 1) {
 				return;
 			}
+
 			const selectedApp: models.AppResponse = selectedApps[0];
 
 			const selectedAppName: string = `${selectedApp.owner.name}/${selectedApp.name}`;
@@ -68,6 +71,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 
 				return;
 			}
+
 			try {
 				const deployments: models.Deployment[] =
 					await VsCodeUI.showProgress(async (progress) => {
@@ -97,12 +101,14 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 							};
 						},
 					);
+
 					currentDeployments = {
 						codePushDeployments: deployments,
 						currentDeploymentName:
 							Utils.selectCurrentDeploymentName(deployments),
 					};
 				}
+
 				const app: CurrentApp | null = await this.saveCurrentApp(
 					selectedAppName,
 					OS,
@@ -118,6 +124,7 @@ export default class SetCurrentApp extends ReactNativeAppCommand {
 						selected.target,
 						app.currentAppDeployments.currentDeploymentName,
 					);
+
 					VsCodeUI.ShowInfoMessage(message);
 				} else {
 					this.logger.error(LogStrings.FailedToSaveCurrentApp);

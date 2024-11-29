@@ -8,6 +8,7 @@ const git = require("simple-git/promise");
 
 export class GitUtils {
 	private static gitCommand: string = "git";
+
 	private static gitFirstCommitName: string = "Configure App Center apps";
 
 	public static async IsGitInstalled(
@@ -83,6 +84,7 @@ export class GitUtils {
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
+
 			await gitrepo.addRemote(remoteName, remoteUrl);
 
 			return true;
@@ -161,9 +163,13 @@ export class GitUtils {
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
+
 			await gitrepo.add("./*");
+
 			await gitrepo.commit(this.gitFirstCommitName);
+
 			await gitrepo.push(remoteRepoName, branch);
+
 			logger.debug(
 				LogStrings.SuccessfullyPushedTo(remoteRepoName, branch),
 			);
@@ -185,15 +191,20 @@ export class GitUtils {
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
+
 			await gitrepo.init();
+
 			await gitrepo.addRemote(Constants.GitDefaultRemoteName, remoteRepo);
+
 			await gitrepo.fetch();
+
 			await gitrepo.checkout(["-t", "origin/master"]);
 		} catch (e) {
 			logger.error(`${LogStrings.FailedToClone}: "${e.message}"`);
 
 			return false;
 		}
+
 		return true;
 	}
 
@@ -205,11 +216,17 @@ export class GitUtils {
 	): Promise<boolean> {
 		try {
 			const gitrepo = git(workingDirectory);
+
 			await gitrepo.add("./*");
+
 			await gitrepo.commit(this.gitFirstCommitName);
+
 			await gitrepo.removeRemote(Constants.GitDefaultRemoteName);
+
 			await gitrepo.addRemote(Constants.GitDefaultRemoteName);
+
 			await gitrepo.push(Constants.GitDefaultRemoteName, branch);
+
 			logger.debug(LogStrings.SuccessfullyPushedTo(remoteRepo, branch));
 		} catch (e) {
 			logger.error(
@@ -218,6 +235,7 @@ export class GitUtils {
 
 			return false;
 		}
+
 		return true;
 	}
 }

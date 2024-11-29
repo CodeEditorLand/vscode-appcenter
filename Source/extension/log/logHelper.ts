@@ -9,10 +9,15 @@ export enum LogLevel {
 
 export interface ILogger {
 	log(message: string, level: LogLevel): void;
+
 	info(message: string): void;
+
 	warning(message: string): void;
+
 	error(errorMessage: string, error?: Error, stack?: boolean): void;
+
 	debug(message: string): void;
+
 	logStream(data: Buffer | String, stream?: NodeJS.WritableStream): void;
 }
 

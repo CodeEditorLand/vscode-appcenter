@@ -17,13 +17,17 @@ import { Strings } from "../resources/strings";
 
 export class BaseQuickPickItem implements QuickPickItem {
 	public label: string;
+
 	public description: string;
+
 	public id: string;
 }
 
 export class CustomQuickPickItem {
 	public label: string;
+
 	public description: string;
+
 	public target: string | undefined;
 }
 
@@ -34,8 +38,11 @@ export class WorkItemQueryQuickPickItem extends BaseQuickPickItem {
 //Any changes to ButtonMessageItem must be reflected in IButtonMessageItem
 export class ButtonMessageItem implements MessageItem, IButtonMessageItem {
 	public title: string;
+
 	public url?: string;
+
 	public command?: string;
+
 	public telemetryId?: string;
 }
 
@@ -53,12 +60,14 @@ export class VsCodeUI {
 		if (statusBar !== undefined) {
 			statusBar.command = commandOnClick; // undefined clears the command
 			statusBar.text = text;
+
 			statusBar.tooltip = tooltip;
 
 			if (SettingsHelper.shouldStatusBarBeShown()) {
 				statusBar.show();
 			}
 		}
+
 		return Promise.resolve(void 0);
 	}
 
@@ -132,10 +141,12 @@ export class VsCodeUI {
 			if (chosenItem.url) {
 				Utils.OpenUrl(chosenItem.url);
 			}
+
 			if (chosenItem.command) {
 				commands.executeCommand<void>(chosenItem.command);
 			}
 		}
+
 		return <IButtonMessageItem>chosenItem;
 	}
 
@@ -176,7 +187,10 @@ export class VsCodeUI {
 
 export interface IButtonMessageItem {
 	title: string;
+
 	url?: string;
+
 	command?: string;
+
 	telemetryId?: string;
 }

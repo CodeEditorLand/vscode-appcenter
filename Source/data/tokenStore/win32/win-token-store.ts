@@ -34,6 +34,7 @@ class Prefixer {
 		if (targetName.slice(this.prefix.length) !== this.prefix) {
 			targetName = this.prefix + targetName;
 		}
+
 		return targetName;
 	}
 
@@ -45,6 +46,7 @@ class Prefixer {
 		if (cred.targetName) {
 			cred.targetName = this.removePrefix(cred.targetName);
 		}
+
 		return cred;
 	}
 }
@@ -101,6 +103,7 @@ export class WinTokenStore implements TokenStore {
 				credStream.on("data", (cred: any) => {
 					observer.onNext(credToTokenEntry(cred));
 				});
+
 				credStream.on("end", () => {
 					observer.onCompleted();
 				});
@@ -142,6 +145,7 @@ export class WinTokenStore implements TokenStore {
 				)
 				.on("data", (credential: any) => {
 					result = credential;
+
 					result.targetName = prefixer.removePrefix(
 						result.targetName,
 					);
@@ -159,6 +163,7 @@ export class WinTokenStore implements TokenStore {
 
 					return resolve(credToTokenEntry(result));
 				}
+
 				return reject(
 					new Error(
 						`Getting credential failed, exit code ${code}: ${errors.join(", ")}`,
@@ -230,6 +235,7 @@ export class WinTokenStore implements TokenStore {
 				if (err) {
 					return reject(err);
 				}
+
 				resolve();
 			});
 		});

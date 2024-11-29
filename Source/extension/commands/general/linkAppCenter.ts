@@ -25,6 +25,7 @@ export default class LinkAppCenter extends LinkCommand {
 			false,
 			Strings.ProvideSecondAppHint,
 		);
+
 		this.refreshCachedAppsAndRepaintQuickPickIfNeeded(
 			true,
 			false,
@@ -82,6 +83,7 @@ export default class LinkAppCenter extends LinkCommand {
 			appCenterConfig.deleteConfigPlistValueByKey(
 				Constants.IOSAppSecretKey,
 			);
+
 			appCenterConfig.saveConfigPlist();
 		}
 
@@ -89,6 +91,7 @@ export default class LinkAppCenter extends LinkCommand {
 			appCenterConfig.deleteAndroidAppCenterConfigValueByKey(
 				Constants.AndroidAppSecretKey,
 			);
+
 			appCenterConfig.saveAndroidAppCenterConfig();
 		}
 	}

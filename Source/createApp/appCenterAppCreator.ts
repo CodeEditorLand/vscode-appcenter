@@ -15,6 +15,7 @@ import { SettingsHelper } from "../helpers/settingsHelper";
 
 export default class AppCenterAppCreator {
 	protected platform: AppCenterPlatform = AppCenterPlatform.ReactNative;
+
 	protected os: AppCenterOS;
 
 	constructor(
@@ -55,6 +56,7 @@ export default class AppCenterAppCreator {
 				buildId.toString(),
 				isOrg,
 			);
+
 			this.logger.info(`Queued a new build for "${appName}": ${url}`);
 		} catch (error) {
 			const configureBuildLink: string =
@@ -70,11 +72,14 @@ export default class AppCenterAppCreator {
 			} else {
 				this.logger.error(LogStrings.BuildQueueError(appName));
 			}
+
 			const messageItems: IButtonMessageItem[] = [];
+
 			messageItems.push({
 				title: Strings.BuildManualConfigureBtnLabel,
 				url: configureBuildLink,
 			});
+
 			VsCodeUI.ShowInfoMessage(
 				Messages.BuildManualConfigureMessage(appName),
 				...messageItems,
@@ -82,6 +87,7 @@ export default class AppCenterAppCreator {
 
 			return false;
 		}
+
 		return true;
 	}
 
@@ -106,13 +112,16 @@ export default class AppCenterAppCreator {
 					appName,
 					isOrg,
 				);
+
 			this.logger.error(LogStrings.BuildConnectError(appName, repoUrl));
 
 			const messageItems: IButtonMessageItem[] = [];
+
 			messageItems.push({
 				title: Strings.RepoManualConnectBtnLabel,
 				url: connectRepoLink,
 			});
+
 			VsCodeUI.ShowInfoMessage(
 				Messages.RepoManualConnectMessage(appName),
 				...messageItems,
@@ -145,8 +154,10 @@ export default class AppCenterAppCreator {
 					`${LogStrings.ErrorCreatingDistributionGroup(appName)} ${error}`,
 				);
 			}
+
 			return false;
 		}
+
 		return true;
 	}
 
@@ -178,6 +189,7 @@ export default class AppCenterAppCreator {
 					`${LogStrings.FailedCreateAppUnder(appName, orgName)} ${(err && err.message) || ""}`,
 				);
 			}
+
 			return false;
 		}
 	}
@@ -208,6 +220,7 @@ export default class AppCenterAppCreator {
 					`${LogStrings.FailedCreateAppUnder(appName)} ${(err && err.message) || ""}`,
 				);
 			}
+
 			return false;
 		}
 	}
@@ -248,6 +261,7 @@ export default class AppCenterAppCreator {
 					`${LogStrings.ErrorCreatingDeploymentsFor(appName)} ${(err && err.message) || ""}`,
 				);
 			}
+
 			return null;
 		}
 	}
@@ -256,6 +270,7 @@ export default class AppCenterAppCreator {
 export class IOSAppCenterAppCreator extends AppCenterAppCreator {
 	constructor(client: AppCenterClient, logger: ILogger) {
 		super(client, logger);
+
 		this.os = AppCenterOS.iOS;
 	}
 }
@@ -263,6 +278,7 @@ export class IOSAppCenterAppCreator extends AppCenterAppCreator {
 export class AndroidAppCenterAppCreator extends AppCenterAppCreator {
 	constructor(client: AppCenterClient, logger: ILogger) {
 		super(client, logger);
+
 		this.os = AppCenterOS.Android;
 	}
 }
@@ -270,6 +286,7 @@ export class AndroidAppCenterAppCreator extends AppCenterAppCreator {
 export class NullAppCenterAppCreator extends AppCenterAppCreator {
 	constructor(client: AppCenterClient, logger: ILogger) {
 		super(client, logger);
+
 		this.os = AppCenterOS.Android;
 	}
 

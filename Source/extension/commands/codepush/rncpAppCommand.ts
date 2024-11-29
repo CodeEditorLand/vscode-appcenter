@@ -11,6 +11,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 		if (!(await super.runNoClient())) {
 			return false;
 		}
+
 		if (
 			this.checkForCodePush &&
 			!Utils.isReactNativeCodePushProject(
@@ -23,6 +24,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 
 			return false;
 		}
+
 		return true;
 	}
 
@@ -30,6 +32,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 		if (!(await super.run())) {
 			return false;
 		}
+
 		if (
 			this.checkForCodePush &&
 			!Utils.isReactNativeCodePushProject(
@@ -42,6 +45,7 @@ export class RNCPAppCommand extends ReactNativeAppCommand {
 
 			return false;
 		}
+
 		return true;
 	}
 

@@ -50,6 +50,7 @@ export function unescape(s: string): string {
 			}
 		} else {
 			result += ch;
+
 			afterSlash = false;
 		}
 	});
@@ -71,9 +72,11 @@ export function encodeObject(obj: any): string {
 			if (_.isBoolean(p[1])) {
 				return [p[0], p[1].toString()];
 			}
+
 			if (_.isDate(p[1])) {
 				return [p[0], (p[1] as Date).toISOString()];
 			}
+
 			return [p[0], p[1] ? p[1].toString() : ""];
 		})
 		.map(function (p) {
@@ -109,6 +112,7 @@ function partToKeyValue(part: string): string[] {
 			} else {
 				accumulator[1] = value;
 			}
+
 			return accumulator;
 		},
 		[null, null],

@@ -18,6 +18,7 @@ export class SettingsHelper {
 
 			return demoAppGitRepo;
 		}
+
 		return Constants.AppCenterDemoAppRepository;
 	}
 
@@ -31,6 +32,7 @@ export class SettingsHelper {
 
 			return loginEndpoint;
 		}
+
 		return Constants.DefaultLoginEndPoint;
 	}
 
@@ -44,6 +46,7 @@ export class SettingsHelper {
 
 			return portalEndpoint;
 		}
+
 		return Constants.AppCenterPortalURL;
 	}
 
@@ -57,6 +60,7 @@ export class SettingsHelper {
 
 			return apiEndpoint;
 		}
+
 		return Constants.DefaultAPIEndPoint;
 	}
 
@@ -71,6 +75,7 @@ export class SettingsHelper {
 
 			return createIOSAppInAppCenter;
 		}
+
 		return true;
 	}
 
@@ -85,6 +90,7 @@ export class SettingsHelper {
 
 			return createAndroidAppInAppCenter;
 		}
+
 		return true;
 	}
 
@@ -105,6 +111,7 @@ export class SettingsHelper {
 
 			return createTestersDistributionGroupInAppCenter;
 		}
+
 		return true;
 	}
 
@@ -121,6 +128,7 @@ export class SettingsHelper {
 
 			return createTestersDistributionGroupInAppCenter;
 		}
+
 		return true;
 	}
 
@@ -141,6 +149,7 @@ export class SettingsHelper {
 
 			return createTestersDistributionGroupInAppCenter;
 		}
+
 		return true;
 	}
 
@@ -159,6 +168,7 @@ export class SettingsHelper {
 
 			return distribitionGroupTestersName;
 		}
+
 		return Constants.DefaultDistributionGroupTestersName;
 	}
 
@@ -172,6 +182,7 @@ export class SettingsHelper {
 
 			return branchName;
 		}
+
 		return Constants.DefaultBranchName;
 	}
 
@@ -193,6 +204,7 @@ export class SettingsHelper {
 
 			return <LogLevel>parseInt(LogLevel[<any>logLevelString], 10);
 		}
+
 		return LogLevel.Info;
 	}
 
@@ -208,6 +220,7 @@ export class SettingsHelper {
 				parseInt(AppCenterEnvironment[<any>appCenterEnvironment], 10)
 			);
 		}
+
 		return AppCenterEnvironment.Prod;
 	}
 
@@ -221,6 +234,7 @@ export class SettingsHelper {
 
 			return crashesEnabled;
 		}
+
 		return false;
 	}
 
@@ -234,6 +248,7 @@ export class SettingsHelper {
 
 			return showStatusBar;
 		}
+
 		return true;
 	}
 
@@ -263,6 +278,7 @@ export class SettingsHelper {
 
 			return linkTwoApps;
 		}
+
 		return false;
 	}
 
@@ -276,6 +292,7 @@ export class SettingsHelper {
 
 			return telemetryEnabled;
 		}
+
 		return true;
 	}
 
@@ -290,8 +307,10 @@ export class SettingsHelper {
 			if (mixinPath.length === 0) {
 				return null;
 			}
+
 			return mixinPath;
 		}
+
 		return null;
 	}
 
@@ -308,6 +327,7 @@ export class SettingsHelper {
 
 			return codePushRNBundelDevFlag;
 		}
+
 		return true;
 	}
 }

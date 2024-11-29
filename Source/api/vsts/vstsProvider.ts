@@ -11,7 +11,9 @@ const fetch = require("node-fetch");
 
 export class VSTSProvider {
 	private _apiVersion: string = "1.0";
+
 	private _baseUrl: string;
+
 	private _accessToken: string;
 
 	constructor(
@@ -19,6 +21,7 @@ export class VSTSProvider {
 		private logger: ILogger = new ConsoleLogger(),
 	) {
 		this._baseUrl = `https://${this.configuration.tenantName}.visualstudio.com/DefaultCollection/`;
+
 		this._accessToken = btoa(
 			`${this.configuration.userName}:${this.configuration.accessToken}`,
 		);
@@ -34,6 +37,7 @@ export class VSTSProvider {
 		if (res.status === 203 || res.status === 401) {
 			return false;
 		}
+
 		return true;
 	}
 
@@ -48,6 +52,7 @@ export class VSTSProvider {
 			if (res.status === 203 || res.status === 401) {
 				throw new Error(Messages.VstsCredsNotValidWarning);
 			}
+
 			const response = await res.json();
 
 			return <VSTSProject[]>response.value;
@@ -83,6 +88,7 @@ export class VSTSProvider {
 			if (response.errorCode !== undefined) {
 				throw new Error(response.message);
 			}
+
 			return <VSTSGitRepository>response;
 		} catch (e) {
 			this.logger.error(
@@ -126,6 +132,7 @@ export class VSTSProvider {
 				body: JSON.stringify(body),
 			};
 		}
+
 		return {
 			method: method,
 			headers: {

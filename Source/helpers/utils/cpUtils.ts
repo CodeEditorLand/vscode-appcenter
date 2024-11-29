@@ -6,6 +6,7 @@ import { ReactNativeLinkInputValue } from "../interfaces";
 
 export class SpawnError extends Error {
 	public exitCode: number;
+
 	public result: string;
 }
 
@@ -23,9 +24,11 @@ export namespace cpUtils {
 		let cmdOutput: string = "";
 
 		let cmdOutputIncludingStderr: string = "";
+
 		workingDirectory = workingDirectory || os.tmpdir();
 
 		const formattedArgs: string = exposeArgs ? args.join(" ") : "";
+
 		await new Promise(
 			(resolve: () => void, reject: (e: Error) => void): void => {
 				const options: cp.SpawnOptions = {
@@ -48,13 +51,16 @@ export namespace cpUtils {
 
 				childProc.stdout.on("data", (data: string | Buffer) => {
 					data = data.toString();
+
 					cmdOutput = cmdOutput.concat(data);
+
 					cmdOutputIncludingStderr =
 						cmdOutputIncludingStderr.concat(data);
 
 					if (logger && !logErrorsOnly) {
 						logger.info(data);
 					}
+
 					if (inputValues.length > 0) {
 						let sentResponse: boolean;
 
@@ -71,12 +77,15 @@ export namespace cpUtils {
 
 							if (filtered.length > 0 && !filtered[0].sent) {
 								sentResponse = true;
+
 								childProc.stdin.write(filtered[0].input + "\n");
+
 								inputValues[
 									inputValues.indexOf(filtered[0])
 								].sent = true;
 							}
 						}
+
 						if (!sentResponse) {
 							childProc.stdin.write("\n");
 						}
@@ -85,6 +94,7 @@ export namespace cpUtils {
 
 				childProc.stderr.on("data", (data: string | Buffer) => {
 					data = data.toString();
+
 					cmdOutputIncludingStderr =
 						cmdOutputIncludingStderr.concat(data);
 
@@ -104,9 +114,13 @@ export namespace cpUtils {
 						if (logger) {
 							logger.error(errMsg);
 						}
+
 						const error = new SpawnError(errMsg);
+
 						error.exitCode = code;
+
 						error.result = cmdOutput;
+
 						reject(error);
 					} else {
 						if (logger && !logErrorsOnly) {
@@ -114,6 +128,7 @@ export namespace cpUtils {
 								`finishedRunningCommand', 'Finished running command: "${command} ${formattedArgs}".`,
 							);
 						}
+
 						resolve();
 					}
 				});

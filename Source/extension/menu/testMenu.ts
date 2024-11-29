@@ -17,8 +17,11 @@ export class TestMenu extends Menu {
 
 	protected getMenuItems(): MenuQuickPickItem[] {
 		const menuItems: MenuQuickPickItem[] = [];
+
 		menuItems.push(MenuItems.RunUITests);
+
 		menuItems.push(MenuItems.RunUITestsAsync);
+
 		menuItems.push(MenuItems.ViewTestResults);
 
 		return menuItems;
@@ -28,7 +31,9 @@ export class TestMenu extends Menu {
 		switch (menuItem.command) {
 			case CommandNames.Test.RunUITests:
 				const runUiTests = new Test.RunUITests(this._params, this._app);
+
 				runUiTests.runAsynchronously = false;
+
 				runUiTests.run();
 
 				break;
@@ -38,7 +43,9 @@ export class TestMenu extends Menu {
 					this._params,
 					this._app,
 				);
+
 				runUiTestsAsync.runAsynchronously = true;
+
 				runUiTestsAsync.run();
 
 				break;
@@ -54,6 +61,7 @@ export class TestMenu extends Menu {
 
 				break;
 		}
+
 		return void 0;
 	}
 }

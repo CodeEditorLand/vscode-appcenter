@@ -20,7 +20,9 @@ export class AuthFactory {
 					);
 
 				let vstsAuth: VstsAuth;
+
 				vstsAuth = new VstsAuth(vstsProfileStorage, logger);
+
 				await vstsAuth.initialize();
 
 				return vstsAuth;
@@ -33,10 +35,12 @@ export class AuthFactory {
 					);
 
 				let appCenterAuth: AppCenterAuth;
+
 				appCenterAuth = new AppCenterAuth(
 					appcenterProfileStorage,
 					logger,
 				);
+
 				await appCenterAuth.initialize();
 
 				return appCenterAuth;

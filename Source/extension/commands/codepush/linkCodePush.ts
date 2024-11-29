@@ -29,8 +29,10 @@ export default class LinkCodePush extends LinkCommand {
 
 			return;
 		}
+
 		if (this._app) {
 			this.pickedApps.push(this._app);
+
 			this.linkApps();
 		} else {
 			if (this.CachedAllApps) {
@@ -99,6 +101,7 @@ export default class LinkCodePush extends LinkCommand {
 
 			return false;
 		}
+
 		VsCodeUI.ShowInfoMessage(Messages.CodePushLinkedMessage);
 
 		return true;

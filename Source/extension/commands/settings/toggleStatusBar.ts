@@ -11,11 +11,15 @@ export default class ToggleStatusBar extends Command {
 
 		if (SettingsHelper.shouldStatusBarBeShown()) {
 			SettingsHelper.setHideStatusBar();
+
 			this.manager.hideStatusBar();
+
 			VsCodeUI.ShowInfoMessage(Messages.StatusBarHiddenMessage);
 		} else {
 			SettingsHelper.setShowStatusBar();
+
 			this.manager.showStatusBar();
+
 			VsCodeUI.ShowInfoMessage(Messages.StatusBarShownMessage);
 		}
 	}

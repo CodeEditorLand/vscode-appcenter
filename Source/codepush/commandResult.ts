@@ -2,13 +2,17 @@ export type CommandResult = CommandSucceededResult | CommandFailedResult;
 
 export interface CommandSucceededResult {
 	succeeded: boolean;
+
 	result?: any;
 }
 
 export interface CommandFailedResult {
 	succeeded: boolean;
+
 	errorCode: number;
+
 	errorMessage: string;
+
 	exception?: Error;
 }
 

@@ -34,6 +34,7 @@ export default class Logout extends Command {
 
 		// Two or more users - choose from which one user should be logged out
 		const menuOptions: ProfileQuickPickItem[] = [];
+
 		profiles.forEach((profile) => {
 			menuOptions.push(<ProfileQuickPickItem>{
 				label: profile.userId,
@@ -52,6 +53,7 @@ export default class Logout extends Command {
 				// User cancel selection
 				return void 0;
 			}
+
 			return this.logoutUser(selected.profile);
 		} catch (error) {
 			this.handleError(error);
@@ -61,6 +63,7 @@ export default class Logout extends Command {
 	private async logoutUser(profile: Profile): Promise<boolean> {
 		try {
 			await this.vstsAuth.doLogout(profile.userId);
+
 			VsCodeUI.ShowInfoMessage(
 				Messages.UserLoggedOutMessage(
 					AuthProvider.Vsts,
@@ -78,6 +81,7 @@ export default class Logout extends Command {
 
 	private handleError(error: Error) {
 		VsCodeUI.ShowErrorMessage(Messages.FailedToLogout);
+
 		this.logger.error(error.message, error, true);
 	}
 }

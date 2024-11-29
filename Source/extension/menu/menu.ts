@@ -21,10 +21,12 @@ import { CustomQuickPickItem, VsCodeUI } from "../ui/vscodeUI";
 
 export abstract class Menu {
 	protected rootPath: string;
+
 	protected logger: ILogger;
 
 	public constructor(protected _params: CommandParams) {
 		this.rootPath = _params.manager.projectRootPath;
+
 		this.logger = _params.manager._logger;
 	}
 
@@ -58,6 +60,7 @@ export abstract class Menu {
 	}
 
 	protected abstract getMenuItems(): MenuQuickPickItem[];
+
 	protected abstract handleMenuSelection(
 		menuItem: MenuQuickPickItem,
 	): Promise<void>;
@@ -306,16 +309,19 @@ export function getSelectedUserOrOrgItem(
 
 export function getCreateAppOptions(): QuickPickAppItem[] {
 	const createAppOptions: QuickPickAppItem[] = [];
+
 	createAppOptions.push(<QuickPickAppItem>{
 		label: MenuStrings.CreateNewAndroidAppMenuLabel,
 		description: "",
 		target: CommandNames.CreateApp.Android,
 	});
+
 	createAppOptions.push(<QuickPickAppItem>{
 		label: MenuStrings.CreateNewIOSAppMenuLabel,
 		description: "",
 		target: CommandNames.CreateApp.IOS,
 	});
+
 	createAppOptions.push(<QuickPickAppItem>{
 		label: MenuStrings.CreateNewAppsForBothMenuLabel,
 		description: "",
@@ -355,5 +361,6 @@ export function getQuickPickItemsForOrgList(
 			target: myself.userName,
 		});
 	}
+
 	return options;
 }

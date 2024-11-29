@@ -56,8 +56,10 @@ export class OsxTokenStore implements TokenStore {
 					token: null,
 				};
 				// debug(`Outputting ${inspect({ key, accessToken })}`);
+
 				observer.onNext({ key, accessToken });
 			});
+
 			securityStream.on("end", (err: Error) => {
 				// debug(`output from security program complete`);
 
@@ -85,6 +87,7 @@ export class OsxTokenStore implements TokenStore {
 
 		return new Promise<TokenEntry>((resolve, reject) => {
 			resolve = _.once(resolve);
+
 			reject = _.once(reject);
 
 			childProcess.execFile(
@@ -94,6 +97,7 @@ export class OsxTokenStore implements TokenStore {
 					if (err) {
 						return reject(err);
 					}
+
 					const match = /^password: (?:0x[0-9A-F]+. )?"(.*)"$/m.exec(
 						stderr,
 					);
@@ -109,8 +113,10 @@ export class OsxTokenStore implements TokenStore {
 						const parsed = source.pipe(
 							createOsxSecurityParsingStream(),
 						);
+
 						parsed.on("data", (data: any) => {
 							//debug(`got data on key lookup: ${inspect(data)}`);
+
 							resolve({
 								key: data.acct,
 								accessToken: {
@@ -119,12 +125,16 @@ export class OsxTokenStore implements TokenStore {
 								},
 							});
 						});
+
 						parsed.on("error", (err: Error) => {
 							//debug(`parsed string failed`);
+
 							reject(err);
 						});
 						// debug(`Pushing output into parsing stream`);
+
 						source.push(stdout);
+
 						source.push(null);
 					} else {
 						reject(new Error("Password in incorrect format"));
@@ -164,6 +174,7 @@ export class OsxTokenStore implements TokenStore {
 							),
 						);
 					}
+
 					return resolve();
 				},
 			);
@@ -186,6 +197,7 @@ export class OsxTokenStore implements TokenStore {
 							),
 						);
 					}
+
 					return resolve();
 				},
 			);

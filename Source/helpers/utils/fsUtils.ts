@@ -11,6 +11,7 @@ export class FSUtils {
 
 	public static IsEmptyDirectory(dirName: string) {
 		let dirContent: string[] | null = null;
+
 		dirContent = fs.readdirSync(dirName);
 
 		const ignoredItems = [".vscode"];
@@ -28,6 +29,7 @@ export class FSUtils {
 
 	public static IsEmptyDirectoryToStartNewProject(dirName: string) {
 		let dirContent: string[] | null = null;
+
 		dirContent = fs.readdirSync(dirName);
 
 		const ignoredItems = [".vscode", ".git"];
@@ -47,6 +49,7 @@ export class FSUtils {
 		if (!fs.existsSync(sourcePath) || !fs.existsSync(destinationPath)) {
 			return;
 		}
+
 		const dirContent = fs.readdirSync(sourcePath);
 
 		for (const dir of dirContent) {
@@ -54,10 +57,13 @@ export class FSUtils {
 
 			if (!fs.lstatSync(fullDir).isDirectory()) {
 				const outputFilePath: string = path.join(destinationPath, dir);
+
 				fs.writeFileSync(outputFilePath, fs.readFileSync(fullDir));
 			} else {
 				const newDir = path.join(destinationPath, dir);
+
 				fs.mkdirSync(newDir);
+
 				this.copyFiles(fullDir, newDir);
 			}
 		}
@@ -69,6 +75,7 @@ export class FSUtils {
 				if (err) {
 					reject(err);
 				}
+
 				resolve(data);
 			});
 		});
@@ -80,6 +87,7 @@ export class FSUtils {
 				if (err) {
 					reject(err);
 				}
+
 				resolve();
 			});
 		});
@@ -91,6 +99,7 @@ export class FSUtils {
 				if (err) {
 					reject(err);
 				}
+
 				resolve(void 0);
 			});
 		});
@@ -109,6 +118,7 @@ export class FSUtils {
 			});
 		});
 	}
+
 	public static rimraf(
 		path: string,
 		options?: rimraf.Options,
@@ -117,10 +127,12 @@ export class FSUtils {
 			if (!options) {
 				options = {};
 			}
+
 			rimraf(path, options, (error: Error) => {
 				if (error) {
 					reject(error);
 				}
+
 				resolve(void 0);
 			});
 		});

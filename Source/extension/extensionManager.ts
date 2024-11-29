@@ -16,8 +16,11 @@ import { VsCodeUI } from "./ui/vscodeUI";
 
 class CommandHandlersContainer {
 	private _appCenterCommandHandler: CommandHandlers.AppCenter;
+
 	private _settingsCommandHandler: CommandHandlers.Settings;
+
 	private _codePushCommandHandler: CommandHandlers.CodePush;
+
 	private _testCommandHandler: CommandHandlers.Test;
 
 	constructor(
@@ -30,16 +33,19 @@ class CommandHandlersContainer {
 			this.appCenterAuth,
 			this.vstsAuth,
 		);
+
 		this._settingsCommandHandler = new CommandHandlers.Settings(
 			this.manager,
 			this.appCenterAuth,
 			this.vstsAuth,
 		);
+
 		this._codePushCommandHandler = new CommandHandlers.CodePush(
 			this.manager,
 			this.appCenterAuth,
 			this.vstsAuth,
 		);
+
 		this._testCommandHandler = new CommandHandlers.Test(
 			this.manager,
 			this.appCenterAuth,
@@ -66,8 +72,11 @@ class CommandHandlersContainer {
 
 export class ExtensionManager implements Disposable {
 	private _commandHandlersContainer: CommandHandlersContainer;
+
 	private _appCenterStatusBarItem: StatusBarItem;
+
 	private _projectRootPath: string | undefined;
+
 	public _logger: ILogger;
 
 	public get commandHandlers(): CommandHandlersContainer {
@@ -85,6 +94,7 @@ export class ExtensionManager implements Disposable {
 		vstsAuth: VstsAuth,
 	): Promise<void> {
 		this._logger = logger;
+
 		this._projectRootPath = projectRootPath;
 
 		this._commandHandlersContainer = new CommandHandlersContainer(
@@ -92,6 +102,7 @@ export class ExtensionManager implements Disposable {
 			appCenterAuth,
 			vstsAuth,
 		);
+
 		await this.initializeExtension();
 	}
 
@@ -126,6 +137,7 @@ export class ExtensionManager implements Disposable {
 		} catch (e) {
 			if (e.statusCode === 404) {
 				delete profile.currentApp;
+
 				await appCenterAuth.updateProfile(profile);
 			}
 		}
@@ -171,6 +183,7 @@ export class ExtensionManager implements Disposable {
 				`${CommandNames.Login}`,
 			);
 		}
+
 		return Promise.resolve(void 0);
 	}
 
@@ -179,6 +192,7 @@ export class ExtensionManager implements Disposable {
 			this._appCenterStatusBarItem.show();
 		}
 	}
+
 	public hideStatusBar() {
 		if (this._appCenterStatusBarItem) {
 			this._appCenterStatusBarItem.hide();

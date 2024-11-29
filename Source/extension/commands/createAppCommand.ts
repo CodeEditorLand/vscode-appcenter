@@ -29,6 +29,7 @@ export class CreateAppCommand extends Command {
 		if (!(await super.run())) {
 			return false;
 		}
+
 		return true;
 	}
 
@@ -47,9 +48,11 @@ export class CreateAppCommand extends Command {
 				if (nameA < nameB) {
 					return -1;
 				}
+
 				if (nameA > nameB) {
 					return 1;
 				}
+
 				return 0; // sort alphabetically
 			} else {
 				return 0;
@@ -57,6 +60,7 @@ export class CreateAppCommand extends Command {
 		};
 
 		let items: CustomQuickPickItem[] = [];
+
 		this.logger.debug(LogStrings.GettingUserOrOrg);
 
 		const orgList: models.ListOKResponseItem[] =
@@ -74,6 +78,7 @@ export class CreateAppCommand extends Command {
 			});
 
 		const myself: Profile | null = await this.appCenterProfile;
+
 		items = Menu.getQuickPickItemsForOrgList(orgList, myself);
 
 		return items;
@@ -83,14 +88,18 @@ export class CreateAppCommand extends Command {
 		projectName: string,
 	): Promise<boolean> {
 		let exist: boolean = false;
+
 		this.logger.debug(LogStrings.CheckingProjectName(projectName));
+
 		await VsCodeUI.showProgress(async (progress) => {
 			progress.report({
 				message: Messages.CheckIfAppsExistProgressMessage,
 			});
 
 			let apps: models.AppResponse[];
+
 			apps = await this.client.apps.list();
+
 			exist = apps.some((item) => {
 				return item.name === projectName;
 			});
@@ -108,6 +117,7 @@ export class CreateAppCommand extends Command {
 			Strings.PleaseEnterProjectNameHint,
 			appNameFromPackage,
 		);
+
 		projectName = projectName.trim();
 
 		if (
@@ -118,6 +128,7 @@ export class CreateAppCommand extends Command {
 
 			return null;
 		}
+
 		if (
 			option === CreateNewAppOption.Android ||
 			option === CreateNewAppOption.Both
@@ -136,6 +147,7 @@ export class CreateAppCommand extends Command {
 				return null;
 			}
 		}
+
 		if (
 			option === CreateNewAppOption.IOS ||
 			option === CreateNewAppOption.Both
@@ -154,6 +166,7 @@ export class CreateAppCommand extends Command {
 				return null;
 			}
 		}
+
 		return projectName;
 	}
 
@@ -181,6 +194,7 @@ export class CreateAppCommand extends Command {
 
 				return null;
 			}
+
 			return userOrOrgItem;
 		} else {
 			return null;
@@ -259,6 +273,7 @@ export class CreateAppCommand extends Command {
 				apps[+selected.target].appName,
 				this.userOrOrg.isOrganization,
 			);
+
 			messageItems.push({
 				title: Strings.AppCreatedBtnLabel,
 				url: appUrl,

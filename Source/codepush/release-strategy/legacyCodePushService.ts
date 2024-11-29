@@ -6,11 +6,17 @@ import { CurrentApp } from "../../helpers/interfaces";
 
 export interface PackageInfo {
 	appVersion?: string;
+
 	description?: string;
+
 	isDisabled?: boolean;
+
 	isMandatory?: boolean;
+
 	label?: string;
+
 	packageHash?: string;
+
 	rollout?: number;
 }
 
@@ -31,6 +37,7 @@ export interface PackageHashToBlobInfoMap {
 
 export interface BlobInfo {
 	size: number;
+
 	url: string;
 }
 
@@ -49,6 +56,7 @@ export default class LegacyCodePushServiceClient {
 				"A token must be specified to execute server calls.",
 			);
 		}
+
 		if (!serverUrl) {
 			throw new Error(
 				"A server url must be specified to execute server calls.",
@@ -86,6 +94,7 @@ export default class LegacyCodePushServiceClient {
 
 					return;
 				}
+
 				if (httpResponse.statusCode === 201) {
 					resolve(
 						<models.CodePushRelease>(

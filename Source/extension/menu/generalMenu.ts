@@ -42,12 +42,14 @@ export class GeneralMenu extends Menu {
 		// For empty directory show only `Start New Project`
 		if (this.isEmptyDir()) {
 			menuItems.push(MenuItems.StartAProject);
+
 			menuItems.push(MenuItems.AppCenterPortal);
 		} else {
 			menuItems.push(MenuItems.AppCenterPortal);
 
 			if (this.isRNproject() && currentApp) {
 				menuItems.push(MenuItems.TestTab);
+
 				menuItems.push(MenuItems.CodePushTab);
 
 				if (SettingsHelper.isCrashesEnabled()) {
@@ -58,6 +60,7 @@ export class GeneralMenu extends Menu {
 
 		if (!this.isEmptyDir() && this.isRNproject()) {
 			menuItems.push(MenuItems.SetCurrentApp(currentApp));
+
 			menuItems.push(MenuItems.InstallSDK);
 		}
 
@@ -124,6 +127,7 @@ export class GeneralMenu extends Menu {
 
 				break;
 		}
+
 		return void 0;
 	}
 }
